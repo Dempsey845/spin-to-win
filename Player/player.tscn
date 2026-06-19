@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh8sk4hgiwd8l" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://c73nra2u5y7c5" path="res://Assets/PSXHands/Items_tex.png" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://bjb533ctb2afx" path="res://Player/player_animation_manager.gd" id="2_fhl08"]
 [ext_resource type="Animation" uid="uid://ceh1fry0q3tvh" path="res://Player/Animations/Arms/an.anim" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://bdk02r0e1virm" path="res://Assets/RevolverPack/Colt Python/Colt Python.fbx" id="3_gwnis"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="5_k53q1"]
@@ -7030,10 +7031,131 @@ _data = {
 &"Thumbas_Up": ExtResource("3_btcbx")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k53q1"]
+animation = &"Grab_Item_R_Hand"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fhl08"]
+animation = &"Inspect_Hands"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vtle1"]
+animation = &"Pistol_Fire_Big_Recoil"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_od3ui"]
+animation = &"Pistol_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_00tjw"]
+animation = &"Punch_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x3vf3"]
+animation = &"Punch_R"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apopc"]
+animation = &"Punch_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5htga"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p5o4e"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gu6f8"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dkpta"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"inspect"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lfmf2"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pisgm"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"inspect"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b1ygp"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o28un"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"pistol_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n471f"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"punch_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7emwf"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"punch_l"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hshwv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gpjlu"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"punch_r"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8mwp6"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qemgg"]
+xfade_time = 0.5
+advance_mode = 2
+advance_condition = &"grab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8viyr"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sm0op"]
+states/Grab_Item_R_Hand/node = SubResource("AnimationNodeAnimation_k53q1")
+states/Grab_Item_R_Hand/position = Vector2(346, 231)
+states/Inspect_Hands/node = SubResource("AnimationNodeAnimation_fhl08")
+states/Inspect_Hands/position = Vector2(655, 336)
+states/Pistol_Fire/node = SubResource("AnimationNodeAnimation_vtle1")
+states/Pistol_Fire/position = Vector2(622, 91)
+states/Pistol_Idle/node = SubResource("AnimationNodeAnimation_od3ui")
+states/Pistol_Idle/position = Vector2(353, 91)
+states/Punch_L/node = SubResource("AnimationNodeAnimation_00tjw")
+states/Punch_L/position = Vector2(-215, 422)
+states/Punch_R/node = SubResource("AnimationNodeAnimation_x3vf3")
+states/Punch_R/position = Vector2(18, 415)
+states/Punch_idle/node = SubResource("AnimationNodeAnimation_apopc")
+states/Punch_idle/position = Vector2(-2, 316)
+states/Start/position = Vector2(-71, 91)
+transitions = ["Start", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_5htga"), "Pistol_Idle", "Pistol_Fire", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "Pistol_Fire", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "Pistol_Idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_dkpta"), "Inspect_Hands", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "Punch_idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_pisgm"), "Inspect_Hands", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_b1ygp"), "Punch_idle", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_o28un"), "Pistol_Idle", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_n471f"), "Punch_idle", "Punch_L", SubResource("AnimationNodeStateMachineTransition_7emwf"), "Punch_L", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_hshwv"), "Punch_idle", "Punch_R", SubResource("AnimationNodeStateMachineTransition_gpjlu"), "Punch_R", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "Punch_idle", "Grab_Item_R_Hand", SubResource("AnimationNodeStateMachineTransition_qemgg"), "Grab_Item_R_Hand", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8viyr")]
+graph_offset = Vector2(-560, 172)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76lrf"]
+graph_offset = Vector2(-723.6974, 180.07603)
+nodes/ArmStateMachine/node = SubResource("AnimationNodeStateMachine_sm0op")
+nodes/ArmStateMachine/position = Vector2(-320, 120)
+node_connections = [&"output", 0, &"ArmStateMachine"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l8h54"]
 
 [node name="Player" type="CharacterBody3D" unique_id=421862176]
 script = ExtResource("1_l8h54")
+
+[node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
+script = ExtResource("2_fhl08")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=564366435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -7192,7 +7314,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.27451456, -0.34980026)
+bones/19/position = Vector3(-0.44640085, 0.2530714, -0.35918164)
 bones/19/rotation = Quaternion(0.025448412, 0.46850246, 0.8819501, 0.044965595)
 bones/19/scale = Vector3(1, 0.99999994, 1)
 bones/20/name = "Lower_Arm.R"
@@ -7200,14 +7322,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(0.9998919, 0.014678857, -0.0008634196, -0.014681593, 0.993373, -0.11399336, -0.0008155947, 0.11399371, 0.9934811, 8.65974e-16, 0.7211103, 4.32987e-16)
 bones/20/enabled = true
 bones/20/position = Vector3(8.65974e-16, 0.7211103, 4.32987e-16)
-bones/20/rotation = Quaternion(0.35604158, -0.07530117, 0.0024828403, 0.931428)
+bones/20/rotation = Quaternion(0.37123686, -0.07498905, -0.00042873065, 0.9255051)
 bones/20/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
 bones/21/name = "Hand.R"
 bones/21/parent = 20
 bones/21/rest = Transform3D(0.9998919, -0.014704294, 1.1860154e-07, 0.01467892, 0.99816674, 0.0587157, -0.00086349144, -0.05870935, 0.9982747, -3.2140957e-15, 0.68124884, 5.5636806e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(-3.2140957e-15, 0.68124884, 5.5636806e-09)
-bones/21/rotation = Quaternion(-0.09136105, 0.053131733, -0.027394645, 0.994022)
+bones/21/rotation = Quaternion(-0.10681968, 0.00884375, -0.019404737, 0.9940498)
 bones/21/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/22/name = "Ring_1.R"
 bones/22/parent = 21
@@ -7363,7 +7485,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.99013597, -0.0144928545, 0.13935944, 0.13987137, -0.044091806, 0.9891874, -0.008191526, 0.99892217, 0.04568407, -0.43584222, -0.04229021, 0.92182267)
+transform = Transform3D(-0.97361815, -0.013803665, 0.22776587, 0.22814606, -0.040743798, 0.97277397, -0.004147795, 0.99907416, 0.042818174, -0.43584225, -0.04144617, 0.9092605)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -7394,7 +7516,17 @@ mesh = SubResource("ArrayMesh_apopc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head" unique_id=2027160778]
 libraries/ = SubResource("AnimationLibrary_5htga")
-autoplay = &"Pistol_Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="Head" unique_id=1567528673]
+tree_root = SubResource("AnimationNodeBlendTree_76lrf")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ArmStateMachine/conditions/grab = false
+parameters/ArmStateMachine/conditions/inspect = false
+parameters/ArmStateMachine/conditions/pistol_idle = false
+parameters/ArmStateMachine/conditions/punch_idle = false
+parameters/ArmStateMachine/conditions/punch_l = false
+parameters/ArmStateMachine/conditions/punch_r = false
+parameters/ArmStateMachine/conditions/shoot = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=291670431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -7427,7 +7559,9 @@ grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=331678839]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="GunCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1307827547 node_paths=PackedStringArray("main_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6447269, -0.3415499)
