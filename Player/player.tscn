@@ -7173,6 +7173,7 @@ node_connections = [&"output", 0, &"ArmStateMachine"]
 
 [node name="Player" type="CharacterBody3D" unique_id=421862176]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_l8h54")
 
 [node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
@@ -7182,9 +7183,10 @@ script = ExtResource("2_fhl08")
 script = ExtResource("3_00tjw")
 initial_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager")]
+[node name="IdleState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray")]
 script = ExtResource("4_x3vf3")
 animation_manager = NodePath("../../PlayerAnimationManager")
+shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
 
 [node name="ShootState" type="Node" parent="PlayerArmStateMachine" unique_id=444894740]
 script = ExtResource("5_apopc")
@@ -7204,15 +7206,22 @@ debug_color = Color(0, 0.36321065, 0.7941323, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2136299058]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2447269, 0.1584501)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2447269, 0.024529546)
 cull_mask = 1048573
 current = true
 fov = 60.0
 near = 0.01
 far = 100.0
 
+[node name="ShootRay" type="RayCast3D" parent="Head/Camera3D" unique_id=748057770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00045073032, -0.0067898035)
+target_position = Vector3(0, 0, -50)
+collision_mask = 10
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 0, 0, 0)
+
 [node name="Arms_001" type="Node3D" parent="Head" unique_id=1963156412]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.19999999)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.12505895)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Head/Arms_001" unique_id=2004339849]
 bones/0/name = "Root"
@@ -7352,7 +7361,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.25211483, -0.35960013)
+bones/19/position = Vector3(-0.44640085, 0.26997426, -0.35178664)
 bones/19/rotation = Quaternion(0.025448412, 0.46850246, 0.8819501, 0.044965595)
 bones/19/scale = Vector3(1, 0.99999994, 1)
 bones/20/name = "Lower_Arm.R"
@@ -7360,14 +7369,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(0.9998919, 0.014678857, -0.0008634196, -0.014681593, 0.993373, -0.11399336, -0.0008155947, 0.11399371, 0.9934811, 8.65974e-16, 0.7211103, 4.32987e-16)
 bones/20/enabled = true
 bones/20/position = Vector3(8.65974e-16, 0.7211103, 4.32987e-16)
-bones/20/rotation = Quaternion(0.37191266, -0.07497464, -0.0005586724, 0.9252348)
+bones/20/rotation = Quaternion(0.35925952, -0.07523696, 0.0018678693, 0.9301982)
 bones/20/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
 bones/21/name = "Hand.R"
 bones/21/parent = 20
 bones/21/rest = Transform3D(0.9998919, -0.014704294, 1.1860154e-07, 0.01467892, 0.99816674, 0.0587157, -0.00086349144, -0.05870935, 0.9982747, -3.2140957e-15, 0.68124884, 5.5636806e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(-3.2140957e-15, 0.68124884, 5.5636806e-09)
-bones/21/rotation = Quaternion(-0.10750855, 0.0068534003, -0.019044705, 0.99399817)
+bones/21/rotation = Quaternion(-0.09464782, 0.04377476, -0.025709933, 0.99421555)
 bones/21/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/22/name = "Ring_1.R"
 bones/22/parent = 21
@@ -7523,7 +7532,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.97268933, -0.013835587, 0.23169851, 0.23207611, -0.04060325, 0.9718497, -0.0040383926, 0.99907935, 0.042705312, -0.43584225, -0.041410685, 0.90868276)
+transform = Transform3D(-0.9873114, -0.014123794, 0.15816721, 0.15863912, -0.043383718, 0.98638284, -0.007069598, 0.99895847, 0.045073926, -0.43584225, -0.042114325, 0.91922593)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -7602,7 +7611,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="GunCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1307827547 node_paths=PackedStringArray("main_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6447269, -0.3415499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6447269, -0.47547045)
 cull_mask = 1047554
 current = true
 fov = 60.0
