@@ -17,7 +17,6 @@ func update(_delta: float):
 		can_shoot = false
 		shoot()
 
-
 func shoot():
 	shoot_ray.force_raycast_update()
 

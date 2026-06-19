@@ -4,6 +4,9 @@ extends Node
 signal shoot_animation_started
 signal shoot_animation_ended
 
+signal punch_animation_started
+signal punch_animation_ended
+
 @onready var animation_tree: AnimationTree = $'../Head/AnimationTree'
 
 func set_arm_state_machine_condition(condition_name: String, value: Variant):
@@ -14,3 +17,9 @@ func emit_shoot_animation_started():
 
 func emit_shoot_animation_ended():
 	shoot_animation_ended.emit()
+
+func emit_punch_animation_started():
+	punch_animation_started.emit()
+
+func emit_punch_animation_ended():
+	punch_animation_ended.emit()
