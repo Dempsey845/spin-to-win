@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://bh8sk4hgiwd8l" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://c73nra2u5y7c5" path="res://Assets/PSXHands/Items_tex.png" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://bjb533ctb2afx" path="res://Player/player_animation_manager.gd" id="2_fhl08"]
-[ext_resource type="Animation" uid="uid://ceh1fry0q3tvh" path="res://Player/Animations/Arms/an.anim" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://cd0k8ij5hh8ty" path="res://StateMachine/state_machine.gd" id="3_00tjw"]
+[ext_resource type="Animation" uid="uid://ckbfas5ppikm8" path="res://Player/Animations/Arms/an.anim" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://bdk02r0e1virm" path="res://Assets/RevolverPack/Colt Python/Colt Python.fbx" id="3_gwnis"]
+[ext_resource type="Script" uid="uid://chgfdsl5owyc0" path="res://Player/States/Arm/arm_idle_state.gd" id="4_x3vf3"]
+[ext_resource type="Script" uid="uid://83lrm1ci7bgc" path="res://StateMachine/state.gd" id="5_apopc"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="5_k53q1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
@@ -4866,6 +4869,23 @@ tracks/42/path = NodePath("Arms_001/Skeleton3D:R_Object")
 tracks/42/interp = 0
 tracks/42/loop_wrap = true
 tracks/42/keys = PackedFloat32Array(0, 1, 0.71027774, 0.0005616197, -0.021403264, 0.7035959)
+tracks/43/type = "method"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("../PlayerAnimationManager")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0, 0.4583),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_shoot_animation_started"
+}, {
+"args": [],
+"method": &"emit_shoot_animation_ended"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ecli"]
 resource_name = "Pistol_Fire_small_recoil"
@@ -7144,7 +7164,7 @@ transitions = ["Start", "Pistol_Idle", SubResource("AnimationNodeStateMachineTra
 graph_offset = Vector2(-560, 172)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76lrf"]
-graph_offset = Vector2(-723.6974, 180.07603)
+graph_offset = Vector2(-723.6974, 158.52734)
 nodes/ArmStateMachine/node = SubResource("AnimationNodeStateMachine_sm0op")
 nodes/ArmStateMachine/position = Vector2(-320, 120)
 node_connections = [&"output", 0, &"ArmStateMachine"]
@@ -7156,6 +7176,23 @@ script = ExtResource("1_l8h54")
 
 [node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
 script = ExtResource("2_fhl08")
+
+[node name="PlayerArmStateMachine" type="Node" parent="." unique_id=1090750882 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_00tjw")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager")]
+script = ExtResource("4_x3vf3")
+animation_manager = NodePath("../../PlayerAnimationManager")
+
+[node name="ShootState" type="Node" parent="PlayerArmStateMachine" unique_id=444894740]
+script = ExtResource("5_apopc")
+
+[node name="InspectState" type="Node" parent="PlayerArmStateMachine" unique_id=697157133]
+script = ExtResource("5_apopc")
+
+[node name="GrabState" type="Node" parent="PlayerArmStateMachine" unique_id=1657521121]
+script = ExtResource("5_apopc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=564366435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -7314,7 +7351,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.2530714, -0.35918164)
+bones/19/position = Vector3(-0.44640085, 0.24361394, -0.36331928)
 bones/19/rotation = Quaternion(0.025448412, 0.46850246, 0.8819501, 0.044965595)
 bones/19/scale = Vector3(1, 0.99999994, 1)
 bones/20/name = "Lower_Arm.R"
@@ -7322,14 +7359,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(0.9998919, 0.014678857, -0.0008634196, -0.014681593, 0.993373, -0.11399336, -0.0008155947, 0.11399371, 0.9934811, 8.65974e-16, 0.7211103, 4.32987e-16)
 bones/20/enabled = true
 bones/20/position = Vector3(8.65974e-16, 0.7211103, 4.32987e-16)
-bones/20/rotation = Quaternion(0.37123686, -0.07498905, -0.00042873065, 0.9255051)
+bones/20/rotation = Quaternion(0.37753344, -0.07485303, -0.0016409458, 0.9229643)
 bones/20/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
 bones/21/name = "Hand.R"
 bones/21/parent = 20
 bones/21/rest = Transform3D(0.9998919, -0.014704294, 1.1860154e-07, 0.01467892, 0.99816674, 0.0587157, -0.00086349144, -0.05870935, 0.9982747, -3.2140957e-15, 0.68124884, 5.5636806e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(-3.2140957e-15, 0.68124884, 5.5636806e-09)
-bones/21/rotation = Quaternion(-0.10681968, 0.00884375, -0.019404737, 0.9940498)
+bones/21/rotation = Quaternion(-0.11389209, -0.01165958, -0.01569212, 0.99330086)
 bones/21/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/22/name = "Ring_1.R"
 bones/22/parent = 21
@@ -7485,29 +7522,29 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.97361815, -0.013803665, 0.22776587, 0.22814606, -0.040743798, 0.97277397, -0.004147795, 0.99907416, 0.042818174, -0.43584225, -0.04144617, 0.9092605)
+transform = Transform3D(-0.9632883, -0.014391717, 0.26808327, 0.26845327, -0.04072295, 0.96243155, -0.002933904, 0.99906665, 0.043091416, -0.43584225, -0.041658, 0.9035811)
 bone_name = "Hand.R"
 bone_idx = 21
 
-[node name="Colt Python" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D" unique_id=150076113 instance=ExtResource("3_gwnis")]
+[node name="Colt Python" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D" unique_id=724740103 instance=ExtResource("3_gwnis")]
 transform = Transform3D(1.9106872e-15, 4.37114e-08, 1.0000004, 1.0000008, -4.37114e-08, 0, 4.3711424e-08, 1.0000002, -4.3711402e-08, -0.0185498, 0.30475664, -0.10015702)
 
-[node name="CPBody" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="0" unique_id=1309933]
+[node name="CPBody" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="0" unique_id=1766945639]
 layers = 2
 
-[node name="CPBullet" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="1" unique_id=1893002316]
+[node name="CPBullet" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="1" unique_id=694586240]
 visible = false
 layers = 2
 
-[node name="CPCyilnder" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="2" unique_id=947607858]
+[node name="CPCyilnder" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="2" unique_id=1411992712]
 visible = false
 layers = 2
 
-[node name="CPCyilnderFull" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="3" unique_id=381818738]
+[node name="CPCyilnderFull" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="3" unique_id=1807161209]
 transform = Transform3D(100, 1.1920929e-07, 0, 1.1920929e-07, 100, -1.5988946e-05, -1.9073486e-06, 1.6614795e-05, 99.99999, 0.043203592, 0.2673781, 0.004742965)
 layers = 2
 
-[node name="CPTrigger&Hammer" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="4" unique_id=1025542754]
+[node name="CPTrigger&Hammer" parent="Head/Arms_001/Skeleton3D/BoneAttachment3D/Colt Python" index="4" unique_id=1904594368]
 layers = 2
 
 [node name="Sphere(can delete)" type="MeshInstance3D" parent="Head" unique_id=1654099340]
