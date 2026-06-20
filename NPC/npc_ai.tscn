@@ -4,12 +4,18 @@
 [ext_resource type="Script" uid="uid://dfa12gfrrs0pb" path="res://NPC/npc_target_manager.gd" id="2_8waqw"]
 [ext_resource type="Script" uid="uid://32wyk6jcg8xr" path="res://NPC/npc_air_state.gd" id="3_0nyr8"]
 [ext_resource type="Script" uid="uid://cd0k8ij5hh8ty" path="res://StateMachine/state_machine.gd" id="3_yupgv"]
+[ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="4_mp836"]
 [ext_resource type="Script" uid="uid://dqcjc2n8v3s1u" path="res://NPC/States/npc_wander_state.gd" id="4_u0aa3"]
 [ext_resource type="PackedScene" uid="uid://dl8r7syydxbag" path="res://NPC/Humanoid/humanoid.tscn" id="6_lnxy0"]
+[ext_resource type="Script" uid="uid://dpf1th4i3ve0x" path="res://NPC/States/npc_punch_state.gd" id="7_mp836"]
+[ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="9_olc0g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xld7y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r07n0"]
+radius = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru0io"]
 
 [node name="NPC_AI" type="CharacterBody3D" unique_id=669566548 node_paths=PackedStringArray("target_manager")]
 collision_layer = 8
@@ -22,20 +28,39 @@ target_manager = NodePath("TargetManager")
 script = ExtResource("2_8waqw")
 npc = NodePath("..")
 
+[node name="ChaseUpdateTimer" type="Timer" parent="TargetManager" unique_id=245045630]
+wait_time = 0.2
+
 [node name="AirState" type="Node" parent="." unique_id=523584649 node_paths=PackedStringArray("character_body")]
 script = ExtResource("3_0nyr8")
 character_body = NodePath("..")
 
+[node name="Health" type="Node" parent="." unique_id=283467360]
+script = ExtResource("4_mp836")
+metadata/_custom_type_script = "uid://2t1c0fhtlkie"
+
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("WanderState")
+initial_state = NodePath("PunchState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104]
 script = ExtResource("4_u0aa3")
 
 [node name="WaitTimer" type="Timer" parent="StateMachine/WanderState" unique_id=1699414278]
-wait_time = 10.0
+wait_time = 3.0
+one_shot = true
+
+[node name="PunchState" type="Node" parent="StateMachine" unique_id=699433229 node_paths=PackedStringArray("npc", "humanoid", "health", "target_manager")]
+script = ExtResource("7_mp836")
+npc = NodePath("../..")
+humanoid = NodePath("../../Humanoid")
+health = NodePath("../../Health")
+target_manager = NodePath("../../TargetManager")
+metadata/_custom_type_script = "uid://83lrm1ci7bgc"
+
+[node name="PunchCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1136881496]
+wait_time = 2.5
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1512920644]
@@ -59,3 +84,16 @@ collision_mask = 2
 transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, 0, 0)
 npc = NodePath("..")
 air_tracker = NodePath("../AirState")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1076983210 node_paths=PackedStringArray("health_component")]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("9_olc0g")
+health_component = NodePath("../Health")
+metadata/_custom_type_script = "uid://dd0l78eqowhql"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1172896667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ru0io")
+debug_color = Color(0.89806664, 0.23921841, 0.5255987, 0.41960785)

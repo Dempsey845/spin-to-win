@@ -13,8 +13,11 @@
 [ext_resource type="Script" uid="uid://3ug6jf61b128" path="res://Player/player_hand_hitbox_manager.gd" id="7_5htga"]
 [ext_resource type="PackedScene" uid="uid://ca0sm06c435ab" path="res://Player/Revolver/colt_python.tscn" id="9_5htga"]
 [ext_resource type="Script" uid="uid://ch0uxpg21e6gx" path="res://Component/hitbox_component.gd" id="9_apopc"]
+[ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="9_dkpta"]
+[ext_resource type="Script" uid="uid://ct6xp3nkcrhm4" path="res://Player/player_health_manager.gd" id="9_lfmf2"]
+[ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pisgm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy2ax"]
 resource_name = "Arms"
@@ -7910,7 +7913,10 @@ node_connections = [&"output", 0, &"ArmStateMachine"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l8h54"]
 
-[node name="Player" type="CharacterBody3D" unique_id=421862176]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
+radius = 0.4
+
+[node name="Player" type="CharacterBody3D" unique_id=421862176 groups=["player"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_l8h54")
@@ -7956,14 +7962,69 @@ script = ExtResource("7_5htga")
 left_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/LeftHandBoneAttachment/LeftHandHitbox")
 right_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/RightHandHitbox")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=564366435]
+[node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107]
+script = ExtResource("9_lfmf2")
+
+[node name="Health" type="Node" parent="." unique_id=1782994041]
+script = ExtResource("9_dkpta")
+metadata/_custom_type_script = "uid://2t1c0fhtlkie"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737990560]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1900315073]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.5058824, 0.5058824, 0.5058824, 0.32941177)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=331678839]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GunCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1307827547 node_paths=PackedStringArray("main_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8447268, -0.07547045)
+cull_mask = 1047554
+current = true
+fov = 60.0
+near = 0.01
+far = 100.0
+script = ExtResource("5_k53q1")
+main_camera = NodePath("../../../Head/Camera3D")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=335350285 node_paths=PackedStringArray("health_component")]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("15_lfmf2")
+health_component = NodePath("../Health")
+metadata/_custom_type_script = "uid://dd0l78eqowhql"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=540949519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_hvfyp")
-debug_color = Color(0, 0.36321065, 0.7941323, 1)
+shape = SubResource("CapsuleShape3D_pisgm")
+debug_color = Color(0.675477, 0.07155519, 0.48658562, 1)
 debug_fill = false
 
 [node name="Head" type="Node3D" parent="." unique_id=727566474]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5999999, -0.5)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2136299058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2447269, 0.42452955)
@@ -8339,6 +8400,7 @@ shape = SubResource("SphereShape3D_5htga")
 
 [node name="Sphere(can delete)" type="MeshInstance3D" parent="Head" unique_id=1654099340]
 transform = Transform3D(0.16055137, 0, 0, 0, 0.16055137, 0, 0, 0, 0.16055137, -0.0044457274, 0.3, 3.4780164)
+visible = false
 mesh = SubResource("ArrayMesh_apopc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head" unique_id=2027160778]
@@ -8364,42 +8426,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_l8h54")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737990560]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1900315073]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.5058824, 0.5058824, 0.5058824, 0.32941177)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=331678839]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="GunCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1307827547 node_paths=PackedStringArray("main_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6447269, -0.07547045)
-cull_mask = 1047554
-current = true
-fov = 60.0
-near = 0.01
-far = 100.0
-script = ExtResource("5_k53q1")
-main_camera = NodePath("../../../Head/Camera3D")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=564366435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_hvfyp")
+debug_color = Color(0, 0.36321065, 0.7941323, 1)
+debug_fill = false
