@@ -7,6 +7,12 @@ signal shoot_animation_ended
 signal punch_animation_started
 signal punch_animation_ended
 
+signal equip_pistol_started
+signal equip_pistol_ended
+
+signal equip_punch_started
+signal equip_punch_ended
+
 @onready var animation_tree: AnimationTree = $'../Head/AnimationTree'
 
 func set_arm_state_machine_condition(condition_name: String, value: Variant):
@@ -23,3 +29,15 @@ func emit_punch_animation_started():
 
 func emit_punch_animation_ended():
 	punch_animation_ended.emit()
+
+func emit_equip_pistol_started():
+	equip_pistol_started.emit()
+
+func emit_equip_pistol_ended():
+	equip_pistol_ended.emit()
+
+func emit_equip_punch_started():
+	equip_punch_started.emit()
+
+func emit_equip_punch_ended():
+	equip_punch_ended.emit()
