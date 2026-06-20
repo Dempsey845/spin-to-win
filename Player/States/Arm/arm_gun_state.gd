@@ -4,13 +4,16 @@ extends State
 @export var shoot_ray: RayCast3D
 @export var punch_state: State
 @export var gun_visual: Node3D
+@export var revolver_spawn_point: Marker3D
+
+var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
 
 func enter():
 	gun_visual.visible = true
-	
+
 	can_equip_punch = true
 
 	animation_manager.set_arm_state_machine_condition("pistol_idle", true)
@@ -32,6 +35,12 @@ func update(_delta: float):
 		can_equip_punch = false
 		animation_manager.set_arm_state_machine_condition("equip_punch", true)
 		animation_manager.set_arm_state_machine_condition("pistol_idle", false)
+	elif Input.is_action_just_pressed("throw"):
+		var revolver = revolver_scene.instantiate()
+		get_tree().current_scene.add_child(revolver)
+		revolver.global_position = revolver_spawn_point.global_position
+		revolver.global_rotation = revolver_spawn_point.global_rotation
+		revolver.init_force()
 
 func shoot():
 	shoot_ray.force_raycast_update()

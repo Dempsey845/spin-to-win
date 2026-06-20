@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ca0sm06c435ab"]
+
+[ext_resource type="PackedScene" uid="uid://bdk02r0e1virm" path="res://Assets/RevolverPack/Colt Python/Colt Python.fbx" id="1_eqynv"]
+
+[node name="ColtPython" unique_id=724740103 instance=ExtResource("1_eqynv")]
+
+[node name="CPBody" parent="." index="0" unique_id=1766945639]
+layers = 2
+
+[node name="CPBullet" parent="." index="1" unique_id=694586240]
+visible = false
+layers = 2
+
+[node name="CPCyilnder" parent="." index="2" unique_id=1411992712]
+visible = false
+layers = 2
+
+[node name="CPCyilnderFull" parent="." index="3" unique_id=1807161209]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.0292247, 0.27179137, 0.0058232993)
+layers = 2
+
+[node name="CPTrigger&Hammer" parent="." index="4" unique_id=1904594368]
+layers = 2

@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://bjb533ctb2afx" path="res://Player/player_animation_manager.gd" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cd0k8ij5hh8ty" path="res://StateMachine/state_machine.gd" id="3_00tjw"]
 [ext_resource type="Animation" uid="uid://ckbfas5ppikm8" path="res://Player/Animations/Arms/an.anim" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://bdk02r0e1virm" path="res://Assets/RevolverPack/Colt Python/Colt Python.fbx" id="3_gwnis"]
 [ext_resource type="Script" uid="uid://chgfdsl5owyc0" path="res://Player/States/Arm/arm_gun_state.gd" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://83lrm1ci7bgc" path="res://StateMachine/state.gd" id="5_apopc"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://dik0d1ggsgoni" path="res://Player/States/Arm/punch_state.gd" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://3ug6jf61b128" path="res://Player/player_hand_hitbox_manager.gd" id="7_5htga"]
+[ext_resource type="PackedScene" uid="uid://ca0sm06c435ab" path="res://Player/Revolver/colt_python.tscn" id="9_5htga"]
 [ext_resource type="Script" uid="uid://ch0uxpg21e6gx" path="res://Component/hitbox_component.gd" id="9_apopc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
@@ -7880,12 +7880,13 @@ script = ExtResource("2_fhl08")
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point")]
 script = ExtResource("4_x3vf3")
 animation_manager = NodePath("../../PlayerAnimationManager")
 shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
 punch_state = NodePath("../PunchState")
-gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python")
+gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
+revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython/RevolverSpawnPoint")
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state")]
 script = ExtResource("5_x3vf3")
@@ -7931,6 +7932,12 @@ collision_mask = 10
 collide_with_areas = true
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
+[node name="PickupRay" type="RayCast3D" parent="Head/Camera3D" unique_id=441522590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00045073032, -0.0067898035)
+target_position = Vector3(0, 0, -50)
+collision_mask = 16
+debug_shape_custom_color = Color(0, 0, 0, 0)
+
 [node name="Arms_001" type="Node3D" parent="Head" unique_id=1963156412]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.525059)
 
@@ -7946,7 +7953,7 @@ bones/1/name = "Upper_Arm.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(2.3841858e-07, 0.9984603, 0.055470116, -1, 2.3841858e-07, 1.4901161e-08, 1.8626451e-09, -0.055470116, 0.99846035, 0.5, 0, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0.5, 0, 0)
+bones/1/position = Vector3(0.50850624, 0.15627392, -0.24984996)
 bones/1/rotation = Quaternion(0.0030280352, 0.294787, -0.95554984, -0.004007131)
 bones/1/scale = Vector3(1, 0.99999994, 1)
 bones/2/name = "Lower_Arm.L"
@@ -8009,7 +8016,7 @@ bones/10/name = "Thumb_1.L"
 bones/10/parent = 3
 bones/10/rest = Transform3D(0.8087901, 0.5410003, -0.23060203, -0.58661824, 0.71435356, -0.3815469, -0.041685633, 0.44386673, 0.8951227, -0.006307905, 0.052199747, 0.07690998)
 bones/10/enabled = true
-bones/10/position = Vector3(-0.006307894, 0.052199703, 0.07691008)
+bones/10/position = Vector3(-0.0063078515, 0.05219991, 0.07690992)
 bones/10/rotation = Quaternion(0.2232229, -0.051090114, -0.30495042, 0.9244278)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Thumb_2.L"
@@ -8072,7 +8079,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.5, 0, 0)
+bones/19/position = Vector3(-0.44640085, 0.25124824, -0.35997927)
 bones/19/rotation = Quaternion(0.04452179, -0.035240054, 0.9980424, 0.026217166)
 bones/19/scale = Vector3(1.0000001, 0.9999999, 0.99999994)
 bones/20/name = "Lower_Arm.R"
@@ -8135,7 +8142,7 @@ bones/28/name = "Thumb_1.R"
 bones/28/parent = 21
 bones/28/rest = Transform3D(0.8087901, -0.5410003, 0.23060203, 0.58661824, 0.71435356, -0.3815469, 0.041685633, 0.44386673, 0.8951227, 0.006307905, 0.052199747, 0.07690998)
 bones/28/enabled = true
-bones/28/position = Vector3(0.0063079074, 0.052199747, 0.07690992)
+bones/28/position = Vector3(0.006307803, 0.05219987, 0.07690996)
 bones/28/rotation = Quaternion(0.21576053, -0.09678331, 0.5470876, 0.8029793)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "Thumb_2.R"
@@ -8198,7 +8205,7 @@ bones/37/name = "R_Object"
 bones/37/parent = 21
 bones/37/rest = Transform3D(0.9998919, -7.543713e-08, -0.014704456, -0.014704456, 5.9604645e-08, -0.9998919, 7.636845e-08, 1, 5.9604645e-08, 3.5133213e-10, 0.16065827, -0.010168244)
 bones/37/enabled = true
-bones/37/position = Vector3(1.9194871e-08, 0.16065823, -0.010168209)
+bones/37/position = Vector3(-0.031737875, 0.17560826, 0.025312591)
 bones/37/rotation = Quaternion(0.7102778, 0.00056161825, -0.021403264, 0.7035958)
 bones/37/scale = Vector3(1, 1, 1)
 
@@ -8243,30 +8250,15 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1411386, -0.32423654)
 bone_name = "Hand.R"
 bone_idx = 21
 
-[node name="Colt Python" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment" unique_id=724740103 instance=ExtResource("3_gwnis")]
-transform = Transform3D(1.9106872e-15, 4.37114e-08, 1.0000004, 1.0000008, -4.37114e-08, 0, 4.3711424e-08, 1.0000002, -4.3711402e-08, -0.0185498, 0.30475664, -0.10015702)
+[node name="ColtPython" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment" unique_id=724740103 instance=ExtResource("9_5htga")]
+transform = Transform3D(1.4901161e-08, 5.9604645e-08, 1.0000002, 1.0000007, -8.940697e-08, 0, 2.9802322e-08, 1.0000002, -2.9802322e-08, -0.01854974, 0.30475664, -0.10015702)
 
-[node name="CPBody" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python" index="0" unique_id=1766945639]
-layers = 2
-
-[node name="CPBullet" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python" index="1" unique_id=694586240]
-visible = false
-layers = 2
-
-[node name="CPCyilnder" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python" index="2" unique_id=1411992712]
-visible = false
-layers = 2
-
-[node name="CPCyilnderFull" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python" index="3" unique_id=1807161209]
-transform = Transform3D(100, 1.1920929e-07, 0, 1.1920929e-07, 100, -1.5988946e-05, -1.9073486e-06, 1.6614795e-05, 99.99999, 0.043203592, 0.2673781, 0.004742965)
-layers = 2
-
-[node name="CPTrigger&Hammer" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python" index="4" unique_id=1904594368]
-layers = 2
+[node name="RevolverSpawnPoint" type="Marker3D" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython" unique_id=571885983]
+transform = Transform3D(0.033353005, -0.02024273, -0.999239, 0.08192607, 0.9964853, -0.017452411, 0.99608064, -0.08128154, 0.03489419, -0.14715624, 0.15789497, 0.0091407895)
 
 [node name="RightHandHitbox" type="Area3D" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment" unique_id=376573280]
 transform = Transform3D(-0.779015, 0.51627815, -0.355801, 0.28687355, 0.798061, 0.5299098, 0.5575313, 0.31073758, -0.76980704, -0.010400057, 0.21507668, 0.008073688)
@@ -8281,7 +8273,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
+transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.50025934, -1.1184258, -0.6002299)
 bone_name = "Hand.L"
 bone_idx = 3
 
@@ -8361,5 +8353,3 @@ near = 0.01
 far = 100.0
 script = ExtResource("5_k53q1")
 main_camera = NodePath("../../../Head/Camera3D")
-
-[editable path="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Colt Python"]
