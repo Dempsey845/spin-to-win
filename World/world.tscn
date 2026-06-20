@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://t3lpnb7fwvp" path="res://World/Prototype/gray_prototype.tres" id="2_8a836"]
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="3_j8job"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
-[ext_resource type="PackedScene" uid="uid://mettisjl70wh" path="res://Player/Revolver/revolver.tscn" id="5_k8do8"]
+[ext_resource type="PackedScene" uid="uid://dqdin3vaff0vi" path="res://NPC/npc_ai.tscn" id="6_bkhv4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u1ndb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,6 +19,10 @@ sky = SubResource("Sky_62w18")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_yf0ba"]
+vertices = PackedVector3Array(-1, 0.5, -7.75, 0, 0.5, -8, 0, 0.5, -49, -48.5, 0.5, -49, -48.5, 0.5, -7, -1, 0.5, -7, 1.25, 0.5, -7.75, 1.25, 0.5, -6.5, 7.25, 0.5, -5.5, 7.75, 0.5, -5.5, 7.75, 0.5, -49, 8, 0.5, 1.75, 6.25, 0.5, 2, 6.5, 0.5, 3, 12.5, 0.5, 3, 12.75, 0.5, 4.75, 50.5, 0.5, 4.5, 50.5, 0.5, -49, 3.25, 0.5, 3, 2.5, 0.5, 2, 3, 0.75, 8.75, 3.25, 0.75, 8, 3.25, 0.75, 4, 2.5, 0.5, 1.25, 0.5, 0.5, -5.75, -0.75, 0.5, -5.75, -48.5, 0.5, 8.75, 11.5, 3.25, 8, 11.5, 3.25, 4, 6.5100136, 2, 5.9859886, 7, 0, 1, 3.5100136, 0, -4.5140114, 3.5200844, 0, 0.0019111633, 12.75, 0.5, 7.25, 50.5, 0.5, 7.5, 12.75, 0.5, 8.75, 12.25, 0.5, 9.25, 11, 0.5, 50, 50.5, 0.5, 50, 10.75, 0.5, 9.25, 4.5, 0.5, 50, 4.75, 0.5, 9.25, 3.25, 0.5, 9.25, -48.5, 0.5, 50)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 2), PackedInt32Array(6, 1, 2), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(11, 9, 14), PackedInt32Array(14, 9, 16), PackedInt32Array(16, 9, 10), PackedInt32Array(16, 10, 17), PackedInt32Array(13, 18, 12), PackedInt32Array(12, 18, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(19, 18, 22), PackedInt32Array(23, 19, 24), PackedInt32Array(24, 19, 25), PackedInt32Array(22, 20, 19), PackedInt32Array(19, 20, 25), PackedInt32Array(25, 20, 26), PackedInt32Array(25, 26, 4), PackedInt32Array(28, 29, 22), PackedInt32Array(22, 29, 21), PackedInt32Array(21, 29, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(25, 4, 5), PackedInt32Array(23, 32, 30), PackedInt32Array(30, 31, 8), PackedInt32Array(8, 31, 7), PackedInt32Array(7, 31, 24), PackedInt32Array(24, 32, 23), PackedInt32Array(32, 31, 30), PackedInt32Array(31, 32, 24), PackedInt32Array(15, 16, 33), PackedInt32Array(33, 16, 34), PackedInt32Array(35, 33, 34), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 38), PackedInt32Array(36, 38, 37), PackedInt32Array(37, 39, 36), PackedInt32Array(42, 41, 40), PackedInt32Array(42, 40, 20), PackedInt32Array(20, 40, 26), PackedInt32Array(26, 40, 43), PackedInt32Array(41, 39, 40), PackedInt32Array(40, 39, 37)]
+
 [node name="World" type="Node3D" unique_id=2089176536]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782760641]
@@ -30,28 +34,33 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=421862176 instance=ExtResource("1_62w18")]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=356290054]
-use_collision = true
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1452204116]
+navigation_mesh = SubResource("NavigationMesh_yf0ba")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1142772388]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=356290054]
+use_collision = true
+collision_layer = 2
+collision_mask = 31
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1142772388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 0.5)
-size = Vector3(21, 1, 16)
+size = Vector3(100, 1, 100)
 material = ExtResource("2_8a836")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=602795071]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=602795071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.15, -2)
 operation = 2
 size = Vector3(5, 0.5, 7)
 material = ExtResource("2_8a836")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=2107929195]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=2107929195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 8.5)
 polygon = PackedVector2Array(-3, 0, 0, 1, 7, 3, 7, 0)
 depth = 5.0
 material = ExtResource("3_j8job")
 
-[node name="TestTargetBlock" parent="." unique_id=747522705 instance=ExtResource("4_3f78f")]
+[node name="TestTargetBlock" parent="NavigationRegion3D" unique_id=747522705 instance=ExtResource("4_3f78f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
-[node name="Revolver" parent="." unique_id=923854946 instance=ExtResource("5_k8do8")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 2.0538044, -5)
+[node name="NPC_AI" parent="." unique_id=669566548 instance=ExtResource("6_bkhv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
