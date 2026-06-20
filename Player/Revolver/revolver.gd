@@ -1,3 +1,4 @@
+class_name Revolver
 extends RigidBody3D
 
 @export var force_strength := 1000.0

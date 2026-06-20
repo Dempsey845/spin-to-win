@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://bjb533ctb2afx" path="res://Player/player_animation_manager.gd" id="2_fhl08"]
 [ext_resource type="Script" uid="uid://cd0k8ij5hh8ty" path="res://StateMachine/state_machine.gd" id="3_00tjw"]
 [ext_resource type="Animation" uid="uid://ckbfas5ppikm8" path="res://Player/Animations/Arms/an.anim" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://c0fjto5rfnt8q" path="res://Player/player_revolver_manager.gd" id="3_p5o4e"]
 [ext_resource type="Script" uid="uid://chgfdsl5owyc0" path="res://Player/States/Arm/arm_gun_state.gd" id="4_x3vf3"]
 [ext_resource type="Script" uid="uid://83lrm1ci7bgc" path="res://StateMachine/state.gd" id="5_apopc"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="5_k53q1"]
-[ext_resource type="Script" uid="uid://dik0d1ggsgoni" path="res://Player/States/Arm/punch_state.gd" id="5_x3vf3"]
+[ext_resource type="Script" uid="uid://cqil3l0gtai7a" path="res://Player/States/Arm/arm_punch_state.gd" id="6_p5o4e"]
 [ext_resource type="Script" uid="uid://3ug6jf61b128" path="res://Player/player_hand_hitbox_manager.gd" id="7_5htga"]
 [ext_resource type="PackedScene" uid="uid://ca0sm06c435ab" path="res://Player/Revolver/colt_python.tscn" id="9_5htga"]
 [ext_resource type="Script" uid="uid://ch0uxpg21e6gx" path="res://Component/hitbox_component.gd" id="9_apopc"]
@@ -7876,22 +7877,28 @@ script = ExtResource("1_l8h54")
 [node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
 script = ExtResource("2_fhl08")
 
+[node name="PlayerRevolverManager" type="Node" parent="." unique_id=2106552003 node_paths=PackedStringArray("pickup_ray")]
+script = ExtResource("3_p5o4e")
+pickup_ray = NodePath("../Head/Camera3D/PickupRay")
+
 [node name="PlayerArmStateMachine" type="Node" parent="." unique_id=1090750882 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager")]
 script = ExtResource("4_x3vf3")
 animation_manager = NodePath("../../PlayerAnimationManager")
 shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
 punch_state = NodePath("../PunchState")
 gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
 revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython/RevolverSpawnPoint")
+revolver_manager = NodePath("../../PlayerRevolverManager")
 
-[node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state")]
-script = ExtResource("5_x3vf3")
+[node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
+script = ExtResource("6_p5o4e")
 animation_manager = NodePath("../../PlayerAnimationManager")
 gun_state = NodePath("../GunState")
+revolver_manager = NodePath("../../PlayerRevolverManager")
 
 [node name="StartDelayTimer" type="Timer" parent="PlayerArmStateMachine/PunchState" unique_id=460186332]
 wait_time = 2.0
@@ -8079,7 +8086,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.25124824, -0.35997927)
+bones/19/position = Vector3(-0.44640085, 0.2735844, -0.3502072)
 bones/19/rotation = Quaternion(0.04452179, -0.035240054, 0.9980424, 0.026217166)
 bones/19/scale = Vector3(1.0000001, 0.9999999, 0.99999994)
 bones/20/name = "Lower_Arm.R"
@@ -8250,7 +8257,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1411386, -0.32423654)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1188024, -0.31446448)
 bone_name = "Hand.R"
 bone_idx = 21
 

@@ -5,6 +5,7 @@ extends State
 @export var punch_state: State
 @export var gun_visual: Node3D
 @export var revolver_spawn_point: Marker3D
+@export var revolver_manager: PlayerRevolverManager
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 
@@ -22,27 +23,41 @@ func enter():
 	animation_manager.shoot_animation_ended.connect(_on_shoot_animation_ended)
 
 	animation_manager.equip_punch_ended.connect(func(): 
-		animation_manager.set_arm_state_machine_condition("equip_punch", false)
 		state_machine.change_state(punch_state)
 	)
 
 func update(_delta: float):
 	if Input.is_action_just_pressed("shoot") and can_shoot:
-		animation_manager.set_arm_state_machine_condition("shoot", true)
-		can_shoot = false
-		shoot()
-	elif Input.is_action_just_pressed("equip") and can_equip_punch:
-		can_equip_punch = false
-		animation_manager.set_arm_state_machine_condition("equip_punch", true)
-		animation_manager.set_arm_state_machine_condition("pistol_idle", false)
-	elif Input.is_action_just_pressed("throw"):
-		var revolver = revolver_scene.instantiate()
-		get_tree().current_scene.add_child(revolver)
-		revolver.global_position = revolver_spawn_point.global_position
-		revolver.global_rotation = revolver_spawn_point.global_rotation
-		revolver.init_force()
+		_shoot()
+	elif can_equip_punch:
+		if Input.is_action_just_pressed("equip"):
+			_equip_punch()
+		elif Input.is_action_just_pressed("throw"):
+			_throw_revolver()
 
-func shoot():
+func _throw_revolver():
+	gun_visual.visible = false
+
+	var revolver = revolver_scene.instantiate()
+	get_tree().current_scene.add_child(revolver)
+
+	revolver.global_position = revolver_spawn_point.global_position
+	revolver.global_rotation = revolver_spawn_point.global_rotation
+	revolver.init_force()
+	
+	revolver_manager.has_revolver = false
+
+	_equip_punch()
+
+func _equip_punch():
+	can_equip_punch = false
+	animation_manager.set_arm_state_machine_condition("equip_punch", true)
+	animation_manager.set_arm_state_machine_condition("pistol_idle", false)
+
+func _shoot():
+	animation_manager.set_arm_state_machine_condition("shoot", true)
+	can_shoot = false
+	
 	shoot_ray.force_raycast_update()
 
 	if shoot_ray.is_colliding():
@@ -59,6 +74,7 @@ func shoot():
 func exit():
 	gun_visual.visible = false
 
+	animation_manager.set_arm_state_machine_condition("equip_punch", false)
 	animation_manager.set_arm_state_machine_condition("pistol_idle", false)
 
 	animation_manager.shoot_animation_started.disconnect(_on_shoot_animation_started)
