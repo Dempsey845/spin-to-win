@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://b70m1wxy6cf4f"]
+
+[ext_resource type="Script" uid="uid://cpjuj6wqrcgn2" path="res://NPC/npc_bullet_projectile.gd" id="1_kqwkn"]
+[ext_resource type="Texture2D" uid="uid://bo1r2l086d274" path="res://Assets/RevolverPack/Colt Python/Textures/revolverAmmo.jpg" id="2_yjfmj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2snw2"]
+resource_name = "Material.033"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_yjfmj")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ftqbm"]
+_surfaces = [{
+"aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABgAFAAMABAAFAAYAAwACAAYAAAAEAAcABwABAAAABgAHAAQACAACAAEABgACAAgAAQAJAAgACAAKAAYAAQAHAAsACwAJAAEACwAHAAYACAAJAAsABgAKAAsACwAKAAgA"),
+"name": "Material.033",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuJfOBrqiRbawAAAAAJfOBrp75uO4AAAAAKwcJTln5eO4reTjuKwcJTnrUTgwG49UOFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgw")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bu7am"]
+resource_name = "CPBullet"
+_surfaces = [{
+"aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
+"attribute_data": PackedByteArray("Q644P/jHaz4KZ2c+nF90Pk6aZj7I0fw9FHs4PzhV/j3GM2g+LCu1PgpnZz6cX3Q+Q644P/jHaz5h4Tg/WN+wPutveT/6zo8+c0tfPzy96j76JkU/+s6PPnNLXz9og9M9/UuyPWBIVz7eIVU+LMUOPpruVT7yXYI+1AqzPVCkgz4QerY9js+cPtQKsz1QpIM+mu5VPvJdgj4Tu1Y+cFm9PgpnZz6cX3Q+Q644P/jHaz4Uezg/OFX+PU6aZj7I0fw9CmdnPpxfdD7GM2g+LCu1PmHhOD9Y37A+Q644P/jHaz79S7I9YEhXPtQKsz1QpIM+EHq2PY7PnD7UCrM9UKSDPv1Lsj1gSFc+1AqzPVCkgz6a7lU+8l2CPt4hVT4sxQ4+mu5VPvJdgj7UCrM9UKSDPhB6tj2Oz5w+E7tWPnBZvT4="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQA"),
+"material": SubResource("StandardMaterial3D_2snw2"),
+"name": "Material.033",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAJfOBrr64+M4reTjuJfOBrqiRbawreTjOJfOBrqiRbawAAAAAJfOBrp75uO4reTjuJfOBrqiRbawAAAAAJfOBrr64+M4G49UOFcOuznrUTgwreTjOKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAKwcJTkN5eM4reTjuKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAJfOBrp75uO4reTjOJfOBrqiRbawreTjOKwcJTnrUTgwAAAAAKwcJTln5eO4reTjuKwcJTnrUTgwreTjuJfOBrqiRbawAAAAAJfOBrp75uO4G49UOFcOuznrUTgwAAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzlXAGO4G49UOFcOuznrUTgwAAAAAFcOuzlXAGO4AAAAAKwcJTln5eO4reTjOKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgwreTjuKwcJTnrUTgw/7//f+d/F4D/v/9/hn54gf+//3/Afj6B/7//f0mAEYD/P/9/DH28gP8//38MfbyA/z//fwx9vID/P/9/DH28gP9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/rbjVj8J9+I+tuNWPsnuXka241Y95fPuQrbjVjzJ/1o5RR9WPW380jlFH1Y8efjGOUUfVj4GAm45RR9WPNIEoj/7//7/Bf/B//v//v818M3/+//+/SX1Sf/7//78hgN1/AAD/v4Z+hn4AAP+/hn6GfgAA/7+GfoZ+AAD/v4Z+hn7/f///yIL/v/9//////2QB/3///8iC/7//f///yIL/vyjwUMcNYOB+KPBQx1BimH8o8FDHB148fijwUMfPXNh91g9Qxzidvn/WD1DHm2MPf9YPUMeVY61/1g9Qx1GeZX8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ftqbm")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a1gk2"]
+radius = 0.10939807
+
+[node name="BulletProjectile" type="Area3D" unique_id=82245577]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_kqwkn")
+metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
+
+[node name="CPBullet" type="MeshInstance3D" parent="." unique_id=920497076]
+transform = Transform3D(1.9106857e-13, -4.371139e-06, 100, -100, -4.371139e-06, 1.8070038e-20, 4.371139e-06, -100, -4.371139e-06, 0, 0, -0.019122422)
+mesh = SubResource("ArrayMesh_bu7am")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=180620454]
+shape = SubResource("SphereShape3D_a1gk2")

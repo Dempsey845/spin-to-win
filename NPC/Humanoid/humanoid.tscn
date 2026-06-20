@@ -24,6 +24,7 @@
 [ext_resource type="Animation" uid="uid://cfdkhgmjafefo" path="res://NPC/Animations/npc_t_pose.anim" id="11_c6he4"]
 [ext_resource type="Animation" uid="uid://vnef02xlnspm" path="res://NPC/Animations/Movement/npc_walk.anim" id="12_8fq3g"]
 [ext_resource type="Animation" uid="uid://8mq2r85guu24" path="res://NPC/Animations/Combat/npc_shoot.anim" id="21_02vmf"]
+[ext_resource type="PackedScene" uid="uid://b70m1wxy6cf4f" path="res://NPC/npc_bullet_projectile.tscn" id="25_lubws"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_htegl"]
 radius = 0.56347656
@@ -47,7 +48,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_8fq3g")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m0a5j"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_54i0j"]
 _surfaces = [{
 "aabb": AABB(-0.0026837236, -0.002129733, -0.000267404, 0.0063591944, 0.0031567279, 0.00053469604),
 "format": 34359742465,
@@ -99,7 +100,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("kO9hOq9nYTptC2q0f8BwOwhchjptC2q0f8BwO9muPzptC2q0kO9hOtmuPzptC2q0bbJwOy+Vhjq7UQ+4bbJwOy+VhjrJfw04BytfOh+VYTrJfw04BytfOh+VYTq7UQ+4f8BwO9muPzptC2q0f8BwOwhchjptC2q0kO9hOq9nYTptC2q0kO9hOtmuPzptC2q0/3//f1D9VsH/f/9/Gvzxwf9//38k/OzB/3//f2X9S8HgeN/43/iOw+B43/jf+I7D4Hjf+N/4jsPgeN/43/iOw/////8k/BI+/////xr8DT7/////UP2oPv////9l/bM+")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_m0a5j")
+shadow_mesh = SubResource("ArrayMesh_54i0j")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2snw2"]
 resource_name = "Material.033"
@@ -107,7 +108,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("6_02vmf")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_gtqwm"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xjswb"]
 _surfaces = [{
 "aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
 "format": 34359742465,
@@ -137,7 +138,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAJfOBrr64+M4reTjuJfOBrqiRbawreTjOJfOBrqiRbawAAAAAJfOBrp75uO4reTjuJfOBrqiRbawAAAAAJfOBrr64+M4G49UOFcOuznrUTgwreTjOKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAKwcJTkN5eM4reTjuKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAJfOBrp75uO4reTjOJfOBrqiRbawreTjOKwcJTnrUTgwAAAAAKwcJTln5eO4reTjuKwcJTnrUTgwreTjuJfOBrqiRbawAAAAAJfOBrp75uO4G49UOFcOuznrUTgwAAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzlXAGO4G49UOFcOuznrUTgwAAAAAFcOuzlXAGO4AAAAAKwcJTln5eO4reTjOKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgwreTjuKwcJTnrUTgw/7//f+d/F4D/v/9/hn54gf+//3/Afj6B/7//f0mAEYD/P/9/DH28gP8//38MfbyA/z//fwx9vID/P/9/DH28gP9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/rbjVj8J9+I+tuNWPsnuXka241Y95fPuQrbjVjzJ/1o5RR9WPW380jlFH1Y8efjGOUUfVj4GAm45RR9WPNIEoj/7//7/Bf/B//v//v818M3/+//+/SX1Sf/7//78hgN1/AAD/v4Z+hn4AAP+/hn6GfgAA/7+GfoZ+AAD/v4Z+hn7/f///yIL/v/9//////2QB/3///8iC/7//f///yIL/vyjwUMcNYOB+KPBQx1BimH8o8FDHB148fijwUMfPXNh91g9Qxzidvn/WD1DHm2MPf9YPUMeVY61/1g9Qx1GeZX8=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_gtqwm")
+shadow_mesh = SubResource("ArrayMesh_xjswb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nmcb"]
 resource_name = "Material.034"
@@ -145,7 +146,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_r0c7i")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2fssx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dori4"]
 _surfaces = [{
 "aabb": AABB(-0.000441691, -0.00044155694, -0.00037200467, 0.000883382, 0.00088337704, 0.00074401003),
 "format": 34359742465,
@@ -175,9 +176,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("w5LnOceLZzm3CcM5w5LnORik5zktsrkww5LnOcWA57kdWjKww5LnORuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnOceLZzm3CcM5w5LnORuvZ7lyCcM5w5LnuRuvZ7lyCcM5w5LnORuvZ7lyCcM5w5LnOcWA57kdWjKww5LnucWA57kdWjKww5LnuRuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnuRik5zktsrkww5LnORik5zktsrkww5LnOceLZzm3CcM5w5LnucWA57kdWjKww5LnuRik5zktsrkww5LnuceLZzm3CcM5w5LnuRuvZ7lyCcM5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnOcWA57kdWjKww5LnORik5zktsrkww5LnuceLZzmfCcO5w5LnuRuvZ7mfCcO5w5LnORuvZ7mfCcO5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnuRuvZ7mfCcO5w5LnucWA57kdWjKww5LnOcWA57kdWjKww5LnuceLZzmfCcO5w5LnOceLZzmfCcO5w5LnORik5zktsrkww5LnuRik5zktsrkww5LnuceLZzmfCcO5w5LnuRik5zktsrkww5LnucWA57kdWjKww5LnuRuvZ7mfCcO5////f1k5//////9/9zn//////3+uOP//////f2s3////f/9/////v/9//3////+//3//f////7//f/9/////v/9/pi////+//3+mL////7//f6Yv////v/9/pi////+//39L0P///7//f0vQ////v/9/S9D///+//39L0P///78AAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1v///3//f1Ij////f/9/SiT///9//3+oI////3//fwMj/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtY=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_2fssx")
+shadow_mesh = SubResource("ArrayMesh_dori4")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_820gc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ph8h3"]
 _surfaces = [{
 "aabb": AABB(-0.000441691, -0.00044155694, -0.00037200397, 0.000883382, 0.00088337704, 0.000744008),
 "format": 34359742465,
@@ -207,7 +208,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("w5LnOceLZzmKCcM5w5LnORik5zkAAAAAw5LnOcWA57kAAAAAw5LnORuvZ7mKCcM5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuceLZzmKCcM5w5LnOceLZzmKCcM5w5LnORuvZ7mKCcM5w5LnuRuvZ7mKCcM5w5LnORuvZ7mKCcM5w5LnOcWA57kAAAAAw5LnucWA57kAAAAAw5LnuRuvZ7mKCcM5w5LnuceLZzmKCcM5w5LnuRik5zkAAAAAw5LnORik5zkAAAAAw5LnOceLZzmKCcM5w5LnucWA57kAAAAAw5LnuRik5zkAAAAAw5LnuceLZzmKCcM5w5LnuRuvZ7mKCcM5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnORuvZ7mHCcO5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuRuvZ7mHCcO5w5LnucWA57kAAAAAw5LnOcWA57kAAAAAw5LnuceLZzmHCcO5w5LnOceLZzmHCcO5w5LnORik5zkAAAAAw5LnuRik5zkAAAAA////f6XG//////9//38DI////3//f6gj////f5TI//////9//39SI////3//f0ok/3//f////7//f/9/////v/9//3////+//3//f////7//f6Yv////v/9/pi////+//3+mL////7//f6Yv////v/9/S9D///+//39L0P///7//f0vQ////v/9/S9D///+/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1gAA/3//f2bW/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_820gc")
+shadow_mesh = SubResource("ArrayMesh_ph8h3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1adh"]
 resource_name = "Material.035"
@@ -218,7 +219,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_8fq3g")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_88bev"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bsgoc"]
 _surfaces = [{
 "aabb": AABB(-0.0005244583, -0.0012344628, -3.6142006e-05, 0.0012495681, 0.0017954923, 7.103401e-05),
 "format": 34359742465,
@@ -248,7 +249,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("f8+Wud1kJTnbVhI4VyYfuHe+YTjbVhI4aB9NudmOBLnbVhI4o4D8uXNokbfbVhI4YrbhuVhJEjr6wBA4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3VyYfuHe+YTjbVhI4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI45myRuDV+2TkAWRI4QjC3N3OoDzoAWRI4mpEeOOJ6XznbVhI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4zXsJurSYBTo/iQu4eWWTuXOo6zlnXeO3YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4zXsJurSYBTo3TQY45myRuDV+2TkAWRI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3YrbhuVhJEjr6wBA4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4o4D8uXNokbfbVhI4f8+Wud1kJTnbVhI4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4aB9NudmOBLkvlxe4VyYfuHe+YTgvlxe4uHquuMfLbjkvlxe4mpEeOOJ6Xzkvlxe4eWWTuXOo6zlnXeO3YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4mpEeOOJ6Xzkvlxe45myRuDV+2TkIlRe4uHquuMfLbjkvlxe4n4PyOAwSEzoIlRe4QjC3N3OoDzoIlRe4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4uHquuMfLbjkvlxe4f8+Wud1kJTkvlxe4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe45myRuDV+2TkIlRe4YrbhuVhJEjoo/xW4YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW45myRuDV+2TkIlRe45myRuDV+2TkAWRI45myRuDV+2TkIlRe4QjC3N3OoDzoIlRe4QjC3N3OoDzoAWRI45myRuDV+2TkAWRI4n4PyOAwSEzoIlRe4mpEeOOJ6Xzkvlxe4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI4n4PyOAwSEzoIlRe4n4PyOAwSEzoAWRI4QjC3N3OoDzoAWRI4QjC3N3OoDzoIlRe4SxU+OouM9LnXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1/5/zOdMNjLrXyvs1nvUSOifxgrrXyvs1rBMtOmRLmbofhvs1RWIxOrPNobofhvs1SxU+OouM9LnXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1/5/zOdMNjLrXyvs1rBMtOmRLmbofhvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1RWIxOrPNobofhvs1/3//f4iSQ4n/f/9/XY+uh/9//3/ykfmI/3//f9GUaIoDgel3oPHZtwOB6Xeg8dm3A4Hpd6Dx2begw128vdcIbqDDXbyy2HVuoMNdvJLYZm6gw128k9f1bf9//386gZyA/3//f/F+hoD/f/9/TIGlgP9//38lhBKC/3//fwXTgqn/f/9/6th0rP9//3932jut/3//f+vr9bX/f/9/JPTsxV6ZoOb///+/Xpmg5v///79emaDm////v16ZoOb///+/hquGK5ccQWSGq4YrlBxDZIarhiuZHD9khquGK5scPWQMeuB5lWRv8Ax64HlraCnyDHrgeT5QRecMeuB51ErU5Li8uDxkIX9tuLy4PFwi9my4vLg8KiISbbi8uDwxIZtt/////3HEOKL/////3c3upv/////lxHKi/////8W94p7/////IL4Qn//////fve+e6PcDAXoAPL/o9wMBegA8v+j3AwF6ADy/AAD+/98PD7gAAP7/jBs4sgAA/v87AuG+AAD+/1clU60AAP7/Bi18qaWgpSD4FelfpaClIHAVsGCloKUgkxV+YKWgpSAbFrZfHgbyBW0I6L4eBvIFXQjwvh4G8gVfCO++HgbyBXEI5r5XpKfbLOUtXlekp9se5RteV6Sn24rlol5XpKfbl+W0XgU0BLR3KNmNBTQEtDooxY0FNAS0UCjMjQU0BLSMKOGNmOiYaP///7+Y6Jho////v5jomGj///+/mOiYaP///79mcGXw7gyXrmZwZfDVDD2uZnBl8PkMvq5mcGXwEg0ar/9//3/Y+xLC/3//f9Xyarn/f/9/Lv1nwf9//38V8vTG/3//fy71Z8X/f/9/1fJquf9//3+42yLS/3//fzbK49r/f/9/tMCk3/9//382yuPa/3//f+16df3/f/9/JWYR8//////Y++w9/////xXyCjn/////Lv2XPv/////V8pRG/////7jb3C3/////1fKURv////8u9Zc6/////zbKGyUAAP7/7XqJAgAA/v82yhslAAD+/7TAWiAAAP7/JWbtDA==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_88bev")
+shadow_mesh = SubResource("ArrayMesh_bsgoc")
 
 [sub_resource type="Animation" id="Animation_hyass"]
 length = 0.001
@@ -514,56 +515,58 @@ script = ExtResource("2_aw66g")
 script = ExtResource("3_htegl")
 punch_hitbox = NodePath("../Skeleton3D/HandAttachment/PunchHitbox")
 
-[node name="GunManager" type="Node" parent="." index="1" unique_id=1396074244 node_paths=PackedStringArray("revolver_visual", "hand_attachment_slot")]
+[node name="GunManager" type="Node" parent="." index="1" unique_id=1396074244 node_paths=PackedStringArray("revolver_visual", "hand_attachment_slot", "fire_point")]
 script = ExtResource("4_r0c7i")
 revolver_visual = NodePath("../Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver")
 hand_attachment_slot = NodePath("../Skeleton3D/HandAttachment/HandRevolverSlot")
+projectile_scene = ExtResource("25_lubws")
+fire_point = NodePath("../FirePoint")
 
 [node name="Skeleton3D" parent="." index="2" unique_id=611366734]
-bones/0/position = Vector3(0.0024467562, 3.5191739, 0.036575638)
-bones/0/rotation = Quaternion(-0.037067533, -0.039224707, -0.02527443, 0.99822277)
-bones/1/rotation = Quaternion(-0.003897654, 0.015700946, 0.024063366, 0.9995796)
-bones/2/rotation = Quaternion(0.010512066, 0.0030518833, 0.0145010725, 0.999835)
-bones/3/rotation = Quaternion(0.010240116, 0.003156583, 0.01452261, 0.9998372)
-bones/4/rotation = Quaternion(0.087682284, -0.0025418834, 0.0031290995, 0.9961404)
-bones/5/rotation = Quaternion(-0.07441625, 0.0062618256, -0.0015999591, 0.99720633)
-bones/7/rotation = Quaternion(-0.66251665, -0.3425079, 0.49680915, -0.44378015)
+bones/0/position = Vector3(0.027364356, 3.5243068, 0.015737426)
+bones/0/rotation = Quaternion(-0.02876123, -0.04893604, -0.029893316, 0.9979401)
+bones/1/rotation = Quaternion(-0.006496241, 0.010153348, 0.021459993, 0.999697)
+bones/2/rotation = Quaternion(0.010423017, 0.002108243, 0.013729483, 0.9998492)
+bones/3/rotation = Quaternion(0.010190462, 0.00227654, 0.013754688, 0.999851)
+bones/4/rotation = Quaternion(0.08442096, -0.0013299839, 0.0043896, 0.99641967)
+bones/5/rotation = Quaternion(-0.06723176, 0.010859074, -0.0013653636, 0.9976774)
+bones/7/rotation = Quaternion(-0.6613412, -0.34410343, 0.49544576, -0.44581857)
 bones/8/position = Vector3(-0.041703906, 0.6237597, -0.23686656)
-bones/8/rotation = Quaternion(0.5139555, 0.16640894, 0.097512394, 0.83585244)
+bones/8/rotation = Quaternion(0.513628, 0.17350894, 0.094217494, 0.8349875)
 bones/8/scale = Vector3(0.99999946, 1.0000002, 1.0000002)
-bones/9/rotation = Quaternion(-7.983891e-05, 0.0020163956, 0.0198766, 0.9998004)
-bones/10/rotation = Quaternion(0.048481442, -0.35542655, 0.023395285, 0.9331528)
-bones/11/rotation = Quaternion(0.17633113, 0.15056995, 0.040539764, 0.9719016)
-bones/12/rotation = Quaternion(-0.09654119, 0.07560579, -0.05907155, 0.99069375)
-bones/13/rotation = Quaternion(-0.14137311, -0.06453544, 0.14965641, 0.97644866)
-bones/15/rotation = Quaternion(0.066417076, 0.00036939982, 0.0038245928, 0.99778455)
-bones/16/rotation = Quaternion(0.1481859, -0.00089280074, -0.04373226, 0.98799175)
-bones/17/rotation = Quaternion(0.069129415, 0.002125484, -0.029205313, 0.9971779)
-bones/19/rotation = Quaternion(0.6632279, -0.34055036, 0.5142915, 0.42386138)
-bones/20/rotation = Quaternion(0.44415626, -0.25851995, -0.1143978, 0.8501799)
+bones/9/rotation = Quaternion(0.00010979663, 0.002399419, 0.022494266, 0.9997442)
+bones/10/rotation = Quaternion(0.050287034, -0.3553919, 0.02077968, 0.9331324)
+bones/11/rotation = Quaternion(0.17628175, 0.15063374, 0.04041259, 0.9719059)
+bones/12/rotation = Quaternion(-0.09642623, 0.075416625, -0.059632603, 0.99068576)
+bones/13/rotation = Quaternion(-0.14038967, -0.06566832, 0.14892195, 0.97662723)
+bones/15/rotation = Quaternion(0.06873516, 0.0003023513, 0.0035483614, 0.9976287)
+bones/16/rotation = Quaternion(0.14853336, -0.00089373434, -0.04382023, 0.98793566)
+bones/17/rotation = Quaternion(0.0688224, 0.0021177137, -0.029127609, 0.9972014)
+bones/19/rotation = Quaternion(0.65933734, -0.34554705, 0.515833, 0.42401388)
+bones/20/rotation = Quaternion(0.44351622, -0.2598746, -0.11555874, 0.84994406)
 bones/20/scale = Vector3(0.9999997, 0.9999994, 1.0000002)
 bones/21/position = Vector3(1.3330746e-10, 0.99960226, -1.0860207e-08)
-bones/21/rotation = Quaternion(-0.00019287103, -0.001432877, -0.061711088, 0.99809307)
+bones/21/rotation = Quaternion(-0.00016624392, -0.0015386005, -0.0634733, 0.99798244)
 bones/21/scale = Vector3(0.9999979, 1.000001, 1.0000001)
-bones/22/rotation = Quaternion(0.055977292, 0.20813154, -0.0034816682, 0.9764916)
-bones/23/rotation = Quaternion(0.1655939, -0.13115723, -0.07773448, 0.9743377)
-bones/24/rotation = Quaternion(-0.06800455, -0.07012601, 0.08419408, 0.99164975)
-bones/25/rotation = Quaternion(-0.17123803, 0.04823592, -0.097141534, 0.9792417)
+bones/22/rotation = Quaternion(0.060465235, 0.20567434, -0.0041134357, 0.9767421)
+bones/23/rotation = Quaternion(0.16561073, -0.13112964, -0.07779657, 0.9743335)
+bones/24/rotation = Quaternion(-0.068470076, -0.070373386, 0.08317987, 0.99168575)
+bones/25/rotation = Quaternion(-0.1710071, 0.048598457, -0.09712001, 0.9792663)
 bones/26/scale = Vector3(0.99999976, 0.9999998, 1.0000005)
-bones/27/rotation = Quaternion(0.060624998, -0.00117538, -0.013509515, 0.9980685)
-bones/28/rotation = Quaternion(0.1517635, 0.0011626281, 0.031021439, 0.9879293)
-bones/29/rotation = Quaternion(0.07057092, -0.0022452567, 0.015507026, 0.9973837)
-bones/31/rotation = Quaternion(0.13691345, 0.09412758, 0.982891, -0.079498485)
-bones/32/rotation = Quaternion(-0.18983309, -0.0057037533, 0.03732031, 0.9810903)
-bones/33/rotation = Quaternion(0.5590626, 0.021975914, -0.023117896, 0.8285117)
-bones/34/rotation = Quaternion(0.28206012, -0.13493906, 0.03315688, 0.9492809)
-bones/36/rotation = Quaternion(-0.09398835, -0.0016503441, 0.9954012, -0.018440822)
-bones/37/rotation = Quaternion(-0.13401885, 0.08359515, -0.029237758, 0.98701376)
-bones/38/rotation = Quaternion(0.5953757, -0.0237564, -0.013350778, 0.80298525)
-bones/39/rotation = Quaternion(0.29396078, 0.13632138, -0.032564033, 0.9454857)
+bones/27/rotation = Quaternion(0.06021107, -0.0012231738, -0.013587457, 0.9980925)
+bones/28/rotation = Quaternion(0.15156734, 0.0011641026, 0.030993555, 0.9879602)
+bones/29/rotation = Quaternion(0.07035713, -0.002239875, 0.015476662, 0.9973994)
+bones/31/rotation = Quaternion(0.13497102, 0.10269878, 0.98214877, -0.081361026)
+bones/32/rotation = Quaternion(-0.1916174, -0.017685227, 0.03633654, 0.98063743)
+bones/33/rotation = Quaternion(0.5582168, 0.0225282, -0.022590622, 0.82908154)
+bones/34/rotation = Quaternion(0.28066754, -0.13495488, 0.033178356, 0.9496905)
+bones/36/rotation = Quaternion(-0.091182224, 0.0034922517, 0.99561155, -0.02077005)
+bones/37/rotation = Quaternion(-0.116279714, 0.083635084, -0.02666993, 0.9893296)
+bones/38/rotation = Quaternion(0.58280927, -0.030851083, -0.009525368, 0.81196725)
+bones/39/rotation = Quaternion(0.29516244, 0.13630518, -0.03254235, 0.9451144)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=1565826429]
-transform = Transform3D(0.36255592, 0.03497801, 0.93130434, 0.075232565, -0.997133, 0.008162051, 0.92891836, 0.06710516, -0.36415043, -1.1634861, 2.9754353, 0.17845893)
+transform = Transform3D(0.33000028, 0.019271158, 0.9437829, 0.057955325, -0.9983194, 0.00012011826, 0.9421976, 0.05465757, -0.33056512, -1.1766206, 3.0047717, 0.10403681)
 bone_name = "mixamorig_RightHand"
 bone_idx = 22
 
@@ -581,10 +584,10 @@ transform = Transform3D(1, 1.4156382e-07, -2.719515e-07, -1.415638e-07, 1, 5.902
 shape = SubResource("CapsuleShape3D_htegl")
 
 [node name="HandRevolverSlot" type="Node3D" parent="Skeleton3D/HandAttachment" index="1" unique_id=1508272143]
-transform = Transform3D(4.3711385e-08, 1, -4.440892e-15, 1, -4.3711385e-08, -8.940697e-08, -8.940697e-08, 0, -1, -0.067752846, 0.4459183, 0.15409186)
+transform = Transform3D(-0.056595895, 0.998064, 0.025787719, 0.89487576, 0.06216387, -0.44196615, -0.44271356, -0.0019366448, -0.8966617, -0.16645575, 0.39921403, 0.008856654)
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="2" unique_id=1292033273]
-transform = Transform3D(-0.9650132, -0.016483156, -0.26168248, -0.0037991665, -0.9970382, 0.07681288, -0.2621736, 0.075119615, 0.9620925, -0.44489405, 3.3129969, 0.008314742)
+transform = Transform3D(-0.9612635, -0.023000503, -0.2746694, 0.0030591236, -0.997341, 0.07281017, -0.27561373, 0.06914952, 0.958778, -0.42088678, 3.322218, -0.024912465)
 bone_name = "mixamorig_RightUpLeg"
 bone_idx = 36
 
@@ -595,6 +598,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1.000001, 0, 0, 0, 0.99999994, 0.38
 transform = Transform3D(1.2212453e-15, 6.556707e-08, 1.5, 1.4999996, -5.9604645e-08, 0, 5.9604645e-08, 1.4999999, -6.556708e-08, -1.3113414e-08, 1.1920929e-08, -0.29999998)
 
 [node name="Revolver" type="Node3D" parent="Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot" index="0" unique_id=1462993414]
+transform = Transform3D(1.0000013, 0, 0, 0, 0.999999, 0, 0, 0, 1.0000005, 0, 0, 0)
 
 [node name="CPBody" type="MeshInstance3D" parent="Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" index="0" unique_id=800190546]
 transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.03335255, 0.24392138, -5.6711317e-05)
@@ -640,3 +644,6 @@ parameters/Hit/request = 0
 parameters/EquipGun/active = false
 parameters/EquipGun/internal_active = false
 parameters/EquipGun/request = 0
+
+[node name="FirePoint" type="Marker3D" parent="." index="6" unique_id=1628191157]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.04379511, 5.2463446, 4.1737337)
