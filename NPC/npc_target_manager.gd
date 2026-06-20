@@ -20,6 +20,7 @@ func _on_chase_update_timer_timeout():
 
 func set_target(new_target: Node3D):
 	target = new_target
+	_on_chase_update_timer_timeout()
 	chase_update_timer.start()
 
 func clear_target():

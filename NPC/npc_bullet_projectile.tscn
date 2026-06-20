@@ -49,6 +49,8 @@ collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_kqwkn")
+projectile_speed = 30.0
+damage = 1
 metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 
 [node name="CPBullet" type="MeshInstance3D" parent="." unique_id=920497076]
@@ -57,3 +59,10 @@ mesh = SubResource("ArrayMesh_bu7am")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=180620454]
 shape = SubResource("SphereShape3D_a1gk2")
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=1040706755]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

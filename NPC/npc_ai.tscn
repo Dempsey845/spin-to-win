@@ -42,11 +42,15 @@ metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("ShootState")
+initial_state = NodePath("WanderState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
-[node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104]
+[node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104 node_paths=PackedStringArray("npc", "humanoid", "health", "hit_state")]
 script = ExtResource("4_u0aa3")
+npc = NodePath("../..")
+humanoid = NodePath("../../Humanoid")
+health = NodePath("../../Health")
+hit_state = NodePath("../ShootState")
 
 [node name="WaitTimer" type="Timer" parent="StateMachine/WanderState" unique_id=1699414278]
 wait_time = 3.0
