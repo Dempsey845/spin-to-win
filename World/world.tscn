@@ -62,5 +62,9 @@ material = ExtResource("3_j8job")
 [node name="TestTargetBlock" parent="NavigationRegion3D" unique_id=747522705 instance=ExtResource("4_3f78f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D" unique_id=1543360501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+end_position = Vector3(2.965, -0.39, 0)
+
 [node name="NPC_AI" parent="." unique_id=669566548 instance=ExtResource("6_bkhv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
