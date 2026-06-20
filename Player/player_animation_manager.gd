@@ -13,6 +13,9 @@ signal equip_pistol_ended
 signal equip_punch_started
 signal equip_punch_ended
 
+signal grab_started
+signal grab_ended
+
 @onready var animation_tree: AnimationTree = $'../Head/AnimationTree'
 
 func set_arm_state_machine_condition(condition_name: String, value: Variant):
@@ -41,3 +44,9 @@ func emit_equip_punch_started():
 
 func emit_equip_punch_ended():
 	equip_punch_ended.emit()
+
+func emit_grab_started():
+	grab_started.emit()
+
+func emit_grab_ended():
+	grab_ended.emit()

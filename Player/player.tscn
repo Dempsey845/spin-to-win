@@ -1215,6 +1215,23 @@ tracks/42/path = NodePath("Arms_001/Skeleton3D:R_Object")
 tracks/42/interp = 0
 tracks/42/loop_wrap = true
 tracks/42/keys = PackedFloat32Array(0, 1, 0.70708776, -0.005198978, -0.0051989243, 0.7070877)
+tracks/43/type = "method"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("../PlayerAnimationManager")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_grab_started"
+}, {
+"args": [],
+"method": &"emit_grab_ended"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_48721"]
 resource_name = "Grab_Item_R_Hand"
@@ -1520,6 +1537,23 @@ tracks/42/path = NodePath("Arms_001/Skeleton3D:R_Object")
 tracks/42/interp = 0
 tracks/42/loop_wrap = true
 tracks/42/keys = PackedFloat32Array(0, 1, 0.70708776, -0.005198978, -0.0051989243, 0.7070877)
+tracks/43/type = "method"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("../PlayerAnimationManager")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_grab_started"
+}, {
+"args": [],
+"method": &"emit_grab_ended"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vnx6o"]
 resource_name = "Inspect_Hands"
@@ -7814,6 +7848,7 @@ advance_condition = &"grab"
 xfade_time = 0.5
 switch_mode = 2
 advance_mode = 2
+advance_condition = &"grab_failed"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sm0op"]
 advance_mode = 2
@@ -7838,13 +7873,19 @@ xfade_time = 1.0
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m0h3t"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"grab_success"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sm0op"]
 states/Equip_Pistol/node = SubResource("AnimationNodeAnimation_gu6f8")
 states/Equip_Pistol/position = Vector2(-97, 65)
 states/Equip_Punch/node = SubResource("AnimationNodeAnimation_5htga")
 states/Equip_Punch/position = Vector2(54, 121)
-states/Grab_Item_R_Hand/node = SubResource("AnimationNodeAnimation_k53q1")
-states/Grab_Item_R_Hand/position = Vector2(346, 231)
+states/Grab/node = SubResource("AnimationNodeAnimation_k53q1")
+states/Grab/position = Vector2(353, 236)
 states/Inspect_Hands/node = SubResource("AnimationNodeAnimation_fhl08")
 states/Inspect_Hands/position = Vector2(655, 336)
 states/Pistol_Fire/node = SubResource("AnimationNodeAnimation_vtle1")
@@ -7858,11 +7899,11 @@ states/Punch_R/position = Vector2(24, 472)
 states/Punch_idle/node = SubResource("AnimationNodeAnimation_apopc")
 states/Punch_idle/position = Vector2(-2, 316)
 states/Start/position = Vector2(-369, 323)
-transitions = ["Pistol_Idle", "Pistol_Fire", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "Pistol_Fire", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "Pistol_Idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_dkpta"), "Inspect_Hands", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "Punch_idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_pisgm"), "Inspect_Hands", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_b1ygp"), "Punch_idle", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_o28un"), "Pistol_Idle", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_n471f"), "Punch_idle", "Punch_L", SubResource("AnimationNodeStateMachineTransition_7emwf"), "Punch_L", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_hshwv"), "Punch_idle", "Punch_R", SubResource("AnimationNodeStateMachineTransition_gpjlu"), "Punch_R", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "Punch_idle", "Grab_Item_R_Hand", SubResource("AnimationNodeStateMachineTransition_qemgg"), "Grab_Item_R_Hand", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8viyr"), "Start", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_sm0op"), "Punch_idle", "Equip_Pistol", SubResource("AnimationNodeStateMachineTransition_76lrf"), "Equip_Pistol", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_efx54"), "Pistol_Idle", "Equip_Punch", SubResource("AnimationNodeStateMachineTransition_755ss"), "Equip_Punch", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_bbimk")]
-graph_offset = Vector2(-387, 9)
+transitions = ["Pistol_Idle", "Pistol_Fire", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "Pistol_Fire", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "Pistol_Idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_dkpta"), "Inspect_Hands", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "Punch_idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_pisgm"), "Inspect_Hands", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_b1ygp"), "Punch_idle", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_o28un"), "Pistol_Idle", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_n471f"), "Punch_idle", "Punch_L", SubResource("AnimationNodeStateMachineTransition_7emwf"), "Punch_L", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_hshwv"), "Punch_idle", "Punch_R", SubResource("AnimationNodeStateMachineTransition_gpjlu"), "Punch_R", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "Punch_idle", "Grab", SubResource("AnimationNodeStateMachineTransition_qemgg"), "Grab", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8viyr"), "Start", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_sm0op"), "Punch_idle", "Equip_Pistol", SubResource("AnimationNodeStateMachineTransition_76lrf"), "Equip_Pistol", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_efx54"), "Pistol_Idle", "Equip_Punch", SubResource("AnimationNodeStateMachineTransition_755ss"), "Equip_Punch", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_bbimk"), "Grab", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_m0h3t")]
+graph_offset = Vector2(-293, 0)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76lrf"]
-graph_offset = Vector2(-526.5662, 39.598175)
+graph_offset = Vector2(-653.4701, 174.38013)
 nodes/ArmStateMachine/node = SubResource("AnimationNodeStateMachine_sm0op")
 nodes/ArmStateMachine/position = Vector2(-320, 120)
 node_connections = [&"output", 0, &"ArmStateMachine"]
@@ -7940,10 +7981,10 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="PickupRay" type="RayCast3D" parent="Head/Camera3D" unique_id=441522590]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00045073032, -0.0067898035)
-target_position = Vector3(0, 0, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037014008, -0.0067898035)
+target_position = Vector3(0, 0, -3)
 collision_mask = 16
-debug_shape_custom_color = Color(0, 0, 0, 0)
+debug_shape_custom_color = Color(0.4937672, 0.23802447, 0.35477245, 0.38431373)
 
 [node name="Arms_001" type="Node3D" parent="Head" unique_id=1963156412]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0.525059)
@@ -7960,7 +8001,7 @@ bones/1/name = "Upper_Arm.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(2.3841858e-07, 0.9984603, 0.055470116, -1, 2.3841858e-07, 1.4901161e-08, 1.8626451e-09, -0.055470116, 0.99846035, 0.5, 0, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0.50850624, 0.15627392, -0.24984996)
+bones/1/position = Vector3(0.5, 0, 0)
 bones/1/rotation = Quaternion(0.0030280352, 0.294787, -0.95554984, -0.004007131)
 bones/1/scale = Vector3(1, 0.99999994, 1)
 bones/2/name = "Lower_Arm.L"
@@ -8023,7 +8064,7 @@ bones/10/name = "Thumb_1.L"
 bones/10/parent = 3
 bones/10/rest = Transform3D(0.8087901, 0.5410003, -0.23060203, -0.58661824, 0.71435356, -0.3815469, -0.041685633, 0.44386673, 0.8951227, -0.006307905, 0.052199747, 0.07690998)
 bones/10/enabled = true
-bones/10/position = Vector3(-0.0063078515, 0.05219991, 0.07690992)
+bones/10/position = Vector3(-0.006307894, 0.052199703, 0.07691008)
 bones/10/rotation = Quaternion(0.2232229, -0.051090114, -0.30495042, 0.9244278)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Thumb_2.L"
@@ -8086,7 +8127,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.2735844, -0.3502072)
+bones/19/position = Vector3(-0.5, 0, 0)
 bones/19/rotation = Quaternion(0.04452179, -0.035240054, 0.9980424, 0.026217166)
 bones/19/scale = Vector3(1.0000001, 0.9999999, 0.99999994)
 bones/20/name = "Lower_Arm.R"
@@ -8149,7 +8190,7 @@ bones/28/name = "Thumb_1.R"
 bones/28/parent = 21
 bones/28/rest = Transform3D(0.8087901, -0.5410003, 0.23060203, 0.58661824, 0.71435356, -0.3815469, 0.041685633, 0.44386673, 0.8951227, 0.006307905, 0.052199747, 0.07690998)
 bones/28/enabled = true
-bones/28/position = Vector3(0.006307803, 0.05219987, 0.07690996)
+bones/28/position = Vector3(0.0063079074, 0.052199747, 0.07690992)
 bones/28/rotation = Quaternion(0.21576053, -0.09678331, 0.5470876, 0.8029793)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "Thumb_2.R"
@@ -8212,7 +8253,7 @@ bones/37/name = "R_Object"
 bones/37/parent = 21
 bones/37/rest = Transform3D(0.9998919, -7.543713e-08, -0.014704456, -0.014704456, 5.9604645e-08, -0.9998919, 7.636845e-08, 1, 5.9604645e-08, 3.5133213e-10, 0.16065827, -0.010168244)
 bones/37/enabled = true
-bones/37/position = Vector3(-0.031737875, 0.17560826, 0.025312591)
+bones/37/position = Vector3(1.9194871e-08, 0.16065823, -0.010168209)
 bones/37/rotation = Quaternion(0.7102778, 0.00056161825, -0.021403264, 0.7035958)
 bones/37/scale = Vector3(1, 1, 1)
 
@@ -8257,7 +8298,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1188024, -0.31446448)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -8280,7 +8321,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.50025934, -1.1184258, -0.6002299)
+transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
 bone_name = "Hand.L"
 bone_idx = 3
 
@@ -8309,6 +8350,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/ArmStateMachine/conditions/equip_pistol = false
 parameters/ArmStateMachine/conditions/equip_punch = false
 parameters/ArmStateMachine/conditions/grab = false
+parameters/ArmStateMachine/conditions/grab_failed = false
+parameters/ArmStateMachine/conditions/grab_success = false
 parameters/ArmStateMachine/conditions/inspect = false
 parameters/ArmStateMachine/conditions/pistol_idle = false
 parameters/ArmStateMachine/conditions/punch_idle = false

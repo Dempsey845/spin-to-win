@@ -16,6 +16,8 @@ func enter():
 	start_delay_timer.start()
 
 	animation_manager.set_arm_state_machine_condition("punch_idle", true)
+	animation_manager.set_arm_state_machine_condition("grab_success", false)
+	animation_manager.set_arm_state_machine_condition("grab_failed", false)
 
 	animation_manager.punch_animation_started.connect(_on_punch_animation_started)
 	animation_manager.punch_animation_ended.connect(_on_punch_animation_ended)
@@ -29,6 +31,20 @@ func enter():
 		state_machine.change_state(gun_state)
 	)
 
+	animation_manager.grab_started.connect(func():
+		if revolver_manager.try_pickup_revolver():
+			gun_state.gun_visual.visible = true
+			animation_manager.set_arm_state_machine_condition("grab_success", true)
+		else:
+			animation_manager.set_arm_state_machine_condition("grab_failed", true)
+		animation_manager.set_arm_state_machine_condition("grab", false)
+	)
+
+	animation_manager.grab_ended.connect(func():
+		if revolver_manager.has_revolver:
+			_equip_pistol(false)
+	)
+
 func update(_delta: float):
 	if !start_delay_timer.is_stopped():
 		return
@@ -37,8 +53,8 @@ func update(_delta: float):
 		_punch()
 	elif Input.is_action_just_pressed("equip") and revolver_manager.has_revolver and can_equip_pistol:
 		_equip_pistol()
-	elif Input.is_action_just_pressed("pickup"):
-		revolver_manager.try_pickup_revolver()
+	elif Input.is_action_just_pressed("pickup") and !revolver_manager.has_revolver:
+		animation_manager.set_arm_state_machine_condition("grab", true)
 
 func _punch():
 	if punch_with_left_hand:
@@ -48,10 +64,13 @@ func _punch():
 
 	can_punch = false
 
-func _equip_pistol():
+func _equip_pistol(play_equip_animation: bool = true):
 	can_equip_pistol = false
-	animation_manager.set_arm_state_machine_condition("equip_pistol", true)
 	animation_manager.set_arm_state_machine_condition("punch_idle", false)
+	if play_equip_animation:
+		animation_manager.set_arm_state_machine_condition("equip_pistol", true)
+	else:
+		state_machine.change_state(gun_state)
 
 func exit():
 	start_delay_timer.stop()
