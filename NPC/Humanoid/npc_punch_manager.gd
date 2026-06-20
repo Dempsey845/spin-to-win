@@ -1,3 +1,4 @@
+class_name NPCPunchManager
 extends Node
 
 @export var punch_hitbox: Hitbox

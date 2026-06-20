@@ -1,8 +1,10 @@
 class_name NPCHumanoid
 extends Node3D
 
-@export var npc: NPC
+signal hit_animation_complete
+signal shoot_animation_complete
 
+@export var npc: NPC
 @export var air_tracker: NPCAirState  
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -40,6 +42,18 @@ func _process(_delta: float) -> void:
 	animation_tree.set(
 		"parameters/LocomotionStateMachine/Locomotion/blend_position",
 		blend_vector
+	)
+
+func play_one_shot(one_shot_name: String):
+	animation_tree.set(
+		"parameters/%s/request" % one_shot_name,
+		AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	)
+
+func abort_one_shot(one_shot_name: String):
+	animation_tree.set(
+		"parameters/%s/request" % one_shot_name,
+		AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 	)
 
 func play_upper_body_animation(state_name: String):
@@ -116,3 +130,9 @@ func jump() -> void:
 		"parameters/LocomotionStateMachine/conditions/jump",
 		false
 	)
+
+func emit_hit_animation_complete():
+	hit_animation_complete.emit()
+
+func emit_shoot_animation_complete():
+	shoot_animation_complete.emit()

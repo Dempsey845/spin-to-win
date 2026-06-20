@@ -20,8 +20,6 @@ func enter():
 
 		var player: Player = get_tree().get_first_node_in_group("player")
 
-		print(player)
-
 		target_manager.set_target(player)
 		npc.move = true
 	, 0.25)

@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dqcjc2n8v3s1u" path="res://NPC/States/npc_wander_state.gd" id="4_u0aa3"]
 [ext_resource type="PackedScene" uid="uid://dl8r7syydxbag" path="res://NPC/Humanoid/humanoid.tscn" id="6_lnxy0"]
 [ext_resource type="Script" uid="uid://dpf1th4i3ve0x" path="res://NPC/States/npc_punch_state.gd" id="7_mp836"]
+[ext_resource type="Script" uid="uid://dseg6lpsdwsuc" path="res://NPC/States/npc_shoot_state.gd" id="8_olc0g"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="9_olc0g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xld7y"]
@@ -41,7 +42,7 @@ metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("PunchState")
+initial_state = NodePath("ShootState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104]
@@ -61,6 +62,18 @@ metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="PunchCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1136881496]
 wait_time = 2.5
+one_shot = true
+
+[node name="ShootState" type="Node" parent="StateMachine" unique_id=1348570821 node_paths=PackedStringArray("npc", "target_manager", "humanoid", "health")]
+script = ExtResource("8_olc0g")
+npc = NodePath("../..")
+target_manager = NodePath("../../TargetManager")
+humanoid = NodePath("../../Humanoid")
+health = NodePath("../../Health")
+metadata/_custom_type_script = "uid://83lrm1ci7bgc"
+
+[node name="ShootCooldownTimer" type="Timer" parent="StateMachine/ShootState" unique_id=997888102]
+wait_time = 5.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1512920644]

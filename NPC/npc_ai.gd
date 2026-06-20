@@ -16,9 +16,6 @@ var move: bool:
 		return _move
 	set(value):
 		_move = value
-		
-		if value:
-			clear_look_target()
 
 var gravity: float = 9.8
 var next_position: Vector3
