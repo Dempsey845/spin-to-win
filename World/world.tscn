@@ -5,6 +5,18 @@
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="3_j8job"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://dqdin3vaff0vi" path="res://NPC/npc_ai.tscn" id="6_bkhv4"]
+[ext_resource type="PackedScene" uid="uid://dx6eqvuprnkvh" path="res://Assets/WesternBuildings/HouseTwo/Simple_house2.fbx" id="6_yf0ba"]
+[ext_resource type="PackedScene" uid="uid://chj0d5pofcq1l" path="res://Assets/WesternBuildings/Bank/Bank.fbx" id="7_yf0ba"]
+[ext_resource type="PackedScene" uid="uid://c780ggh0f3xpa" path="res://Assets/WesternBuildings/Barn/Barn.fbx" id="8_eidgh"]
+[ext_resource type="PackedScene" uid="uid://owr2tvixld6q" path="res://Assets/WesternBuildings/Dentist/DocOffice.fbx" id="9_oe8m4"]
+[ext_resource type="PackedScene" uid="uid://bin4ns6hxfr4i" path="res://Assets/WesternBuildings/Decor/Fence1.fbx" id="10_0wqet"]
+[ext_resource type="PackedScene" uid="uid://btyedmi7gjw8s" path="res://Assets/WesternBuildings/Decor/Fence2.blend" id="11_awrha"]
+[ext_resource type="PackedScene" uid="uid://cos4ngqcnd6ye" path="res://Assets/WesternBuildings/Decor/Bench.fbx" id="12_f23eu"]
+[ext_resource type="PackedScene" uid="uid://csryd53wdotr2" path="res://Assets/WesternBuildings/Decor/Toilet.fbx" id="13_oeat8"]
+[ext_resource type="PackedScene" uid="uid://bmu1n6u2hwpvl" path="res://Assets/WesternBuildings/Shop/GenShop_house_.fbx" id="14_awrha"]
+[ext_resource type="PackedScene" uid="uid://b88vswsemnsqh" path="res://Assets/WesternBuildings/Saloon/Saloon.fbx" id="15_f23eu"]
+[ext_resource type="PackedScene" uid="uid://vfmogittmcpl" path="res://Assets/WesternBuildings/House/Western_house_1.fbx" id="16_oeat8"]
+[ext_resource type="PackedScene" uid="uid://dhnv656opgo4m" path="res://Assets/WesternBuildings/Sheriff/SheriffWestern_house_.fbx" id="17_5xkvv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u1ndb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -67,4 +79,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 end_position = Vector3(2.965, -0.39, 0)
 
 [node name="NPC_AI" parent="." unique_id=669566548 instance=ExtResource("6_bkhv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, 0)
+
+[node name="Simple_house2" parent="." unique_id=1067613820 instance=ExtResource("6_yf0ba")]
+transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, -12, 0.17134249, 10)
+
+[node name="Bank" parent="." unique_id=1408730103 instance=ExtResource("7_yf0ba")]
+transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, -13, 0, -1)
+
+[node name="Barn" parent="." unique_id=1329475516 instance=ExtResource("8_eidgh")]
+transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, -19, 0, 20)
+
+[node name="DocOffice" parent="." unique_id=216269334 instance=ExtResource("9_oe8m4")]
+transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, -18.2, 0, -12)
+
+[node name="Fence1" parent="." unique_id=606409428 instance=ExtResource("10_0wqet")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 5, 0, -10)
+
+[node name="Fence22" parent="." unique_id=1805169962 instance=ExtResource("11_awrha")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -1, 0, -10)
+
+[node name="Bench" parent="." unique_id=1529844438 instance=ExtResource("12_f23eu")]
+transform = Transform3D(-5.4639237e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.4639237e-08, 9, 0.5, -9)
+
+[node name="Toilet" parent="." unique_id=1037555986 instance=ExtResource("13_oeat8")]
+transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, 12, 1, -10)
+
+[node name="GenShop_house_" parent="." unique_id=120602616 instance=ExtResource("14_awrha")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 18, 0, -17)
+
+[node name="Saloon" parent="." unique_id=1151186391 instance=ExtResource("15_f23eu")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 30, 0, -16)
+
+[node name="Western_house_1" parent="." unique_id=171133076 instance=ExtResource("16_oeat8")]
+transform = Transform3D(-5.4639237e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.4639237e-08, 30, 0, 1)
+
+[node name="SheriffWestern_house_" parent="." unique_id=1041701379 instance=ExtResource("17_5xkvv")]
+transform = Transform3D(-5.4639237e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.4639237e-08, 30, 0, 15)

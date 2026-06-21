@@ -12,10 +12,10 @@
 [ext_resource type="Script" uid="uid://cqil3l0gtai7a" path="res://Player/States/Arm/arm_punch_state.gd" id="6_p5o4e"]
 [ext_resource type="Script" uid="uid://3ug6jf61b128" path="res://Player/player_hand_hitbox_manager.gd" id="7_5htga"]
 [ext_resource type="PackedScene" uid="uid://ca0sm06c435ab" path="res://Player/Revolver/colt_python.tscn" id="9_5htga"]
-[ext_resource type="Script" uid="uid://ch0uxpg21e6gx" path="res://Component/hitbox_component.gd" id="9_apopc"]
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="9_dkpta"]
 [ext_resource type="Script" uid="uid://ct6xp3nkcrhm4" path="res://Player/player_health_manager.gd" id="9_lfmf2"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
+[ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pisgm"]
 
@@ -8369,12 +8369,14 @@ transform = Transform3D(1.4901161e-08, 5.9604645e-08, 1.0000002, 1.0000007, -8.9
 [node name="RevolverSpawnPoint" type="Marker3D" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython" unique_id=571885983]
 transform = Transform3D(0.033353005, -0.02024273, -0.999239, 0.08192607, 0.9964853, -0.017452411, 0.99608064, -0.08128154, 0.03489419, -0.14715624, 0.15789497, 0.0091407895)
 
-[node name="RightHandHitbox" type="Area3D" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment" unique_id=376573280]
+[node name="RightHandHitbox" type="Area3D" parent="Head/Arms_001/Skeleton3D/RightHandBoneAttachment" unique_id=376573280 node_paths=PackedStringArray("player")]
 transform = Transform3D(-0.779015, 0.51627815, -0.355801, 0.28687355, 0.798061, 0.5299098, 0.5575313, 0.31073758, -0.76980704, -0.010400057, 0.21507668, 0.008073688)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("9_apopc")
+script = ExtResource("15_pisgm")
+player = NodePath("../../../../..")
 damage = 1
+knockback = false
 active = false
 metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 
@@ -8386,12 +8388,14 @@ transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97
 bone_name = "Hand.L"
 bone_idx = 3
 
-[node name="LeftHandHitbox" type="Area3D" parent="Head/Arms_001/Skeleton3D/LeftHandBoneAttachment" unique_id=468394492]
+[node name="LeftHandHitbox" type="Area3D" parent="Head/Arms_001/Skeleton3D/LeftHandBoneAttachment" unique_id=468394492 node_paths=PackedStringArray("player")]
 transform = Transform3D(-0.7820509, 0.47356772, -0.40513194, 0.25090045, 0.83430326, 0.49090642, 0.57048, 0.2822659, -0.7712852, -0.005459726, 0.15502477, 0.029577792)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("9_apopc")
+script = ExtResource("15_pisgm")
+player = NodePath("../../../../..")
 damage = 1
+knockback = false
 active = false
 metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 
