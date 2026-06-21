@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://ca0sm06c435ab"]
 
 [ext_resource type="PackedScene" uid="uid://bdk02r0e1virm" path="res://Assets/RevolverPack/Colt Python/Colt Python.fbx" id="1_eqynv"]
+[ext_resource type="Script" uid="uid://dcpf4gt0pr8vh" path="res://Player/Revolver/colt_python.gd" id="2_6hbvu"]
 
-[node name="ColtPython" unique_id=724740103 instance=ExtResource("1_eqynv")]
+[node name="ColtPython" unique_id=724740103 node_paths=PackedStringArray("cyilnder_empty", "cyilnder_full") instance=ExtResource("1_eqynv")]
+script = ExtResource("2_6hbvu")
+cyilnder_empty = NodePath("CPCyilnder")
+cyilnder_full = NodePath("CPCyilnderFull")
 
 [node name="CPBody" parent="." index="0" unique_id=1766945639]
 layers = 2

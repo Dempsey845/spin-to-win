@@ -7989,8 +7989,9 @@ revolver_manager = NodePath("../PlayerRevolverManager")
 [node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107]
 script = ExtResource("9_lfmf2")
 
-[node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369]
+[node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369 node_paths=PackedStringArray("colt_python")]
 script = ExtResource("11_o28un")
+colt_python = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
 
 [node name="PlayerAmmo" type="Node" parent="." unique_id=1690702294]
 script = ExtResource("12_7emwf")

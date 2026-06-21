@@ -61,10 +61,14 @@ func _equip_punch():
 	animation_manager.set_arm_state_machine_condition("pistol_idle", false)
 
 func _shoot():
+	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Empty:
+		ammo.current_ammo = 0
+		return
+
 	animation_manager.set_arm_state_machine_condition("shoot", true)
 	can_shoot = false
 	ammo.current_ammo -= 1
-	
+
 	# shoot_ray.force_raycast_update()
 
 	# if shoot_ray.is_colliding():
@@ -78,9 +82,7 @@ func _shoot():
 	# 	print("Hit:", target.name)
 	# 	print("Position:", hit_pos)
 
-	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Empty:
-		return
-	elif projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.TripleShot:
+	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.TripleShot:
 		var spread_degrees := 2.5
 
 		for angle in [-spread_degrees, 0.0, spread_degrees]:
