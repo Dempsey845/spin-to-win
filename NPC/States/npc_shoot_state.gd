@@ -6,6 +6,7 @@ extends State
 @export var health: Health
 
 @onready var shoot_cooldown_timer: Timer = $ShootCooldownTimer
+@onready var hit_cooldown_timer: Timer = $HitCooldownTimer
 
 var playing_hit_animation: bool
 var playing_shoot_animation: bool
@@ -23,6 +24,8 @@ func enter():
     health.damage_taken.connect(_on_health_damage_taken)
     humanoid.hit_animation_complete.connect(_on_hit_animation_complete)
     humanoid.shoot_animation_complete.connect(_on_shoot_animation_complete)
+
+    hit_cooldown_timer.wait_time = npc.hit_cooldown_time
 
 func update(_delta: float):
     if shoot_cooldown_timer.is_stopped() and !playing_hit_animation:
@@ -47,6 +50,12 @@ func shoot():
 func _on_health_damage_taken(_damage_amount: int):
     if playing_hit_animation:
         return
+
+    if !hit_cooldown_timer.is_stopped():
+        return
+    
+    hit_cooldown_timer.wait_time = npc.hit_cooldown_time
+    hit_cooldown_timer.start()
 
     if playing_shoot_animation:
         humanoid.abort_one_shot("Shoot")

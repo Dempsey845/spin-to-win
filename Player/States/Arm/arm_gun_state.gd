@@ -96,11 +96,22 @@ func _spawn_projectile(spread_angle: float):
 
 	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Explosive:
 		projectile.on_hit_callable = explode_projectile
+	elif projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.SpeedStim:
+		projectile.on_hit_callable = speed_up_enemy
 
 func explode_projectile(_body: Node, hit_position: Vector3):
 	var explosion = explosion_scene.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = hit_position
+
+func speed_up_enemy(body: Node, _hit_position: Vector3):
+	if body.get_parent() is NPC:
+		var npc: NPC = body.get_parent()
+		npc.speed_multiplier += 0.5
+		npc.hit_cooldown_time = 4.0
+		await get_tree().create_timer(15.0).timeout
+		npc.speed_multiplier -= 0.5
+		npc.hit_cooldown_time = 0.1
 
 func exit():
 	gun_visual.visible = false

@@ -7,6 +7,7 @@ extends State
 @export var punch_distance: float = 1.5
 
 @onready var punch_cooldown_timer: Timer = $PunchCooldownTimer
+@onready var hit_cooldown_timer: Timer = $HitCooldownTimer
 @onready var punch_distance_sq: float = punch_distance * punch_distance
 
 var can_punch: bool
@@ -24,6 +25,8 @@ func enter():
 		npc.move = true
 	, 0.25)
 
+	hit_cooldown_timer.wait_time = npc.hit_cooldown_time
+
 	health.damage_taken.connect(_on_health_damage_taken)
 
 
@@ -38,5 +41,8 @@ func exit():
 	target_manager.clear_target()
 	npc.move = false
 
-func _on_health_damage_taken(_damage_amount: int):
-	humanoid.play_upper_body_animation("punch_hit")
+func _on_health_damage_taken(_damage_amount: int):\
+	if hit_cooldown_timer.is_stopped():
+		humanoid.play_upper_body_animation("punch_hit")
+		hit_cooldown_timer.wait_time = npc.hit_cooldown_time
+		hit_cooldown_timer.start()

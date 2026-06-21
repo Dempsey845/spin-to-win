@@ -68,6 +68,10 @@ metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 wait_time = 2.5
 one_shot = true
 
+[node name="HitCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1503974262]
+wait_time = 0.1
+one_shot = true
+
 [node name="ShootState" type="Node" parent="StateMachine" unique_id=1348570821 node_paths=PackedStringArray("npc", "target_manager", "humanoid", "health")]
 script = ExtResource("8_olc0g")
 npc = NodePath("../..")
@@ -78,6 +82,10 @@ metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="ShootCooldownTimer" type="Timer" parent="StateMachine/ShootState" unique_id=997888102]
 wait_time = 5.0
+one_shot = true
+
+[node name="HitCooldownTimer" type="Timer" parent="StateMachine/ShootState" unique_id=80668966]
+wait_time = 0.1
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1512920644]

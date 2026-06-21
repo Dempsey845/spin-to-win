@@ -5,13 +5,13 @@ enum ProjectileType {
     Regular,
     TripleShot,
     Explosive,
-    Ricochet,
+    SpeedStim,
     Healing,
     Empty
 }
 
 var regular_projectile_scene: PackedScene = preload("uid://smag44qmesee")
-var current_projectile_type: ProjectileType = ProjectileType.Explosive
+var current_projectile_type: ProjectileType = ProjectileType.SpeedStim
 
 func get_current_projectile_scene() -> PackedScene:
     match current_projectile_type:
@@ -20,6 +20,8 @@ func get_current_projectile_scene() -> PackedScene:
         ProjectileType.TripleShot:
             return regular_projectile_scene
         ProjectileType.Explosive:
+            return regular_projectile_scene
+        ProjectileType.SpeedStim:
             return regular_projectile_scene
     
     return regular_projectile_scene

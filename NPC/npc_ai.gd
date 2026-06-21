@@ -10,6 +10,9 @@ signal jump_started
 
 @export var target_manager: NPCTargetManager
 
+var speed_multiplier: float = 1.0
+var hit_cooldown_time: float = 0.1
+
 var _move: bool
 var move: bool:
 	get:
@@ -65,13 +68,13 @@ func _stop_moving(delta: float):
 	velocity.x = move_toward(
 		velocity.x,
 		0.0,
-		acceleration * delta
+		acceleration * speed_multiplier * delta
 	)
 
 	velocity.z = move_toward(
 		velocity.z,
 		0.0,
-		acceleration * delta
+		acceleration * speed_multiplier * delta
 	)
 
 func _handle_obstacles():
@@ -93,14 +96,14 @@ func _move_to_next_position(delta: float):
 	
 	velocity.x = move_toward(
 		velocity.x,
-		direction.x * speed,
-		acceleration * delta
+		direction.x * speed * speed_multiplier,
+		acceleration * speed_multiplier * delta
 	)
 
 	velocity.z = move_toward(
 		velocity.z,
-		direction.z * speed,
-		acceleration * delta
+		direction.z * speed * speed_multiplier,
+		acceleration * speed_multiplier * delta
 	)
 
 func look_at_point(point: Vector3):
