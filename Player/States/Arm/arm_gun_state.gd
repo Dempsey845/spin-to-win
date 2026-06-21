@@ -6,8 +6,10 @@ extends State
 @export var gun_visual: Node3D
 @export var revolver_spawn_point: Marker3D
 @export var revolver_manager: PlayerRevolverManager
+@export var projectile_fire_point: Marker3D
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
+var projectile_scene: PackedScene = preload("uid://smag44qmesee")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
@@ -58,18 +60,23 @@ func _shoot():
 	animation_manager.set_arm_state_machine_condition("shoot", true)
 	can_shoot = false
 	
-	shoot_ray.force_raycast_update()
+	# shoot_ray.force_raycast_update()
 
-	if shoot_ray.is_colliding():
-		var target: Node3D = shoot_ray.get_collider()
-		var hit_pos: Vector3 = shoot_ray.get_collision_point()
+	# if shoot_ray.is_colliding():
+	# 	var target: Node3D = shoot_ray.get_collider()
+	# 	var hit_pos: Vector3 = shoot_ray.get_collision_point()
 
-		if target is Hurtbox:
-			var hurtbox: Hurtbox = target
-			hurtbox.register_hit(1)
+	# 	if target is Hurtbox:
+	# 		var hurtbox: Hurtbox = target
+	# 		hurtbox.register_hit(1)
 
-		print("Hit:", target.name)
-		print("Position:", hit_pos)
+	# 	print("Hit:", target.name)
+	# 	print("Position:", hit_pos)
+
+	var projectile = projectile_scene.instantiate()
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = projectile_fire_point.global_position
+	projectile.global_rotation = projectile_fire_point.global_rotation
 
 func exit():
 	gun_visual.visible = false

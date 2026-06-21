@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://smag44qmesee"]
+
+[ext_resource type="PackedScene" uid="uid://b70m1wxy6cf4f" path="res://NPC/npc_bullet_projectile.tscn" id="1_nfkxi"]
+
+[node name="BulletProjectile" unique_id=82245577 instance=ExtResource("1_nfkxi")]
+collision_mask = 8

@@ -7919,7 +7919,6 @@ transitions = ["Pistol_Idle", "Pistol_Fire", SubResource("AnimationNodeStateMach
 graph_offset = Vector2(-293, 0)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76lrf"]
-graph_offset = Vector2(-653.4701, 174.38013)
 nodes/ArmStateMachine/node = SubResource("AnimationNodeStateMachine_sm0op")
 nodes/ArmStateMachine/position = Vector2(-320, 120)
 node_connections = [&"output", 0, &"ArmStateMachine"]
@@ -7945,7 +7944,7 @@ pickup_ray = NodePath("../Head/Camera3D/PickupRay")
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point")]
 script = ExtResource("4_x3vf3")
 animation_manager = NodePath("../../PlayerAnimationManager")
 shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
@@ -7953,6 +7952,7 @@ punch_state = NodePath("../PunchState")
 gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
 revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython/RevolverSpawnPoint")
 revolver_manager = NodePath("../../PlayerRevolverManager")
+projectile_fire_point = NodePath("../../Head/FirePoint")
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
 script = ExtResource("6_p5o4e")
@@ -8459,6 +8459,9 @@ parameters/ArmStateMachine/conditions/punch_idle = false
 parameters/ArmStateMachine/conditions/punch_l = false
 parameters/ArmStateMachine/conditions/punch_r = false
 parameters/ArmStateMachine/conditions/shoot = false
+
+[node name="FirePoint" type="Marker3D" parent="Head" unique_id=41366436]
+transform = Transform3D(0.9998482, 0, 0.017452417, 0, 1.0000006, 0, -0.017452413, 0, 0.9998483, 0.39993337, 0.122470975, -1.1327637)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=291670431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
