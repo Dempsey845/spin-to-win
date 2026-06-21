@@ -11,6 +11,7 @@ extends State
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
+var heal_particle_effect_scene: PackedScene = preload("uid://b1afg8t2ww1tg")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
@@ -117,10 +118,13 @@ func speed_up_enemy(body: Node, _hit_position: Vector3):
 		npc.speed_multiplier -= 0.5
 		npc.hit_cooldown_time = 0.1
 
-func heal_enemy(body: Node, _hit_position: Vector3):
+func heal_enemy(body: Node, hit_position: Vector3):
 	if body.get_parent() is NPC:
 		var npc: NPC = body.get_parent()
 		var npc_health: Health = npc.get_node("Health")
+		var heal_particle_effect = heal_particle_effect_scene.instantiate()
+		get_tree().current_scene.add_child(heal_particle_effect)
+		heal_particle_effect.global_position = hit_position
 		npc_health.heal(2) # TODO: Replace with damage * 2
 
 func exit():
