@@ -5,6 +5,14 @@ extends Node
 
 var has_revolver: bool = true
 
+func is_revolver_in_pickup() -> bool:
+    if has_revolver:
+        return false
+    
+    pickup_ray.force_raycast_update()
+
+    return pickup_ray.is_colliding()
+
 func try_pickup_revolver() -> bool:
     if !has_revolver:
         pickup_ray.force_raycast_update()

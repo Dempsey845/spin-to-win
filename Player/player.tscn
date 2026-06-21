@@ -12,10 +12,23 @@
 [ext_resource type="Script" uid="uid://cqil3l0gtai7a" path="res://Player/States/Arm/arm_punch_state.gd" id="6_p5o4e"]
 [ext_resource type="Script" uid="uid://3ug6jf61b128" path="res://Player/player_hand_hitbox_manager.gd" id="7_5htga"]
 [ext_resource type="PackedScene" uid="uid://ca0sm06c435ab" path="res://Player/Revolver/colt_python.tscn" id="9_5htga"]
+[ext_resource type="Script" uid="uid://djv0lyb3nna8i" path="res://Player/player_cursor_manager.gd" id="9_b1ygp"]
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="9_dkpta"]
 [ext_resource type="Script" uid="uid://ct6xp3nkcrhm4" path="res://Player/player_health_manager.gd" id="9_lfmf2"]
+[ext_resource type="Texture2D" uid="uid://6clbk8tgs35e" path="res://Assets/UI/KenneyCursorPack/tilemap.png" id="11_pisgm"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ygp"]
+atlas = ExtResource("11_pisgm")
+region = Rect2(289, 34, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pisgm"]
+load_path = "res://.godot/imported/tilemap.png-5adebf4da586637ebbf530563e63ba81.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o28un"]
+atlas = SubResource("CompressedTexture2D_pisgm")
+region = Rect2(255, 102, 16, 16)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pisgm"]
 
@@ -7962,6 +7975,12 @@ script = ExtResource("7_5htga")
 left_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/LeftHandBoneAttachment/LeftHandHitbox")
 right_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/RightHandHitbox")
 
+[node name="PlayerCursorManager" type="Node" parent="." unique_id=2087894412 node_paths=PackedStringArray("crosshair_cursor", "grab_cursor", "revolver_manager")]
+script = ExtResource("9_b1ygp")
+crosshair_cursor = NodePath("../CanvasLayer/Crosshair")
+grab_cursor = NodePath("../CanvasLayer/Grab")
+revolver_manager = NodePath("../PlayerRevolverManager")
+
 [node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107]
 script = ExtResource("9_lfmf2")
 
@@ -7971,20 +7990,36 @@ metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737990560]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1900315073]
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer" unique_id=1274573486]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0.5058824, 0.5058824, 0.5058824, 0.32941177)
+texture = SubResource("AtlasTexture_b1ygp")
+
+[node name="Grab" type="TextureRect" parent="CanvasLayer" unique_id=1253889191]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o28un")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15
@@ -7996,7 +8031,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=331678839]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(768, 432)
 render_target_update_mode = 4
 
 [node name="GunCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1307827547 node_paths=PackedStringArray("main_camera")]
