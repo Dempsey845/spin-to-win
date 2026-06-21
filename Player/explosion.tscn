@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://swu7vpjkvba7"]
+
+[ext_resource type="Script" uid="uid://cdww0yftev3nm" path="res://Player/explosion.gd" id="1_p1876"]
+[ext_resource type="PackedScene" uid="uid://bmkb1seyeinp" path="res://Effects/explosion_effect.tscn" id="2_7jmss"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_du5rl"]
+radius = 3.5
+
+[node name="Explosion" type="Area3D" unique_id=123951917]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_p1876")
+
+[node name="ExplosionEffect" parent="." unique_id=854423557 instance=ExtResource("2_7jmss")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1959806511]
+shape = SubResource("SphereShape3D_du5rl")

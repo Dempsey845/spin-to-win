@@ -5,7 +5,9 @@ extends Node3D
 @onready var fire: GPUParticles3D = $Fire
 
 func _ready() -> void:
-    await get_tree().create_timer(2.0).timeout
     debris.emitting = true
     smoke.emitting = true
     fire.emitting = true
+
+    await get_tree().create_timer(2.5).timeout
+    queue_free()

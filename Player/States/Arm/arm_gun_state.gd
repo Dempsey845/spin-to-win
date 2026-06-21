@@ -10,6 +10,7 @@ extends State
 @export var projectile_type_manager: ProjectileTypeManager
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
+var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
@@ -84,7 +85,7 @@ func _shoot():
 		_spawn_projectile(0.0)
 
 func _spawn_projectile(spread_angle: float):
-	var projectile = projectile_type_manager.get_current_projectile_scene().instantiate()
+	var projectile: Projectile = projectile_type_manager.get_current_projectile_scene().instantiate()
 
 	get_tree().current_scene.add_child(projectile)
 
@@ -92,6 +93,14 @@ func _spawn_projectile(spread_angle: float):
 	projectile.global_rotation = projectile_fire_point.global_rotation
 
 	projectile.rotate_y(deg_to_rad(spread_angle))
+
+	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Explosive:
+		projectile.on_hit_callable = explode_projectile
+
+func explode_projectile(_body: Node, hit_position: Vector3):
+	var explosion = explosion_scene.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = hit_position
 
 func exit():
 	gun_visual.visible = false
