@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ct6xp3nkcrhm4" path="res://Player/player_health_manager.gd" id="9_lfmf2"]
 [ext_resource type="Script" uid="uid://efut28sycbbx" path="res://Player/player_projectile_type_manager.gd" id="11_o28un"]
 [ext_resource type="Texture2D" uid="uid://6clbk8tgs35e" path="res://Assets/UI/KenneyCursorPack/tilemap.png" id="11_pisgm"]
+[ext_resource type="Script" uid="uid://bgw73efkti5rg" path="res://Player/player_ammo.gd" id="12_7emwf"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
 [ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
@@ -7946,8 +7947,9 @@ pickup_ray = NodePath("../Head/Camera3D/PickupRay")
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("ammo", "animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager")]
 script = ExtResource("4_x3vf3")
+ammo = NodePath("../../PlayerAmmo")
 animation_manager = NodePath("../../PlayerAnimationManager")
 shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
 punch_state = NodePath("../PunchState")
@@ -7989,6 +7991,9 @@ script = ExtResource("9_lfmf2")
 
 [node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369]
 script = ExtResource("11_o28un")
+
+[node name="PlayerAmmo" type="Node" parent="." unique_id=1690702294]
+script = ExtResource("12_7emwf")
 
 [node name="Health" type="Node" parent="." unique_id=1782994041]
 script = ExtResource("9_dkpta")

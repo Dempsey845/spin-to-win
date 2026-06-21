@@ -1,5 +1,6 @@
 extends State
 
+@export var ammo: PlayerAmmo
 @export var animation_manager: PlayerAnimationManager
 @export var shoot_ray: RayCast3D
 @export var punch_state: State
@@ -32,7 +33,7 @@ func enter():
 	)
 
 func update(_delta: float):
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	if ammo.current_ammo > 0 and Input.is_action_just_pressed("shoot") and can_shoot:
 		_shoot()
 	elif can_equip_punch:
 		if Input.is_action_just_pressed("equip"):
@@ -62,6 +63,7 @@ func _equip_punch():
 func _shoot():
 	animation_manager.set_arm_state_machine_condition("shoot", true)
 	can_shoot = false
+	ammo.current_ammo -= 1
 	
 	# shoot_ray.force_raycast_update()
 
