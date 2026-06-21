@@ -50,7 +50,7 @@ script = ExtResource("4_u0aa3")
 npc = NodePath("../..")
 humanoid = NodePath("../../Humanoid")
 health = NodePath("../../Health")
-hit_state = NodePath("../ShootState")
+hit_state = NodePath("../PunchState")
 
 [node name="WaitTimer" type="Timer" parent="StateMachine/WanderState" unique_id=1699414278]
 wait_time = 3.0

@@ -12,6 +12,7 @@ extends State
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
 var heal_particle_effect_scene: PackedScene = preload("uid://b1afg8t2ww1tg")
+var speed_particle_effect_scene: PackedScene = preload("uid://bdgpgqqu06iya")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
@@ -109,11 +110,14 @@ func explode_projectile(_body: Node, hit_position: Vector3):
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = hit_position
 
-func speed_up_enemy(body: Node, _hit_position: Vector3):
+func speed_up_enemy(body: Node, hit_position: Vector3):
 	if body.get_parent() is NPC:
 		var npc: NPC = body.get_parent()
 		npc.speed_multiplier += 0.5
 		npc.hit_cooldown_time = 4.0
+		var speed_particle_effect = speed_particle_effect_scene.instantiate()
+		get_tree().current_scene.add_child(speed_particle_effect)
+		speed_particle_effect.global_position = hit_position
 		await get_tree().create_timer(15.0).timeout
 		npc.speed_multiplier -= 0.5
 		npc.hit_cooldown_time = 0.1
