@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://efut28sycbbx" path="res://Player/player_projectile_type_manager.gd" id="11_o28un"]
 [ext_resource type="Texture2D" uid="uid://6clbk8tgs35e" path="res://Assets/UI/KenneyCursorPack/tilemap.png" id="11_pisgm"]
 [ext_resource type="Script" uid="uid://bgw73efkti5rg" path="res://Player/player_ammo.gd" id="12_7emwf"]
+[ext_resource type="PackedScene" uid="uid://bokhiklspil1b" path="res://Player/Revolver/roulette_stage.tscn" id="15_hshwv"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
 [ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
@@ -8048,6 +8049,10 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "6/6"
 horizontal_alignment = 1
+
+[node name="RouletteStage" parent="CanvasLayer" unique_id=865051770 node_paths=PackedStringArray("main_camera") instance=ExtResource("15_hshwv")]
+visible = true
+main_camera = NodePath("../../Head/Camera3D")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15
