@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="3_j8job"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://dqdin3vaff0vi" path="res://NPC/npc_ai.tscn" id="6_bkhv4"]
+[ext_resource type="PackedScene" uid="uid://bmkb1seyeinp" path="res://Effects/explosion_effect.tscn" id="6_kcyjf"]
 [ext_resource type="PackedScene" uid="uid://dx6eqvuprnkvh" path="res://Assets/WesternBuildings/HouseTwo/Simple_house2.fbx" id="6_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://chj0d5pofcq1l" path="res://Assets/WesternBuildings/Bank/Bank.fbx" id="7_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://c780ggh0f3xpa" path="res://Assets/WesternBuildings/Barn/Barn.fbx" id="8_eidgh"]
@@ -116,3 +117,6 @@ transform = Transform3D(-5.4639237e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.463923
 
 [node name="SheriffWestern_house_" parent="." unique_id=1041701379 instance=ExtResource("17_5xkvv")]
 transform = Transform3D(-5.4639237e-08, 0, -1.25, 0, 1.25, 0, 1.25, 0, -5.4639237e-08, 30, 0, 15)
+
+[node name="ExplosionEffect" parent="." unique_id=854423557 instance=ExtResource("6_kcyjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, 0)
