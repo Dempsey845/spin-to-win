@@ -1,8 +1,14 @@
 class_name PlayerAmmo
 extends Node
 
-var max_ammo: int = 6
-var current_ammo: int = 6
+@export var ammo_label: Label
 
-func _ready() -> void:
-    current_ammo = max_ammo
+var max_ammo: int = 6
+
+var _current_ammo: int = 6
+var current_ammo: int:
+    get():
+        return _current_ammo
+    set(value):
+        _current_ammo = value
+        ammo_label.text = "%d/%d" % [value, max_ammo]

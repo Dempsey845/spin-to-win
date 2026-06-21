@@ -11,6 +11,7 @@ enum ProjectileType {
 }
 
 @export var colt_python: ColtPython
+@export var ammo: PlayerAmmo
 
 var regular_projectile_scene: PackedScene = preload("uid://smag44qmesee")
 
@@ -29,9 +30,10 @@ var current_projectile_type: ProjectileType:
 		if _current_projectile_type == ProjectileType.Empty:
 			colt_python.cyilnder_full.visible = false
 			colt_python.cyilnder_empty.visible = true
+			ammo.current_ammo = 0
 
 func _ready() -> void:
-	current_projectile_type = ProjectileType.Empty
+	current_projectile_type = ProjectileType.Healing
 
 func get_current_projectile_scene() -> PackedScene:
 	return regular_projectile_scene
