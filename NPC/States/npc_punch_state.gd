@@ -41,8 +41,8 @@ func exit():
 	target_manager.clear_target()
 	npc.move = false
 
-func _on_health_damage_taken(_damage_amount: int):\
-	if hit_cooldown_timer.is_stopped():
+func _on_health_damage_taken(damage_amount: int):\
+	if hit_cooldown_timer.is_stopped() and damage_amount > 0:
 		humanoid.play_upper_body_animation("punch_hit")
 		hit_cooldown_timer.wait_time = npc.hit_cooldown_time
 		hit_cooldown_timer.start()

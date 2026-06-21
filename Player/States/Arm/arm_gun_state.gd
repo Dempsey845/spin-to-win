@@ -98,6 +98,10 @@ func _spawn_projectile(spread_angle: float):
 		projectile.on_hit_callable = explode_projectile
 	elif projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.SpeedStim:
 		projectile.on_hit_callable = speed_up_enemy
+	elif projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Healing:
+		projectile.on_hit_callable = heal_enemy
+		projectile.damage = 0
+
 
 func explode_projectile(_body: Node, hit_position: Vector3):
 	var explosion = explosion_scene.instantiate()
@@ -112,6 +116,12 @@ func speed_up_enemy(body: Node, _hit_position: Vector3):
 		await get_tree().create_timer(15.0).timeout
 		npc.speed_multiplier -= 0.5
 		npc.hit_cooldown_time = 0.1
+
+func heal_enemy(body: Node, _hit_position: Vector3):
+	if body.get_parent() is NPC:
+		var npc: NPC = body.get_parent()
+		var npc_health: Health = npc.get_node("Health")
+		npc_health.heal(2) # TODO: Replace with damage * 2
 
 func exit():
 	gun_visual.visible = false

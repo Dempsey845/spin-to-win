@@ -47,8 +47,8 @@ func shoot():
     playing_shoot_animation = true
     humanoid.play_one_shot("Shoot")
 
-func _on_health_damage_taken(_damage_amount: int):
-    if playing_hit_animation:
+func _on_health_damage_taken(damage_amount: int):
+    if playing_hit_animation or damage_amount < 1:
         return
 
     if !hit_cooldown_timer.is_stopped():
