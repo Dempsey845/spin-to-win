@@ -7,9 +7,9 @@ extends State
 @export var revolver_spawn_point: Marker3D
 @export var revolver_manager: PlayerRevolverManager
 @export var projectile_fire_point: Marker3D
+@export var projectile_type_manager: ProjectileTypeManager
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
-var projectile_scene: PackedScene = preload("uid://smag44qmesee")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
@@ -73,10 +73,25 @@ func _shoot():
 	# 	print("Hit:", target.name)
 	# 	print("Position:", hit_pos)
 
-	var projectile = projectile_scene.instantiate()
+	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Empty:
+		return
+	elif projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.TripleShot:
+		var spread_degrees := 2.5
+
+		for angle in [-spread_degrees, 0.0, spread_degrees]:
+			_spawn_projectile(angle)
+	else:
+		_spawn_projectile(0.0)
+
+func _spawn_projectile(spread_angle: float):
+	var projectile = projectile_type_manager.get_current_projectile_scene().instantiate()
+
 	get_tree().current_scene.add_child(projectile)
+
 	projectile.global_position = projectile_fire_point.global_position
 	projectile.global_rotation = projectile_fire_point.global_rotation
+
+	projectile.rotate_y(deg_to_rad(spread_angle))
 
 func exit():
 	gun_visual.visible = false

@@ -15,9 +15,11 @@
 [ext_resource type="Script" uid="uid://djv0lyb3nna8i" path="res://Player/player_cursor_manager.gd" id="9_b1ygp"]
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="9_dkpta"]
 [ext_resource type="Script" uid="uid://ct6xp3nkcrhm4" path="res://Player/player_health_manager.gd" id="9_lfmf2"]
+[ext_resource type="Script" uid="uid://efut28sycbbx" path="res://Player/player_projectile_type_manager.gd" id="11_o28un"]
 [ext_resource type="Texture2D" uid="uid://6clbk8tgs35e" path="res://Assets/UI/KenneyCursorPack/tilemap.png" id="11_pisgm"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
+[ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ygp"]
 atlas = ExtResource("11_pisgm")
@@ -7944,7 +7946,7 @@ pickup_ray = NodePath("../Head/Camera3D/PickupRay")
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager")]
 script = ExtResource("4_x3vf3")
 animation_manager = NodePath("../../PlayerAnimationManager")
 shoot_ray = NodePath("../../Head/Camera3D/ShootRay")
@@ -7953,6 +7955,7 @@ gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/Co
 revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython/RevolverSpawnPoint")
 revolver_manager = NodePath("../../PlayerRevolverManager")
 projectile_fire_point = NodePath("../../Head/FirePoint")
+projectile_type_manager = NodePath("../../PlayerProjectileTypeManager")
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
 script = ExtResource("6_p5o4e")
@@ -7983,6 +7986,9 @@ revolver_manager = NodePath("../PlayerRevolverManager")
 
 [node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107]
 script = ExtResource("9_lfmf2")
+
+[node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369]
+script = ExtResource("11_o28un")
 
 [node name="Health" type="Node" parent="." unique_id=1782994041]
 script = ExtResource("9_dkpta")
@@ -8462,6 +8468,9 @@ parameters/ArmStateMachine/conditions/shoot = false
 
 [node name="FirePoint" type="Marker3D" parent="Head" unique_id=41366436]
 transform = Transform3D(0.9998482, 0, 0.017452417, 0, 1.0000006, 0, -0.017452413, 0, 0.9998483, 0.39993337, 0.122470975, -1.1327637)
+
+[node name="BulletProjectile" parent="Head/FirePoint" unique_id=82245577 instance=ExtResource("20_n471f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=291670431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
