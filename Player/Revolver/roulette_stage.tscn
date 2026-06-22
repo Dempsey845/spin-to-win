@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtj05lyfo16or" path="res://Player/Revolver/roulette_stage.gd" id="1_kdkw5"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="1_r1b0k"]
+[ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/KenneyCursorPack/RouletteTimeLogo.png" id="3_cx5f0"]
 
 [sub_resource type="Animation" id="Animation_r1b0k"]
 length = 0.001
@@ -17,10 +18,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(768, 42)]
+}
 
 [sub_resource type="Animation" id="Animation_kdkw5"]
 resource_name = "fade_in"
-length = 0.7
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,23 +65,101 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"start_roulette"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.53333336, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -89), Vector2(0, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:size")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8333333, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(768, 42), Vector2(768, 42), Vector2(768, 84)]
+}
+
+[sub_resource type="Animation" id="Animation_cx5f0"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9333333, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.9411765), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666665, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(0, 23.715), Vector2(0, -89)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:size")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.26666668, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(768, 84), Vector2(768, 42)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cx5f0"]
 _data = {
 &"RESET": SubResource("Animation_r1b0k"),
-&"fade_in": SubResource("Animation_kdkw5")
+&"fade_in": SubResource("Animation_kdkw5"),
+&"fade_out": SubResource("Animation_cx5f0")
 }
 
 [node name="RouletteStage" type="Control" unique_id=865051770]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,11 +178,27 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1776863618]
+modulate = Color(0.99607843, 0.78039217, 0, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -89.0
+offset_bottom = -47.0
+grow_horizontal = 2
+texture = ExtResource("3_cx5f0")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=727413693]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,7 +206,7 @@ grow_vertical = 2
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(768, 432)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="RouletteCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=573264399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8447268, -0.07547045)
@@ -100,20 +219,6 @@ script = ExtResource("1_r1b0k")
 [node name="RouletteContainer" type="Node3D" parent="SubViewportContainer/SubViewport/RouletteCamera" unique_id=1156470674]
 unique_name_in_owner = true
 transform = Transform3D(0.25881904, 0, 0.96592563, 0, 1, 0, -0.96592593, 0, 0.25881895, -0.033891756, -0.20972884, -0.5785303)
-
-[node name="Label" type="Label" parent="." unique_id=1424931094]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-text = "Roulette Time!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=955920847]
 libraries/ = SubResource("AnimationLibrary_cx5f0")

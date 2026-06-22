@@ -12,6 +12,7 @@ enum ProjectileType {
 
 @export var colt_python: ColtPython
 @export var ammo: PlayerAmmo
+@export var roulette_stage: RouletteStage
 
 var regular_projectile_scene: PackedScene = preload("uid://smag44qmesee")
 
@@ -34,6 +35,10 @@ var current_projectile_type: ProjectileType:
 
 func _ready() -> void:
 	current_projectile_type = ProjectileType.Healing
+	roulette_stage.type_chosen.connect(func(type: ProjectileType):
+		ammo.current_ammo = ammo.max_ammo
+		current_projectile_type = type
+	)
 
 func get_current_projectile_scene() -> PackedScene:
 	return regular_projectile_scene

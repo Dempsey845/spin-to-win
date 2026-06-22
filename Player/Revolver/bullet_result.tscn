@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://byo31pss3aoxc"]
+
+[ext_resource type="Script" uid="uid://dfgbqkoww15yt" path="res://Player/Revolver/bullet_result.gd" id="1_v7dg2"]
+[ext_resource type="Texture2D" uid="uid://gwpqfspr8jd6" path="res://Assets/UI/BulletTypes/BTSpeed.png" id="1_xydc3"]
+[ext_resource type="Texture2D" uid="uid://h6t5uu3ipapb" path="res://Assets/UI/BulletTypes/BTRegular.png" id="2_8fl4q"]
+[ext_resource type="Texture2D" uid="uid://dc3bl24m3si6c" path="res://Assets/UI/BulletTypes/BTTriple.png" id="3_i3uhe"]
+[ext_resource type="Texture2D" uid="uid://b681pylkde28r" path="res://Assets/UI/BulletTypes/BTExplosive.png" id="4_ltddr"]
+[ext_resource type="Texture2D" uid="uid://chnerymynul87" path="res://Assets/UI/BulletTypes/BTHeal.png" id="6_i3uhe"]
+
+[sub_resource type="Animation" id="Animation_cyiaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(370, 454)]
+}
+
+[sub_resource type="Animation" id="Animation_6i1sr"]
+resource_name = "enter"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(370, 454), Vector2(370, 236)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"exit", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_i3uhe"]
+resource_name = "exit"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333323),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36666667, 0.73333323),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.2831855, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.73333323),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(370, 236), Vector2(370, 454)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_complete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kv2u0"]
+_data = {
+&"RESET": SubResource("Animation_cyiaa"),
+&"enter": SubResource("Animation_6i1sr"),
+&"exit": SubResource("Animation_i3uhe")
+}
+
+[node name="BulletResult" type="Control" unique_id=1940773731]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = 238.0
+offset_right = 26.0
+offset_bottom = 277.99957
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_v7dg2")
+bullet_type_texture = Dictionary[int, Texture2D]({
+0: ExtResource("2_8fl4q"),
+1: ExtResource("3_i3uhe"),
+2: ExtResource("4_ltddr"),
+3: ExtResource("1_xydc3"),
+4: ExtResource("6_i3uhe"),
+5: null
+})
+
+[node name="ResultContainer" type="Control" parent="." unique_id=1723151088]
+custom_minimum_size = Vector2(175, 225)
+layout_mode = 1
+anchor_left = -1.9750001
+anchor_top = -2.4750001
+anchor_right = 2.4
+anchor_bottom = 3.15
+offset_top = -0.001625061
+offset_bottom = 0.001449585
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ResultContainer" unique_id=1515103531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.86718816, 0.6752472, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="ResultContainer" unique_id=1024804439]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 24
+text = "Explosive Bullet!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="ResultContainer" unique_id=2089442984]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 75)
+layout_mode = 0
+offset_top = 68.00043
+offset_right = 175.0
+offset_bottom = 143.00043
+theme_override_font_sizes/font_size = 14
+text = "A magical bullet that provides its target with added speed?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="IconRect" type="TextureRect" parent="ResultContainer" unique_id=769600685]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 0
+offset_top = 150.00041
+offset_right = 175.0
+offset_bottom = 225.00041
+texture = ExtResource("1_xydc3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=691186945]
+libraries/ = SubResource("AnimationLibrary_kv2u0")

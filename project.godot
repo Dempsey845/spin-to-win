@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 player=""
 
+[gui]
+
+theme/custom="uid://by2d07m1o88gk"
+
 [input]
 
 move_forward={

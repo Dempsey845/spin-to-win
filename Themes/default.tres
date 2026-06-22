@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://by2d07m1o88gk"]
+
+[ext_resource type="FontFile" uid="uid://8yhva2o3wjqs" path="res://Assets/Font/MS_PAIN.ttf" id="1_o6k1f"]
+
+[resource]
+default_font = ExtResource("1_o6k1f")
