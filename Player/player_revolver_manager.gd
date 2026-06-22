@@ -35,4 +35,5 @@ func try_pickup_revolver() -> bool:
 func drop():
     has_revolver = false
     # TODO: Add a check to see if the round is ended, if so play the animation
+    # TODO: Make sure to connect to a signal when the round has ended to also play when end starts
     revolver_status_animation_player.play("fade_in")

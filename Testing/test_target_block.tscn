@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="1_q5k4g"]
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="2_xyej4"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="4_lt7jv"]
+[ext_resource type="Script" uid="uid://v1g1xgvuh4ci" path="res://World/revolver_spanwer.gd" id="5_lt7jv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8swq"]
 
@@ -16,10 +17,11 @@ script = ExtResource("1_2wiqp")
 
 [node name="Health" type="Node" parent="." unique_id=1157953228]
 script = ExtResource("2_xyej4")
-max_health = 2
+max_health = 10
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=688338159 node_paths=PackedStringArray("health_component")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
@@ -33,10 +35,16 @@ shape = SubResource("BoxShape3D_o8swq")
 debug_color = Color(0.2914007, 0.62998015, 0, 0.41960785)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1724268351]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59999996, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49999997, 0)
 material_override = ExtResource("1_q5k4g")
 mesh = SubResource("BoxMesh_2wiqp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1832631003]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_mt0lk")
+
+[node name="RevolverSpawner" type="Marker3D" parent="." unique_id=1960574552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("5_lt7jv")
+spawn_on_start = true
+metadata/_custom_type_script = "uid://v1g1xgvuh4ci"
