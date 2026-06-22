@@ -12,7 +12,7 @@ signal wave_ended
 
 var enemy_scene: PackedScene = preload("uid://dqdin3vaff0vi")
 
-var current_wave: int
+var current_wave: int = 50
 var wave_time: float
 var wave_duration: float = 30.0
 var enemies_spawned: int
@@ -20,6 +20,18 @@ var total_enemies: int = 2
 var spawn_time: float
 var spawn_rate: float = 5.0
 var started: bool
+
+# Difficulty values
+var min_wave_duration: float = 15.0
+var max_wave_duration: float = 120.0
+
+var min_total_enemies: int = 2
+
+var start_spawn_rate: float = 5.0
+var end_spawn_rate: float = 0.25
+
+var start_enemy_health: int = 2
+var end_enemy_health: int = 15
 
 func _ready() -> void:
 	instance = self
@@ -57,6 +69,9 @@ func _spawn_enemy():
 	enemy_container.add_child(enemy)
 
 	enemy.global_position = spawn_location
+	var enemy_health: Health = enemy.get_node("Health")
+	enemy_health.max_health = int(get_wave_scaled_value(start_enemy_health, end_enemy_health))
+	enemy_health.current_heatlh = enemy_health.max_health
 
 	enemies_spawned += 1
 
@@ -64,14 +79,23 @@ func get_enemy_count() -> int:
 	return enemy_container.get_child_count()
 
 func start_next_wave():
-	wave_time = wave_duration
+	current_wave += 1
+
+	wave_time = get_wave_scaled_value(min_wave_duration, max_wave_duration)
 	enemies_spawned = 0
+
+	spawn_rate = get_wave_scaled_value(start_spawn_rate, end_spawn_rate)
 	spawn_time = spawn_rate
 
+	total_enemies = min_total_enemies + current_wave * 2
+
 	started = true
-	current_wave += 1
 
 	wave_started.emit()
 
 func is_wave_active() -> bool:
 	return started
+
+func get_wave_scaled_value(min_value: float, max_value: float) -> float:
+	var progress = 1.0 - exp(-current_wave / 15.0)
+	return lerp(min_value, max_value, progress)

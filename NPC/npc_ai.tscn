@@ -50,7 +50,7 @@ death_state = NodePath("../StateMachine/DeathState")
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("WanderState")
+initial_state = NodePath("PunchState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104 node_paths=PackedStringArray("npc", "humanoid", "health", "hit_state")]
@@ -112,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_r07n0")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=502581083]
+avoidance_enabled = true
 debug_enabled = true
 
 [node name="ForwardRay" type="RayCast3D" parent="." unique_id=557207469]
