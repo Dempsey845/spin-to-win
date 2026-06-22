@@ -12,4 +12,3 @@ func _ready() -> void:
 func _on_death():
     state_machine.change_state(death_state)
     humanoid.play_death_animation()
-    print("NPC DIED")

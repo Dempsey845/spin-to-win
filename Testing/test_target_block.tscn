@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="1_q5k4g"]
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="2_xyej4"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="4_lt7jv"]
-[ext_resource type="Script" uid="uid://v1g1xgvuh4ci" path="res://World/revolver_spanwer.gd" id="5_lt7jv"]
+[ext_resource type="Script" uid="uid://v1g1xgvuh4ci" path="res://World/revolver_spawner.gd" id="5_lt7jv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8swq"]
 

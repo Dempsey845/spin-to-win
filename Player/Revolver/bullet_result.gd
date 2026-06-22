@@ -41,7 +41,7 @@ var bullet_displays = {
 }
 
 func _ready() -> void:
-	# bullet_type = ProjectileTypeManager.ProjectileType.get(ProjectileTypeManager.ProjectileType.keys().pick_random())
+	bullet_type = ProjectileTypeManager.ProjectileType.get(ProjectileTypeManager.ProjectileType.keys().pick_random())
 	type_chosen.emit(bullet_type)
 
 	title_label.text = bullet_displays[bullet_type].title

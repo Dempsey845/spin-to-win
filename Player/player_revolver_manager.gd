@@ -1,10 +1,18 @@
 class_name PlayerRevolverManager
 extends Node
 
+signal revolver_picked_up
+
 @export var pickup_ray: RayCast3D
 @export var revolver_status_animation_player: AnimationPlayer
 
 var has_revolver: bool = true
+
+func _ready() -> void:
+    WaveSystem.instance.wave_ended.connect(func():
+        if !has_revolver:
+            revolver_status_animation_player.play("fade_in")
+    )
 
 func is_revolver_in_pickup() -> bool:
     if has_revolver:
@@ -27,6 +35,8 @@ func try_pickup_revolver() -> bool:
 
             if revolver_status_animation_player.current_animation == "idle":
                 revolver_status_animation_player.play("fade_out")
+            
+            revolver_picked_up.emit()
 
             return true
 
@@ -34,6 +44,5 @@ func try_pickup_revolver() -> bool:
 
 func drop():
     has_revolver = false
-    # TODO: Add a check to see if the round is ended, if so play the animation
-    # TODO: Make sure to connect to a signal when the round has ended to also play when end starts
-    revolver_status_animation_player.play("fade_in")
+    if !WaveSystem.instance.is_wave_active():
+        revolver_status_animation_player.play("fade_in")

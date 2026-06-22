@@ -27,6 +27,7 @@ func start_roulette():
         )
         bullet_result.complete.connect(func():
             animation_player.play("fade_out")
+            WaveSystem.instance.start_next_wave()
         )
         add_child(bullet_result)
         roulette.queue_free()

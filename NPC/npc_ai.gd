@@ -32,7 +32,11 @@ var has_look_target := false
 @onready var forward_ray: RayCast3D = $ForwardRay
 
 func _ready() -> void:
-	pass
+	health.death.connect(func():
+		reparent(get_tree().current_scene)
+		await get_tree().create_timer(5.0).timeout
+		queue_free()
+	)
 
 func _process(delta: float) -> void:
 	if health.current_heatlh <= 0:

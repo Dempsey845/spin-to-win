@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c2hhfxes7eoa7" path="res://Player/player.tscn" id="1_62w18"]
 [ext_resource type="Script" uid="uid://c3a2n0x7rjmc3" path="res://World/game_manager.gd" id="1_xw5lg"]
+[ext_resource type="Script" uid="uid://7xd074afdo24" path="res://World/wave_system.gd" id="2_0lysu"]
 [ext_resource type="Material" uid="uid://t3lpnb7fwvp" path="res://World/Prototype/gray_prototype.tres" id="2_8a836"]
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="3_j8job"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
@@ -41,6 +42,21 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [node name="GameManager" type="Node" parent="." unique_id=1168442622]
 script = ExtResource("1_xw5lg")
+
+[node name="WaveSystem" type="Node" parent="." unique_id=661734023 node_paths=PackedStringArray("enemy_spawn_locations", "enemy_container")]
+script = ExtResource("2_0lysu")
+enemy_spawn_locations = [NodePath("../EnemySpawnPoints/Marker3D")]
+enemy_container = NodePath("../Enemies")
+
+[node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=1018224253]
+
+[node name="Marker3D" type="Marker3D" parent="EnemySpawnPoints" unique_id=1045664925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1111058482]
+
+[node name="NPC_AI" parent="Enemies" unique_id=669566548 instance=ExtResource("6_bkhv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782760641]
 environment = SubResource("Environment_8a836")
@@ -82,9 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 [node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D" unique_id=1543360501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 end_position = Vector3(2.965, -0.39, 0)
-
-[node name="NPC_AI" parent="." unique_id=669566548 instance=ExtResource("6_bkhv4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, 0)
 
 [node name="Simple_house2" parent="." unique_id=1067613820 instance=ExtResource("6_yf0ba")]
 transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, -12, 0.17134249, 10)

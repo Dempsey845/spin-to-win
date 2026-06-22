@@ -123,8 +123,9 @@ func speed_up_enemy(body: Node, hit_position: Vector3):
 		get_tree().current_scene.add_child(speed_particle_effect)
 		speed_particle_effect.global_position = hit_position
 		await get_tree().create_timer(15.0).timeout
-		npc.speed_multiplier -= 0.5
-		npc.hit_cooldown_time = 0.1
+		if is_instance_valid(npc):
+			npc.speed_multiplier -= 0.5
+			npc.hit_cooldown_time = 0.1
 
 func heal_enemy(body: Node, hit_position: Vector3):
 	if body.get_parent() is NPC:

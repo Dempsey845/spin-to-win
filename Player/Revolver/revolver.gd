@@ -7,7 +7,6 @@ extends RigidBody3D
 @onready var world_area: Area3D = $WorldArea
 
 func _ready() -> void:
-	print("Ready")
 	world_area.body_entered.connect(_on_body_entered)
 
 func init_force() -> void:
@@ -16,6 +15,5 @@ func init_force() -> void:
 
 	apply_central_force(direction * force_strength)
 
-func _on_body_entered(other: Node):
-	print("Body entered %s" % other.name)
+func _on_body_entered(_other: Node):
 	animation_player.play("default")
