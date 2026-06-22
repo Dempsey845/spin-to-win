@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c2tcncjarsqqg"]
 
 [ext_resource type="PackedScene" uid="uid://c2hhfxes7eoa7" path="res://Player/player.tscn" id="1_62w18"]
+[ext_resource type="Script" uid="uid://c3a2n0x7rjmc3" path="res://World/game_manager.gd" id="1_xw5lg"]
 [ext_resource type="Material" uid="uid://t3lpnb7fwvp" path="res://World/Prototype/gray_prototype.tres" id="2_8a836"]
 [ext_resource type="Material" uid="uid://opbhe2fnj5mu" path="res://World/Prototype/red_prototype.tres" id="3_j8job"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
@@ -37,6 +38,9 @@ vertices = PackedVector3Array(-1, 0.5, -7.75, 0, 0.5, -8, 0, 0.5, -49, -48.5, 0.
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 2), PackedInt32Array(6, 1, 2), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(11, 9, 14), PackedInt32Array(14, 9, 16), PackedInt32Array(16, 9, 10), PackedInt32Array(16, 10, 17), PackedInt32Array(13, 18, 12), PackedInt32Array(12, 18, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(19, 18, 22), PackedInt32Array(23, 19, 24), PackedInt32Array(24, 19, 25), PackedInt32Array(22, 20, 19), PackedInt32Array(19, 20, 25), PackedInt32Array(25, 20, 26), PackedInt32Array(25, 26, 4), PackedInt32Array(28, 29, 22), PackedInt32Array(22, 29, 21), PackedInt32Array(21, 29, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(25, 4, 5), PackedInt32Array(23, 32, 30), PackedInt32Array(30, 31, 8), PackedInt32Array(8, 31, 7), PackedInt32Array(7, 31, 24), PackedInt32Array(24, 32, 23), PackedInt32Array(32, 31, 30), PackedInt32Array(31, 32, 24), PackedInt32Array(15, 16, 33), PackedInt32Array(33, 16, 34), PackedInt32Array(35, 33, 34), PackedInt32Array(35, 34, 36), PackedInt32Array(36, 34, 38), PackedInt32Array(36, 38, 37), PackedInt32Array(37, 39, 36), PackedInt32Array(42, 41, 40), PackedInt32Array(42, 40, 20), PackedInt32Array(20, 40, 26), PackedInt32Array(26, 40, 43), PackedInt32Array(41, 39, 40), PackedInt32Array(40, 39, 37)]
 
 [node name="World" type="Node3D" unique_id=2089176536]
+
+[node name="GameManager" type="Node" parent="." unique_id=1168442622]
+script = ExtResource("1_xw5lg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=782760641]
 environment = SubResource("Environment_8a836")

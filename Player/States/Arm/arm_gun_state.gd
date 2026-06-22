@@ -51,7 +51,7 @@ func _throw_revolver():
 	revolver.global_rotation = revolver_spawn_point.global_rotation
 	revolver.init_force()
 	
-	revolver_manager.has_revolver = false
+	revolver_manager.drop()
 
 	_equip_punch()
 

@@ -34,6 +34,103 @@ load_path = "res://.godot/imported/tilemap.png-5adebf4da586637ebbf530563e63ba81.
 atlas = SubResource("CompressedTexture2D_pisgm")
 region = Rect2(255, 102, 16, 16)
 
+[sub_resource type="Animation" id="Animation_hshwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8mwp6"]
+resource_name = "fade_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qemgg"]
+resource_name = "fade_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gpjlu"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.1, 1.1), Vector2(0.9, 0.9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8mwp6"]
+_data = {
+&"RESET": SubResource("Animation_hshwv"),
+&"fade_in": SubResource("Animation_8mwp6"),
+&"fade_out": SubResource("Animation_qemgg"),
+&"idle": SubResource("Animation_gpjlu")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pisgm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy2ax"]
@@ -7940,9 +8037,10 @@ script = ExtResource("1_l8h54")
 [node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
 script = ExtResource("2_fhl08")
 
-[node name="PlayerRevolverManager" type="Node" parent="." unique_id=2106552003 node_paths=PackedStringArray("pickup_ray")]
+[node name="PlayerRevolverManager" type="Node" parent="." unique_id=2106552003 node_paths=PackedStringArray("pickup_ray", "revolver_status_animation_player")]
 script = ExtResource("3_p5o4e")
 pickup_ray = NodePath("../Head/Camera3D/PickupRay")
+revolver_status_animation_player = NodePath("../CanvasLayer/Status/AnimationPlayer")
 
 [node name="PlayerArmStateMachine" type="Node" parent="." unique_id=1090750882 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_00tjw")
@@ -8055,6 +8153,36 @@ horizontal_alignment = 1
 [node name="RouletteStage" parent="CanvasLayer" unique_id=865051770 node_paths=PackedStringArray("main_camera") instance=ExtResource("15_hshwv")]
 main_camera = NodePath("../../Head/Camera3D")
 
+[node name="Status" type="Control" parent="CanvasLayer" unique_id=881822300]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 387.0
+offset_top = 97.0
+offset_right = 427.0
+offset_bottom = 137.0
+scale = Vector2(1.1, 1.1)
+
+[node name="RevolverStatus" type="Label" parent="CanvasLayer/Status" unique_id=327723189]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -266.5
+offset_top = -14.0
+offset_right = 221.5
+offset_bottom = 11.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8445217, 0.69261193, 0.09137399, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 21
+text = "Pickup a revolver to begin the next round!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Status" unique_id=4693164]
+root_node = NodePath("../RevolverStatus")
+libraries/ = SubResource("AnimationLibrary_8mwp6")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15
 anchor_right = 1.0
@@ -8131,7 +8259,7 @@ bones/1/name = "Upper_Arm.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(2.3841858e-07, 0.9984603, 0.055470116, -1, 2.3841858e-07, 1.4901161e-08, 1.8626451e-09, -0.055470116, 0.99846035, 0.5, 0, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0.50850624, 0.15627392, -0.24984996)
+bones/1/position = Vector3(0.5, 0, 0)
 bones/1/rotation = Quaternion(0.0030280352, 0.294787, -0.95554984, -0.004007131)
 bones/1/scale = Vector3(1, 0.99999994, 1)
 bones/2/name = "Lower_Arm.L"
@@ -8194,7 +8322,7 @@ bones/10/name = "Thumb_1.L"
 bones/10/parent = 3
 bones/10/rest = Transform3D(0.8087901, 0.5410003, -0.23060203, -0.58661824, 0.71435356, -0.3815469, -0.041685633, 0.44386673, 0.8951227, -0.006307905, 0.052199747, 0.07690998)
 bones/10/enabled = true
-bones/10/position = Vector3(-0.0063078515, 0.05219991, 0.07690992)
+bones/10/position = Vector3(-0.006307894, 0.052199703, 0.07691008)
 bones/10/rotation = Quaternion(0.2232229, -0.051090114, -0.30495042, 0.9244278)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Thumb_2.L"
@@ -8320,7 +8448,7 @@ bones/28/name = "Thumb_1.R"
 bones/28/parent = 21
 bones/28/rest = Transform3D(0.8087901, -0.5410003, 0.23060203, 0.58661824, 0.71435356, -0.3815469, 0.041685633, 0.44386673, 0.8951227, 0.006307905, 0.052199747, 0.07690998)
 bones/28/enabled = true
-bones/28/position = Vector3(0.006307921, 0.05219969, 0.07691014)
+bones/28/position = Vector3(0.0063079074, 0.052199747, 0.07690992)
 bones/28/rotation = Quaternion(0.21576053, -0.09678331, 0.5470876, 0.8029793)
 bones/28/scale = Vector3(1, 1, 1)
 bones/29/name = "Thumb_2.R"
@@ -8383,7 +8511,7 @@ bones/37/name = "R_Object"
 bones/37/parent = 21
 bones/37/rest = Transform3D(0.9998919, -7.543713e-08, -0.014704456, -0.014704456, 5.9604645e-08, -0.9998919, 7.636845e-08, 1, 5.9604645e-08, 3.5133213e-10, 0.16065827, -0.010168244)
 bones/37/enabled = true
-bones/37/position = Vector3(-0.027662156, 0.16224027, -0.049758732)
+bones/37/position = Vector3(1.9194871e-08, 0.16065823, -0.010168209)
 bones/37/rotation = Quaternion(0.7102778, 0.00056161825, -0.021403264, 0.7035958)
 bones/37/scale = Vector3(1, 1, 1)
 
@@ -8453,7 +8581,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.50025934, -1.1184258, -0.6002299)
+transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
 bone_name = "Hand.L"
 bone_idx = 3
 

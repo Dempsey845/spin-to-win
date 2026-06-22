@@ -2,6 +2,7 @@ class_name PlayerRevolverManager
 extends Node
 
 @export var pickup_ray: RayCast3D
+@export var revolver_status_animation_player: AnimationPlayer
 
 var has_revolver: bool = true
 
@@ -24,7 +25,14 @@ func try_pickup_revolver() -> bool:
 
             has_revolver = true
 
+            if revolver_status_animation_player.current_animation == "idle":
+                revolver_status_animation_player.play("fade_out")
+
             return true
 
     return false
 
+func drop():
+    has_revolver = false
+    # TODO: Add a check to see if the round is ended, if so play the animation
+    revolver_status_animation_player.play("fade_in")
