@@ -153,7 +153,7 @@ func heal_enemy(body: Node, hit_position: Vector3):
 		var heal_particle_effect = heal_particle_effect_scene.instantiate()
 		get_tree().current_scene.add_child(heal_particle_effect)
 		heal_particle_effect.global_position = hit_position
-		npc_health.heal(2) # TODO: Replace with damage * 2
+		npc_health.heal(2)
 
 func exit():
 	gun_visual.visible = false
