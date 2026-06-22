@@ -6,6 +6,7 @@ signal shoot_animation_complete
 signal punch_animation_complete
 
 @export var npc: NPC
+@export var health: Health
 @export var air_tracker: NPCAirState  
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if npc == null:
+	if npc == null or health.current_heatlh <= 0:
 		return
 
 	var velocity: Vector3 = npc.velocity
@@ -46,6 +47,16 @@ func _process(_delta: float) -> void:
 	)
 
 	set_time_scale(npc.speed_multiplier)
+
+func play_death_animation():
+	var tween := create_tween()
+
+	tween.tween_property(
+		animation_tree,
+		"parameters/DeathBlend/blend_amount",
+		1.0,
+		0.25
+	)
 
 func play_one_shot(one_shot_name: String):
 	animation_tree.set(

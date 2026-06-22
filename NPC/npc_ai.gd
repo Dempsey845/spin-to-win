@@ -10,6 +10,8 @@ signal jump_started
 
 @export var target_manager: NPCTargetManager
 
+@onready var health: Health = $Health
+
 var speed_multiplier: float = 1.0
 var hit_cooldown_time: float = 0.1
 
@@ -33,6 +35,9 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	if health.current_heatlh <= 0:
+		return
+
 	if has_look_target:
 		face_target_position(delta)
 	else:
@@ -40,6 +45,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float):
 	_try_apply_gravity(delta)
+
+	if health.current_heatlh <= 0:
+		return
 	
 	if move:
 		_move_towards_target_position(delta)
