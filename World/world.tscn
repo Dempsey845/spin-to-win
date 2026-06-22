@@ -72,8 +72,7 @@ environment = SubResource("Environment_8a836")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=421862176 node_paths=PackedStringArray("wave_system") instance=ExtResource("1_62w18")]
-wave_system = NodePath("../WaveSystem")
+[node name="Player" parent="." unique_id=421862176 instance=ExtResource("1_62w18")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1452204116]
 navigation_mesh = SubResource("NavigationMesh_yf0ba")
