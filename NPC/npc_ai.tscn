@@ -43,10 +43,11 @@ script = ExtResource("4_mp836")
 max_health = 3
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
-[node name="NPCHealthManager" type="Node" parent="." unique_id=764379401 node_paths=PackedStringArray("humanoid", "death_state")]
+[node name="NPCHealthManager" type="Node" parent="." unique_id=764379401 node_paths=PackedStringArray("humanoid", "death_state", "hurtbox")]
 script = ExtResource("5_m5m07")
 humanoid = NodePath("../Humanoid")
 death_state = NodePath("../StateMachine/DeathState")
+hurtbox = NodePath("../Hurtbox")
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")

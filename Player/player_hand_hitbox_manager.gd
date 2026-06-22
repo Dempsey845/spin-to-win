@@ -33,8 +33,8 @@ func enable_right_hand_hitbox():
 func disable_right_hand_hitbox():
     right_hand_hitbox.active = false
 
-func _on_hit_hurtbox(_hurtbox: Hurtbox, hitbox: Hitbox):
+func _on_hit_hurtbox(_hurtbox: Hurtbox, _hitbox: Hitbox):
     camera_shake.add_shake(0.15)
-    var blood_effect = blood_effect_scene.instantiate()
-    get_tree().current_scene.add_child(blood_effect)
-    blood_effect.global_position = hitbox.global_position
+    # var blood_effect = blood_effect_scene.instantiate()
+    # get_tree().current_scene.add_child(blood_effect)
+    # blood_effect.global_position = hitbox.global_position
