@@ -3,6 +3,7 @@ extends Node3D
 
 signal hit_animation_complete
 signal shoot_animation_complete
+signal punch_animation_complete
 
 @export var npc: NPC
 @export var air_tracker: NPCAirState  
@@ -43,6 +44,8 @@ func _process(_delta: float) -> void:
 		"parameters/LocomotionStateMachine/Locomotion/blend_position",
 		blend_vector
 	)
+
+	set_time_scale(npc.speed_multiplier)
 
 func play_one_shot(one_shot_name: String):
 	animation_tree.set(
@@ -136,3 +139,9 @@ func emit_hit_animation_complete():
 
 func emit_shoot_animation_complete():
 	shoot_animation_complete.emit()
+
+func emit_punch_complete():
+	punch_animation_complete.emit()
+
+func set_time_scale(time_scale: float):
+	animation_tree.set("parameters/TimeScale/scale", time_scale)

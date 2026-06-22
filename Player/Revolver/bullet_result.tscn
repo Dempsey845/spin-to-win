@@ -190,6 +190,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_v7dg2")
+bullet_type = 3
 bullet_type_texture = Dictionary[int, Texture2D]({
 0: ExtResource("2_8fl4q"),
 1: ExtResource("3_i3uhe"),

@@ -11,6 +11,7 @@ extends State
 @onready var punch_distance_sq: float = punch_distance * punch_distance
 
 var can_punch: bool
+var is_punching: bool
 var punch_animations: Array[String] = ["punch_cross"]
 
 func enter():
@@ -29,11 +30,13 @@ func enter():
 
 	health.damage_taken.connect(_on_health_damage_taken)
 
+	humanoid.punch_animation_complete.connect(_on_punch_animation_complete)
+
 
 func update(_delta: float):
-	if can_punch and punch_cooldown_timer.is_stopped() and target_manager.get_distance_sq_to_target() < punch_distance_sq:
+	if can_punch and punch_cooldown_timer.is_stopped() and !is_punching and target_manager.get_distance_sq_to_target() < punch_distance_sq:
 		humanoid.play_upper_body_animation(punch_animations.pick_random())
-		punch_cooldown_timer.start()
+		is_punching = true
 
 func exit():
 	health.damage_taken.disconnect(_on_health_damage_taken)
@@ -46,3 +49,7 @@ func _on_health_damage_taken(damage_amount: int):\
 		humanoid.play_upper_body_animation("punch_hit")
 		hit_cooldown_timer.wait_time = npc.hit_cooldown_time
 		hit_cooldown_timer.start()
+
+func _on_punch_animation_complete():
+	is_punching = false
+	punch_cooldown_timer.start()

@@ -65,7 +65,7 @@ target_manager = NodePath("../../TargetManager")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="PunchCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1136881496]
-wait_time = 2.5
+wait_time = 0.5
 one_shot = true
 
 [node name="HitCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1503974262]
