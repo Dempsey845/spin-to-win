@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://c31amhr01rhnc" path="res://Player/player_wave_manager.gd" id="14_hshwv"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
+[ext_resource type="PackedScene" uid="uid://br6bvggfh6dqv" path="res://Player/Upgrade/upgrade_control.tscn" id="16_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ygp"]
@@ -8183,6 +8184,8 @@ text = "Pickup a revolver to begin the next round!"
 root_node = NodePath("../RevolverStatus")
 libraries/ = SubResource("AnimationLibrary_8mwp6")
 
+[node name="UpgradeControl" parent="CanvasLayer" unique_id=775844860 instance=ExtResource("16_gpjlu")]
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15
 anchor_right = 1.0
@@ -8556,7 +8559,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.77787966, 0.2883877, 0.55833346, 0.52736247, 0.78275716, 0.3304239, -0.34174925, 0.55147374, -0.76097584, -0.48383868, -0.03561592, 0.9017774)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -8581,7 +8584,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.7778798, -0.28838682, -0.558333, -0.5273613, 0.7827578, 0.33042395, 0.34174973, 0.5514735, -0.7609757, 0.48383898, -0.035615325, 0.90177727)
+transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
 bone_name = "Hand.L"
 bone_idx = 3
 
