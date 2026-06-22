@@ -1,4 +1,7 @@
+class_name UpgradeControl
 extends Control
+
+signal upgrade_claimed(upgrade_type: UpgradeOption.UpgradeType)
 
 @onready var upgrade_option_container: HBoxContainer = $UpgradeOptionContainer
 
@@ -33,11 +36,12 @@ func create_upgrade_option(type: UpgradeOption.UpgradeType, start_position: Stri
     upgrade_option_container.add_child(upgrade_option)
     upgrade_option.init(type, start_position, on_upgrade_claimed)
 
-func on_upgrade_claimed(_upgrade_type: UpgradeOption.UpgradeType):
+func on_upgrade_claimed(upgrade_type: UpgradeOption.UpgradeType):
     for option: UpgradeOption in upgrade_option_container.get_children():
         option.play_out_animation()
     await get_tree().create_timer(2.0).timeout
     animation_player.play("fade_out")
+    upgrade_claimed.emit(upgrade_type)
 
 func unfreeze_and_capture():
     get_tree().paused = false

@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://6clbk8tgs35e" path="res://Assets/UI/KenneyCursorPack/tilemap.png" id="11_pisgm"]
 [ext_resource type="Script" uid="uid://bgw73efkti5rg" path="res://Player/player_ammo.gd" id="12_7emwf"]
 [ext_resource type="Script" uid="uid://c31amhr01rhnc" path="res://Player/player_wave_manager.gd" id="14_hshwv"]
+[ext_resource type="Script" uid="uid://4x8jndbcrvke" path="res://Player/player_upgrade_manager.gd" id="15_8mwp6"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
 [ext_resource type="PackedScene" uid="uid://br6bvggfh6dqv" path="res://Player/Upgrade/upgrade_control.tscn" id="16_gpjlu"]
@@ -8018,12 +8019,17 @@ states/Punch_idle/node = SubResource("AnimationNodeAnimation_apopc")
 states/Punch_idle/position = Vector2(-2, 316)
 states/Start/position = Vector2(-369, 323)
 transitions = ["Pistol_Idle", "Pistol_Fire", SubResource("AnimationNodeStateMachineTransition_p5o4e"), "Pistol_Fire", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_gu6f8"), "Pistol_Idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_dkpta"), "Inspect_Hands", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_lfmf2"), "Punch_idle", "Inspect_Hands", SubResource("AnimationNodeStateMachineTransition_pisgm"), "Inspect_Hands", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_b1ygp"), "Punch_idle", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_o28un"), "Pistol_Idle", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_n471f"), "Punch_idle", "Punch_L", SubResource("AnimationNodeStateMachineTransition_7emwf"), "Punch_L", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_hshwv"), "Punch_idle", "Punch_R", SubResource("AnimationNodeStateMachineTransition_gpjlu"), "Punch_R", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8mwp6"), "Punch_idle", "Grab", SubResource("AnimationNodeStateMachineTransition_qemgg"), "Grab", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_8viyr"), "Start", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_sm0op"), "Punch_idle", "Equip_Pistol", SubResource("AnimationNodeStateMachineTransition_76lrf"), "Equip_Pistol", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_efx54"), "Pistol_Idle", "Equip_Punch", SubResource("AnimationNodeStateMachineTransition_755ss"), "Equip_Punch", "Punch_idle", SubResource("AnimationNodeStateMachineTransition_bbimk"), "Grab", "Pistol_Idle", SubResource("AnimationNodeStateMachineTransition_m0h3t")]
-graph_offset = Vector2(-293, 0)
+graph_offset = Vector2(-341, 104)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8mwp6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76lrf"]
+graph_offset = Vector2(-530.31726, 79.03174)
 nodes/ArmStateMachine/node = SubResource("AnimationNodeStateMachine_sm0op")
 nodes/ArmStateMachine/position = Vector2(-320, 120)
-node_connections = [&"output", 0, &"ArmStateMachine"]
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8mwp6")
+nodes/TimeScale/position = Vector2(35.40001, 186.8)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"ArmStateMachine"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l8h54"]
 
@@ -8066,7 +8072,6 @@ gun_state = NodePath("../GunState")
 revolver_manager = NodePath("../../PlayerRevolverManager")
 
 [node name="StartDelayTimer" type="Timer" parent="PlayerArmStateMachine/PunchState" unique_id=460186332]
-wait_time = 2.0
 one_shot = true
 
 [node name="InspectState" type="Node" parent="PlayerArmStateMachine" unique_id=697157133]
@@ -8109,6 +8114,12 @@ revolver_manager = NodePath("../PlayerRevolverManager")
 main_camera = NodePath("../Head/Camera3D")
 ammo = NodePath("../PlayerAmmo")
 projectile_type_manager = NodePath("../PlayerProjectileTypeManager")
+
+[node name="PlayerUpgradeManager" type="Node" parent="." unique_id=620614383 node_paths=PackedStringArray("ammo", "gun_state", "hand_hitbox_manager")]
+script = ExtResource("15_8mwp6")
+ammo = NodePath("../PlayerAmmo")
+gun_state = NodePath("../PlayerArmStateMachine/GunState")
+hand_hitbox_manager = NodePath("../PlayerHandHitboxManager")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737990560]
 
@@ -8624,6 +8635,7 @@ parameters/ArmStateMachine/conditions/punch_idle = false
 parameters/ArmStateMachine/conditions/punch_l = false
 parameters/ArmStateMachine/conditions/punch_r = false
 parameters/ArmStateMachine/conditions/shoot = false
+parameters/TimeScale/scale = 1.0
 
 [node name="FirePoint" type="Marker3D" parent="Head" unique_id=41366436]
 transform = Transform3D(0.9998482, 0, 0.017452417, 0, 1.0000006, 0, -0.017452413, 0, 0.9998483, 0.39993337, 0.122470975, -1.1327637)

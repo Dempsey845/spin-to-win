@@ -50,3 +50,6 @@ func emit_grab_started():
 
 func emit_grab_ended():
 	grab_ended.emit()
+
+func set_time_scale(time_scale: float):
+	animation_tree.set("parameters/TimeScale/scale", time_scale)

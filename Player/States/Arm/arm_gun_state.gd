@@ -1,3 +1,4 @@
+class_name PlayerGunState
 extends State
 
 @export var ammo: PlayerAmmo
@@ -17,6 +18,18 @@ var speed_particle_effect_scene: PackedScene = preload("uid://bdgpgqqu06iya")
 
 var can_shoot: bool = true
 var can_equip_punch: bool = true
+
+var shoot_animation_duration: float = 0.46
+var target_fire_rate: float = 0.46
+
+var damage: int = 1
+
+func upgrade_fire_rate(percent_decrease: float = 0.90):
+	target_fire_rate = target_fire_rate * percent_decrease
+	target_fire_rate = max(target_fire_rate, 0.1)
+
+func get_fire_rate_time_scale_multiplier():
+	return shoot_animation_duration / target_fire_rate
 
 func enter():
 	gun_visual.visible = true
@@ -65,6 +78,7 @@ func _shoot():
 		ammo.current_ammo = 0
 		return
 
+	animation_manager.set_time_scale(get_fire_rate_time_scale_multiplier())
 	animation_manager.set_arm_state_machine_condition("shoot", true)
 	can_shoot = false
 	ammo.current_ammo -= 1
@@ -92,6 +106,7 @@ func _shoot():
 
 func _spawn_projectile(spread_angle: float):
 	var projectile: Projectile = projectile_type_manager.get_current_projectile_scene().instantiate()
+	projectile.damage = damage
 
 	get_tree().current_scene.add_child(projectile)
 
@@ -150,3 +165,4 @@ func _on_shoot_animation_started():
 
 func _on_shoot_animation_ended():
 	can_shoot = true
+	animation_manager.set_time_scale(1.0)

@@ -1,3 +1,4 @@
+class_name PlayerPunchState
 extends State
 
 @export var animation_manager: PlayerAnimationManager
@@ -9,6 +10,16 @@ extends State
 var can_punch: bool = true
 var punch_with_left_hand: bool
 var can_equip_pistol: bool = true
+
+var punch_animation_duration: float = 1.25
+var target_punch_rate: float = 1.25
+
+func upgrade_punch_rate(percent_decrease: float = 0.90):
+	target_punch_rate = target_punch_rate * percent_decrease
+	target_punch_rate = max(target_punch_rate, 0.4)
+
+func get_punch_rate_time_scale_multiplier():
+	return punch_animation_duration / target_punch_rate
 
 func enter():
 	can_equip_pistol = true
@@ -57,6 +68,7 @@ func update(_delta: float):
 		animation_manager.set_arm_state_machine_condition("grab", true)
 
 func _punch():
+	animation_manager.set_time_scale(get_punch_rate_time_scale_multiplier())
 	if punch_with_left_hand:
 			animation_manager.set_arm_state_machine_condition("punch_l", true)
 	else:
@@ -90,3 +102,4 @@ func _on_punch_animation_started():
 
 func _on_punch_animation_ended():
 	can_punch = true
+	animation_manager.set_time_scale(0.0)
