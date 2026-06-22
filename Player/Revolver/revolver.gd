@@ -6,7 +6,10 @@ extends RigidBody3D
 
 @onready var world_area: Area3D = $WorldArea
 
+var ammo: int = 6
+
 func _ready() -> void:
+	ammo = PlayerAmmo.instance.max_ammo
 	world_area.body_entered.connect(_on_body_entered)
 
 func init_force() -> void:

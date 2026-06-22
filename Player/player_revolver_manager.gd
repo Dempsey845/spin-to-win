@@ -3,6 +3,7 @@ extends Node
 
 signal revolver_picked_up
 
+@export var ammo: PlayerAmmo
 @export var pickup_ray: RayCast3D
 @export var revolver_status_animation_player: AnimationPlayer
 
@@ -32,6 +33,8 @@ func try_pickup_revolver() -> bool:
 			revolver.queue_free()
 
 			has_revolver = true
+
+			ammo.current_ammo = revolver.ammo
 
 			if revolver_status_animation_player.current_animation == "idle":
 				revolver_status_animation_player.play("fade_out")

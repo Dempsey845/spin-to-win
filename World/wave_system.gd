@@ -36,7 +36,7 @@ var end_enemy_health: int = 15
 func _ready() -> void:
 	instance = self
 
-	start_next_wave()
+	# start_next_wave()
 
 func _process(delta: float) -> void:
 	if !started:

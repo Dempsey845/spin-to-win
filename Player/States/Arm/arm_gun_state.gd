@@ -58,10 +58,15 @@ func _throw_revolver():
 	gun_visual.visible = false
 
 	var revolver = revolver_scene.instantiate()
+
 	get_tree().current_scene.add_child(revolver)
 
 	revolver.global_position = revolver_spawn_point.global_position
 	revolver.global_rotation = revolver_spawn_point.global_rotation
+
+	revolver.ammo = ammo.current_ammo
+	ammo.current_ammo = 0
+	
 	revolver.init_force()
 	
 	revolver_manager.drop()

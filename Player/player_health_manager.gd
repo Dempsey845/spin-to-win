@@ -13,7 +13,7 @@ func _ready() -> void:
 	health.max_health_changed.connect(_on_max_health_changed)
 
 func _on_health_damage_taken(_damage_amount: int):
-	# Show a screen hit effect
+	# TODO: Show a screen hit effect
 	print("Player: Damage taken!")
 
 
