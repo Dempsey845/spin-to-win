@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_upgrade_claimed(upgrade_type: UpgradeOption.UpgradeType):
 	match upgrade_type:
 		UpgradeOption.UpgradeType.DeepPockets:
-			ammo.max_ammo += 1
+			ammo.max_ammo += 6
 		UpgradeOption.UpgradeType.FastDraw:
 			gun_state.upgrade_fire_rate()
 		UpgradeOption.UpgradeType.Grit:

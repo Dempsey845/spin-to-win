@@ -5,14 +5,18 @@ extends CharacterBody3D
 @export var sprint_speed: float = 8.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.002
+@export var ammo: PlayerAmmo
 
 var gravity: float = 9.8
 
 @onready var head: Node3D = $Head
-@onready var camera: Camera3D = $Head/Camera3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	WaveSystem.instance.wave_started.connect(func():
+		ammo.current_ammo = ammo.max_ammo
+	)
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

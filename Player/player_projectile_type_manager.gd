@@ -34,3 +34,6 @@ var current_projectile_type: ProjectileType:
 
 func get_current_projectile_scene() -> PackedScene:
 	return regular_projectile_scene
+
+func _ready() -> void:
+	current_projectile_type = ProjectileType.Empty

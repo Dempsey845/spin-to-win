@@ -8043,10 +8043,11 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"ArmStateMachi
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hvfyp"]
 radius = 0.4
 
-[node name="Player" type="CharacterBody3D" unique_id=421862176 groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=421862176 node_paths=PackedStringArray("ammo") groups=["player"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_l8h54")
+ammo = NodePath("PlayerAmmo")
 
 [node name="PlayerAnimationManager" type="Node" parent="." unique_id=24273270]
 script = ExtResource("2_fhl08")
@@ -8061,7 +8062,7 @@ revolver_status_animation_player = NodePath("../CanvasLayer/Status/AnimationPlay
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("ammo", "animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("ammo", "animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager", "camera_shake")]
 script = ExtResource("4_x3vf3")
 ammo = NodePath("../../PlayerAmmo")
 animation_manager = NodePath("../../PlayerAnimationManager")
@@ -8072,6 +8073,7 @@ revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAtt
 revolver_manager = NodePath("../../PlayerRevolverManager")
 projectile_fire_point = NodePath("../../Head/FirePoint")
 projectile_type_manager = NodePath("../../PlayerProjectileTypeManager")
+camera_shake = NodePath("../../CameraShake")
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
 script = ExtResource("6_p5o4e")
@@ -8088,10 +8090,11 @@ script = ExtResource("5_apopc")
 [node name="GrabState" type="Node" parent="PlayerArmStateMachine" unique_id=1657521121]
 script = ExtResource("5_apopc")
 
-[node name="PlayerHandHitboxManager" type="Node" parent="." unique_id=58455353 node_paths=PackedStringArray("left_hand_hitbox", "right_hand_hitbox")]
+[node name="PlayerHandHitboxManager" type="Node" parent="." unique_id=58455353 node_paths=PackedStringArray("left_hand_hitbox", "right_hand_hitbox", "camera_shake")]
 script = ExtResource("7_5htga")
 left_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/LeftHandBoneAttachment/LeftHandHitbox")
 right_hand_hitbox = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/RightHandHitbox")
+camera_shake = NodePath("../CameraShake")
 
 [node name="PlayerCursorManager" type="Node" parent="." unique_id=2087894412 node_paths=PackedStringArray("crosshair_cursor", "grab_cursor", "revolver_manager")]
 script = ExtResource("9_b1ygp")

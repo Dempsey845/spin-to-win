@@ -11,16 +11,23 @@ var roulette_stage_scene: PackedScene = preload("uid://bokhiklspil1b")
 func _ready() -> void:
 	WaveSystem.instance.wave_started.connect(_on_wave_started)
 	WaveSystem.instance.wave_ended.connect(_on_wave_ended)
-
+ 
 func _on_wave_started():
 	if revolver_manager.revolver_picked_up.is_connected(_on_revolver_picked_up):
 		revolver_manager.revolver_picked_up.disconnect(_on_revolver_picked_up)
 
 func _on_wave_ended():
+	if revolver_manager.has_revolver:
+		start_roulette()
+		return
+
 	if !revolver_manager.revolver_picked_up.is_connected(_on_revolver_picked_up):
 		revolver_manager.revolver_picked_up.connect(_on_revolver_picked_up)
 
 func _on_revolver_picked_up():
+	start_roulette()
+
+func start_roulette():
 	if canvas_layer.has_node("RouletteStage"):
 		return
 

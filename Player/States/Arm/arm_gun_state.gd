@@ -10,6 +10,7 @@ extends State
 @export var revolver_manager: PlayerRevolverManager
 @export var projectile_fire_point: Marker3D
 @export var projectile_type_manager: ProjectileTypeManager
+@export var camera_shake: CameraShake
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
@@ -82,6 +83,8 @@ func _shoot():
 		ammo.current_ammo = 0
 		return
 
+	camera_shake.add_shake(0.2)
+
 	animation_manager.set_time_scale(get_fire_rate_time_scale_multiplier())
 	animation_manager.travel_state("Shoot")
 	can_shoot = false
@@ -130,6 +133,7 @@ func _spawn_projectile(spread_angle: float):
 
 func explode_projectile(_body: Node, hit_position: Vector3):
 	var explosion = explosion_scene.instantiate()
+	camera_shake.add_shake(1.0)
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = hit_position
 

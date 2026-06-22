@@ -10,13 +10,13 @@ extends State
 var punch_with_left_hand: bool
 
 var punch_animation_duration: float = 1.25
-var target_punch_rate: float = 1.25
+var target_punch_rate: float = 0.85
 
 var is_grabbing: bool
 
-func upgrade_punch_rate(percent_decrease: float = 0.90):
+func upgrade_punch_rate(percent_decrease: float = 0.925):
 	target_punch_rate = target_punch_rate * percent_decrease
-	target_punch_rate = max(target_punch_rate, 0.4)
+	target_punch_rate = max(target_punch_rate, 0.35)
 
 func get_punch_rate_time_scale_multiplier():
 	return punch_animation_duration / target_punch_rate

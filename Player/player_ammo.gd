@@ -5,9 +5,9 @@ static var instance: PlayerAmmo
 
 @export var ammo_label: Label
 
-var max_ammo: int = 16
+var max_ammo: int = 18
 
-var _current_ammo: int = 16
+var _current_ammo: int = 18
 var current_ammo: int:
     get():
         return _current_ammo
