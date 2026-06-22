@@ -36,6 +36,34 @@ load_path = "res://.godot/imported/tilemap.png-5adebf4da586637ebbf530563e63ba81.
 atlas = SubResource("CompressedTexture2D_pisgm")
 region = Rect2(255, 102, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mwp6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qemgg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.81960785, 0.11372549, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8viyr"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm0op"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.9566652, 0.82995933, 0.29392406, 1)
+
 [sub_resource type="Animation" id="Animation_hshwv"]
 length = 0.001
 tracks/0/type = "value"
@@ -8069,8 +8097,10 @@ crosshair_cursor = NodePath("../CanvasLayer/Crosshair")
 grab_cursor = NodePath("../CanvasLayer/Grab")
 revolver_manager = NodePath("../PlayerRevolverManager")
 
-[node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107]
+[node name="PlayerHealthManager" type="Node" parent="." unique_id=923113107 node_paths=PackedStringArray("health_bar", "delayed_health_bar")]
 script = ExtResource("9_lfmf2")
+health_bar = NodePath("../CanvasLayer/HealthBar")
+delayed_health_bar = NodePath("../CanvasLayer/HealthBar/DelayedHealthBar")
 
 [node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369 node_paths=PackedStringArray("colt_python", "ammo")]
 script = ExtResource("11_o28un")
@@ -8143,6 +8173,41 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "6/6"
 horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1248570490]
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 167.95651
+offset_bottom = 22.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8mwp6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qemgg")
+max_value = 5.0
+value = 2.0
+show_percentage = false
+
+[node name="DelayedHealthBar" type="ProgressBar" parent="CanvasLayer/HealthBar" unique_id=1344377440]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_8viyr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sm0op")
+max_value = 5.0
+value = 2.76
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HealthBar" unique_id=204574619]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38549235, 0.38549256, 0.38549247, 0.28235295)
 
 [node name="Status" type="Control" parent="CanvasLayer" unique_id=881822300]
 layout_mode = 3
@@ -8377,7 +8442,7 @@ bones/19/name = "Upper_Arm.R"
 bones/19/parent = 0
 bones/19/rest = Transform3D(2.3841858e-07, -0.9984603, -0.055470116, 1, 2.3841858e-07, 1.4901161e-08, -1.8626451e-09, -0.055470116, 0.99846035, -0.5, 0, 0)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.44640085, 0.255562, -0.358092)
+bones/19/position = Vector3(-0.44640085, 0.2719213, -0.3509348)
 bones/19/rotation = Quaternion(0.04452179, -0.035240054, 0.9980424, 0.026217166)
 bones/19/scale = Vector3(1.0000001, 0.9999999, 0.99999994)
 bones/20/name = "Lower_Arm.R"
@@ -8548,7 +8613,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1368248, -0.32234928)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.43584228, -1.1204655, -0.31519207)
 bone_name = "Hand.R"
 bone_idx = 21
 

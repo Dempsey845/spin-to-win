@@ -1,12 +1,19 @@
 class_name Health
 extends Node
 
+signal max_health_changed(new_max_health: int)
 signal health_changed(new_health: int, change_amount: int)
 signal damage_taken(damage_amount: int)
 signal healed(heal_amount: int)
 signal death
 
-@export var max_health: int = 5
+var _max_health: int = 5
+@export var max_health: int:
+	get():
+		return _max_health
+	set(value):
+		_max_health = value
+		max_health_changed.emit(value)
 
 var _current_health: int
 var current_heatlh: int:

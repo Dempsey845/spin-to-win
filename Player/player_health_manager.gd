@@ -1,9 +1,41 @@
 extends Node
 
+@export var health_bar: ProgressBar
+@export var delayed_health_bar: ProgressBar
+
 @onready var health: Health = $"../Health"
+
+var delayed_tween: Tween
 
 func _ready() -> void:
 	health.damage_taken.connect(_on_health_damage_taken)
+	health.health_changed.connect(_on_health_changed)
+	health.max_health_changed.connect(_on_max_health_changed)
 
 func _on_health_damage_taken(_damage_amount: int):
+	# Show a screen hit effect
 	print("Player: Damage taken!")
+
+
+func _on_health_changed(new_health: int, _change_amount: int):
+	health_bar.value = new_health
+	if delayed_tween:
+		delayed_tween.kill()
+
+	var current_delayed = delayed_health_bar.value
+
+	if new_health < current_delayed:
+		delayed_tween = create_tween()
+		delayed_tween.tween_interval(0.4)
+		delayed_tween.tween_property(delayed_health_bar, "value", new_health, 0.6)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_OUT)
+	else:
+		delayed_tween = create_tween()
+		delayed_tween.tween_property(delayed_health_bar, "value", new_health, 0.25)\
+			.set_trans(Tween.TRANS_SINE)\
+			.set_ease(Tween.EASE_OUT)
+
+func _on_max_health_changed(new_max_health: int):
+	health_bar.max_value = new_max_health
+	delayed_health_bar.max_value = new_max_health
