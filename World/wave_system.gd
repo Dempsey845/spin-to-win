@@ -12,7 +12,7 @@ signal wave_ended
 
 var enemy_scene: PackedScene = preload("uid://dqdin3vaff0vi")
 
-var current_wave: int = 50
+var current_wave: int = 0
 var wave_time: float
 var wave_duration: float = 30.0
 var enemies_spawned: int

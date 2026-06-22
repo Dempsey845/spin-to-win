@@ -36,7 +36,7 @@ func enter():
 
 	can_equip_punch = true
 
-	animation_manager.set_arm_state_machine_condition("pistol_idle", true)
+	animation_manager.travel_state("Pistol_Idle")
 
 	animation_manager.shoot_animation_started.connect(_on_shoot_animation_started)
 	animation_manager.shoot_animation_ended.connect(_on_shoot_animation_ended)
@@ -70,8 +70,7 @@ func _throw_revolver():
 
 func _equip_punch():
 	can_equip_punch = false
-	animation_manager.set_arm_state_machine_condition("equip_punch", true)
-	animation_manager.set_arm_state_machine_condition("pistol_idle", false)
+	animation_manager.travel_state("Equip_Punch")
 
 func _shoot():
 	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Empty:
@@ -79,7 +78,7 @@ func _shoot():
 		return
 
 	animation_manager.set_time_scale(get_fire_rate_time_scale_multiplier())
-	animation_manager.set_arm_state_machine_condition("shoot", true)
+	animation_manager.travel_state("Shoot")
 	can_shoot = false
 	ammo.current_ammo -= 1
 
@@ -154,14 +153,11 @@ func heal_enemy(body: Node, hit_position: Vector3):
 func exit():
 	gun_visual.visible = false
 
-	animation_manager.set_arm_state_machine_condition("equip_punch", false)
-	animation_manager.set_arm_state_machine_condition("pistol_idle", false)
-
 	animation_manager.shoot_animation_started.disconnect(_on_shoot_animation_started)
 	animation_manager.shoot_animation_ended.disconnect(_on_shoot_animation_ended)
 
 func _on_shoot_animation_started():
-	animation_manager.set_arm_state_machine_condition("shoot", false)
+	pass
 
 func _on_shoot_animation_ended():
 	can_shoot = true

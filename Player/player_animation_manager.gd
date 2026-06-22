@@ -18,8 +18,10 @@ signal grab_ended
 
 @onready var animation_tree: AnimationTree = $'../Head/AnimationTree'
 
-func set_arm_state_machine_condition(condition_name: String, value: Variant):
-	animation_tree.set("parameters/ArmStateMachine/conditions/%s" % condition_name, value)
+func travel_state(state_name: String):
+	animation_tree.get(
+		"parameters/ArmStateMachine/playback"
+	).travel(state_name)
 
 func emit_shoot_animation_started():
 	shoot_animation_started.emit()
