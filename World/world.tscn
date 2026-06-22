@@ -43,10 +43,22 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 [node name="GameManager" type="Node" parent="." unique_id=1168442622]
 script = ExtResource("1_xw5lg")
 
-[node name="WaveSystem" type="Node" parent="." unique_id=661734023 node_paths=PackedStringArray("enemy_spawn_locations", "enemy_container")]
+[node name="WaveSystem" type="Node" parent="." unique_id=661734023 node_paths=PackedStringArray("enemy_spawn_locations", "enemy_container", "wave_time_label")]
 script = ExtResource("2_0lysu")
 enemy_spawn_locations = [NodePath("../EnemySpawnPoints/Marker3D")]
 enemy_container = NodePath("../Enemies")
+wave_time_label = NodePath("CanvasLayer/WaveTimeLabel")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="WaveSystem" unique_id=1707061559]
+
+[node name="WaveTimeLabel" type="Label" parent="WaveSystem/CanvasLayer" unique_id=1445207932]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 21
+text = "00:00"
+horizontal_alignment = 1
 
 [node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=1018224253]
 

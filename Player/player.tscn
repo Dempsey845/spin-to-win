@@ -8143,14 +8143,11 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_o28un")
 
 [node name="AmmoLabel" type="Label" parent="CanvasLayer" unique_id=1863419193]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
+offset_top = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
@@ -8559,7 +8556,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
+transform = Transform3D(-0.77787966, 0.2883877, 0.55833346, 0.52736247, 0.78275716, 0.3304239, -0.34174925, 0.55147374, -0.76097584, -0.48383868, -0.03561592, 0.9017774)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -8584,7 +8581,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
+transform = Transform3D(-0.7778798, -0.28838682, -0.558333, -0.5273613, 0.7827578, 0.33042395, 0.34174973, 0.5514735, -0.7609757, 0.48383898, -0.035615325, 0.90177727)
 bone_name = "Hand.L"
 bone_idx = 3
 
