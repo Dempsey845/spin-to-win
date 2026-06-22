@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtj05lyfo16or" path="res://Player/Revolver/roulette_stage.gd" id="1_kdkw5"]
 [ext_resource type="Script" uid="uid://bdafppu6v1ruc" path="res://Player/gun_camera.gd" id="1_r1b0k"]
-[ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/KenneyCursorPack/RouletteTimeLogo.png" id="3_cx5f0"]
+[ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/RouletteTimeLogo.png" id="3_cx5f0"]
 
 [sub_resource type="Animation" id="Animation_r1b0k"]
 length = 0.001

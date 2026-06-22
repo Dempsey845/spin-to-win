@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmn7wpqyajnvo"
-path="res://.godot/imported/RouletteTimeLogo.png-08781d01470bf668b791a8b559b967d5.ctex"
+path="res://.godot/imported/RouletteTimeLogo.png-796627b956173cb0389a481a638a2499.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/KenneyCursorPack/RouletteTimeLogo.png"
-dest_files=["res://.godot/imported/RouletteTimeLogo.png-08781d01470bf668b791a8b559b967d5.ctex"]
+source_file="res://Assets/UI/RouletteTimeLogo.png"
+dest_files=["res://.godot/imported/RouletteTimeLogo.png-796627b956173cb0389a481a638a2499.ctex"]
 
 [params]
 

@@ -16,7 +16,7 @@ var current_wave: int
 var wave_time: float
 var wave_duration: float = 30.0
 var enemies_spawned: int
-var total_enemies: int = 5
+var total_enemies: int = 2
 var spawn_time: float
 var spawn_rate: float = 5.0
 var started: bool
@@ -38,16 +38,16 @@ func _process(delta: float) -> void:
 
 	wave_time_label.text = "%02d:%02d" % [minutes, seconds]
 
-	if enemies_spawned < total_enemies:
+	if get_enemy_count() == 0 and wave_time <= 0.0:
+		started = false
+		wave_ended.emit()
+	elif enemies_spawned < total_enemies:
 		spawn_time += delta
 
-	if spawn_time >= spawn_rate:
-		spawn_time = 0.0
-		_spawn_enemy()
-	else:
-		if get_enemy_count() == 0 and wave_time <= 0.0:
-			started = false
-			wave_ended.emit()
+		if spawn_time >= spawn_rate:
+			spawn_time = 0.0
+			_spawn_enemy()
+
 
 func _spawn_enemy():
 	var spawn_location: Vector3 = enemy_spawn_locations.pick_random().global_position
