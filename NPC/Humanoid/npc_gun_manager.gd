@@ -17,3 +17,5 @@ func shoot_projectile():
 
     projectile.global_position = fire_point.global_position
     projectile.global_rotation = fire_point.global_rotation
+
+    get_parent().play_muzzle_flash()

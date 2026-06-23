@@ -11,6 +11,8 @@ extends State
 @export var projectile_fire_point: Marker3D
 @export var projectile_type_manager: ProjectileTypeManager
 @export var camera_shake: CameraShake
+@export var muzzle_flash: VFXController
+@export var big_flash: VFXController
 
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
@@ -89,6 +91,13 @@ func _shoot():
 	animation_manager.travel_state("Shoot")
 	can_shoot = false
 	ammo.current_ammo -= 1
+
+	if projectile_type_manager.current_projectile_type == ProjectileTypeManager.ProjectileType.Explosive:
+		big_flash.visible = true
+		big_flash.play()
+	else:
+		muzzle_flash.visible = true
+		muzzle_flash.play()
 
 	# shoot_ray.force_raycast_update()
 

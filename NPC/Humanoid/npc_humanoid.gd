@@ -8,6 +8,7 @@ signal punch_animation_complete
 @export var npc: NPC
 @export var health: Health
 @export var air_tracker: NPCAirState  
+@export var muzzle_flash: VFXController
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
@@ -156,3 +157,7 @@ func emit_punch_complete():
 
 func set_time_scale(time_scale: float):
 	animation_tree.set("parameters/TimeScale/scale", time_scale)
+
+func play_muzzle_flash():
+	muzzle_flash.visible = true
+	muzzle_flash.play()

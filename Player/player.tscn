@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://br6bvggfh6dqv" path="res://Player/Upgrade/upgrade_control.tscn" id="16_gpjlu"]
 [ext_resource type="Script" uid="uid://bsxj7h6ar5fmq" path="res://Player/camera_shake.gd" id="16_qemgg"]
 [ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
+[ext_resource type="PackedScene" uid="uid://cu2ipnvx6wrv2" path="res://Assets/BinbunVFX/muzzle_flash/effects/muzzle_flash/muzzle_flash_02.tscn" id="26_8viyr"]
+[ext_resource type="PackedScene" uid="uid://bd8noouuq2lnm" path="res://Assets/BinbunVFX/muzzle_flash/effects/big_flash/big_flash_02.tscn" id="27_sm0op"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ygp"]
 atlas = ExtResource("11_pisgm")
@@ -8062,7 +8064,7 @@ revolver_status_animation_player = NodePath("../CanvasLayer/Status/AnimationPlay
 script = ExtResource("3_00tjw")
 initial_state = NodePath("GunState")
 
-[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("ammo", "animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager", "camera_shake")]
+[node name="GunState" type="Node" parent="PlayerArmStateMachine" unique_id=1724792303 node_paths=PackedStringArray("ammo", "animation_manager", "shoot_ray", "punch_state", "gun_visual", "revolver_spawn_point", "revolver_manager", "projectile_fire_point", "projectile_type_manager", "camera_shake", "muzzle_flash", "big_flash")]
 script = ExtResource("4_x3vf3")
 ammo = NodePath("../../PlayerAmmo")
 animation_manager = NodePath("../../PlayerAnimationManager")
@@ -8074,6 +8076,8 @@ revolver_manager = NodePath("../../PlayerRevolverManager")
 projectile_fire_point = NodePath("../../Head/FirePoint")
 projectile_type_manager = NodePath("../../PlayerProjectileTypeManager")
 camera_shake = NodePath("../../CameraShake")
+muzzle_flash = NodePath("../../Head/FirePoint/MuzzleFlash")
+big_flash = NodePath("../../Head/FirePoint/BigFlash")
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
 script = ExtResource("6_p5o4e")
@@ -8688,6 +8692,20 @@ transform = Transform3D(0.9998482, 0, 0.017452417, 0, 1.0000006, 0, -0.017452413
 
 [node name="BulletProjectile" parent="Head/FirePoint" unique_id=82245577 instance=ExtResource("20_n471f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
+
+[node name="MuzzleFlash" parent="Head/FirePoint" unique_id=1064413315 instance=ExtResource("26_8viyr")]
+transform = Transform3D(-4.284084e-08, 0, 1, 0, 1, 0, -1, 0, -4.284084e-08, 0, 0, 0)
+visible = false
+preview = false
+one_shot = true
+autoplay = false
+
+[node name="BigFlash" parent="Head/FirePoint" unique_id=1662468567 instance=ExtResource("27_sm0op")]
+transform = Transform3D(-4.284084e-08, 0, 1, 0, 1, 0, -1, 0, -4.284084e-08, 0, 0, 0)
+visible = false
+preview = false
+one_shot = true
+autoplay = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=291670431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
