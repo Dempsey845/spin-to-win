@@ -24,6 +24,8 @@
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
 [ext_resource type="PackedScene" uid="uid://br6bvggfh6dqv" path="res://Player/Upgrade/upgrade_control.tscn" id="16_gpjlu"]
 [ext_resource type="Script" uid="uid://bsxj7h6ar5fmq" path="res://Player/camera_shake.gd" id="16_qemgg"]
+[ext_resource type="Shader" uid="uid://cmdfuib3bkrp4" path="res://Player/Shaders/hit.gdshader" id="19_76lrf"]
+[ext_resource type="Script" uid="uid://bo7tdvf14i3tv" path="res://Player/hit_vignette.gd" id="20_efx54"]
 [ext_resource type="PackedScene" uid="uid://smag44qmesee" path="res://Player/player_bullet_projectile.tscn" id="20_n471f"]
 [ext_resource type="PackedScene" uid="uid://cu2ipnvx6wrv2" path="res://Assets/BinbunVFX/muzzle_flash/effects/muzzle_flash/muzzle_flash_02.tscn" id="26_8viyr"]
 [ext_resource type="PackedScene" uid="uid://bd8noouuq2lnm" path="res://Assets/BinbunVFX/muzzle_flash/effects/big_flash/big_flash_02.tscn" id="27_sm0op"]
@@ -163,6 +165,13 @@ _data = {
 &"fade_out": SubResource("Animation_qemgg"),
 &"idle": SubResource("Animation_gpjlu")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efx54"]
+shader = ExtResource("19_76lrf")
+shader_parameter/strength = 0.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.0
+shader_parameter/blood_color = Color(0.5, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pisgm"]
 
@@ -8252,6 +8261,17 @@ root_node = NodePath("../RevolverStatus")
 libraries/ = SubResource("AnimationLibrary_8mwp6")
 
 [node name="UpgradeControl" parent="CanvasLayer" unique_id=775844860 instance=ExtResource("16_gpjlu")]
+
+[node name="HitVignette" type="ColorRect" parent="CanvasLayer" unique_id=225078875 node_paths=PackedStringArray("health")]
+material = SubResource("ShaderMaterial_efx54")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("20_efx54")
+health = NodePath("../../Health")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15
