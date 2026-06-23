@@ -6,6 +6,8 @@ extends State
 @export var revolver_manager: PlayerRevolverManager
 
 @onready var start_delay_timer: Timer = $StartDelayTimer
+@onready var punch_stream_player: AudioStreamPlayer = $PunchStreamPlayer
+@onready var pickup_stream_player: AudioStreamPlayer = $PickupStreamPlayer
 
 var punch_with_left_hand: bool
 
@@ -13,6 +15,7 @@ var punch_animation_duration: float = 1.25
 var target_punch_rate: float = 0.85
 
 var is_grabbing: bool
+var is_punching: bool
 
 func upgrade_punch_rate(percent_decrease: float = 0.925):
 	target_punch_rate = target_punch_rate * percent_decrease
@@ -41,6 +44,7 @@ func enter():
 		is_grabbing = true
 		if revolver_manager.try_pickup_revolver():
 			gun_state.gun_visual.visible = true
+			pickup_stream_player.play()
 			animation_manager.travel_state("Pistol_Idle")
 		else:
 			animation_manager.travel_state("Punch_Idle")
@@ -64,6 +68,9 @@ func update(_delta: float):
 		animation_manager.travel_state("Grab")
 
 func _punch():
+	if is_punching:
+		return
+		
 	animation_manager.set_time_scale(get_punch_rate_time_scale_multiplier())
 	if punch_with_left_hand:
 		animation_manager.travel_state("Punch_L")
@@ -84,7 +91,10 @@ func exit():
 	animation_manager.punch_animation_ended.disconnect(_on_punch_animation_ended)
 
 func _on_punch_animation_started():
-	punch_with_left_hand = !punch_with_left_hand		
+	is_punching = true
+	punch_with_left_hand = !punch_with_left_hand
+	punch_stream_player.play()		
 
 func _on_punch_animation_ended():
 	animation_manager.set_time_scale(1.0)
+	is_punching = false

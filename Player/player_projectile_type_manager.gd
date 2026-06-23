@@ -36,4 +36,4 @@ func get_current_projectile_scene() -> PackedScene:
 	return regular_projectile_scene
 
 func _ready() -> void:
-	current_projectile_type = ProjectileType.Explosive
+	current_projectile_type = ProjectileType.Regular

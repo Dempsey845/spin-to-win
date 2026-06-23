@@ -12,6 +12,9 @@ signal jump_started
 
 @onready var health: Health = $Health
 
+@onready var normal_col_shape: CollisionShape3D = $NormalColShape
+@onready var death_col_shape: CollisionShape3D = $DeathColShape
+
 var speed_multiplier: float = 1.0
 var hit_cooldown_time: float = 0.1
 
@@ -33,6 +36,9 @@ var has_look_target := false
 
 func _ready() -> void:
 	health.death.connect(func():
+		death_col_shape.disabled = false
+		normal_col_shape.disabled = true
+		
 		reparent(get_tree().current_scene)
 		await get_tree().create_timer(5.0).timeout
 		queue_free()

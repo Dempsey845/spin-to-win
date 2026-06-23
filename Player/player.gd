@@ -12,6 +12,8 @@ var gravity: float = 9.8
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Pivot/Camera3D
 @onready var arms: Node3D = $Head/Arms_001
+@onready var step_stream_player: AudioStreamPlayer = $StepStreamPlayer
+@onready var jump_stream_player: AudioStreamPlayer = $JumpStreamPlayer
 
 # Camera sway/bob
 @export var bob_frequency := 5.0
@@ -64,6 +66,7 @@ func _physics_process(delta: float):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		jump_stream_player.play()
 
 	_handle_movement()
 
@@ -147,3 +150,6 @@ func _handle_movement():
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+
+	if !step_stream_player.playing and velocity.length() > 0.1:
+		step_stream_player.play()

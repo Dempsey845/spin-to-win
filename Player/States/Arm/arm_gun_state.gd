@@ -14,6 +14,9 @@ extends State
 @export var muzzle_flash: VFXController
 @export var big_flash: VFXController
 
+@onready var weapon_stream_player: AudioStreamPlayer = $WeaponStreamPlayer
+@onready var throw_stream_player: AudioStreamPlayer = $ThrowStreamPlayer
+
 var revolver_scene: PackedScene = preload("uid://mettisjl70wh")
 var explosion_scene: PackedScene = preload("uid://swu7vpjkvba7")
 var heal_particle_effect_scene: PackedScene = preload("uid://b1afg8t2ww1tg")
@@ -74,6 +77,8 @@ func _throw_revolver():
 	
 	revolver_manager.drop()
 
+	throw_stream_player.play()
+
 	_equip_punch()
 
 func _equip_punch():
@@ -98,6 +103,8 @@ func _shoot():
 	else:
 		muzzle_flash.visible = true
 		muzzle_flash.play()
+
+	weapon_stream_player.play()
 
 	# shoot_ray.force_raycast_update()
 

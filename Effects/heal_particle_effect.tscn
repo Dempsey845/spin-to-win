@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1afg8t2ww1tg"]
 
 [ext_resource type="Texture2D" uid="uid://cnixmifbynrk8" path="res://Effects/heal.png" id="1_72b22"]
+[ext_resource type="AudioStream" uid="uid://cb80exe73ki7o" path="res://Assets/Audio/SoundEffects/heal.mp3" id="2_8ojcg"]
 
 [sub_resource type="Curve" id="Curve_ru0io"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7166667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -45,7 +46,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8ojcg"]
 resource_name = "start"
-length = 1.2
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,7 +66,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.2),
+"times": PackedFloat32Array(3.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -79,6 +80,11 @@ _data = {
 &"start": SubResource("Animation_8ojcg")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ewgxy"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("2_8ojcg")
+
 [node name="HealParticleEffect" type="GPUParticles3D" unique_id=407434951]
 emitting = false
 amount = 1
@@ -90,3 +96,9 @@ draw_pass_1 = SubResource("QuadMesh_ff3lc")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1533518632]
 libraries/ = SubResource("AnimationLibrary_ewgxy")
 autoplay = &"start"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=69079389]
+stream = SubResource("AudioStreamRandomizer_ewgxy")
+volume_db = -5.0
+autoplay = true
+bus = &"sfx"

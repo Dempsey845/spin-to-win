@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btttrh8dr6gl3" path="res://Assets/RevolverPack/Colt Python/Textures/ColtPython.Png" id="1_hcjsf"]
 [ext_resource type="Script" uid="uid://es7mc44gxx24" path="res://Player/Revolver/roulette.gd" id="1_ihbnn"]
 [ext_resource type="Texture2D" uid="uid://dkpw1g4cf1dq7" path="res://Assets/RevolverPack/Colt Python/Textures/cylinderRefV2.jpg" id="2_ihbnn"]
+[ext_resource type="AudioStream" uid="uid://bfsoka7ub8qmw" path="res://Assets/Audio/SoundEffects/revolver_spin.wav" id="4_8rq4a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfngn"]
 resource_name = "Material.031"
@@ -175,7 +176,7 @@ tracks/0/path = NodePath("Cylinder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 1.5, 2.5, 3, 4),
+"times": PackedFloat32Array(1, 1.5, 3.0333333, 3.5333333, 4.5333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.029224701, 0.27179137, 0.0058232993), Vector3(0.029224701, 0.2717914, -0.092467204), Vector3(0.029224701, 0.2717914, -0.092467204), Vector3(0.029224701, 0.2717914, -0.092467204), Vector3(0.029224701, 0.27179137, 0.0058232993)]
@@ -187,7 +188,7 @@ tracks/1/path = NodePath("Cylinder:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 1.5, 2.5, 3),
+"times": PackedFloat32Array(1, 1.5, 3.0333333, 3.5333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1.6292068e-07, 0, 0), Vector3(1.6292068e-07, 0, 0), Vector3(6.2831855, 0, 0), Vector3(6.2831855, 0, 0)]
@@ -230,6 +231,20 @@ tracks/4/keys = {
 "method": &"emit_complete"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m8be2"]
 _data = {
@@ -257,3 +272,6 @@ mesh = SubResource("ArrayMesh_8btpk")
 root_node = NodePath("../Revolver")
 libraries/ = SubResource("AnimationLibrary_m8be2")
 autoplay = &"roulette"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=991150793]
+stream = ExtResource("4_8rq4a")

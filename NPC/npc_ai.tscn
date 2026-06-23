@@ -12,13 +12,37 @@
 [ext_resource type="Script" uid="uid://dseg6lpsdwsuc" path="res://NPC/States/npc_shoot_state.gd" id="8_olc0g"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="9_olc0g"]
 [ext_resource type="Script" uid="uid://c86kvw6w8s47c" path="res://NPC/States/npc_death_state.gd" id="10_m5m07"]
+[ext_resource type="AudioStream" uid="uid://gogcbljpvrfm" path="res://Assets/Audio/SoundEffects/Hit/hit_1.wav" id="13_3ck86"]
+[ext_resource type="AudioStream" uid="uid://cr2nlvv26bbxl" path="res://Assets/Audio/SoundEffects/Hit/hit_2.wav" id="14_vm4gj"]
+[ext_resource type="AudioStream" uid="uid://pgtrvukgv316" path="res://Assets/Audio/SoundEffects/Hit/hit_3.wav" id="15_el2sn"]
+[ext_resource type="AudioStream" uid="uid://bsvk04yjuk8c4" path="res://Assets/Audio/SoundEffects/Hit/hit_4.wav" id="16_hdlv3"]
+[ext_resource type="AudioStream" uid="uid://b0a3voolpciac" path="res://Assets/Audio/SoundEffects/Hit/burst.wav" id="17_vm4gj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xld7y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r07n0"]
 radius = 0.4
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vm4gj"]
+radius = 0.35000002
+height = 0.70000005
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ru0io"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f70ji"]
+random_pitch = 1.0717734
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("13_3ck86")
+stream_1/stream = ExtResource("14_vm4gj")
+stream_2/stream = ExtResource("15_el2sn")
+stream_3/stream = ExtResource("16_hdlv3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_el2sn"]
+random_pitch = 1.122462
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("17_vm4gj")
 
 [node name="NPC_AI" type="CharacterBody3D" unique_id=669566548 node_paths=PackedStringArray("target_manager")]
 collision_layer = 8
@@ -43,11 +67,13 @@ script = ExtResource("4_mp836")
 max_health = 3
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
-[node name="NPCHealthManager" type="Node" parent="." unique_id=764379401 node_paths=PackedStringArray("humanoid", "death_state", "hurtbox")]
+[node name="NPCHealthManager" type="Node" parent="." unique_id=764379401 node_paths=PackedStringArray("humanoid", "death_state", "hurtbox", "hit_stream_player", "death_stream_player")]
 script = ExtResource("5_m5m07")
 humanoid = NodePath("../Humanoid")
 death_state = NodePath("../StateMachine/DeathState")
 hurtbox = NodePath("../Hurtbox")
+hit_stream_player = NodePath("../HitStreamPlayer")
+death_stream_player = NodePath("../DeathStreamPlayer")
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
@@ -108,9 +134,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_xld7y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=112819947]
+[node name="NormalColShape" type="CollisionShape3D" parent="." unique_id=112819947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_r07n0")
+
+[node name="DeathColShape" type="CollisionShape3D" parent="." unique_id=1913834765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("CapsuleShape3D_vm4gj")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=502581083]
 target_desired_distance = 2.0
@@ -140,3 +171,15 @@ metadata/_custom_type_script = "uid://dd0l78eqowhql"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ru0io")
 debug_color = Color(0.89806664, 0.23921841, 0.5255987, 0.41960785)
+
+[node name="HitStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1652683846]
+stream = SubResource("AudioStreamRandomizer_f70ji")
+volume_db = -2.0
+max_polyphony = 3
+bus = &"sfx"
+
+[node name="DeathStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=742144141]
+stream = SubResource("AudioStreamRandomizer_el2sn")
+volume_db = -2.0
+max_polyphony = 3
+bus = &"sfx"
