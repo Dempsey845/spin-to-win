@@ -7,11 +7,11 @@
 [ext_resource type="Script" uid="uid://2t1c0fhtlkie" path="res://Component/health_component.gd" id="4_mp836"]
 [ext_resource type="Script" uid="uid://dqcjc2n8v3s1u" path="res://NPC/States/npc_wander_state.gd" id="4_u0aa3"]
 [ext_resource type="Script" uid="uid://28lbac5bg7j5" path="res://NPC/npc_health_manager.gd" id="5_m5m07"]
-[ext_resource type="PackedScene" uid="uid://dl8r7syydxbag" path="res://NPC/Humanoid/humanoid.tscn" id="6_lnxy0"]
 [ext_resource type="Script" uid="uid://dpf1th4i3ve0x" path="res://NPC/States/npc_punch_state.gd" id="7_mp836"]
 [ext_resource type="Script" uid="uid://dseg6lpsdwsuc" path="res://NPC/States/npc_shoot_state.gd" id="8_olc0g"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="9_olc0g"]
 [ext_resource type="Script" uid="uid://c86kvw6w8s47c" path="res://NPC/States/npc_death_state.gd" id="10_m5m07"]
+[ext_resource type="PackedScene" uid="uid://b4n7tapvln7mh" path="res://NPC/Cowboy/Characters/cowboy_2.tscn" id="11_vm4gj"]
 [ext_resource type="AudioStream" uid="uid://gogcbljpvrfm" path="res://Assets/Audio/SoundEffects/Hit/hit_1.wav" id="13_3ck86"]
 [ext_resource type="AudioStream" uid="uid://cr2nlvv26bbxl" path="res://Assets/Audio/SoundEffects/Hit/hit_2.wav" id="14_vm4gj"]
 [ext_resource type="AudioStream" uid="uid://pgtrvukgv316" path="res://Assets/Audio/SoundEffects/Hit/hit_3.wav" id="15_el2sn"]
@@ -69,7 +69,7 @@ metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="NPCHealthManager" type="Node" parent="." unique_id=764379401 node_paths=PackedStringArray("humanoid", "death_state", "hurtbox", "hit_stream_player", "death_stream_player")]
 script = ExtResource("5_m5m07")
-humanoid = NodePath("../Humanoid")
+humanoid = NodePath("../Cowboy")
 death_state = NodePath("../StateMachine/DeathState")
 hurtbox = NodePath("../Hurtbox")
 hit_stream_player = NodePath("../HitStreamPlayer")
@@ -83,7 +83,7 @@ metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104 node_paths=PackedStringArray("npc", "humanoid", "health", "hit_state")]
 script = ExtResource("4_u0aa3")
 npc = NodePath("../..")
-humanoid = NodePath("../../Humanoid")
+humanoid = NodePath("../../Cowboy")
 health = NodePath("../../Health")
 hit_state = NodePath("../ShootState")
 
@@ -94,7 +94,7 @@ one_shot = true
 [node name="PunchState" type="Node" parent="StateMachine" unique_id=699433229 node_paths=PackedStringArray("npc", "humanoid", "health", "target_manager")]
 script = ExtResource("7_mp836")
 npc = NodePath("../..")
-humanoid = NodePath("../../Humanoid")
+humanoid = NodePath("../../Cowboy")
 health = NodePath("../../Health")
 target_manager = NodePath("../../TargetManager")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
@@ -111,7 +111,7 @@ one_shot = true
 script = ExtResource("8_olc0g")
 npc = NodePath("../..")
 target_manager = NodePath("../../TargetManager")
-humanoid = NodePath("../../Humanoid")
+humanoid = NodePath("../../Cowboy")
 health = NodePath("../../Health")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
@@ -153,8 +153,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13970038, -0.096761346)
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
 
-[node name="Humanoid" parent="." unique_id=971083278 node_paths=PackedStringArray("npc", "health", "air_tracker") instance=ExtResource("6_lnxy0")]
-transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, 0, 0)
+[node name="Cowboy" parent="." unique_id=1190838792 node_paths=PackedStringArray("npc", "health", "air_tracker") instance=ExtResource("11_vm4gj")]
+transform = Transform3D(-0.11, 0, 1.6609539e-08, 0, 0.11, 0, -1.6609539e-08, 0, -0.11, 0, 0, 0)
 npc = NodePath("..")
 health = NodePath("../Health")
 air_tracker = NodePath("../AirState")

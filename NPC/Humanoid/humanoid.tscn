@@ -2,30 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bay3k8vho21h7" path="res://NPC/Humanoid/Humanoid.fbx" id="1_guu3l"]
 [ext_resource type="Script" uid="uid://cpyfijqci7jau" path="res://NPC/Humanoid/npc_humanoid.gd" id="2_aw66g"]
-[ext_resource type="Animation" uid="uid://b263vrx0ashn4" path="res://NPC/Animations/Movement/npc_fall.anim" id="2_hyass"]
-[ext_resource type="Animation" uid="uid://b8ddw6e0a7uqe" path="res://NPC/Animations/Movement/npc_idle.anim" id="3_aw66g"]
 [ext_resource type="Script" uid="uid://2qnryagylmmq" path="res://NPC/Humanoid/npc_punch_manager.gd" id="3_htegl"]
 [ext_resource type="Script" uid="uid://ch0uxpg21e6gx" path="res://Component/hitbox_component.gd" id="3_tobs3"]
-[ext_resource type="Animation" uid="uid://br30pqkbtc8c6" path="res://NPC/Animations/Movement/npc_jump.anim" id="4_ctr22"]
 [ext_resource type="Script" uid="uid://b225aw12urilc" path="res://NPC/Humanoid/npc_gun_manager.gd" id="4_r0c7i"]
 [ext_resource type="Texture2D" uid="uid://btttrh8dr6gl3" path="res://Assets/RevolverPack/Colt Python/Textures/ColtPython.Png" id="5_8fq3g"]
-[ext_resource type="Animation" uid="uid://by12w0oeioqfm" path="res://NPC/Animations/Movement/npc_jump_start.anim" id="5_k8qnl"]
 [ext_resource type="Texture2D" uid="uid://bo1r2l086d274" path="res://Assets/RevolverPack/Colt Python/Textures/revolverAmmo.jpg" id="6_02vmf"]
-[ext_resource type="Animation" uid="uid://b6plhi4fmx827" path="res://NPC/Animations/Movement/npc_land.anim" id="6_pqbld"]
-[ext_resource type="Animation" uid="uid://fwhq0g046af3" path="res://NPC/Animations/Movement/npc_run.anim" id="7_6uxj7"]
 [ext_resource type="Texture2D" uid="uid://dkpw1g4cf1dq7" path="res://Assets/RevolverPack/Colt Python/Textures/cylinderRefV2.jpg" id="7_r0c7i"]
-[ext_resource type="Animation" uid="uid://cky2gyxeijsi4" path="res://NPC/Animations/Combat/npc_punch_cross.anim" id="8_6uxj7"]
-[ext_resource type="Animation" uid="uid://cx3mpoecvkhe5" path="res://NPC/Animations/Combat/npc_punch_hit.anim" id="8_ctr22"]
-[ext_resource type="Animation" uid="uid://bl72d2hratg24" path="res://NPC/Animations/Movement/npc_run_back.anim" id="8_tobs3"]
-[ext_resource type="Animation" uid="uid://b0ytq0phwawfm" path="res://NPC/Animations/Movement/npc_run_left.anim" id="9_htegl"]
-[ext_resource type="Animation" uid="uid://c26mbmy5onyiw" path="res://NPC/Animations/Combat/npc_punch_idle.anim" id="9_k8qnl"]
-[ext_resource type="Animation" uid="uid://cjr78h8ank5yy" path="res://NPC/Animations/Movement/npc_run_right.anim" id="10_filur"]
-[ext_resource type="Animation" uid="uid://sgmc3ktbkwyg" path="res://NPC/Animations/npc_death.anim" id="10_thyrg"]
-[ext_resource type="Animation" uid="uid://dk8c6mad32kh3" path="res://NPC/Animations/Combat/npc_punch_hook.anim" id="10_tobs3"]
-[ext_resource type="Animation" uid="uid://cfdkhgmjafefo" path="res://NPC/Animations/npc_t_pose.anim" id="11_c6he4"]
-[ext_resource type="Animation" uid="uid://drbywvfljt3q" path="res://NPC/Animations/Combat/npc_hit.anim" id="11_pj8yi"]
-[ext_resource type="Animation" uid="uid://vnef02xlnspm" path="res://NPC/Animations/Movement/npc_walk.anim" id="12_8fq3g"]
-[ext_resource type="Animation" uid="uid://8mq2r85guu24" path="res://NPC/Animations/Combat/npc_shoot.anim" id="21_02vmf"]
+[ext_resource type="AnimationLibrary" uid="uid://xlxwbmdgtkt4" path="res://NPC/Animations/npc_library.res" id="10_ei27n"]
 [ext_resource type="PackedScene" uid="uid://b70m1wxy6cf4f" path="res://NPC/npc_bullet_projectile.tscn" id="25_lubws"]
 [ext_resource type="PackedScene" uid="uid://cu2ipnvx6wrv2" path="res://Assets/BinbunVFX/muzzle_flash/effects/muzzle_flash/muzzle_flash_02.tscn" id="28_jmcv5"]
 
@@ -51,7 +34,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_8fq3g")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_54i0j"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ei27n"]
 _surfaces = [{
 "aabb": AABB(-0.0026837236, -0.002129733, -0.000267404, 0.0063591944, 0.0031567279, 0.00053469604),
 "format": 34359742465,
@@ -103,7 +86,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("kO9hOq9nYTptC2q0f8BwOwhchjptC2q0f8BwO9muPzptC2q0kO9hOtmuPzptC2q0bbJwOy+Vhjq7UQ+4bbJwOy+VhjrJfw04BytfOh+VYTrJfw04BytfOh+VYTq7UQ+4f8BwO9muPzptC2q0f8BwOwhchjptC2q0kO9hOq9nYTptC2q0kO9hOtmuPzptC2q0/3//f1D9VsH/f/9/Gvzxwf9//38k/OzB/3//f2X9S8HgeN/43/iOw+B43/jf+I7D4Hjf+N/4jsPgeN/43/iOw/////8k/BI+/////xr8DT7/////UP2oPv////9l/bM+")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_54i0j")
+shadow_mesh = SubResource("ArrayMesh_ei27n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2snw2"]
 resource_name = "Material.033"
@@ -111,7 +94,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("6_02vmf")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xjswb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_hyass"]
 _surfaces = [{
 "aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
 "format": 34359742465,
@@ -141,7 +124,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAJfOBrr64+M4reTjuJfOBrqiRbawreTjOJfOBrqiRbawAAAAAJfOBrp75uO4reTjuJfOBrqiRbawAAAAAJfOBrr64+M4G49UOFcOuznrUTgwreTjOKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAKwcJTkN5eM4reTjuKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAJfOBrp75uO4reTjOJfOBrqiRbawreTjOKwcJTnrUTgwAAAAAKwcJTln5eO4reTjuKwcJTnrUTgwreTjuJfOBrqiRbawAAAAAJfOBrp75uO4G49UOFcOuznrUTgwAAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzlXAGO4G49UOFcOuznrUTgwAAAAAFcOuzlXAGO4AAAAAKwcJTln5eO4reTjOKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgwreTjuKwcJTnrUTgw/7//f+d/F4D/v/9/hn54gf+//3/Afj6B/7//f0mAEYD/P/9/DH28gP8//38MfbyA/z//fwx9vID/P/9/DH28gP9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/rbjVj8J9+I+tuNWPsnuXka241Y95fPuQrbjVjzJ/1o5RR9WPW380jlFH1Y8efjGOUUfVj4GAm45RR9WPNIEoj/7//7/Bf/B//v//v818M3/+//+/SX1Sf/7//78hgN1/AAD/v4Z+hn4AAP+/hn6GfgAA/7+GfoZ+AAD/v4Z+hn7/f///yIL/v/9//////2QB/3///8iC/7//f///yIL/vyjwUMcNYOB+KPBQx1BimH8o8FDHB148fijwUMfPXNh91g9Qxzidvn/WD1DHm2MPf9YPUMeVY61/1g9Qx1GeZX8=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xjswb")
+shadow_mesh = SubResource("ArrayMesh_hyass")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nmcb"]
 resource_name = "Material.034"
@@ -149,7 +132,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("7_r0c7i")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dori4"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_aw66g"]
 _surfaces = [{
 "aabb": AABB(-0.000441691, -0.00044155694, -0.00037200467, 0.000883382, 0.00088337704, 0.00074401003),
 "format": 34359742465,
@@ -179,9 +162,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("w5LnOceLZzm3CcM5w5LnORik5zktsrkww5LnOcWA57kdWjKww5LnORuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnOceLZzm3CcM5w5LnORuvZ7lyCcM5w5LnuRuvZ7lyCcM5w5LnORuvZ7lyCcM5w5LnOcWA57kdWjKww5LnucWA57kdWjKww5LnuRuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnuRik5zktsrkww5LnORik5zktsrkww5LnOceLZzm3CcM5w5LnucWA57kdWjKww5LnuRik5zktsrkww5LnuceLZzm3CcM5w5LnuRuvZ7lyCcM5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnOcWA57kdWjKww5LnORik5zktsrkww5LnuceLZzmfCcO5w5LnuRuvZ7mfCcO5w5LnORuvZ7mfCcO5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnuRuvZ7mfCcO5w5LnucWA57kdWjKww5LnOcWA57kdWjKww5LnuceLZzmfCcO5w5LnOceLZzmfCcO5w5LnORik5zktsrkww5LnuRik5zktsrkww5LnuceLZzmfCcO5w5LnuRik5zktsrkww5LnucWA57kdWjKww5LnuRuvZ7mfCcO5////f1k5//////9/9zn//////3+uOP//////f2s3////f/9/////v/9//3////+//3//f////7//f/9/////v/9/pi////+//3+mL////7//f6Yv////v/9/pi////+//39L0P///7//f0vQ////v/9/S9D///+//39L0P///78AAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1v///3//f1Ij////f/9/SiT///9//3+oI////3//fwMj/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtY=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_dori4")
+shadow_mesh = SubResource("ArrayMesh_aw66g")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ph8h3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ctr22"]
 _surfaces = [{
 "aabb": AABB(-0.000441691, -0.00044155694, -0.00037200397, 0.000883382, 0.00088337704, 0.000744008),
 "format": 34359742465,
@@ -211,7 +194,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("w5LnOceLZzmKCcM5w5LnORik5zkAAAAAw5LnOcWA57kAAAAAw5LnORuvZ7mKCcM5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuceLZzmKCcM5w5LnOceLZzmKCcM5w5LnORuvZ7mKCcM5w5LnuRuvZ7mKCcM5w5LnORuvZ7mKCcM5w5LnOcWA57kAAAAAw5LnucWA57kAAAAAw5LnuRuvZ7mKCcM5w5LnuceLZzmKCcM5w5LnuRik5zkAAAAAw5LnORik5zkAAAAAw5LnOceLZzmKCcM5w5LnucWA57kAAAAAw5LnuRik5zkAAAAAw5LnuceLZzmKCcM5w5LnuRuvZ7mKCcM5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnORuvZ7mHCcO5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuRuvZ7mHCcO5w5LnucWA57kAAAAAw5LnOcWA57kAAAAAw5LnuceLZzmHCcO5w5LnOceLZzmHCcO5w5LnORik5zkAAAAAw5LnuRik5zkAAAAA////f6XG//////9//38DI////3//f6gj////f5TI//////9//39SI////3//f0ok/3//f////7//f/9/////v/9//3////+//3//f////7//f6Yv////v/9/pi////+//3+mL////7//f6Yv////v/9/S9D///+//39L0P///7//f0vQ////v/9/S9D///+/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1gAA/3//f2bW/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ph8h3")
+shadow_mesh = SubResource("ArrayMesh_ctr22")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1adh"]
 resource_name = "Material.035"
@@ -222,7 +205,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_8fq3g")
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_bsgoc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k8qnl"]
 _surfaces = [{
 "aabb": AABB(-0.0005244583, -0.0012344628, -3.6142006e-05, 0.0012495681, 0.0017954923, 7.103401e-05),
 "format": 34359742465,
@@ -252,39 +235,13 @@ _surfaces = [{
 "vertex_data": PackedByteArray("f8+Wud1kJTnbVhI4VyYfuHe+YTjbVhI4aB9NudmOBLnbVhI4o4D8uXNokbfbVhI4YrbhuVhJEjr6wBA4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3VyYfuHe+YTjbVhI4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI45myRuDV+2TkAWRI4QjC3N3OoDzoAWRI4mpEeOOJ6XznbVhI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4zXsJurSYBTo/iQu4eWWTuXOo6zlnXeO3YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4zXsJurSYBTo3TQY45myRuDV+2TkAWRI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3YrbhuVhJEjr6wBA4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4o4D8uXNokbfbVhI4f8+Wud1kJTnbVhI4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4aB9NudmOBLkvlxe4VyYfuHe+YTgvlxe4uHquuMfLbjkvlxe4mpEeOOJ6Xzkvlxe4eWWTuXOo6zlnXeO3YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4mpEeOOJ6Xzkvlxe45myRuDV+2TkIlRe4uHquuMfLbjkvlxe4n4PyOAwSEzoIlRe4QjC3N3OoDzoIlRe4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4uHquuMfLbjkvlxe4f8+Wud1kJTkvlxe4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe45myRuDV+2TkIlRe4YrbhuVhJEjoo/xW4YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW45myRuDV+2TkIlRe45myRuDV+2TkAWRI45myRuDV+2TkIlRe4QjC3N3OoDzoIlRe4QjC3N3OoDzoAWRI45myRuDV+2TkAWRI4n4PyOAwSEzoIlRe4mpEeOOJ6Xzkvlxe4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI4n4PyOAwSEzoIlRe4n4PyOAwSEzoAWRI4QjC3N3OoDzoAWRI4QjC3N3OoDzoIlRe4SxU+OouM9LnXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1/5/zOdMNjLrXyvs1nvUSOifxgrrXyvs1rBMtOmRLmbofhvs1RWIxOrPNobofhvs1SxU+OouM9LnXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1/5/zOdMNjLrXyvs1rBMtOmRLmbofhvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1RWIxOrPNobofhvs1/3//f4iSQ4n/f/9/XY+uh/9//3/ykfmI/3//f9GUaIoDgel3oPHZtwOB6Xeg8dm3A4Hpd6Dx2begw128vdcIbqDDXbyy2HVuoMNdvJLYZm6gw128k9f1bf9//386gZyA/3//f/F+hoD/f/9/TIGlgP9//38lhBKC/3//fwXTgqn/f/9/6th0rP9//3932jut/3//f+vr9bX/f/9/JPTsxV6ZoOb///+/Xpmg5v///79emaDm////v16ZoOb///+/hquGK5ccQWSGq4YrlBxDZIarhiuZHD9khquGK5scPWQMeuB5lWRv8Ax64HlraCnyDHrgeT5QRecMeuB51ErU5Li8uDxkIX9tuLy4PFwi9my4vLg8KiISbbi8uDwxIZtt/////3HEOKL/////3c3upv/////lxHKi/////8W94p7/////IL4Qn//////fve+e6PcDAXoAPL/o9wMBegA8v+j3AwF6ADy/AAD+/98PD7gAAP7/jBs4sgAA/v87AuG+AAD+/1clU60AAP7/Bi18qaWgpSD4FelfpaClIHAVsGCloKUgkxV+YKWgpSAbFrZfHgbyBW0I6L4eBvIFXQjwvh4G8gVfCO++HgbyBXEI5r5XpKfbLOUtXlekp9se5RteV6Sn24rlol5XpKfbl+W0XgU0BLR3KNmNBTQEtDooxY0FNAS0UCjMjQU0BLSMKOGNmOiYaP///7+Y6Jho////v5jomGj///+/mOiYaP///79mcGXw7gyXrmZwZfDVDD2uZnBl8PkMvq5mcGXwEg0ar/9//3/Y+xLC/3//f9Xyarn/f/9/Lv1nwf9//38V8vTG/3//fy71Z8X/f/9/1fJquf9//3+42yLS/3//fzbK49r/f/9/tMCk3/9//382yuPa/3//f+16df3/f/9/JWYR8//////Y++w9/////xXyCjn/////Lv2XPv/////V8pRG/////7jb3C3/////1fKURv////8u9Zc6/////zbKGyUAAP7/7XqJAgAA/v82yhslAAD+/7TAWiAAAP7/JWbtDA==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_bsgoc")
-
-[sub_resource type="Animation" id="Animation_hyass"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_02vmf"]
-_data = {
-&"RESET": SubResource("Animation_hyass"),
-&"npc_death": ExtResource("10_thyrg"),
-&"npc_fall": ExtResource("2_hyass"),
-&"npc_hit": ExtResource("11_pj8yi"),
-&"npc_idle": ExtResource("3_aw66g"),
-&"npc_jump": ExtResource("4_ctr22"),
-&"npc_jump_start": ExtResource("5_k8qnl"),
-&"npc_land": ExtResource("6_pqbld"),
-&"npc_punch_cross": ExtResource("8_6uxj7"),
-&"npc_punch_hit": ExtResource("8_ctr22"),
-&"npc_punch_hook": ExtResource("10_tobs3"),
-&"npc_punch_idle": ExtResource("9_k8qnl"),
-&"npc_run": ExtResource("7_6uxj7"),
-&"npc_run_back": ExtResource("8_tobs3"),
-&"npc_run_left": ExtResource("9_htegl"),
-&"npc_run_right": ExtResource("10_filur"),
-&"npc_shoot": ExtResource("21_02vmf"),
-&"npc_t_pose": ExtResource("11_c6he4"),
-&"npc_walk": ExtResource("12_8fq3g")
-}
+shadow_mesh = SubResource("ArrayMesh_k8qnl")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_61xt3"]
 animation = &"npc_equip_gun"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xjswb"]
-animation = &"npc_death"
+animation = &"NPC/npc_death"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jmcv5"]
 
@@ -299,29 +256,29 @@ fadein_time = 0.25
 fadeout_time = 0.25
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jmcv5"]
-animation = &"npc_punch_hit"
+animation = &"NPC/npc_punch_hit"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_pj8yi"]
 fadein_time = 0.25
 fadeout_time = 0.25
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54i0j"]
-animation = &"npc_hit"
+animation = &"NPC/npc_hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hyass"]
-animation = &"npc_idle"
+animation = &"NPC/npc_idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aw66g"]
-animation = &"npc_run"
+animation = &"NPC/npc_run"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ctr22"]
-animation = &"npc_run_left"
+animation = &"NPC/npc_run_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8qnl"]
-animation = &"npc_run_back"
+animation = &"NPC/npc_run_back"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pqbld"]
-animation = &"npc_run_right"
+animation = &"NPC/npc_run_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_aw66g"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_hyass")
@@ -336,13 +293,13 @@ blend_point_4/node = SubResource("AnimationNodeAnimation_pqbld")
 blend_point_4/pos = Vector2(1, 0)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tobs3"]
-animation = &"npc_fall"
+animation = &"NPC/npc_fall"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uxj7"]
-animation = &"npc_jump_start"
+animation = &"NPC/npc_jump_start"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_htegl"]
-animation = &"npc_land"
+animation = &"NPC/npc_land"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ctr22"]
 advance_mode = 2
@@ -387,14 +344,14 @@ states/npc_jump_start/position = Vector2(688, 3)
 states/npc_land/node = SubResource("AnimationNodeAnimation_htegl")
 states/npc_land/position = Vector2(688, 181)
 transitions = ["Start", "Locomotion", SubResource("AnimationNodeStateMachineTransition_ctr22"), "Locomotion", "npc_jump_start", SubResource("AnimationNodeStateMachineTransition_tobs3"), "npc_jump_start", "npc_fall", SubResource("AnimationNodeStateMachineTransition_htegl"), "npc_fall", "npc_land", SubResource("AnimationNodeStateMachineTransition_filur"), "Locomotion", "npc_fall", SubResource("AnimationNodeStateMachineTransition_hyass"), "Locomotion", "npc_land", SubResource("AnimationNodeStateMachineTransition_aw66g"), "npc_land", "Locomotion", SubResource("AnimationNodeStateMachineTransition_k8qnl")]
-graph_offset = Vector2(126, -107)
+graph_offset = Vector2(302, -107)
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_02vmf"]
 fadein_time = 0.5
 fadeout_time = 0.5
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_thyrg"]
-animation = &"npc_shoot"
+animation = &"NPC/npc_shoot"
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pj8yi"]
 
@@ -406,14 +363,14 @@ filters = [".", "GunManager", "PunchHitboxManager", "PunchManager", "Skeleton3D:
 animation = &"npc_equip_gun"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pj8yi"]
-animation = &"npc_idle"
+animation = &"NPC/npc_idle"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thyrg"]
 filter_enabled = true
 filters = ["PunchHitboxManager", "Skeleton3D:mixamorig_RightArm", "Skeleton3D:mixamorig_RightForeArm"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jmcv5"]
-graph_offset = Vector2(-424.45453, -24.545471)
+graph_offset = Vector2(-456.4583, 53.367355)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_thyrg")
 nodes/Blend2/position = Vector2(16.105108, 204.97409)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_pj8yi")
@@ -423,7 +380,7 @@ nodes/Animation/position = Vector2(-300, 140)
 node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8fq3g"]
-animation = &"npc_idle"
+animation = &"NPC/npc_idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02vmf"]
 animation = &"npc_punch_cross"
@@ -435,7 +392,7 @@ animation = &"npc_punch_hit"
 animation = &"npc_punch_hook"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_filur"]
-animation = &"npc_punch_idle"
+animation = &"NPC/npc_idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02vmf"]
 
@@ -502,7 +459,7 @@ states/punch_hook/position = Vector2(422, 143)
 states/punch_idle/node = SubResource("AnimationNodeAnimation_filur")
 states/punch_idle/position = Vector2(379, 11)
 transitions = ["punch_idle", "punch_hit", SubResource("AnimationNodeStateMachineTransition_02vmf"), "punch_hit", "punch_idle", SubResource("AnimationNodeStateMachineTransition_r0c7i"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_lubws"), "Start", "punch_idle", SubResource("AnimationNodeStateMachineTransition_pj8yi"), "idle", "punch_idle", SubResource("AnimationNodeStateMachineTransition_thyrg"), "punch_idle", "idle", SubResource("AnimationNodeStateMachineTransition_pqbld"), "punch_idle", "punch_cross", SubResource("AnimationNodeStateMachineTransition_jmcv5"), "punch_idle", "punch_hook", SubResource("AnimationNodeStateMachineTransition_61xt3"), "punch_cross", "punch_idle", SubResource("AnimationNodeStateMachineTransition_54i0j"), "punch_hook", "punch_idle", SubResource("AnimationNodeStateMachineTransition_xjswb"), "punch_cross", "punch_hit", SubResource("AnimationNodeStateMachineTransition_6uxj7"), "punch_hook", "punch_hit", SubResource("AnimationNodeStateMachineTransition_c6he4"), "punch_idle", "equip_gun", SubResource("AnimationNodeStateMachineTransition_dori4"), "equip_gun", "punch_idle", SubResource("AnimationNodeStateMachineTransition_ph8h3")]
-graph_offset = Vector2(-158, -56)
+graph_offset = Vector2(-96, -161)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hyass"]
 nodes/output/position = Vector2(2260, -60)
@@ -552,50 +509,50 @@ projectile_scene = ExtResource("25_lubws")
 fire_point = NodePath("../FirePoint")
 
 [node name="Skeleton3D" parent="." index="2" unique_id=611366734]
-bones/0/position = Vector3(0.010194492, 3.5186486, 0.0310276)
-bones/0/rotation = Quaternion(-0.03613733, -0.041431136, -0.025879646, 0.99815226)
-bones/1/rotation = Quaternion(-0.002893061, 0.016365767, 0.023846481, 0.9995776)
-bones/2/rotation = Quaternion(0.010692405, 0.0032819377, 0.014429518, 0.9998334)
-bones/3/rotation = Quaternion(0.010421646, 0.0033942815, 0.01444431, 0.9998356)
-bones/4/rotation = Quaternion(0.08702153, -0.0024483118, 0.002927709, 0.99619913)
-bones/5/rotation = Quaternion(-0.07562422, 0.0058293636, -0.0013715965, 0.9971185)
-bones/7/rotation = Quaternion(-0.66278446, -0.3421484, 0.49663416, -0.4438533)
+bones/0/position = Vector3(-0.0054691364, 3.3453934, -0.001316227)
+bones/0/rotation = Quaternion(0.0016346229, 0.3393154, -0.006583736, 0.9406482)
+bones/1/rotation = Quaternion(-0.026729384, -0.01399592, 0.013625572, 0.99945194)
+bones/2/rotation = Quaternion(0.021464538, -0.021384075, 0.0050735343, 0.9995281)
+bones/3/rotation = Quaternion(0.021705465, -0.021188231, 0.004835273, 0.99952817)
+bones/4/rotation = Quaternion(0.005478312, -0.042871453, -0.020970093, 0.9988456)
+bones/5/rotation = Quaternion(-0.03915054, -0.22672655, -0.05999411, 0.9713203)
+bones/7/rotation = Quaternion(-0.5994658, -0.40247336, 0.55699694, -0.4103786)
 bones/8/position = Vector3(-0.041703906, 0.6237597, -0.23686656)
-bones/8/rotation = Quaternion(0.5136661, 0.16793731, 0.097202405, 0.83576065)
+bones/8/rotation = Quaternion(0.4584723, 0.020005079, -0.03425951, 0.88782275)
 bones/8/scale = Vector3(0.99999946, 1.0000002, 1.0000002)
-bones/9/rotation = Quaternion(-0.00015345524, 0.0017745966, 0.017786805, 0.9998403)
-bones/10/rotation = Quaternion(0.050316915, -0.35569733, 0.023135379, 0.932959)
-bones/11/rotation = Quaternion(0.17628007, 0.15063561, 0.040408768, 0.9719061)
-bones/12/rotation = Quaternion(-0.09653908, 0.0755234, -0.059277672, 0.99068797)
-bones/13/rotation = Quaternion(-0.141029, -0.065040655, 0.14934541, 0.9765125)
-bones/15/rotation = Quaternion(0.06660013, 0.00035231275, 0.003832112, 0.9977724)
-bones/16/rotation = Quaternion(0.14845656, -0.00089352997, -0.043800775, 0.98794806)
-bones/17/rotation = Quaternion(0.069155835, 0.0021260928, -0.029211735, 0.9971758)
-bones/19/rotation = Quaternion(0.663492, -0.34022695, 0.51397526, 0.42409146)
-bones/20/rotation = Quaternion(0.44359246, -0.2580858, -0.11544723, 0.8504642)
+bones/9/rotation = Quaternion(-0.0034935928, 0.0011985971, 0.2645824, 0.964356)
+bones/10/rotation = Quaternion(0.2651632, 0.24617776, -0.07022053, 0.9295989)
+bones/11/rotation = Quaternion(0.3743485, 0.024084795, -0.12852983, 0.91802144)
+bones/12/rotation = Quaternion(-0.020199373, -0.009172952, -0.5161548, 0.856208)
+bones/13/rotation = Quaternion(-0.015047029, -0.02972231, -0.20380506, 0.9784446)
+bones/15/rotation = Quaternion(0.707471, -0.004069501, -0.18970585, 0.68079364)
+bones/16/rotation = Quaternion(0.7622704, -0.0038773231, -0.21218672, 0.6114784)
+bones/17/rotation = Quaternion(0.42451066, 0.006583686, -0.12613446, 0.8965699)
+bones/19/rotation = Quaternion(0.5181762, -0.4460567, 0.62634087, 0.37446505)
+bones/20/rotation = Quaternion(0.36025468, -0.2151015, -0.16832177, 0.89197296)
 bones/20/scale = Vector3(0.9999997, 0.9999994, 1.0000002)
 bones/21/position = Vector3(1.3330746e-10, 0.99960226, -1.0860207e-08)
-bones/21/rotation = Quaternion(-0.00017567328, -0.001497759, -0.06238157, 0.9980512)
+bones/21/rotation = Quaternion(-0.0007161807, -0.0008743444, -0.16354507, 0.98653525)
 bones/21/scale = Vector3(0.9999979, 1.000001, 1.0000001)
-bones/22/rotation = Quaternion(0.054414805, 0.20850259, -0.003099573, 0.976502)
-bones/23/rotation = Quaternion(0.16561653, -0.13111988, -0.077818625, 0.9743321)
-bones/24/rotation = Quaternion(-0.067987874, -0.070160136, 0.0841272, 0.9916541)
-bones/25/rotation = Quaternion(-0.17097828, 0.048695613, -0.09707877, 0.97927064)
+bones/22/rotation = Quaternion(0.07101323, 0.57637626, 0.0504538, 0.81252813)
+bones/23/rotation = Quaternion(0.43509972, -0.21860506, 0.03943994, 0.87255067)
+bones/24/rotation = Quaternion(-0.028030215, 0.22791183, 0.5233361, 0.8206033)
+bones/25/rotation = Quaternion(-0.07493016, 0.10862709, 0.23556022, 0.9628588)
 bones/26/scale = Vector3(0.99999976, 0.9999998, 1.0000005)
-bones/27/rotation = Quaternion(0.060791146, -0.0012624711, -0.013586483, 0.9980573)
-bones/28/rotation = Quaternion(0.15189266, 0.0011614569, 0.031040333, 0.9879088)
-bones/29/rotation = Quaternion(0.070425496, -0.0022416466, 0.015486551, 0.9973943)
-bones/31/rotation = Quaternion(0.13688219, 0.09697523, 0.98263294, -0.079320125)
-bones/32/rotation = Quaternion(-0.1907221, -0.008120034, 0.036907308, 0.98091644)
-bones/33/rotation = Quaternion(0.55900645, 0.022126352, -0.022926316, 0.828551)
-bones/34/rotation = Quaternion(0.28132132, -0.13494751, 0.033168286, 0.94949853)
-bones/36/rotation = Quaternion(-0.09351547, -0.0007564293, 0.99545115, -0.018206356)
-bones/37/rotation = Quaternion(-0.136942, 0.08318597, -0.028783351, 0.98666036)
-bones/38/rotation = Quaternion(0.5943099, -0.024984382, -0.012171467, 0.80375576)
-bones/39/rotation = Quaternion(0.29429322, 0.13631697, -0.03255805, 0.94538313)
+bones/27/rotation = Quaternion(0.7901459, 0.0049516247, 0.14305054, 0.5959712)
+bones/28/rotation = Quaternion(0.71938163, 0.0032933261, 0.13990957, 0.6803709)
+bones/29/rotation = Quaternion(0.39230013, -0.0054924525, 0.077449635, 0.9165544)
+bones/31/rotation = Quaternion(0.1931969, -0.011131225, 0.9615492, -0.19486961)
+bones/32/rotation = Quaternion(-0.17307682, -0.054474767, 0.0056470614, 0.9833845)
+bones/33/rotation = Quaternion(0.6024879, -0.05684287, -0.15792954, 0.7802792)
+bones/34/rotation = Quaternion(0.23983587, -0.13529085, 0.033773188, 0.9607468)
+bones/36/rotation = Quaternion(-0.15632755, 0.12144786, 0.9635729, 0.17983179)
+bones/37/rotation = Quaternion(-0.18077226, 0.028811615, -0.0028070775, 0.9830989)
+bones/38/rotation = Quaternion(0.53532386, 0.028055908, 0.11077798, 0.83688086)
+bones/39/rotation = Quaternion(0.23568727, 0.13684694, -0.03354241, 0.9615609)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="1" unique_id=1565826429]
-transform = Transform3D(0.3615878, 0.031180091, 0.9318154, 0.07408966, -0.9972414, 0.004618928, 0.92938745, 0.067367755, -0.3629029, -1.1558044, 2.9766088, 0.1741921)
+transform = Transform3D(-0.182798, 0.043237995, 0.98219746, 0.27183628, -0.957863, 0.09275754, 0.94482255, 0.28395355, 0.16333967, -1.3118137, 3.0580766, 1.1449716)
 bone_name = "mixamorig_RightHand"
 bone_idx = 22
 
@@ -616,7 +573,7 @@ shape = SubResource("CapsuleShape3D_htegl")
 transform = Transform3D(-0.056595895, 0.998064, 0.025787719, 0.89487576, 0.06216387, -0.44196615, -0.44271356, -0.0019366448, -0.8966617, -0.16645575, 0.39921403, 0.008856654)
 
 [node name="HipAttachment" type="BoneAttachment3D" parent="Skeleton3D" index="2" unique_id=1292033273]
-transform = Transform3D(-0.9640812, -0.018560413, -0.2649573, -0.0020097513, -0.9970168, 0.07715438, -0.26559895, 0.07491558, 0.9611685, -0.43721455, 3.3129606, 0.0003842488)
+transform = Transform3D(-0.89827156, -0.1946682, 0.3939699, 0.32116038, -0.90274346, 0.28619912, 0.29993993, 0.383612, 0.8734287, -0.3516359, 3.1232393, 0.27114946)
 bone_name = "mixamorig_RightUpLeg"
 bone_idx = 36
 
@@ -652,8 +609,8 @@ transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100
 mesh = SubResource("ArrayMesh_61xt3")
 
 [node name="AnimationPlayer" parent="." index="3" unique_id=95955103]
-libraries/ = SubResource("AnimationLibrary_02vmf")
-autoplay = &"npc_idle"
+libraries/NPC = ExtResource("10_ei27n")
+autoplay = &"NPC/npc_idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=834074695]
 tree_root = SubResource("AnimationNodeBlendTree_hyass")
