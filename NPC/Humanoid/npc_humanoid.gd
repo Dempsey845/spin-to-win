@@ -11,11 +11,20 @@ signal punch_animation_complete
 @export var muzzle_flash: VFXController
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var skeleton_3d: Skeleton3D = $Skeleton3D
 
 var upper_body_state_machine: AnimationNodeStateMachinePlayback
 var playing_upper_body_animation: bool
 
+var skins = [
+	preload("uid://mcmnrwo4ha5f"),
+	preload("uid://dxrmfn0ql4rdx"),
+	preload("uid://bm733e47xk7rd"),
+	preload("uid://b0164a26ko5ft")
+]
 func _ready() -> void:
+	skeleton_3d.add_child(skins.pick_random().instantiate())
+
 	animation_tree.active = true
 
 	air_tracker.falling_started.connect(_on_falling_started)
