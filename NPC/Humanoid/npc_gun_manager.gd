@@ -6,12 +6,15 @@ extends Node
 @export var projectile_scene: PackedScene
 @export var fire_point: Marker3D
 
+@onready var weapon_stream_player: AudioStreamPlayer3D = $WeaponStreamPlayer
+
 func equip_revolver():
     revolver_visual.reparent(hand_attachment_slot)
     revolver_visual.position = Vector3.ZERO
     revolver_visual.rotation = Vector3.ZERO
 
 func shoot_projectile():
+    weapon_stream_player.play()
     var projectile = projectile_scene.instantiate()
     get_tree().current_scene.add_child(projectile)
 
