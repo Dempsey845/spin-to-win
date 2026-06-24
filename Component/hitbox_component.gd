@@ -8,15 +8,7 @@ var blood_effect_scene = preload("uid://b56inmh1iqeq0")
 @export var damage: int
 @export var knockback: bool = true
 
-var _active: bool
-@export var active: bool = true:
-	get():
-		return _active
-	set(value):
-		_active = value
-		if value:
-			for area in get_overlapping_areas():
-				_on_area_entered(area)
+@export var active: bool = true
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
