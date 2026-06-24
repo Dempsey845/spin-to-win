@@ -21,5 +21,5 @@ var current_ammo: int:
         _current_ammo = value
         ammo_label.text = "%d/%d" % [value, max_ammo]
     
-func _ready() -> void:
+func _enter_tree() -> void:
     instance = self

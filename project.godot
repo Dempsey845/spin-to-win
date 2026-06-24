@@ -21,6 +21,10 @@ window/size/viewport_width=768
 window/size/viewport_height=432
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+
 [global_group]
 
 player=""
@@ -94,6 +98,7 @@ pickup={
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Enemy"
 3d_physics/layer_5="Revolver"
+3d_physics/layer_6="Ground"
 
 [physics]
 
@@ -101,4 +106,5 @@ pickup={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
