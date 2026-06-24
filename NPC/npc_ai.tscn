@@ -77,7 +77,7 @@ death_stream_player = NodePath("../DeathStreamPlayer")
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("ShootState")
+initial_state = NodePath("PunchState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104 node_paths=PackedStringArray("npc", "humanoid", "health", "hit_state")]

@@ -8756,7 +8756,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
+transform = Transform3D(-0.77609235, 0.29326305, 0.55828124, 0.54591763, 0.7556047, 0.36198807, -0.31568217, 0.5857114, -0.74651664, -0.49243587, -0.07134706, 0.8991525)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -8781,7 +8781,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
+transform = Transform3D(-0.7760998, -0.29324228, -0.5582809, -0.54590017, 0.7556137, 0.36199528, 0.3156926, 0.5857104, -0.7465128, 0.49244002, -0.07134494, 0.8991524)
 bone_name = "Hand.L"
 bone_idx = 3
 
