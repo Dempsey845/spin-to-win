@@ -4,7 +4,7 @@ extends State
 @export var humanoid: NPCHumanoid
 @export var health: Health
 @export var target_manager: NPCTargetManager
-@export var punch_distance: float = 1.5
+@export var punch_distance: float = 2.25
 
 @onready var punch_cooldown_timer: Timer = $PunchCooldownTimer
 @onready var hit_cooldown_timer: Timer = $HitCooldownTimer

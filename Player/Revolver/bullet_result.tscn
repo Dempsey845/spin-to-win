@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dc3bl24m3si6c" path="res://Assets/UI/BulletTypes/BTTriple.png" id="3_i3uhe"]
 [ext_resource type="Texture2D" uid="uid://b681pylkde28r" path="res://Assets/UI/BulletTypes/BTExplosive.png" id="4_ltddr"]
 [ext_resource type="Texture2D" uid="uid://chnerymynul87" path="res://Assets/UI/BulletTypes/BTHeal.png" id="6_i3uhe"]
+[ext_resource type="AudioStream" uid="uid://ba3yekjikrrbr" path="res://Assets/Audio/SoundEffects/strong_whoosh.mp3" id="7_ltddr"]
+[ext_resource type="AudioStream" uid="uid://cnwtswo1kr5xj" path="res://Assets/Audio/SoundEffects/type.mp3" id="8_cpmik"]
 
 [sub_resource type="Animation" id="Animation_cyiaa"]
 length = 0.001
@@ -167,6 +169,20 @@ tracks/4/keys = {
 "method": &"emit_complete"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EndPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kv2u0"]
 _data = {
@@ -185,7 +201,7 @@ anchor_bottom = 0.5
 offset_left = -14.0
 offset_top = 238.0
 offset_right = 26.0
-offset_bottom = 277.99957
+offset_bottom = 277.99954
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
@@ -261,3 +277,13 @@ stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=691186945]
 libraries/ = SubResource("AnimationLibrary_kv2u0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1671190627]
+stream = ExtResource("7_ltddr")
+autoplay = true
+bus = &"sfx"
+
+[node name="EndPlayer" type="AudioStreamPlayer" parent="." unique_id=28851771]
+stream = ExtResource("8_cpmik")
+pitch_scale = 0.6
+bus = &"sfx"

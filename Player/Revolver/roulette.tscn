@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://es7mc44gxx24" path="res://Player/Revolver/roulette.gd" id="1_ihbnn"]
 [ext_resource type="Texture2D" uid="uid://dkpw1g4cf1dq7" path="res://Assets/RevolverPack/Colt Python/Textures/cylinderRefV2.jpg" id="2_ihbnn"]
 [ext_resource type="AudioStream" uid="uid://bfsoka7ub8qmw" path="res://Assets/Audio/SoundEffects/revolver_spin.wav" id="4_8rq4a"]
+[ext_resource type="AudioStream" uid="uid://cmbpx5cu8d463" path="res://Assets/Audio/SoundEffects/revolver_click.wav" id="5_8btpk"]
+[ext_resource type="AudioStream" uid="uid://dyuy8qonkgge8" path="res://Assets/Audio/SoundEffects/long_whoosh.mp3" id="6_q0pxp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfngn"]
 resource_name = "Material.031"
@@ -245,6 +247,34 @@ tracks/5/keys = {
 "method": &"play"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ClickStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.5333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../EndWhooshStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.866667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m8be2"]
 _data = {
@@ -275,3 +305,21 @@ autoplay = &"roulette"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=991150793]
 stream = ExtResource("4_8rq4a")
+bus = &"sfx"
+
+[node name="ClickStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1308235475]
+stream = ExtResource("5_8btpk")
+bus = &"sfx"
+
+[node name="WhooshStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1685532540]
+stream = ExtResource("6_q0pxp")
+autoplay = true
+max_polyphony = 3
+bus = &"sfx"
+
+[node name="EndWhooshStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=62834842]
+stream = ExtResource("6_q0pxp")
+pitch_scale = 1.2
+autoplay = true
+max_polyphony = 3
+bus = &"sfx"

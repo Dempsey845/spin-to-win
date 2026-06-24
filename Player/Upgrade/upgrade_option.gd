@@ -14,6 +14,7 @@ enum UpgradeType
 @onready var expression_label: Label = %ExpressionLabel
 @onready var claim_button: Button = %ClaimButton
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var claim_player: AudioStreamPlayer = $ClaimPlayer
 
 static var upgrade_type_details = {
     UpgradeType.FastDraw: {
@@ -61,4 +62,5 @@ func init(upgrade_type: UpgradeType, start_position: String, on_claim: Callable)
 
 func play_out_animation():
     claim_button.disabled = true
+    claim_player.play()
     animation_player.play_backwards("start_" + out_direction)

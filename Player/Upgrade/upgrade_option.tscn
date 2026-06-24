@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cy5crojjik5wj"]
 
 [ext_resource type="Script" uid="uid://bpkyxjj2sen1s" path="res://Player/Upgrade/upgrade_option.gd" id="1_jgl7g"]
+[ext_resource type="AudioStream" uid="uid://bw7wuvnk0chf0" path="res://Assets/Audio/SoundEffects/whoosh.mp3" id="2_1b6t6"]
+[ext_resource type="AudioStream" uid="uid://jdqgsneus55r" path="res://Assets/Audio/SoundEffects/claim.mp3" id="3_hmljv"]
 
 [sub_resource type="Animation" id="Animation_jgl7g"]
 length = 0.001
@@ -128,6 +130,29 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-73, 213.00002), Vector2(57.5, 213), Vector2(57.5, 157)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7666667, 1.2666668, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1b6t6"]
 resource_name = "start_top"
@@ -249,7 +274,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 178.0
 offset_top = -57.0
-offset_right = 170.99985
+offset_right = 170.99982
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -287,7 +312,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -161.0
 offset_top = 15.0
-offset_right = -99.99997
+offset_right = -99.9999
 offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -295,3 +320,13 @@ text = "Claim"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=118761495]
 libraries/ = SubResource("AnimationLibrary_hmljv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1037924877]
+stream = ExtResource("2_1b6t6")
+max_polyphony = 3
+bus = &"sfx"
+
+[node name="ClaimPlayer" type="AudioStreamPlayer" parent="." unique_id=1770006904]
+stream = ExtResource("3_hmljv")
+pitch_scale = 0.65
+bus = &"sfx"
