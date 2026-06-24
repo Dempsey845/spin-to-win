@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dseg6lpsdwsuc" path="res://NPC/States/npc_shoot_state.gd" id="8_olc0g"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="9_olc0g"]
 [ext_resource type="Script" uid="uid://c86kvw6w8s47c" path="res://NPC/States/npc_death_state.gd" id="10_m5m07"]
+[ext_resource type="Script" uid="uid://dp48toinc6j31" path="res://NPC/States/random_state.gd" id="11_el2sn"]
 [ext_resource type="PackedScene" uid="uid://b4n7tapvln7mh" path="res://NPC/Cowboy/Characters/cowboy_2.tscn" id="11_vm4gj"]
 [ext_resource type="AudioStream" uid="uid://gogcbljpvrfm" path="res://Assets/Audio/SoundEffects/Hit/hit_1.wav" id="13_3ck86"]
 [ext_resource type="AudioStream" uid="uid://cr2nlvv26bbxl" path="res://Assets/Audio/SoundEffects/Hit/hit_2.wav" id="14_vm4gj"]
@@ -77,7 +78,7 @@ death_stream_player = NodePath("../DeathStreamPlayer")
 
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
-initial_state = NodePath("PunchState")
+initial_state = NodePath("RandomState")
 metadata/_custom_type_script = "uid://cd0k8ij5hh8ty"
 
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=2015617104 node_paths=PackedStringArray("npc", "humanoid", "health", "hit_state")]
@@ -116,7 +117,7 @@ health = NodePath("../../Health")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="ShootCooldownTimer" type="Timer" parent="StateMachine/ShootState" unique_id=997888102]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="HitCooldownTimer" type="Timer" parent="StateMachine/ShootState" unique_id=80668966]
@@ -127,6 +128,12 @@ one_shot = true
 script = ExtResource("10_m5m07")
 npc = NodePath("../..")
 target_manager = NodePath("../../TargetManager")
+metadata/_custom_type_script = "uid://83lrm1ci7bgc"
+
+[node name="RandomState" type="Node" parent="StateMachine" unique_id=2082081711 node_paths=PackedStringArray("punch_state", "shoot_state")]
+script = ExtResource("11_el2sn")
+punch_state = NodePath("../PunchState")
+shoot_state = NodePath("../ShootState")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1512920644]
