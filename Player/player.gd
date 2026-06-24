@@ -10,7 +10,7 @@ extends CharacterBody3D
 var gravity: float = 9.8
 
 @onready var head: Node3D = $Head
-@onready var camera: Camera3D = $Head/Pivot/Camera3D
+@onready var camera: Camera3D = $Head/Pivot/MainCamera
 @onready var arms: Node3D = $Head/Arms_001
 @onready var step_stream_player: AudioStreamPlayer = $StepStreamPlayer
 @onready var jump_stream_player: AudioStreamPlayer = $JumpStreamPlayer

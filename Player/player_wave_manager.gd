@@ -1,10 +1,17 @@
+class_name PlayerWaveManager
 extends Node
 
+
 @export var canvas_layer: CanvasLayer
+
 @export var revolver_manager: PlayerRevolverManager
 @export var main_camera: Camera3D
+
 @export var ammo: PlayerAmmo
+@export var health: Health
+
 @export var projectile_type_manager: ProjectileTypeManager
+@export var upgrade_manager: PlayerUpgradeManager
 
 var roulette_stage_scene: PackedScene = preload("uid://bokhiklspil1b")
 
@@ -24,6 +31,8 @@ func _on_wave_ended():
 	if !revolver_manager.revolver_picked_up.is_connected(_on_revolver_picked_up):
 		revolver_manager.revolver_picked_up.connect(_on_revolver_picked_up)
 
+	health.current_heatlh = health.max_health
+
 func _on_revolver_picked_up():
 	start_roulette()
 
@@ -33,6 +42,8 @@ func start_roulette():
 
 	var roulette_stage: RouletteStage = roulette_stage_scene.instantiate()
 	roulette_stage.main_camera = main_camera
+	print(upgrade_manager)
+	roulette_stage.upgrade_manager = upgrade_manager
 	canvas_layer.add_child(roulette_stage)
 
 	roulette_stage.type_chosen.connect(func(type: ProjectileTypeManager.ProjectileType):

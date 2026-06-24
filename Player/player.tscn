@@ -28,7 +28,6 @@
 [ext_resource type="Script" uid="uid://4x8jndbcrvke" path="res://Player/player_upgrade_manager.gd" id="15_8mwp6"]
 [ext_resource type="Script" uid="uid://dd0l78eqowhql" path="res://Component/hurtbox_component.gd" id="15_lfmf2"]
 [ext_resource type="Script" uid="uid://ip2kol05je58" path="res://Player/punch_hand_hitbox.gd" id="15_pisgm"]
-[ext_resource type="PackedScene" uid="uid://br6bvggfh6dqv" path="res://Player/Upgrade/upgrade_control.tscn" id="16_gpjlu"]
 [ext_resource type="Script" uid="uid://bsxj7h6ar5fmq" path="res://Player/camera_shake.gd" id="16_qemgg"]
 [ext_resource type="Shader" uid="uid://cmdfuib3bkrp4" path="res://Player/Shaders/hit.gdshader" id="19_76lrf"]
 [ext_resource type="AudioStream" uid="uid://bj5pxnyymrdni" path="res://Assets/Audio/SoundEffects/pickup.mp3" id="20_6eb1q"]
@@ -45,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://l5h8u7q81a4k" path="res://Assets/Audio/SoundEffects/jump.wav" id="36_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://bk1monfqpujmy" path="res://Assets/Audio/SoundEffects/Shoot/shot_7.wav" id="36_6pogt"]
 [ext_resource type="AudioStream" uid="uid://brv2fl2nnmcnp" path="res://Assets/Audio/SoundEffects/Step/step1.wav" id="42_1l10g"]
+[ext_resource type="Script" uid="uid://dq6g4cpncbmlg" path="res://Player/main_camera.gd" id="42_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://dwlqubdx262eo" path="res://Assets/Audio/SoundEffects/Step/step2.wav" id="43_6rl0i"]
 [ext_resource type="AudioStream" uid="uid://b35hjqibt1lie" path="res://Assets/Audio/SoundEffects/Step/step3.wav" id="44_7x5p2"]
 [ext_resource type="AudioStream" uid="uid://dfm2tpaao8fm5" path="res://Assets/Audio/SoundEffects/Step/step4.wav" id="45_6eb1q"]
@@ -8136,7 +8136,7 @@ script = ExtResource("2_fhl08")
 [node name="PlayerRevolverManager" type="Node" parent="." unique_id=2106552003 node_paths=PackedStringArray("ammo", "pickup_ray", "revolver_status_animation_player")]
 script = ExtResource("3_p5o4e")
 ammo = NodePath("../PlayerAmmo")
-pickup_ray = NodePath("../Head/Pivot/Camera3D/PickupRay")
+pickup_ray = NodePath("../Head/Pivot/MainCamera/PickupRay")
 revolver_status_animation_player = NodePath("../CanvasLayer/Status/AnimationPlayer")
 
 [node name="PlayerArmStateMachine" type="Node" parent="." unique_id=1090750882 node_paths=PackedStringArray("initial_state")]
@@ -8147,7 +8147,7 @@ initial_state = NodePath("GunState")
 script = ExtResource("4_x3vf3")
 ammo = NodePath("../../PlayerAmmo")
 animation_manager = NodePath("../../PlayerAnimationManager")
-shoot_ray = NodePath("../../Head/Pivot/Camera3D/ShootRay")
+shoot_ray = NodePath("../../Head/Pivot/MainCamera/ShootRay")
 punch_state = NodePath("../PunchState")
 gun_visual = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
 revolver_spawn_point = NodePath("../../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython/RevolverSpawnPoint")
@@ -8224,19 +8224,23 @@ ammo_label = NodePath("../CanvasLayer/AmmoLabel")
 script = ExtResource("9_dkpta")
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
-[node name="PlayerWaveManager" type="Node" parent="." unique_id=1303166373 node_paths=PackedStringArray("canvas_layer", "revolver_manager", "main_camera", "ammo", "projectile_type_manager")]
+[node name="PlayerWaveManager" type="Node" parent="." unique_id=1303166373 node_paths=PackedStringArray("canvas_layer", "revolver_manager", "main_camera", "ammo", "health", "projectile_type_manager", "upgrade_manager")]
 script = ExtResource("14_hshwv")
 canvas_layer = NodePath("../CanvasLayer")
 revolver_manager = NodePath("../PlayerRevolverManager")
-main_camera = NodePath("../Head/Pivot/Camera3D")
+main_camera = NodePath("../Head/Pivot/MainCamera")
 ammo = NodePath("../PlayerAmmo")
+health = NodePath("../Health")
 projectile_type_manager = NodePath("../PlayerProjectileTypeManager")
+upgrade_manager = NodePath("../PlayerUpgradeManager")
 
-[node name="PlayerUpgradeManager" type="Node" parent="." unique_id=620614383 node_paths=PackedStringArray("ammo", "gun_state", "hand_hitbox_manager")]
+[node name="PlayerUpgradeManager" type="Node" parent="." unique_id=620614383 node_paths=PackedStringArray("wave_manager", "ammo", "gun_state", "hand_hitbox_manager", "punch_state")]
 script = ExtResource("15_8mwp6")
+wave_manager = NodePath("../PlayerWaveManager")
 ammo = NodePath("../PlayerAmmo")
 gun_state = NodePath("../PlayerArmStateMachine/GunState")
 hand_hitbox_manager = NodePath("../PlayerHandHitboxManager")
+punch_state = NodePath("../PlayerArmStateMachine/PunchState")
 
 [node name="CameraShake" type="Node" parent="." unique_id=1822507941 node_paths=PackedStringArray("camera_pivots")]
 script = ExtResource("16_qemgg")
@@ -8363,8 +8367,6 @@ text = "Pickup a revolver to begin the next round!"
 root_node = NodePath("../RevolverStatus")
 libraries/ = SubResource("AnimationLibrary_8mwp6")
 
-[node name="UpgradeControl" parent="CanvasLayer" unique_id=775844860 instance=ExtResource("16_gpjlu")]
-
 [node name="HitVignette" type="ColorRect" parent="CanvasLayer" unique_id=225078875 node_paths=PackedStringArray("health")]
 material = SubResource("ShaderMaterial_efx54")
 anchors_preset = 15
@@ -8399,7 +8401,7 @@ fov = 60.0
 near = 0.01
 far = 100.0
 script = ExtResource("5_k53q1")
-main_camera = NodePath("../../../../Head/Pivot/Camera3D")
+main_camera = NodePath("../../../../Head/Pivot/MainCamera")
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=335350285 node_paths=PackedStringArray("health_component")]
 collision_layer = 4
@@ -8421,21 +8423,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5999999, -0.5)
 [node name="Pivot" type="Node3D" parent="Head" unique_id=91296476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2447269, 0.42452955)
 
-[node name="Camera3D" type="Camera3D" parent="Head/Pivot" unique_id=2136299058]
+[node name="MainCamera" type="Camera3D" parent="Head/Pivot" unique_id=2136299058]
 cull_mask = 1048573
 current = true
 fov = 60.0
 near = 0.01
 far = 100.0
+script = ExtResource("42_6eb1q")
 
-[node name="ShootRay" type="RayCast3D" parent="Head/Pivot/Camera3D" unique_id=748057770]
+[node name="ShootRay" type="RayCast3D" parent="Head/Pivot/MainCamera" unique_id=748057770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00045073032, -0.0067898035)
 target_position = Vector3(0, 0, -50)
 collision_mask = 10
 collide_with_areas = true
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
-[node name="PickupRay" type="RayCast3D" parent="Head/Pivot/Camera3D" unique_id=441522590]
+[node name="PickupRay" type="RayCast3D" parent="Head/Pivot/MainCamera" unique_id=441522590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037014008, -0.0067898035)
 target_position = Vector3(0, 0, -3)
 collision_mask = 16

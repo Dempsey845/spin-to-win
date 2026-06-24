@@ -4,15 +4,14 @@ extends Control
 signal upgrade_claimed(upgrade_type: UpgradeOption.UpgradeType)
 
 @onready var upgrade_option_container: HBoxContainer = $UpgradeOptionContainer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var upgrade_option_scene: PackedScene = preload("uid://cy5crojjik5wj")
 
 var start_positions = ["top", "bottom"]
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-func _ready() -> void:    
-    get_tree().paused = true
+func start_upgrade():
+    animation_player.play("fade_in")
 
 func get_random_option() -> UpgradeOption.UpgradeType:
     return UpgradeOption.UpgradeType.get(UpgradeOption.UpgradeType.keys().pick_random())
