@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://pgtrvukgv316" path="res://Assets/Audio/SoundEffects/Hit/hit_3.wav" id="15_el2sn"]
 [ext_resource type="AudioStream" uid="uid://bsvk04yjuk8c4" path="res://Assets/Audio/SoundEffects/Hit/hit_4.wav" id="16_hdlv3"]
 [ext_resource type="AudioStream" uid="uid://b0a3voolpciac" path="res://Assets/Audio/SoundEffects/Hit/burst.wav" id="17_vm4gj"]
+[ext_resource type="Script" uid="uid://s28lakao7bqr" path="res://NPC/npc_out_of_bounds_manager.gd" id="19_hdlv3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xld7y"]
 
@@ -190,3 +191,6 @@ stream = SubResource("AudioStreamRandomizer_el2sn")
 volume_db = -2.0
 max_polyphony = 3
 bus = &"sfx"
+
+[node name="NPCOutOfBoundsManager" type="Node" parent="." unique_id=2003947015]
+script = ExtResource("19_hdlv3")
