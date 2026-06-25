@@ -8756,6 +8756,7 @@ script = ExtResource("20_efx54")
 health = NodePath("../../Health")
 
 [node name="TransitionControl" parent="CanvasLayer" unique_id=839243473 instance=ExtResource("41_1kmt7")]
+visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=778715242]
 anchors_preset = 15

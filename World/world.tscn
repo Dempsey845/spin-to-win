@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c3a2n0x7rjmc3" path="res://World/game_manager.gd" id="1_xw5lg"]
 [ext_resource type="Script" uid="uid://7xd074afdo24" path="res://World/wave_system.gd" id="2_0lysu"]
 [ext_resource type="Terrain3DAssets" uid="uid://c65fxp4igfwdn" path="res://World/terrain_3d_assets.tres" id="3_awrha"]
+[ext_resource type="Texture2D" uid="uid://bjv2bj2n63hck" path="res://Assets/gear.png" id="3_f23eu"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
 [ext_resource type="PackedScene" uid="uid://dx6eqvuprnkvh" path="res://Assets/WesternBuildings/HouseTwo/Simple_house2.fbx" id="6_yf0ba"]
 [ext_resource type="PackedScene" uid="uid://chj0d5pofcq1l" path="res://Assets/WesternBuildings/Bank/Bank.fbx" id="7_yf0ba"]
@@ -147,6 +148,30 @@ offset_bottom = -5.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "1"
+
+[node name="Label" type="Label" parent="WaveSystem/CanvasLayer" unique_id=2012530981]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_top = 10.0
+offset_right = -49.0
+offset_bottom = 29.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "TAB"
+
+[node name="TextureRect" type="TextureRect" parent="WaveSystem/CanvasLayer" unique_id=553793120]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_right = -7.0
+offset_bottom = 35.0
+grow_horizontal = 0
+texture = ExtResource("3_f23eu")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=1018224253]
 
