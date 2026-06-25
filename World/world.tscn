@@ -118,11 +118,12 @@ data = PackedVector3Array(-0.0095, 0.0229, 0.0061, -0.0104, 0.0244, 0.0111, -0.0
 [node name="GameManager" type="Node" parent="." unique_id=1168442622]
 script = ExtResource("1_xw5lg")
 
-[node name="WaveSystem" type="Node" parent="." unique_id=661734023 node_paths=PackedStringArray("enemy_spawn_locations", "enemy_container", "wave_time_label")]
+[node name="WaveSystem" type="Node" parent="." unique_id=661734023 node_paths=PackedStringArray("enemy_spawn_locations", "enemy_container", "wave_time_label", "wave_count_label")]
 script = ExtResource("2_0lysu")
 enemy_spawn_locations = [NodePath("../EnemySpawnPoints/Marker3D"), NodePath("../EnemySpawnPoints/Marker3D2"), NodePath("../EnemySpawnPoints/Marker3D3"), NodePath("../EnemySpawnPoints/Marker3D4"), NodePath("../EnemySpawnPoints/Marker3D5"), NodePath("../EnemySpawnPoints/Marker3D6"), NodePath("../EnemySpawnPoints/Marker3D7")]
 enemy_container = NodePath("../Enemies")
 wave_time_label = NodePath("CanvasLayer/WaveTimeLabel")
+wave_count_label = NodePath("CanvasLayer/WaveLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="WaveSystem" unique_id=1707061559]
 
@@ -135,6 +136,18 @@ theme_override_font_sizes/font_size = 30
 text = "00:00"
 horizontal_alignment = 1
 
+[node name="WaveLabel" type="Label" parent="WaveSystem/CanvasLayer" unique_id=745336914]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -40.0
+offset_right = 305.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "1"
+
 [node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=1018224253]
 
 [node name="Marker3D" type="Marker3D" parent="EnemySpawnPoints" unique_id=1045664925]
@@ -144,7 +157,7 @@ transform = Transform3D(0.9999104, -0.011460742, 0.0069136447, 0.011493888, 0.99
 transform = Transform3D(0.9999104, -0.011460742, 0.0069136447, 0.011493888, 0.9999226, -0.0047745127, -0.0068583987, 0.0048535373, 0.9999647, -13.009917, 1, 10.079434)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemySpawnPoints" unique_id=909734529]
-transform = Transform3D(0.9999104, -0.011460742, 0.0069136447, 0.011493888, 0.9999226, -0.0047745127, -0.0068583987, 0.0048535373, 0.9999647, 29.972075, 1, -12.647106)
+transform = Transform3D(0.9999104, -0.011460742, 0.0069136447, 0.011493888, 0.9999226, -0.0047745127, -0.0068583987, 0.0048535373, 0.9999647, 23.972075, 1, -17.647106)
 
 [node name="Marker3D4" type="Marker3D" parent="EnemySpawnPoints" unique_id=1698915925]
 transform = Transform3D(0.9999104, -0.011460742, 0.0069136447, 0.011493888, 0.9999226, -0.0047745127, -0.0068583987, 0.0048535373, 0.9999647, 46.84578, 1, 1.0441484)

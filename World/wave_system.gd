@@ -9,6 +9,7 @@ signal wave_ended
 @export var enemy_spawn_locations: Array[Marker3D]
 @export var enemy_container: Node3D
 @export var wave_time_label: Label
+@export var wave_count_label: Label
 
 var enemy_scene: PackedScene = preload("uid://dqdin3vaff0vi")
 
@@ -80,6 +81,7 @@ func get_enemy_count() -> int:
 
 func start_next_wave():
 	current_wave += 1
+	wave_count_label.text = str(current_wave)
 
 	wave_time = get_wave_scaled_value(min_wave_duration, max_wave_duration)
 	enemies_spawned = 0
