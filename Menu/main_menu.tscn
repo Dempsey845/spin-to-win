@@ -1,0 +1,1099 @@
+[gd_scene format=4 uid="uid://byl0t7f715o3c"]
+
+[ext_resource type="Texture2D" uid="uid://burod6f42xc3o" path="res://Assets/WesternDesertPack/Surface materials/Sand.png" id="1_rw3mj"]
+[ext_resource type="Script" uid="uid://u5ov53uf23l8" path="res://Menu/main_menu.gd" id="1_ywk15"]
+[ext_resource type="Texture2D" uid="uid://btttrh8dr6gl3" path="res://Assets/RevolverPack/Colt Python/Textures/ColtPython.Png" id="2_cn2sd"]
+[ext_resource type="Texture2D" uid="uid://bo1r2l086d274" path="res://Assets/RevolverPack/Colt Python/Textures/revolverAmmo.jpg" id="3_vv7ca"]
+[ext_resource type="Texture2D" uid="uid://dkpw1g4cf1dq7" path="res://Assets/RevolverPack/Colt Python/Textures/cylinderRefV2.jpg" id="4_218iu"]
+[ext_resource type="PackedScene" uid="uid://mcmnrwo4ha5f" path="res://NPC/Cowboy/Characters/Skins/cowboy_skin_1.tscn" id="5_ywk15"]
+[ext_resource type="AnimationLibrary" uid="uid://bstcc7exol337" path="res://NPC/Cowboy/Animations/Cowboy.res" id="6_ws7s4"]
+[ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/RouletteTimeLogo.png" id="7_cn2sd"]
+[ext_resource type="PackedScene" uid="uid://b4mn0v13tt48t" path="res://Assets/WesternDesertPack/Cacti/Desert_cactus_01/Desert_cactus_01.fbx" id="8_218iu"]
+[ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="9_ws7s4"]
+[ext_resource type="PackedScene" uid="uid://bk688mltbgm2q" path="res://Assets/WesternDesertPack/Cacti/Opuntia_cactus/Opuntia_cactus.fbx" id="9_ywk15"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fduiw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_cgse8"]
+sky_material = SubResource("ProceduralSkyMaterial_fduiw")
+
+[sub_resource type="Environment" id="Environment_o4wy8"]
+background_mode = 2
+sky = SubResource("Sky_cgse8")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.63541764, 0.5386532, 0.3055032, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(1, 0.93333334, 0.7411765, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqyvv"]
+albedo_texture = ExtResource("1_rw3mj")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m8x2t"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfngn"]
+resource_name = "Material.031"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_cn2sd")
+emission_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugyeu"]
+resource_name = "Material.032"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_cn2sd")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_54i0j"]
+_surfaces = [{
+"aabb": AABB(-0.0026837236, -0.002129733, -0.000267404, 0.0063591944, 0.0031567279, 0.00053469604),
+"format": 34359742465,
+"index_count": 564,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAQABAABAAAAAwAFAAIAAgAFAAYABAAGAAMABgAEAAIAAgAHAAAABwACAAQAAAAIAAQABAAIAAcACAAAAAkACQAAAAcABwAIAAoACQAKAAgABwALAAkACgALAAcADAAJAAsACgAJAAwADQALAAoACwANAAwACgAOAA0ADAAOAAoADwANAA4ADAANAA8ADgAQAA8AEAAOAAwADwARAAwADAARABAAEgATABQAFAATABUAFgATABIAFwAVABMAEwAWABcAGAAVABcAFQAYABQAFwAZABgAGgAZABcAFwAWABoAGAAZABsAGwAZABoAGwAcABgAFAAYABwAHQAcABsAHAAdABQAGgAeABsAGwAeAB0AHwAaABYAHgAaAB8AFAAdACAAIAAdAB4AIAAhABQAFAAhABIAHgAiACAAIQAgACIAIgAeACMAHwAjAB4AJAASACEAEgAkABYAIgAlACEAIQAlACQAIwAmACIAJQAiACYAJwAWACQAFgAnAB8AKAAkACUAJAAoACcAJgApACUAJQApACgAKgAmACMAIwArACoAKwAjAB8AJgAqACwAHwAtACsALgApACYAKAApAC4ALAAvACYAJgAvAC4AMAAtAB8AHwAnADAAJwAoADEAMQAwACcAMgAxACgAMwAtADAAKwAtADMAMAA0ADMAMwA1ACsALgA2ACgAKAA2ADIANgAuADcANwAuAC8AOAA1ADMANwA5ADYAOgAyADYAOgA2ADkAOgA5ADsAOQA3ADwAOgA7AD0APAA9ADkAPAA3AD4ALwA+ADcAPwA+AC8APgBAADwAPABAADgAQAA/AEEAQQA/AC8AQgA9ADwAOABDADwAPABDAEIAMwBDADgAQgBDADMAMwA0AEIARABCADQARAA0AEUARgA9AEIARABGAEIARABFADIAPQBGADoAMgBHAEQAOgBHADIARgBEAEgARwBEAEgAOgBGAEkASABJAEYASgBHADoASABKAEcASQBLADoAOgBLAEoAQQBLAEkASgBLAEEASQBMAEEATABJAEgAQQBMAEAATAA4AEAAQQBNAEoATQBKAEgATQBBAC8ATQAvACwATABOADgASABOAEwASABOAE0ATgBNACwATgA1ADgALABPAE4ATgBPADUAUABRAFIAUQBTAFIAUQBQAFQAUABSAFUAVQBSAFMAVQBUAFAAVgBTAFEAUwBWAFUAVABXAFEAUQBXAFYAVQBXAFQAVwBVAFYAWABZAFoAWQBbAFoAWQBYAFwAWABaAF0AXQBaAFsAXQBcAFgAXgBbAFkAWwBeAF0AXABfAFkAWQBfAF4AXQBfAFwAXwBdAF4AYABhAGIAYwBhAGAAYgBhAGMAZABhAGMAYwBjAGQAZQBgAGIAYABlAGMAYgBmAGUAYwBmAGIAZQBmAGcAZwBmAGMAZwBoAGUAYwBlAGgAaQBoAGcAaABpAGMAYwBpAGcAYwBpAGoAagBjAGMA"),
+"name": "Material.031",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 107,
+"vertex_data": PackedByteArray("dhEMuZfOlbrNZHCzJeoQutO9lbrNZHCzqlULulsUjLrQQDA4PQRjuuWQXLrDzWezqlULulsUjLoDuTC4w29dulc+Sbr1QjA4w29dulc+SbrctjC4olMgudcDjLrQQDA4olMgudcDjLoDuTC48j0/Od3kYLrDzWezein6OCMLVbqtUSe4ein6OCMLVbrH3SY4TmVHOQdhELrDzWezcC/cOD+VD7r1QjA4cC/cOD+VD7rctjC4kp+FOPKS4bn1QjA4kp+FOPKS4bnctjC4E1qIOX8q47nDzWezuDTguiGwG7lUI4w5NPAJux3aXrpUI4w57bkaux3KY7rDzWezjxQguzoE+roPI4w5opnSugDgP7pUI4w5oxbcurfz9boPI4w5aeEvu/6SC7vNZHCzM4O6uh8JCrvNZHCzgJ29urBCY7rDzWezoxbcurfz9bpbMoy5jxQguzoE+rpbMoy5NPAJux3aXrpbMoy5opnSugDgP7oWMoy5kC2cujdJPLrDzWezuDTguiGwG7kWMoy5uDTguo2XUjnDzWez0Ky3uhsvOjjRMYy5kC2cutXoCroWMoy50Ky3uhsvOjhUI4w50Ky3uoeWYznDzWeztiSPum0nozmVmUW5kC2cutXoCrpUI4w5tiSPum0nozkkfUU5tiSPum0noznDzWezOt8/upvEZzmVmUW5ekRquvhTOLoemkW57pApumSLPzoLmUW5ffphutUYXrrDzWez5pFIulCNZTrINl+zti8qurg+WjoLmUW5ekRquvhTOLokfUU5Ot8/upvEZzkkfUU57pApumSLPzqvfUU5O8ctukdW47nDzWezH5BXujqUnLkW+EU5H5BXujqUnLkPFUa5ti8qurg+WjqvfUU5k69jOlCNZTrINl+zNtE8OgwCqLkemkW5k69jOrg+WjqvfUU57afeOd8/PTqvfUU5FRxgOvhTPDqvfUU5+D9FOtt5DbnDzWez9pVDOlJ4DbkkfUU5k69jOrg+WjoLmUW5FRxgOvhTPDoLmUW59pVDOlJ4DbkemkW57afeOd8/PToLmUW5NtE8OgwCqLkkfUU5NtE8OieR7LnDzWezDy8KukNLC7mfxUU5wD5PuhXuCrlb0EU5o2rdOX/qDLlmj0U5zccKuuJKPzqvfUU5Dy8KukNLC7nDzWezo2rdOX/qDLnDzWezzccKuuJKPzrINl+z7afeOd8/PTrINl+zo2rdOX/qDLlfrEW5zccKuuJKPzoLmUW5Dy8KukNLC7mZ4kW5wD5PuhXuCrlV7UW51cJuO6Z7hjkIrgg51cJuOyHwyjnDzWez1cJuO1cOBDnDzWez1cJuO6Z7hjl5ygi52/dCOqZ7hjkIrgg52/dCOlcOBDnDzWez2/dCOqZ7hjl5ygi52/dCOiHwyjnDzWezKuBwOxC4ETrxXD85KuBwO7OdQTrINl+zKuBwO1ukwznDzWezKuBwOxC4ETrFdz+5JdtQOhC4ETrxXD85JdtQOlukwznDzWezJdtQOhC4ETrFdz+5JdtQOrOdQTrINl+zH+4/uuN1ZDo4Q9g4H+4/ujqchjo4Q9g4ID05uSVGZTo4Q9g4H+4/usAqbDr4Fho1H+4/ujqchjrx0TI4H+4/uuN1ZDr4Fho1ID05uW1HZTr4Fho1ID05uSVGZTrd2tW4H+4/uuN1ZDrd2tW4H+4/ujqchjrd2tW4H+4/ujqchjo6AS64")
+}, {
+"aabb": AABB(0.00085131865, 0.0007312126, -3.4169974e-05, 0.0028222643, 0.00029557227, 6.7906e-05),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgABAAAAAAADAAIAAgADAAAABAAFAAYABgAHAAQA"),
+"name": "Material.032",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("kO9hOq9nYTptC2q0f8BwOwhchjptC2q0f8BwO9muPzptC2q0kO9hOtmuPzptC2q0bbJwOy+Vhjq7UQ+4bbJwOy+VhjrJfw04BytfOh+VYTrJfw04BytfOh+VYTq7UQ+4")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e2v8n"]
+resource_name = "CPBody"
+_surfaces = [{
+"aabb": AABB(-0.0026837236, -0.002129733, -0.000267404, 0.0063591944, 0.0031567279, 0.00053469604),
+"attribute_data": PackedByteArray("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"),
+"format": 34359742487,
+"index_count": 564,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARABGAEcARABIAEUASABJAEUASgBLAEwATABNAEoATgBPAFAAUABRAE4AUgBTAFQAVABVAFIAVgBXAFgAWABZAFYAWgBbAFwAXABdAFoAXgBfAGAAYABhAF4AYgBjAGQAYgBlAGMAYgBkAGYAYgBmAGcAaABpAGoAagBrAGgAaABrAGwAbABtAGgAbgBvAHAAcABxAG4AcgBzAHQAdAB1AHIAdgB3AHgAeAB5AHYAegB7AHwAfAB9AHoAfgB/AIAAgACBAH4AggCDAIQAhACFAIIAhgCHAIgAhwCJAIgAigCLAIwAjACNAIoAjgCPAJAAkACRAI4AkgCTAJQAkwCSAJUAlgCXAJgAlwCZAJgAmgCbAJwAnACdAJoAngCfAKAAoAChAJ4AogCjAKQApQCmAKcApwCoAKUAqQCqAKsAqwCsAKkArQCuAK8ArwCwAK0AsQCyALMAswC0ALEAtQC2ALcAtwC4ALUAuQC6ALsAuwC8ALkAvQC+AL8AvwDAAL0AwQDCAMMAwwDEAMEAxQDGAMcAxwDIAMUAyQDKAMsAywDMAMkAzQDOAM8AzwDQAM0A0QDSANMA0wDUANEA1QDWANcA1wDYANUA2QDaANsA2wDcANkA3QDeAN8A3wDgAN0A4QDiAOMA4wDkAOEA5QDmAOcA5wDoAOUA6QDqAOsA6QDsAOoA7ADtAOoA7ADuAO0A7wDwAPEA8QDyAO8A8wD0APUA9QD2APMA9wD4APkA+QD6APcA+wD8AP0A/QD+APsA/wAAAQEBAQECAf8AAwEEAQUBBQEGAQMBBwEIAQkBBwEKAQgBCgELAQgBCwEMAQgBDQEOAQ8BDwEQAQ0BEQESARMBEwEUAREBFQEWARcBFwEYARUBGQEaARsBGwEcARkBHQEeAR8BHwEgAR0BIQEiASMBIwEkASEBJQEmAScBJwEoASUBKQEqASsBKwEsASkBLQEuAS8BLwEwAS0BMQEyATMBMwE0ATEBNQE2ATcBOAE5AToBOwE8AT0BPQE+ATsBPwFAAUEBQQFCAT8BQwFEAUUBRQFGAUMBQwFGAUcBRwFIAUMBSQFKAUsBSwFLAUkBTAFNAU4BTwFQAVEBUQFSAU8BUwFUAVUBVQFWAVMBVwFYAVgBWAFZAVcBWgFbAVwBXAFdAVoBXgFfAWABYAFhAV4BYgFjAWQBZAFlAWIBZgFnAWgBaAFpAWYBagFrAWwBbAFtAWoB"),
+"material": SubResource("StandardMaterial3D_mfngn"),
+"name": "Material.031",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 366,
+"vertex_data": PackedByteArray("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KuBwOxC4ETrxXD85KuBwO7OdQTrINl+zKuBwO1ukwznDzWezKuBwOxC4ETrFdz+5KuBwOxC4ETrxXD85KuBwO1ukwznDzWezJdtQOlukwznDzWezJdtQOhC4ETrxXD85JdtQOhC4ETrxXD85JdtQOrOdQTrINl+zKuBwO7OdQTrINl+zKuBwOxC4ETrxXD85JdtQOlukwznDzWezJdtQOrOdQTrINl+zJdtQOhC4ETrxXD85dhEMuZfOlbrNZHCzolMgudcDjLoDuTC4qlULulsUjLoDuTC4JeoQutO9lbrNZHCzPQRjuuWQXLrDzWezJeoQutO9lbrNZHCzqlULulsUjLoDuTC4w29dulc+SbrctjC48j0/Od3kYLrDzWezein6OCMLVbqtUSe4olMgudcDjLoDuTC4dhEMuZfOlbrNZHCzTmVHOQdhELrDzWezcC/cOD+VD7rctjC4ein6OCMLVbqtUSe48j0/Od3kYLrDzWezkp+FOPKS4bnctjC4cC/cOD+VD7rctjC4TmVHOQdhELrDzWezE1qIOX8q47nDzWez7bkaux3KY7rDzWezNPAJux3aXrpbMoy5uDTguiGwG7kWMoy5uDTguo2XUjnDzWezNtE8OgwCqLkemkW5H5BXujqUnLkPFUa5O8ctukdW47nDzWezNtE8OieR7LnDzWezjxQguzoE+rpbMoy5NPAJux3aXrpbMoy57bkaux3KY7rDzWezaeEvu/6SC7vNZHCzoxbcurfz9bpbMoy5jxQguzoE+rpbMoy5aeEvu/6SC7vNZHCzM4O6uh8JCrvNZHCzkC2cutXoCroWMoy5tiSPum0nozmVmUW50Ky3uhsvOjjRMYy5opnSugDgP7oWMoy5uDTguo2XUjnDzWezuDTguiGwG7kWMoy50Ky3uhsvOjjRMYy50Ky3uoeWYznDzWezkC2cujdJPLrDzWezkC2cutXoCroWMoy5opnSugDgP7oWMoy5gJ29urBCY7rDzWezti8qurg+WjoLmUW5k69jOrg+WjoLmUW5k69jOlCNZTrINl+z5pFIulCNZTrINl+zO8ctukdW47nDzWezH5BXujqUnLkPFUa5ekRquvhTOLoemkW5ffphutUYXrrDzWezekRquvhTOLoemkW5kC2cutXoCroWMoy5kC2cujdJPLrDzWezffphutUYXrrDzWez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l26jjYWtMYBIbuCNha0xgN9s946YnIN8J03Un5icg3yyU2ybmJyDfEdOEp+YnIN8akS3pWRLBJ/NpkmzZEsEn0C4gb5kSwSfCLKCumRLBJ8hpJGx/348NZz9+r//fjw1nf35v/9+PDWD/QPA/348NX/9BMCmQnuRc7eZwqZCe5EMt03DpkJ7kdq3F7+mQnuR0rY8vtaBqTtF/tHB1oGpO8n9xsHWgak74v/1wdaBqTv4/vC8EYqtg6b9xLkRiq2Dmv9dxRGKrYPZ9zC3EYqtg571MrZMbU63bdwev0xtTreF1H28TG1Oty/es79MbU63Mt9ow0+d+EfV8uicT534R8XxLZxPnfhHqPLJnE+d+EcI9Lqd/38m6P///7//fybo////v/9/Juj///+//38m6P///794vaZriPU3mHi9pmtM9SWYeL2ma2f1LZh4vaZrpPVAmPhn6kIXxSnE+GfqQnLFDMT4Z+pC9MQ0xPhn6kKkxE7EmsaOfjH4hZqaxo5+f/SvmZrGjn489dqZmsaOftP4qpo0XN7CmbicwjRc3sKZuJzCNFzewpm4nMI0XN7C////PweACoD+//u/B4AKgP7/A8AHgAqA/v/6vweACoD+//q/B4AKgP7/A8AHgAqA/v8DwCrtYnP1lZv5Ku1ic82Pb/kq7WJztJSS+SrtYnMumbL5/3//f/f+g8D/f/9/9/6DwP9//3/3/oPA/3//f/f+g8D7QkKrbpXjtvtCQqv///8/+0JCq26V47b7QkKrbpXjtmqO0YLV/464ao7RgrD/gsdqjtGC0v9yx2qO0YKw/364/3//f2X7TML/f/9/2fqSwv9//3+E/LzB/3//f/n8gsH/f/9//v/+v/9//3/+//+//3//f/7//7//f/9//f/+v/9//3/s/wjA/3//f0L/XcD/f/9/T/9XwP9//39Y/NLB/3//f33/QMD/f/9/Y/9NwPZ+CQH///+/9n4JAf///7/2fgkB////v/Z+CQH///+/9n4JAf///7/2fgkB////vzSAyf////+/NIDJ/////780gMn/////vzSAyf////+/AoAKgP7//b8CgAqA/v/9vwKACoD+//2/AoAKgP7//b9WAKl/////v1YAqX////+/VgCpf////79WAKl/////v1oAWYD///+/WgBZgP///79aAFmA////v1oAWYD///+/AoAAgP7//b8CgACA/v8AwAKAAID+//2/AoAAgP7//b/p8UJyzZSF+enxQnKLlIH56fFCcqmWofnp8UJy8pal+f///3//f0Df////f3vBAAD///9/e8EAAP///397wQAA/38KQP///7//fwpA////v/9/CkD///+//38KQP///7//f/S/////v/9/9L////+//3/0v////7//f/S/////vwAA/3//fwAAAAD/f/9/AAAAAP9//3///wAA/3//fwAA////f739AID///9//38gQf///3//fyBB////f/9/IEH/fwdAov2WwP9/B0Ci/ZbA/38HQKL9lsD/fwdAov2WwP9/97/Q/i3B/3/3v9D+LcH/f/e/0P4twf9/97/Q/i3BAAD/f/9//v8AAP9//3/+/wAA/3//f/7/UC4AALgo/kxQLgAAqyNhS1AuAACsPFtTUC4AAGo/O1R7HkwdVmSRXnseTB0ySKpQex5MHTBLJVJ7HkwdlWcsYGjidxtZSVhhaOJ3G9VJc2Fo4ncb30bPYGjidxuCRrtgzP950j1kI3fM/3nSt2RLd8z/edJ7YpJ2zP950g9ib3aC/JgcVUCTZoL8mByPNDRigvyYHNlBI2eC/JgcJUnYaQUfZMsE9ftmBR9kywT932MFH2TLk+aYbAUfZMsj4+5twkr/APX/MUHCSv8A9P/APsJK/wD2/8I+wkr/APP/MEF7EabCy/q6G3sRpsJ5/JZkexGmwi/+EmR7EabCYvmGG6m71gFa/CM/qbvWAeL5gkCpu9YBEfzxP6m71gFw/OQ+Ufzs9WLuEkRR/Oz1QfXNP1H87PWK8yxBUfzs9WbsL0VON0ztaP/nUE43TO36+LxVTjdM7T3+yFFON0ztK/mZL/jHUB2SuatG+MdQHVy4HEf4x1Ad0LmURvjHUB12u/pF2Jf//////z/Yl///////P9iX//////8/2Jf//////z+l63g9W7BLRaXreD1LsFhFpet4PXCwOkWl63g9gbAtRRQ9Bxiq94wiFD0HGGD3UiIUPQcYk/d6IhQ9Bxjk97kijf6aRrSzYUWN/ppGX7O/RY3+mkYMteZDjf6aRlW1lUPeQjPcxPpMHN5CM9zE+kwc3kIz3MT6TBzeQjPc////v/P/9v/2//8/8//2//b//z/z//b/9v//P/P/9v/2//8/8//2//b/AEDz//b/9f8AQGHzKm3XjFoKYfMqbR2N5wdh8yptxoz6CmHzKm2YjJcM/v/+//f+ez/+//7/9v57P/7//v/3/ns//v/+//f+ez9CK/vCx+1HdUIr+8LH7Ud1Qiv7wsftR3VCK/vC////vyz9k/Ec8RRALP2T8f3wJ0As/ZPxGPHpPyz9k/H58Ng//v/+/4T8Qj7+//7/2PpsPf7//v9k+7I9/v/+//j8fD7+//7//v//P/7//v/+//8//v/+//7/AED+//7//f8AQP////9D/6E//////0z/pj//////Q/+hP/////9D/6E///////f/+z//////////PzSAyf////+/NIDJ/////780gMn/////vzSAyf////+/9P/7//r/AED0//v/+///P/T/+//6/wBA9P/7//r/AEBWAKl/////v1YAqX////+/VgCpf////79WAKl/////v1oAWYD///+/WgBZgP///79aAFmA////v1oAWYD///+//f/8//z//z/9//z/+///P/3//P/7//8//f/8//v//z9C8ulx84xnCkLy6XGyjHkLQvLpcbuMVAtC8ulx+oxFCgnAAAD///8/CcAAAP///z8JwAAA////PwnAAAD///8/CcD//////z8JwP//////PwnA//////8/CcD//////z8GwAAA0P7RPgbAAADQ/tE+BsAAAND+0T4GwAAA0P7RPgbA//+i/Wg/BsD//6L9aD8GwP//ov1oPwbA//+i/Wg/AAD/f/9/AAAAAP9//38AAAAA/3//fwAA/3//f/9/////f/9//3////9//3//f///uYC2AEj/WsC5gLYASP9awLmAtgBI/1rAuYC2AEj/WsDnt2f0QQ96yee3Z/TGGNrJ57dn9HwXq8nnt2f0FQ7EyQAA/3//fwAAAAD/f/9///8AAP9//3///wAA/3//fwAAAAD/f/9/AAAAAP9//38AAAAA/3////+/AAD/f////78AAP9/////vwAA////fwAAAAD///9/AAAAAP///38AALaAuQBI/6Q/toC5AEj/pD+2gLkASP+kP7aAuQBI/6Q/l4sWyFkTQTSXixbIthOcM5eLFsj2El44l4sWyIsT9TgAAP9/////vwAA/3////+/AAD/f////7+7vkPB////v7u+Q8H///+/u75Dwf///7+7vkPB////v9R/1P////+/1H/U/////7/Uf9T/////v9R/1P////+/BEIEwv///78EQgTC////vwRCBML///+/BEIEwv///7+NBnJ5////v40Gcnn///+/jQZyef///7+NBnJ5////v0cht17///+/RyG3Xv///79HIbde////v0cht17///+/")
+}, {
+"aabb": AABB(0.00085131865, 0.0007312126, -3.4169974e-05, 0.0028222643, 0.00029557227, 6.7906e-05),
+"attribute_data": PackedByteArray("mwAPPxB7oT3Z63U/4PN8PdnrdT/Y9wE+mwAPPzA+5T2/nDk/aNAQPr+cOT8ENSw+xk4YPwQ1LD7GThg/aNAQPtnrdT/Y9wE+2et1P+DzfD2bAA8/EHuhPZsADz8wPuU9"),
+"format": 34359742487,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
+"material": SubResource("StandardMaterial3D_ugyeu"),
+"name": "Material.032",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("kO9hOq9nYTptC2q0f8BwOwhchjptC2q0f8BwO9muPzptC2q0kO9hOtmuPzptC2q0bbJwOy+Vhjq7UQ+4bbJwOy+VhjrJfw04BytfOh+VYTrJfw04BytfOh+VYTq7UQ+4f8BwO9muPzptC2q0f8BwOwhchjptC2q0kO9hOq9nYTptC2q0kO9hOtmuPzptC2q0/3//f1D9VsH/f/9/Gvzxwf9//38k/OzB/3//f2X9S8HgeN/43/iOw+B43/jf+I7D4Hjf+N/4jsPgeN/43/iOw/////8k/BI+/////xr8DT7/////UP2oPv////9l/bM+")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_54i0j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2snw2"]
+resource_name = "Material.033"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_vv7ca")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xjswb"]
+_surfaces = [{
+"aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABgAFAAMABAAFAAYAAwACAAYAAAAEAAcABwABAAAABgAHAAQACAACAAEABgACAAgAAQAJAAgACAAKAAYAAQAHAAsACwAJAAEACwAHAAYACAAJAAsABgAKAAsACwAKAAgA"),
+"name": "Material.033",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuJfOBrqiRbawAAAAAJfOBrp75uO4AAAAAKwcJTln5eO4reTjuKwcJTnrUTgwG49UOFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgw")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_is5sc"]
+resource_name = "CPBullet"
+_surfaces = [{
+"aabb": AABB(-0.00010866798, -0.00051424786, -0.00010867134, 0.00021733595, 0.00087102887, 0.00021734001),
+"attribute_data": PackedByteArray("Q644P/jHaz4KZ2c+nF90Pk6aZj7I0fw9FHs4PzhV/j3GM2g+LCu1PgpnZz6cX3Q+Q644P/jHaz5h4Tg/WN+wPutveT/6zo8+c0tfPzy96j76JkU/+s6PPnNLXz9og9M9/UuyPWBIVz7eIVU+LMUOPpruVT7yXYI+1AqzPVCkgz4QerY9js+cPtQKsz1QpIM+mu5VPvJdgj4Tu1Y+cFm9PgpnZz6cX3Q+Q644P/jHaz4Uezg/OFX+PU6aZj7I0fw9CmdnPpxfdD7GM2g+LCu1PmHhOD9Y37A+Q644P/jHaz79S7I9YEhXPtQKsz1QpIM+EHq2PY7PnD7UCrM9UKSDPv1Lsj1gSFc+1AqzPVCkgz6a7lU+8l2CPt4hVT4sxQ4+mu5VPvJdgj7UCrM9UKSDPhB6tj2Oz5w+E7tWPnBZvT4="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQA"),
+"material": SubResource("StandardMaterial3D_2snw2"),
+"name": "Material.033",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("AAAAAJfOBrr64+M4AAAAAKwcJTkN5eM4reTjOKwcJTnrUTgwreTjOJfOBrqiRbawreTjuKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAJfOBrr64+M4reTjuJfOBrqiRbawreTjOJfOBrqiRbawAAAAAJfOBrp75uO4reTjuJfOBrqiRbawAAAAAJfOBrr64+M4G49UOFcOuznrUTgwreTjOKwcJTnrUTgwAAAAAKwcJTkN5eM4AAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzkQBmM4AAAAAKwcJTkN5eM4reTjuKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAJfOBrp75uO4reTjOJfOBrqiRbawreTjOKwcJTnrUTgwAAAAAKwcJTln5eO4reTjuKwcJTnrUTgwreTjuJfOBrqiRbawAAAAAJfOBrp75uO4G49UOFcOuznrUTgwAAAAAFcOuzkQBmM4G49UuFcOuznrUTgwAAAAAFcOuzlXAGO4G49UOFcOuznrUTgwAAAAAFcOuzlXAGO4AAAAAKwcJTln5eO4reTjOKwcJTnrUTgwAAAAAKwcJTln5eO4AAAAAFcOuzlXAGO4G49UuFcOuznrUTgwreTjuKwcJTnrUTgw/7//f+d/F4D/v/9/hn54gf+//3/Afj6B/7//f0mAEYD/P/9/DH28gP8//38MfbyA/z//fwx9vID/P/9/DH28gP9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/rbjVj8J9+I+tuNWPsnuXka241Y95fPuQrbjVjzJ/1o5RR9WPW380jlFH1Y8efjGOUUfVj4GAm45RR9WPNIEoj/7//7/Bf/B//v//v818M3/+//+/SX1Sf/7//78hgN1/AAD/v4Z+hn4AAP+/hn6GfgAA/7+GfoZ+AAD/v4Z+hn7/f///yIL/v/9//////2QB/3///8iC/7//f///yIL/vyjwUMcNYOB+KPBQx1BimH8o8FDHB148fijwUMfPXNh91g9Qxzidvn/WD1DHm2MPf9YPUMeVY61/1g9Qx1GeZX8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xjswb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nmcb"]
+resource_name = "Material.034"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_218iu")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dori4"]
+_surfaces = [{
+"aabb": AABB(-0.000441691, -0.00044155694, -0.00037200467, 0.000883382, 0.00088337704, 0.00074401003),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAQAAAAQAAwAFAAQAAgABAAYABwAFAAMAAwACAAcABAAFAAcABAAIAAEABwAIAAQAAQAIAAkACQAIAAcACQAGAAEABgAKAAIACgAGAAkABwACAAoACQALAAoACgALAAcABwALAAkA"),
+"name": "Material.034",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("w5LnOceLZzm3CcM5w5LnORik5zktsrkww5LnOcWA57kdWjKww5LnORuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnuRuvZ7lyCcM5w5LnOceLZzmfCcO5w5LnucWA57kdWjKww5LnuRik5zktsrkww5LnuceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnuRuvZ7mfCcO5")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lb8o0"]
+resource_name = "CPCyilnder"
+_surfaces = [{
+"aabb": AABB(-0.000441691, -0.00044155694, -0.00037200467, 0.000883382, 0.00088337704, 0.00074401003),
+"attribute_data": PackedByteArray("IR8kPgCunTsOvdU+oGo7Pfn1wz12dOw+3j4ru5BfXz4Ecik/0B4vPp2Edj/QHi8+nYR2P76lpD4Ecik/vqWkPp2Edj++paQ+nYR2P0Ikyz4Ecik/QiTLPgRyKT++paQ+BHIpP9AeLz4Ecik/QPzDPZ2Edj9A/MM9nYR2P9AeLz7NPQQ+jiR9P8GMwT4WFwc/9KYCP1JmPz/mk8U+1m96PyEfJD4Arp073j4ru5BfXz759cM9dnTsPg691T6gajs9BHIpP9AeLz4Ecik/vqWkPp2Edj++paQ+nYR2P9AeLz6dhHY/vqWkPgRyKT++paQ+BHIpP0Ikyz6dhHY/QiTLPgRyKT/QHi8+nYR2P9AeLz6dhHY/QPzDPQRyKT9A/MM9TyT4PU3ZCT/BjME+FhcHP809BD6OJH0/XmZYu9LiRD8="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQA"),
+"material": SubResource("StandardMaterial3D_7nmcb"),
+"name": "Material.034",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("w5LnOceLZzm3CcM5w5LnORik5zktsrkww5LnOcWA57kdWjKww5LnORuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnOceLZzm3CcM5w5LnORuvZ7lyCcM5w5LnuRuvZ7lyCcM5w5LnORuvZ7lyCcM5w5LnOcWA57kdWjKww5LnucWA57kdWjKww5LnuRuvZ7lyCcM5w5LnuceLZzm3CcM5w5LnuRik5zktsrkww5LnORik5zktsrkww5LnOceLZzm3CcM5w5LnucWA57kdWjKww5LnuRik5zktsrkww5LnuceLZzm3CcM5w5LnuRuvZ7lyCcM5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnOcWA57kdWjKww5LnORik5zktsrkww5LnuceLZzmfCcO5w5LnuRuvZ7mfCcO5w5LnORuvZ7mfCcO5w5LnOceLZzmfCcO5w5LnORuvZ7mfCcO5w5LnuRuvZ7mfCcO5w5LnucWA57kdWjKww5LnOcWA57kdWjKww5LnuceLZzmfCcO5w5LnOceLZzmfCcO5w5LnORik5zktsrkww5LnuRik5zktsrkww5LnuceLZzmfCcO5w5LnuRik5zktsrkww5LnucWA57kdWjKww5LnuRuvZ7mfCcO5////f1k5//////9/9zn//////3+uOP//////f2s3////f/9/////v/9//3////+//3//f////7//f/9/////v/9/pi////+//3+mL////7//f6Yv////v/9/pi////+//39L0P///7//f0vQ////v/9/S9D///+//39L0P///78AAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1v///3//f1Ij////f/9/SiT///9//3+oI////3//fwMj/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtY=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dori4")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ph8h3"]
+_surfaces = [{
+"aabb": AABB(-0.000441691, -0.00044155694, -0.00037200397, 0.000883382, 0.00088337704, 0.000744008),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAQAAAAQAAwAFAAQAAgABAAYABwAFAAMAAwACAAcABAAFAAcABAAIAAEABwAIAAQAAQAIAAkACQAIAAcACQAGAAEABgAKAAIACgAGAAkABwACAAoACQALAAoACgALAAcABwALAAkA"),
+"name": "Material.034",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("w5LnOceLZzmKCcM5w5LnORik5zkAAAAAw5LnOcWA57kAAAAAw5LnORuvZ7mKCcM5w5LnuceLZzmKCcM5w5LnuRuvZ7mKCcM5w5LnOceLZzmHCcO5w5LnucWA57kAAAAAw5LnuRik5zkAAAAAw5LnuceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuRuvZ7mHCcO5")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1r3sl"]
+resource_name = "CPCyilnderFull"
+_surfaces = [{
+"aabb": AABB(-0.000441691, -0.00044155694, -0.00037200397, 0.000883382, 0.00088337704, 0.000744008),
+"attribute_data": PackedByteArray("IR8kPgCunTsOvdU+oGo7Pfn1wz12dOw+3j4ru5BfXz4hHyQ+AK6dO94+K7uQX18+BHIpP9AeLz6dhHY/0B4vPp2Edj++paQ+BHIpP76lpD6dhHY/vqWkPp2Edj9CJMs+BHIpP0Ikyz4Ecik/vqWkPgRyKT/QHi8+BHIpP0D8wz2dhHY/QPzDPZ2Edj/QHi8+incgP2wmfz93LmA/BBkJP30HgT9AaEE/CTJiP8VxfD+gbB4/PNsLP2Af/T7B5EY/BHIpP9AeLz4Ecik/vqWkPp2Edj++paQ+nYR2P9AeLz6dhHY/vqWkPgRyKT++paQ+BHIpP0Ikyz6dhHY/QiTLPgRyKT/QHi8+nYR2P9AeLz6dhHY/QPzDPQRyKT9A/MM9"),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgABAAQABAAFAAIABgAHAAgACAAJAAYACgALAAwADAANAAoADgAPABAAEAARAA4AEgATABQAFAAVABIAFgATABIAEgAXABYAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAA"),
+"material": SubResource("StandardMaterial3D_7nmcb"),
+"name": "Material.034",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("w5LnOceLZzmKCcM5w5LnORik5zkAAAAAw5LnOcWA57kAAAAAw5LnORuvZ7mKCcM5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuceLZzmKCcM5w5LnOceLZzmKCcM5w5LnORuvZ7mKCcM5w5LnuRuvZ7mKCcM5w5LnORuvZ7mKCcM5w5LnOcWA57kAAAAAw5LnucWA57kAAAAAw5LnuRuvZ7mKCcM5w5LnuceLZzmKCcM5w5LnuRik5zkAAAAAw5LnORik5zkAAAAAw5LnOceLZzmKCcM5w5LnucWA57kAAAAAw5LnuRik5zkAAAAAw5LnuceLZzmKCcM5w5LnuRuvZ7mKCcM5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnuceLZzmHCcO5w5LnuRuvZ7mHCcO5w5LnORuvZ7mHCcO5w5LnOceLZzmHCcO5w5LnORuvZ7mHCcO5w5LnuRuvZ7mHCcO5w5LnucWA57kAAAAAw5LnOcWA57kAAAAAw5LnuceLZzmHCcO5w5LnOceLZzmHCcO5w5LnORik5zkAAAAAw5LnuRik5zkAAAAA////f6XG//////9//38DI////3//f6gj////f5TI//////9//39SI////3//f0ok/3//f////7//f/9/////v/9//3////+//3//f////7//f6Yv////v/9/pi////+//3+mL////7//f6Yv////v/9/S9D///+//39L0P///7//f0vQ////v/9/S9D///+/AAD/f/9/ZtYAAP9//39m1gAA/3//f2bWAAD/f/9/ZtYAAP9//39m1gAA/3//f2bW/////////z//////////P/////////8//////////z+lrwAA////P6WvAAD///8/pa8AAP///z+lrwAA////P7Ov//////8/s6///////z+zr///////P7Ov//////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ph8h3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1adh"]
+resource_name = "Material.035"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_cn2sd")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bsgoc"]
+_surfaces = [{
+"aabb": AABB(-0.0005244583, -0.0012344628, -3.6142006e-05, 0.0012495681, 0.0017954923, 7.103401e-05),
+"format": 34359742465,
+"index_count": 150,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQAAwAAAAUABQAGAAMABQAGAAcABwAIAAUACQAFAAAACQAFAAgAAAAEAAkACAAKAAkABAALAAEACgAMAAkADQAJAAQADQAJAAwACwAEAA4ABAAPAA0ADgAEAA8AEAAKAAsACgAQAAwACwARABAAEQALAA4AEAARABIAEQAOABIAEgATABAAEAATAAwADAATABIAEgAOAAwADAAOABQADwAUAA4AFAAVAAwADAAVAA0AFAAPABYADQAVABcAFAAVABcAFwANAA8AFwAWABQADwAWABcAGAAZABoAGgAZABgAGAAbABoAGgAbABgAHAAZABoAGgAZABwAGgAdABwAHAAdABoAHgAcAB0AHQAcAB4AHQAfAB4AHgAfAB0A"),
+"name": "Material.035",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("f8+Wud1kJTnbVhI4VyYfuHe+YTjbVhI4aB9NudmOBLnbVhI4o4D8uXNokbfbVhI4uHquuMfLbjnbVhI4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4aB9NudmOBLkvlxe4VyYfuHe+YTgvlxe4uHquuMfLbjkvlxe4mpEeOOJ6Xzkvlxe4mpEeOOJ6XznbVhI45myRuDV+2TkIlRe4eWWTuXOo6zlnXeO35myRuDV+2TkAWRI4eWWTuXOo6zkK4dg3n4PyOAwSEzoIlRe4n4PyOAwSEzoAWRI4QjC3N3OoDzoAWRI4QjC3N3OoDzoIlRe4YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW4zXsJurSYBTo3TQY4zXsJurSYBTo/iQu4SxU+OouM9LnXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1TK82OdHiC7rXyvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1rBMtOmRLmbofhvs1RWIxOrPNobofhvs1")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tek0n"]
+resource_name = "CPTrigger&Hammer"
+_surfaces = [{
+"aabb": AABB(-0.0005244583, -0.0012344628, -3.6142006e-05, 0.0012495681, 0.0017954923, 7.103401e-05),
+"attribute_data": PackedByteArray("DD6NPrB1KT5Z+Y0+zGQYPrKbkT6smSU+dJWOPrhYQT5ffo8+TNUNPtjwlD68bBs+FeWKPjAJFz5J1pE+aBsfPkjhkj6YEhk+LliSPsicFz4aaZE+gPQdPln5jT7MZBg+DD6NPrB1KT6kVIo+BJMbPru3ij582hE+jrCYPjj94D3BjJE+7LkcPnEDlj6gmPU9P+GUPrShMj7g9I4+yNovPgAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/Y9WQPiQGIT70bZE+4J8iPmXIkT5Y3yA+pDaRPuxWHz7ekZE+nJ8iPqBPjD6wAhw+ibGUPqwPCz7E6pc+VDgCPsaFkz70NhY+MNWUPqChDz59PJQ+zPoNPq70kj7MqRQ+LsWNPnwIKj4OZ44+FFggPmkBkj6UxCI+n8qRPsSnMD5SR48+lOg1PpTZkD48tTo+B+ySPjyHEj6efZU+UG4LPkHylj5gjg4+CaeNPpjnIT4EdI8+PPkUPuShjz441yA+2CuMPqguED6R8I0+bDgMPq70kj7MqRQ+LliSPsicFz5I4ZI+mBIZPsaFkz70NhY+B+ySPjyHEj7koY8+ONcgPgR0jz48+RQ+nn2VPlBuCz5j1ZA+JAYhPvRtkT7gnyI+O+WRPjyWHj6aW5E+hCIdPjvlkT48lh4++yKRPlCOIj4bnJA+TCQhPppbkT6EIh0+AAAgPwAAgD4AACA/AACAPgAAID8AAIA+AAAgPwAAgD5YApE+cPciPuF+kD6UliE+G5yQPkwkIT77IpE+UI4iPpIFDD985QE+kgUMP/APGz6LTv4+8A8bPotO/j585QE+i07+PvAPGz6SBQw/8A8bPpIFDD9MvDM+i07+Pky8Mz6LTv4+TLwzPpIFDD9MvDM+kgUMP2iwST6LTv4+aLBJPpIFDD985QE+i07+PnzlAT6LTv4+8A8bPpIFDD/wDxs+kgUMP0y8Mz6SBQw/8A8bPotO/j7wDxs+i07+Pky8Mz6SBQw/aLBJPpIFDD9MvDM+i07+Pky8Mz6LTv4+aLBJPg=="),
+"format": 34359742487,
+"index_count": 150,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABwAIAAkACQAKAAcACwAMAA0ADQAOAAsADwAQABEADwASABAAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAAkACcAJwApACgAKgArACwALQAuAC8ALQAwAC4AMAAxAC4AMgAzADQANAA1ADIANgA3ADgAOAA5ADYAOgA7ADwAPAA9ADoAPgA/AEAAQABBAD4AQgBDAEQARABFAEIARgBHAEgASABJAEYASgBLAEwATABNAEoATgBPAFAAUABRAE4AUgBTAFQAVABVAFIAVgBXAFgAWABZAFYAWgBbAFwAXABdAFoAXgBfAGAAYABhAF4A"),
+"material": SubResource("StandardMaterial3D_e1adh"),
+"name": "Material.035",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 98,
+"vertex_data": PackedByteArray("f8+Wud1kJTnbVhI4VyYfuHe+YTjbVhI4aB9NudmOBLnbVhI4o4D8uXNokbfbVhI4YrbhuVhJEjr6wBA4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3VyYfuHe+YTjbVhI4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI45myRuDV+2TkAWRI4QjC3N3OoDzoAWRI4mpEeOOJ6XznbVhI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3zXsJurSYBTo3TQY4zXsJurSYBTo/iQu4eWWTuXOo6zlnXeO3YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4zXsJurSYBTo3TQY45myRuDV+2TkAWRI4uHquuMfLbjnbVhI4eWWTuXOo6zkK4dg3YrbhuVhJEjr6wBA4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4o4D8uXNokbfbVhI4f8+Wud1kJTnbVhI4f8+Wud1kJTkvlxe4o4D8uXNokbcvlxe4aB9NudmOBLkvlxe4VyYfuHe+YTgvlxe4uHquuMfLbjkvlxe4mpEeOOJ6Xzkvlxe4eWWTuXOo6zlnXeO3YrbhuVhJEjoo/xW4zXsJurSYBTo/iQu4mpEeOOJ6Xzkvlxe45myRuDV+2TkIlRe4uHquuMfLbjkvlxe4n4PyOAwSEzoIlRe4QjC3N3OoDzoIlRe4f8+Wud1kJTnbVhI4uHquuMfLbjnbVhI4uHquuMfLbjkvlxe4f8+Wud1kJTkvlxe4eWWTuXOo6zlnXeO3uHquuMfLbjkvlxe45myRuDV+2TkIlRe4YrbhuVhJEjoo/xW4YrbhuVhJEjr6wBA4YrbhuVhJEjoo/xW45myRuDV+2TkIlRe45myRuDV+2TkAWRI45myRuDV+2TkIlRe4QjC3N3OoDzoIlRe4QjC3N3OoDzoAWRI45myRuDV+2TkAWRI4n4PyOAwSEzoIlRe4mpEeOOJ6Xzkvlxe4mpEeOOJ6XznbVhI4n4PyOAwSEzoAWRI4n4PyOAwSEzoIlRe4n4PyOAwSEzoAWRI4QjC3N3OoDzoAWRI4QjC3N3OoDzoIlRe4SxU+OouM9LnXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1/5/zOdMNjLrXyvs1nvUSOifxgrrXyvs1rBMtOmRLmbofhvs1RWIxOrPNobofhvs1SxU+OouM9LnXyvs1TK82OdHiC7rXyvs1l7f/OVduUrrXyvs1QhMzOi9NWLrXyvs1nvUSOifxgrrXyvs1QhMzOi9NWLrXyvs1l7f/OVduUrrXyvs1/5/zOdMNjLrXyvs1rBMtOmRLmbofhvs1nvUSOifxgrrXyvs1/5/zOdMNjLrXyvs1RWIxOrPNobofhvs1/3//f4iSQ4n/f/9/XY+uh/9//3/ykfmI/3//f9GUaIoDgel3oPHZtwOB6Xeg8dm3A4Hpd6Dx2begw128vdcIbqDDXbyy2HVuoMNdvJLYZm6gw128k9f1bf9//386gZyA/3//f/F+hoD/f/9/TIGlgP9//38lhBKC/3//fwXTgqn/f/9/6th0rP9//3932jut/3//f+vr9bX/f/9/JPTsxV6ZoOb///+/Xpmg5v///79emaDm////v16ZoOb///+/hquGK5ccQWSGq4YrlBxDZIarhiuZHD9khquGK5scPWQMeuB5lWRv8Ax64HlraCnyDHrgeT5QRecMeuB51ErU5Li8uDxkIX9tuLy4PFwi9my4vLg8KiISbbi8uDwxIZtt/////3HEOKL/////3c3upv/////lxHKi/////8W94p7/////IL4Qn//////fve+e6PcDAXoAPL/o9wMBegA8v+j3AwF6ADy/AAD+/98PD7gAAP7/jBs4sgAA/v87AuG+AAD+/1clU60AAP7/Bi18qaWgpSD4FelfpaClIHAVsGCloKUgkxV+YKWgpSAbFrZfHgbyBW0I6L4eBvIFXQjwvh4G8gVfCO++HgbyBXEI5r5XpKfbLOUtXlekp9se5RteV6Sn24rlol5XpKfbl+W0XgU0BLR3KNmNBTQEtDooxY0FNAS0UCjMjQU0BLSMKOGNmOiYaP///7+Y6Jho////v5jomGj///+/mOiYaP///79mcGXw7gyXrmZwZfDVDD2uZnBl8PkMvq5mcGXwEg0ar/9//3/Y+xLC/3//f9Xyarn/f/9/Lv1nwf9//38V8vTG/3//fy71Z8X/f/9/1fJquf9//3+42yLS/3//fzbK49r/f/9/tMCk3/9//382yuPa/3//f+16df3/f/9/JWYR8//////Y++w9/////xXyCjn/////Lv2XPv/////V8pRG/////7jb3C3/////1fKURv////8u9Zc6/////zbKGyUAAP7/7XqJAgAA/v82yhslAAD+/7TAWiAAAP7/JWbtDA==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bsgoc")
+
+[node name="MainMenu" type="Node3D" unique_id=1367259964]
+script = ExtResource("1_ywk15")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1188827322]
+environment = SubResource("Environment_o4wy8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1641698970]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1359507711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46)
+material_override = SubResource("StandardMaterial3D_dqyvv")
+mesh = SubResource("PlaneMesh_m8x2t")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=758179803]
+transform = Transform3D(0.9999361, -0.004444678, 0.010396292, 0, 0.91949296, 0.39310646, -0.011306549, -0.39308137, 0.9194342, -0.011741202, 2.080061, 1.8636563)
+
+[node name="Cowboy" type="Node3D" parent="." unique_id=1319687967]
+transform = Transform3D(0.07409218, 0, -0.06715913, 0, 0.1, 0, 0.06715913, 0, 0.07409218, 1.103433, 0, 0.39497113)
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Cowboy" unique_id=384677163]
+bones/0/name = "RL_BoneRoot"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(-0.19420093, -0.10252258, 0.24518266)
+bones/0/rotation = Quaternion(-0.71639717, 0.0054663955, -0.007067062, 0.69763553)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "CC_Base_Hip"
+bones/1/parent = 0
+bones/1/rest = Transform3D(1, 3.4619643e-06, -9.801621e-06, -9.704643e-06, -0.026981354, -0.99963593, -3.7251652e-06, 0.99963593, -0.026981354, 6.240041e-13, 4.1164144e-06, 10.231856)
+bones/1/enabled = true
+bones/1/position = Vector3(0.00015742976, 0.40708178, 10.243464)
+bones/1/rotation = Quaternion(0.71658254, 0.00032993619, -0.0003426856, 0.6975022)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "CC_Base_Pelvis"
+bones/2/parent = 1
+bones/2/rest = Transform3D(0.99999994, -1.4954671e-06, 1.7514024e-08, 1.4711745e-06, 0.98151433, -0.19138841, 2.690248e-07, 0.19138841, 0.98151433, 1.0074382e-11, -1.2182694e-06, 1.0663934e-07)
+bones/2/enabled = true
+bones/2/position = Vector3(8.2159e-12, -7.195519e-07, 9.317825e-08)
+bones/2/rotation = Quaternion(0.09613954, -6.317079e-08, 7.451119e-07, 0.9953679)
+bones/2/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/3/name = "CC_Base_L_Thigh"
+bones/3/parent = 2
+bones/3/rest = Transform3D(-0.99737567, 0.07229856, 0.003813756, -0.0716552, -0.9932893, 0.09078392, 0.01035171, 0.090272404, 0.9958632, 1.0709522, -0.27140447, 0.118152134)
+bones/3/enabled = true
+bones/3/position = Vector3(1.0709522, -0.27140418, 0.118152075)
+bones/3/rotation = Quaternion(0.043763004, 0.16782369, 0.98405325, -0.039488453)
+bones/3/scale = Vector3(0.99999994, 0.9999998, 0.99999976)
+bones/4/name = "CC_Base_L_Calf"
+bones/4/parent = 3
+bones/4/rest = Transform3D(0.9948464, 0.101384334, -0.0013559948, -0.101106554, 0.9909379, -0.08842776, -0.007621482, 0.08810913, 0.99608177, 0.00017402547, 4.7688475, -0.0001035359)
+bones/4/enabled = true
+bones/4/position = Vector3(0.00017379763, 4.768847, -0.000103759776)
+bones/4/rotation = Quaternion(-0.19277568, -0.0794874, -0.029399367, 0.9775761)
+bones/4/scale = Vector3(1, 0.99999976, 0.9999999)
+bones/5/name = "CC_Base_L_Foot"
+bones/5/parent = 4
+bones/5/rest = Transform3D(0.9875086, -0.15660045, -0.017429423, 0.033372987, 0.3159783, -0.9481796, 0.15399262, 0.9357536, 0.31725731, -0.00010315685, 4.3582683, -0.00062866096)
+bones/5/enabled = true
+bones/5/position = Vector3(-0.00010330198, 4.3582683, -0.00062881457)
+bones/5/rotation = Quaternion(0.65621334, -0.0831917, 0.04326219, 0.74872667)
+bones/5/scale = Vector3(1.0000004, 1.0000002, 1)
+bones/6/name = "CC_Base_L_ToeBaseShareBone"
+bones/6/parent = 5
+bones/6/rest = Transform3D(0.9979261, 0.047709934, 0.043206297, -0.029728085, 0.9370042, -0.3480505, -0.057089943, 0.34604433, 0.93647957, -3.1843524e-06, 1.4256979, -0.000673263)
+bones/6/enabled = true
+bones/6/position = Vector3(-3.3569338e-06, 1.4256979, -0.0006731797)
+bones/6/rotation = Quaternion(0.176382, 0.025487076, -0.019678395, 0.983795)
+bones/6/scale = Vector3(1.0000001, 1.0000001, 1)
+bones/7/name = "CC_Base_L_ToeBase"
+bones/7/parent = 5
+bones/7/rest = Transform3D(0.99794513, 0.047646347, 0.04283716, -0.0297956, 0.93699676, -0.34806475, -0.056722287, 0.34607318, 0.93649143, -5.512225e-05, 1.4256968, -0.0006575432)
+bones/7/enabled = true
+bones/7/position = Vector3(-5.5236822e-05, 1.4256968, -0.0006575204)
+bones/7/rotation = Quaternion(0.18034561, 0.024763962, -0.019651731, 0.98309517)
+bones/7/scale = Vector3(1.0000001, 1.0000001, 1.0000001)
+bones/8/name = "CC_Base_L_PinkyToe1"
+bones/8/parent = 7
+bones/8/rest = Transform3D(0.99581, 0.05408579, 0.07373884, -0.08203535, 0.8846524, 0.45897764, -0.040409077, -0.46310377, 0.8853823, -0.26570293, 0.03062551, -0.04891508)
+bones/8/enabled = true
+bones/8/position = Vector3(-0.26570302, 0.030625539, -0.04891504)
+bones/8/rotation = Quaternion(-0.237579, 0.029410798, -0.035072308, 0.97028923)
+bones/8/scale = Vector3(1.0000002, 1.0000002, 0.99999994)
+bones/9/name = "CC_Base_L_RingToe1"
+bones/9/parent = 7
+bones/9/rest = Transform3D(0.9953433, -0.001524901, 0.09638097, -0.050935537, 0.8405595, 0.53931934, -0.08183635, -0.5417171, 0.83656764, -0.13573946, 0.12448557, -0.010205398)
+bones/9/enabled = true
+bones/9/position = Vector3(-0.13573961, 0.12448564, -0.010205351)
+bones/9/rotation = Quaternion(-0.2820533, 0.046498682, -0.012891731, 0.95818454)
+bones/9/scale = Vector3(1.0000002, 1.0000001, 1.0000001)
+bones/10/name = "CC_Base_L_MidToe1"
+bones/10/parent = 7
+bones/10/rest = Transform3D(0.99761873, -0.01773893, 0.06664957, -0.01216199, 0.90596956, 0.42316788, -0.06788904, -0.42297086, 0.9035964, -2.0720113e-06, 0.21297811, 3.802008e-06)
+bones/10/enabled = true
+bones/10/position = Vector3(-2.1362307e-06, 0.21297815, 3.8242347e-06)
+bones/10/rotation = Quaternion(-0.21682508, 0.034475848, 0.0014291122, 0.9756005)
+bones/10/scale = Vector3(1.0000001, 1.0000001, 0.99999994)
+bones/11/name = "CC_Base_L_IndexToe1"
+bones/11/parent = 7
+bones/11/rest = Transform3D(0.99626714, -0.044178676, 0.074164085, 0.0061336374, 0.89317834, 0.4496611, -0.08610717, -0.44752762, 0.8901151, 0.15291288, 0.22308789, 0.027864125)
+bones/11/enabled = true
+bones/11/position = Vector3(0.15291262, 0.22308794, 0.027864134)
+bones/11/rotation = Quaternion(-0.23074539, 0.041219704, 0.012939689, 0.97205454)
+bones/11/scale = Vector3(1.0000002, 1.0000002, 1.0000001)
+bones/12/name = "CC_Base_L_BigToe1"
+bones/12/parent = 7
+bones/12/rest = Transform3D(0.99953943, -0.029287875, -0.007935382, 0.030082453, 0.9906966, 0.13272133, 0.0039744317, -0.13289891, 0.99112153, 0.35428283, 0.199576, 0.001707608)
+bones/12/enabled = true
+bones/12/position = Vector3(0.35428274, 0.19957605, 0.0017076447)
+bones/12/rotation = Quaternion(-0.06656034, -0.002984415, 0.014877298, 0.997667)
+bones/12/scale = Vector3(1.0000001, 1, 0.99999994)
+bones/13/name = "CC_Base_L_CalfTwist01"
+bones/13/parent = 4
+bones/13/rest = Transform3D(1.0000005, 2.9969863e-07, -1.6795703e-06, -2.9970266e-07, 1.0000005, -2.3982168e-06, 1.67957e-06, 2.3982177e-06, 1.0000002, -8.5161514e-07, 3.0318974e-06, -3.0644248e-08)
+bones/13/enabled = true
+bones/13/position = Vector3(-9.155272e-07, 2.162456e-06, -1.144409e-07)
+bones/13/rotation = Quaternion(1.1194408e-06, 0.0026355335, -1.4721225e-07, 0.99999654)
+bones/13/scale = Vector3(1.0000005, 1.0000002, 1.0000001)
+bones/14/name = "CC_Base_L_CalfTwist02"
+bones/14/parent = 13
+bones/14/rest = Transform3D(0.99999917, -8.671517e-07, 0.0010262664, 8.5956555e-07, 0.9999999, 7.3923084e-06, -0.001026266, -7.3914216e-06, 0.99999946, -5.533924e-05, 2.179135, -0.00031932944)
+bones/14/enabled = true
+bones/14/position = Vector3(-5.538941e-05, 2.1791346, -0.0003194428)
+bones/14/rotation = Quaternion(-3.6649783e-06, 0.009674389, 3.9848814e-07, 0.9999532)
+bones/14/scale = Vector3(1.0000002, 1.0000001, 1.0000001)
+bones/15/name = "CC_Base_L_KneeShareBone"
+bones/15/parent = 4
+bones/15/rest = Transform3D(0.9987104, -0.0507031, -0.0026933842, 0.050772622, 0.99773216, 0.044194587, 0.0004464736, -0.04427433, 0.99901956, -8.5161514e-07, 3.0318974e-06, -3.0644248e-08)
+bones/15/enabled = true
+bones/15/position = Vector3(-9.155272e-07, 2.162456e-06, -1.144409e-07)
+bones/15/rotation = Quaternion(0.014483828, 0.0027816438, 0.025285227, 0.9995715)
+bones/15/scale = Vector3(1.0000002, 1, 1.0000001)
+bones/16/name = "CC_Base_L_ThighTwist01"
+bones/16/parent = 3
+bones/16/rest = Transform3D(1.0000004, 0.00012669197, 1.5684464e-06, -0.00012669204, 1, 1.7045433e-05, -1.566287e-06, -1.704563e-05, 1.0000002, 5.177388e-07, -1.3187923e-06, 3.612497e-07)
+bones/16/enabled = true
+bones/16/position = Vector3(3.8146976e-07, -1.8787387e-06, 2.9563907e-07)
+bones/16/rotation = Quaternion(-8.38332e-06, 0.0028268625, -6.337538e-05, 0.999996)
+bones/16/scale = Vector3(1.0000002, 0.9999999, 1)
+bones/17/name = "CC_Base_L_ThighTwist02"
+bones/17/parent = 16
+bones/17/rest = Transform3D(0.99999976, -0.00010927842, -8.477338e-06, 0.000109278495, 1, 1.2859117e-05, 8.475931e-06, -1.2860044e-05, 0.99999994, -0.00021534429, 2.38458, -2.5171523e-05)
+bones/17/enabled = true
+bones/17/position = Vector3(-0.00021545411, 2.3845792, -2.5310519e-05)
+bones/17/rotation = Quaternion(-6.250138e-06, -0.002830315, 5.465167e-05, 0.999996)
+bones/17/scale = Vector3(1, 0.99999994, 0.99999994)
+bones/18/name = "CC_Base_R_Thigh"
+bones/18/parent = 2
+bones/18/rest = Transform3D(-0.99736845, -0.072397724, -0.00385725, 0.07175516, -0.9933269, 0.0902933, -0.010368541, 0.089778915, 0.9959077, -1.0709497, -0.27140573, 0.11817436)
+bones/18/enabled = true
+bones/18/position = Vector3(-1.0709498, -0.27140483, 0.118174165)
+bones/18/rotation = Quaternion(-0.12896943, 0.1633172, 0.9767102, 0.052264787)
+bones/18/scale = Vector3(0.99999994, 0.99999994, 0.9999999)
+bones/19/name = "CC_Base_R_ThighTwist01"
+bones/19/parent = 18
+bones/19/rest = Transform3D(0.9999999, -1.6773294e-05, -4.3647074e-06, 1.6773423e-05, 1, 3.0259753e-05, 4.3641994e-06, -3.0259826e-05, 1, 4.148913e-08, 3.6004647e-06, 8.085355e-07)
+bones/19/enabled = true
+bones/19/position = Vector3(1.5258789e-07, 3.1185148e-06, 7.4863425e-07)
+bones/19/rotation = Quaternion(-1.5197838e-05, -0.0028395816, 8.434582e-06, 0.99999607)
+bones/19/scale = Vector3(0.99999994, 0.99999994, 1)
+bones/20/name = "CC_Base_R_ThighTwist02"
+bones/20/parent = 19
+bones/20/rest = Transform3D(0.99999994, 5.5550163e-07, 1.0620963e-05, -5.555065e-07, 0.99999994, 4.60528e-07, -1.0620963e-05, -4.6053395e-07, 0.9999999, -4.8204005e-05, 2.3602567, 5.054e-06)
+bones/20/enabled = true
+bones/20/position = Vector3(-4.806519e-05, 2.3602564, 4.9781806e-06)
+bones/20/rotation = Quaternion(-3.1200088e-07, 0.0028427055, -2.7060355e-07, 0.99999595)
+bones/20/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/21/name = "CC_Base_R_Calf"
+bones/21/parent = 18
+bones/21/rest = Transform3D(0.99516463, -0.098214395, 0.0011354026, 0.09794581, 0.9914457, -0.086266465, 0.0073469197, 0.08596054, 0.99627143, -0.00017445443, 4.7208548, -0.00016535638)
+bones/21/enabled = true
+bones/21/position = Vector3(-0.00017425536, 4.7208543, -0.0001655197)
+bones/21/rotation = Quaternion(-0.14851834, 0.0360206, 0.032183684, 0.9877293)
+bones/21/scale = Vector3(1, 0.9999999, 0.99999994)
+bones/22/name = "CC_Base_R_Foot"
+bones/22/parent = 21
+bones/22/rest = Transform3D(0.98944765, 0.1436442, 0.01897187, -0.026269391, 0.30661437, -0.9514713, -0.14249037, 0.94093263, 0.3071523, 0.00010067963, 4.4062424, -0.0006897859)
+bones/22/enabled = true
+bones/22/position = Vector3(0.00010070801, 4.406242, -0.00068984996)
+bones/22/rotation = Quaternion(0.61732864, 0.1043529, -0.030104779, 0.7791725)
+bones/22/scale = Vector3(1.0000001, 1.0000001, 0.99999994)
+bones/23/name = "CC_Base_R_ToeBase"
+bones/23/parent = 22
+bones/23/rest = Transform3D(0.9979435, -0.047694646, -0.042820945, 0.029822825, 0.9368501, -0.3484567, 0.05673634, 0.34646308, 0.93634605, 5.4804605e-06, 1.4517967, 2.7384415e-06)
+bones/23/enabled = true
+bones/23/position = Vector3(5.645753e-06, 1.4517965, 2.7465826e-06)
+bones/23/rotation = Quaternion(0.1765985, -0.025300002, 0.019699026, 0.9837606)
+bones/23/scale = Vector3(0.99999994, 0.9999998, 0.9999998)
+bones/24/name = "CC_Base_R_PinkyToe1"
+bones/24/parent = 23
+bones/24/rest = Transform3D(0.9955918, -0.053689204, -0.07690706, 0.08315612, 0.884545, 0.45898297, 0.04338532, -0.46335492, 0.88511026, 0.27047762, 0.031173253, -0.049800523)
+bones/24/enabled = true
+bones/24/position = Vector3(0.27047768, 0.03117332, -0.04980048)
+bones/24/rotation = Quaternion(-0.23766387, -0.0309964, 0.03526169, 0.9702122)
+bones/24/scale = Vector3(1, 0.99999994, 1)
+bones/25/name = "CC_Base_R_BigToe1"
+bones/25/parent = 23
+bones/25/rest = Transform3D(0.99957997, 0.028580876, 0.0048172465, -0.028967522, 0.99072003, 0.13279858, -0.0009770422, -0.13288236, 0.9911315, -0.36065015, 0.20316122, 0.001736415)
+bones/25/enabled = true
+bones/25/position = Vector3(-0.36065003, 0.20316128, 0.0017364642)
+bones/25/rotation = Quaternion(-0.06657492, 0.0014519457, -0.0144206, 0.99767613)
+bones/25/scale = Vector3(1.0000001, 1.0000001, 0.99999994)
+bones/26/name = "CC_Base_R_IndexToe1"
+bones/26/parent = 23
+bones/26/rest = Transform3D(0.996011, 0.044521008, -0.07733331, -0.0050130016, 0.89319175, 0.44964826, 0.089092284, -0.4474669, 0.8898517, -0.15566246, 0.22709195, 0.028358497)
+bones/26/enabled = true
+bones/26/position = Vector3(-0.15566236, 0.22709201, 0.028358512)
+bones/26/rotation = Quaternion(-0.230742, -0.0428054, -0.012740365, 0.97198945)
+bones/26/scale = Vector3(1.0000001, 0.99999994, 0.9999999)
+bones/27/name = "CC_Base_R_MidToe1"
+bones/27/parent = 23
+bones/27/rest = Transform3D(0.99739444, 0.018067317, -0.069842264, 0.013254797, 0.90575504, 0.42359492, 0.07091317, -0.42341697, 0.9031554, 5.049765e-07, 0.2168, -5.0910417e-06)
+bones/27/enabled = true
+bones/27/position = Vector3(6.1035144e-07, 0.21680012, -5.035399e-06)
+bones/27/rotation = Quaternion(-0.21707387, -0.036073096, -0.0012333558, 0.97548765)
+bones/27/scale = Vector3(1, 1.0000001, 1)
+bones/28/name = "CC_Base_R_RingToe1"
+bones/28/parent = 23
+bones/28/rest = Transform3D(0.9950362, 0.0022020454, -0.09948956, 0.05205848, 0.8405275, 0.53926224, 0.08481116, -0.5417647, 0.8362406, 0.13817754, 0.12671793, -0.010396491)
+bones/28/enabled = true
+bones/28/position = Vector3(0.13817777, 0.12671797, -0.010396473)
+bones/28/rotation = Quaternion(-0.28207633, -0.048090275, 0.013009229, 0.95809764)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/name = "CC_Base_R_ToeBaseShareBone"
+bones/29/parent = 22
+bones/29/rest = Transform3D(0.99792665, -0.047702905, -0.043204423, 0.02969718, 0.93685305, -0.3484598, 0.057098746, 0.3464543, 0.93632734, -1.2647645e-05, 1.4517986, 1.9942343e-05)
+bones/29/enabled = true
+bones/29/position = Vector3(-1.2512211e-05, 1.4517986, 1.9950872e-05)
+bones/29/rotation = Quaternion(0.17659707, -0.025489839, 0.01966952, 0.9837565)
+bones/29/scale = Vector3(0.99999994, 1, 0.9999999)
+bones/30/name = "CC_Base_R_KneeShareBone"
+bones/30/parent = 21
+bones/30/rest = Transform3D(0.9987897, 0.049111743, 0.0026176383, -0.04917896, 0.997859, 0.04311089, -0.00049478334, -0.04318745, 0.9990668, -4.4173794e-07, 5.984939e-07, 5.6032746e-07)
+bones/30/enabled = true
+bones/30/position = Vector3(-3.0517583e-07, -1.2874605e-07, 4.9591074e-07)
+bones/30/rotation = Quaternion(0.013697122, -0.0024391217, -0.024508076, 0.99960285)
+bones/30/scale = Vector3(0.9999999, 0.99999976, 0.99999994)
+bones/31/name = "CC_Base_R_CalfTwist01"
+bones/31/parent = 21
+bones/31/rest = Transform3D(0.99999976, 2.3695475e-05, -2.16605e-05, -2.3692452e-05, 0.99999994, 0.00013932039, 2.1663796e-05, -0.00013931986, 0.99999994, -4.4173794e-07, 5.984939e-07, 5.6032746e-07)
+bones/31/enabled = true
+bones/31/position = Vector3(-3.0517583e-07, -1.2874605e-07, 4.9591074e-07)
+bones/31/rotation = Quaternion(-6.9573725e-05, -0.0023594305, -1.1684456e-05, 0.9999973)
+bones/31/scale = Vector3(0.99999976, 0.9999998, 0.9999999)
+bones/32/name = "CC_Base_R_CalfTwist02"
+bones/32/parent = 31
+bones/32/rest = Transform3D(0.9999998, -2.3152515e-05, -0.0009426785, 2.3026087e-05, 1.0000001, -0.0001341293, 0.0009426819, 0.00013410755, 0.99999946, 1.4065108e-06, 2.2031195, -1.01965425e-05)
+bones/32/enabled = true
+bones/32/position = Vector3(1.5258788e-06, 2.2031193, -1.0223387e-05)
+bones/32/rotation = Quaternion(6.706603e-05, -0.010248112, 1.0889974e-05, 0.9999475)
+bones/32/scale = Vector3(0.99999994, 0.9999999, 0.9999998)
+bones/33/name = "CC_Base_Waist"
+bones/33/parent = 1
+bones/33/rest = Transform3D(0.99999994, 8.304549e-07, 8.468137e-06, -9.585655e-07, 0.9998853, 0.015139788, -8.454593e-06, -0.015139788, 0.9998853, -1.8124977e-06, 1.1690645, 0.22800072)
+bones/33/enabled = true
+bones/33/position = Vector3(-1.8125008e-06, 1.1690655, 0.22800072)
+bones/33/rotation = Quaternion(0.0008757018, -0.0010482526, -0.00029288753, 0.99999905)
+bones/33/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
+bones/34/name = "CC_Base_Spine01"
+bones/34/parent = 33
+bones/34/rest = Transform3D(1, -4.450375e-06, 8.2431626e-07, 4.4443564e-06, 0.9999745, 0.007162021, -8.561687e-07, -0.007162021, 0.9999745, -2.5811426e-06, 0.5812846, -1.1301843e-05)
+bones/34/enabled = true
+bones/34/position = Vector3(-2.5811469e-06, 0.5812855, -1.1291503e-05)
+bones/34/rotation = Quaternion(0.005298969, -0.021626055, 0.0012640692, 0.9997514)
+bones/34/scale = Vector3(0.99999994, 1, 1)
+bones/35/name = "CC_Base_Spine02"
+bones/35/parent = 34
+bones/35/rest = Transform3D(1, -3.5142847e-08, -3.477871e-06, 8.2783333e-07, 0.9736165, 0.22819068, 3.378093e-06, -0.22819068, 0.9736165, 1.3262849e-09, 1.4531314, 6.885365e-05)
+bones/35/enabled = true
+bones/35/position = Vector3(1.3261705e-09, 1.453132, 6.887435e-05)
+bones/35/rotation = Quaternion(-0.10605592, -0.021638632, -0.00092961476, 0.9941243)
+bones/35/scale = Vector3(0.99999994, 1, 1)
+bones/36/name = "CC_Base_NeckTwist01"
+bones/36/parent = 35
+bones/36/rest = Transform3D(1, 1.3941548e-06, -3.1017775e-05, -1.4291647e-05, 0.90754, -0.41996548, 2.7564378e-05, 0.41996548, 0.90754, -5.053626e-07, 3.0129313, -0.0002749202)
+bones/36/enabled = true
+bones/36/position = Vector3(-5.053625e-07, 3.0129328, -0.00027465817)
+bones/36/rotation = Quaternion(0.20825978, 0.0020723005, -0.0036265573, 0.9780647)
+bones/36/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
+bones/37/name = "CC_Base_NeckTwist02"
+bones/37/parent = 36
+bones/37/rest = Transform3D(1, 9.75461e-07, -2.8739094e-05, -9.759815e-07, 1, -1.8111026e-05, 2.8739076e-05, 1.8111055e-05, 1, 6.693101e-08, 0.58678323, -7.559564e-06)
+bones/37/enabled = true
+bones/37/position = Vector3(6.692367e-08, 0.5867842, -7.781982e-06)
+bones/37/rotation = Quaternion(-0.0068977023, 0.0012456721, -0.0039874944, 0.9999676)
+bones/37/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
+bones/38/name = "CC_Base_Head"
+bones/38/parent = 37
+bones/38/rest = Transform3D(1, -9.581461e-06, 7.343097e-05, -7.836791e-06, 0.9723337, 0.23359585, -7.363761e-05, -0.23359583, 0.9723338, -5.0598413e-07, 0.5867858, -1.7953525e-05)
+bones/38/enabled = true
+bones/38/position = Vector3(-5.059945e-07, 0.5867865, -1.8110273e-05)
+bones/38/rotation = Quaternion(-0.12446891, 0.0017565225, -0.0038101487, 0.99221474)
+bones/38/scale = Vector3(0.99999994, 0.9999999, 0.99999994)
+bones/39/name = "CC_Base_FacialBone"
+bones/39/parent = 38
+bones/39/rest = Transform3D(-1.0728839e-05, -2.7447948e-05, 1.0000002, 1.0000002, -1.19209335e-05, 1.0669234e-05, 1.1950734e-05, 1.0000002, 2.7477749e-05, 7.290412e-11, -4.8716083e-06, -4.6979812e-07)
+bones/39/enabled = true
+bones/39/position = Vector3(6.548361e-11, -3.674924e-06, -4.482269e-07)
+bones/39/rotation = Quaternion(0.49999267, 0.49999195, 0.5000133, 0.5000021)
+bones/39/scale = Vector3(1, 1.0000001, 1)
+bones/40/name = "CC_Base_JawRoot"
+bones/40/parent = 39
+bones/40/rest = Transform3D(4.5061097e-05, -0.9999997, -0.0001435693, 0.99999964, 4.5061097e-05, 3.3099343e-06, -3.3034582e-06, -0.00014356943, 0.99999976, 0.15338364, 0.27278268, 3.4403986e-06)
+bones/40/enabled = true
+bones/40/position = Vector3(0.15338449, 0.2727827, 4.3424157e-06)
+bones/40/rotation = Quaternion(-0.0010593749, -0.0041079544, 0.7021839, 0.711983)
+bones/40/scale = Vector3(0.9999997, 0.9999997, 0.99999976)
+bones/41/name = "CC_Base_Tongue01"
+bones/41/parent = 40
+bones/41/rest = Transform3D(0.9942777, -0.10682608, -2.8989116e-05, 0.10682608, 0.9942777, -3.1206025e-06, 2.9156594e-05, 5.9519607e-09, 1, 0.3576068, 0.11085345, 2.0719483e-05)
+bones/41/enabled = true
+bones/41/position = Vector3(0.35760686, 0.11085183, 2.0709036e-05)
+bones/41/rotation = Quaternion(-0.003691692, -0.0019753536, 0.046591427, 0.99890536)
+bones/41/scale = Vector3(0.9999997, 0.99999976, 0.9999998)
+bones/42/name = "CC_Base_Tongue02"
+bones/42/parent = 41
+bones/42/rest = Transform3D(0.9879982, -0.15446691, -2.0452053e-05, 0.15446693, 0.98799807, -2.9397704e-06, 2.0660691e-05, -2.5467799e-07, 0.99999994, 0.12585215, 2.7462845e-06, 4.1016325e-08)
+bones/42/enabled = true
+bones/42/position = Vector3(0.12585208, 1.3589857e-06, 4.0826848e-08)
+bones/42/rotation = Quaternion(-0.003916417, -0.0014716703, 0.070578255, 0.9974975)
+bones/42/scale = Vector3(0.99999994, 1, 0.99999976)
+bones/43/name = "CC_Base_Tongue03"
+bones/43/parent = 42
+bones/43/rest = Transform3D(0.9999999, -0.00024294973, -2.0794755e-06, 0.00024294971, 0.99999994, 2.6139298e-06, 2.07884e-06, -2.6144348e-06, 1, 0.17596892, 3.815686e-06, 5.4469655e-09)
+bones/43/enabled = true
+bones/43/position = Vector3(0.1759688, 2.8419497e-06, 5.315524e-09)
+bones/43/rotation = Quaternion(-1.3070867e-06, -1.039567e-06, 0.00012147428, 1)
+bones/43/scale = Vector3(0.9999998, 0.99999994, 0.99999976)
+bones/44/name = "CC_Base_Teeth02"
+bones/44/parent = 40
+bones/44/rest = Transform3D(1.0000001, -4.8462125e-06, 0.00019446488, -4.8773063e-06, -1.0000001, 0.00015989617, 0.0001944641, -0.0001598971, -1.0000001, 0.36079654, 0.10540447, 7.7278135e-05)
+bones/44/enabled = true
+bones/44/position = Vector3(0.36079657, 0.10540314, 7.726824e-05)
+bones/44/rotation = Quaternion(1, -2.2850056e-06, 9.724625e-05, -7.9894606e-05)
+bones/44/scale = Vector3(0.9999999, 0.9999999, 0.9999999)
+bones/45/name = "CC_Base_R_Eye"
+bones/45/parent = 39
+bones/45/rest = Transform3D(-4.7683704e-07, -1.1274347e-05, 0.9999998, 3.3510878e-06, -0.9999997, -1.1274347e-05, 0.99999976, 3.3510833e-06, 3.576278e-07, 0.80059063, 0.84684616, -0.3619749)
+bones/45/enabled = true
+bones/45/position = Vector3(0.8005928, 0.8468475, -0.36197212)
+bones/45/rotation = Quaternion(0.70710677, -4.0487494e-06, 0.70710677, 4.0487494e-06)
+bones/45/scale = Vector3(0.9999998, 0.9999999, 0.9999999)
+bones/46/name = "CC_Base_L_Eye"
+bones/46/parent = 39
+bones/46/rest = Transform3D(-4.7683704e-07, 1.772792e-06, 0.9999998, 3.3510837e-06, -0.9999997, 1.7727936e-06, 0.99999976, 3.3510842e-06, 3.576278e-07, 0.80058235, 0.8468342, 0.36209702)
+bones/46/enabled = true
+bones/46/position = Vector3(0.80058336, 0.8468331, 0.3620999)
+bones/46/rotation = Quaternion(0.70710677, 5.6494184e-07, 0.70710677, -5.6494184e-07)
+bones/46/scale = Vector3(0.9999998, 0.9999999, 0.9999999)
+bones/47/name = "CC_Base_UpperJaw"
+bones/47/parent = 39
+bones/47/rest = Transform3D(-8.344648e-06, -0.9999998, -4.1890517e-06, 0.99999976, -8.344648e-06, -0.00010351483, 0.000103514794, -4.1899175e-06, 0.9999998, 0.30930108, 0.72983754, 7.551554e-06)
+bones/47/enabled = true
+bones/47/position = Vector3(0.30930278, 0.72983766, 9.964921e-06)
+bones/47/rotation = Quaternion(3.6318503e-05, -3.921573e-05, 0.70710963, 0.7071039)
+bones/47/scale = Vector3(0.9999999, 0.9999998, 0.9999998)
+bones/48/name = "CC_Base_Teeth01"
+bones/48/parent = 47
+bones/48/rest = Transform3D(0.99999994, -2.0760492e-05, -6.791456e-05, -2.0761974e-05, -1, -2.18614e-05, -6.79141e-05, 2.1862812e-05, -1, 0.0037764607, 0.0031337787, 2.3236846e-05)
+bones/48/enabled = true
+bones/48/position = Vector3(0.0037765119, 0.0031329927, 2.3236556e-05)
+bones/48/rotation = Quaternion(1, -1.0380052e-05, -3.3957163e-05, 1.1051767e-05)
+bones/48/scale = Vector3(0.9999999, 0.9999999, 0.9999998)
+bones/49/name = "CC_Base_L_Clavicle"
+bones/49/parent = 35
+bones/49/rest = Transform3D(-0.22694498, 0.9635292, -0.1417999, -0.9516624, -0.25033924, -0.17795616, -0.20696406, 0.094559416, 0.97376794, 0.5354749, 2.4168308, -0.1370463)
+bones/49/enabled = true
+bones/49/position = Vector3(0.53547496, 2.416832, -0.13704608)
+bones/49/rotation = Quaternion(0.0705212, 0.06543762, -0.7417697, 0.66371864)
+bones/49/scale = Vector3(0.99999976, 0.9999998, 0.9999998)
+bones/50/name = "CC_Base_L_Upperarm"
+bones/50/parent = 49
+bones/50/rest = Transform3D(0.8927083, 0.45057213, -0.0075708185, -0.4506012, 0.89272183, -0.0026145293, 0.005580599, 0.0057454295, 0.9999683, 2.1865982e-05, 1.7761879, 3.1559444e-05)
+bones/50/enabled = true
+bones/50/position = Vector3(2.0675658e-05, 1.7761879, 3.1509397e-05)
+bones/50/rotation = Quaternion(0.10200622, 0.13240828, -0.5343552, 0.8285695)
+bones/50/scale = Vector3(1.0000001, 1.0000001, 1.0000001)
+bones/51/name = "CC_Base_L_Forearm"
+bones/51/parent = 50
+bones/51/rest = Transform3D(0.9867925, -0.15055312, 0.059785556, 0.15749133, 0.97802883, -0.13658795, -0.03790825, 0.1441997, 0.98882216, -4.9370797e-06, 2.7296395, 1.140186e-05)
+bones/51/enabled = true
+bones/51/position = Vector3(-6.4086908e-06, 2.7296386, 1.132965e-05)
+bones/51/rotation = Quaternion(0.25221577, 0.023901429, 0.018048283, 0.96720743)
+bones/51/scale = Vector3(1.0000002, 1.0000002, 1.0000001)
+bones/52/name = "CC_Base_L_ForearmTwist01"
+bones/52/parent = 51
+bones/52/rest = Transform3D(0.999744, 4.197478e-07, -0.022624988, -3.903736e-07, 0.9999998, 1.302729e-06, 0.022624988, -1.2935631e-06, 0.999744, 5.153742e-06, 8.3230293e-07, -3.1820733e-07)
+bones/52/enabled = true
+bones/52/position = Vector3(4.1198737e-06, 6.1035166e-07, -3.0517583e-07)
+bones/52/rotation = Quaternion(-6.559739e-07, 0.0047307326, -2.1068048e-07, 0.99998885)
+bones/52/scale = Vector3(1.0000002, 1.0000001, 1.0000001)
+bones/53/name = "CC_Base_L_ForearmTwist02"
+bones/53/parent = 52
+bones/53/rest = Transform3D(0.9999922, 4.6360083e-06, -0.003917615, -4.600679e-06, 0.9999999, 9.027027e-06, 0.0039176145, -9.0089325e-06, 0.9999923, -5.847062e-06, 1.2913579, 3.7512775e-05)
+bones/53/enabled = true
+bones/53/position = Vector3(-7.629396e-06, 1.2913572, 3.7689217e-05)
+bones/53/rotation = Quaternion(-4.524836e-06, -0.00862966, -2.247168e-06, 0.9999628)
+bones/53/scale = Vector3(1.0000001, 1, 1.0000001)
+bones/54/name = "CC_Base_L_ElbowShareBone"
+bones/54/parent = 51
+bones/54/rest = Transform3D(0.9825, 0.17464338, -0.06475561, -0.16249974, 0.97360635, 0.16026297, 0.09103536, -0.14693561, 0.98494786, 5.153742e-06, 8.3230293e-07, -3.1820733e-07)
+bones/54/enabled = true
+bones/54/position = Vector3(4.1198737e-06, 6.1035166e-07, -3.0517583e-07)
+bones/54/rotation = Quaternion(-0.035298955, -0.010524249, -0.038845476, 0.9985661)
+bones/54/scale = Vector3(1.0000001, 1.0000001, 1)
+bones/55/name = "CC_Base_L_Hand"
+bones/55/parent = 51
+bones/55/rest = Transform3D(0.9921864, 0.12383081, -0.015227789, -0.116067596, 0.9608991, 0.251398, 0.045763183, -0.24766618, 0.96776414, -2.4484349e-05, 2.5827088, 6.770443e-05)
+bones/55/enabled = true
+bones/55/position = Vector3(-2.6550295e-05, 2.5827084, 6.759645e-05)
+bones/55/rotation = Quaternion(-0.20634864, 0.021208512, -0.112063475, 0.9718088)
+bones/55/scale = Vector3(1.0000001, 1.0000001, 1.0000002)
+bones/56/name = "CC_Base_L_Mid1"
+bones/56/parent = 55
+bones/56/rest = Transform3D(0.95792943, 0.28698358, 0.0034067435, -0.2771531, 0.9280685, -0.24874607, -0.07454777, 0.23733702, 0.9685624, -0.0014412905, 1.0659161, 0.18604253)
+bones/56/enabled = true
+bones/56/position = Vector3(-0.0014425658, 1.0659157, 0.18604253)
+bones/56/rotation = Quaternion(0.06645422, 0.025331818, -0.23393764, 0.969647)
+bones/56/scale = Vector3(1.0000001, 0.99999994, 0.99999994)
+bones/57/name = "CC_Base_L_Mid2"
+bones/57/parent = 56
+bones/57/rest = Transform3D(0.9892119, 0.14634533, 0.0065856446, -0.14648308, 0.9886759, 0.032609217, -0.001738861, -0.03322211, 0.9994466, 3.2904832e-06, 0.48091134, 1.5587472e-07)
+bones/57/enabled = true
+bones/57/position = Vector3(2.4414062e-06, 0.4809109, 3.0517577e-07)
+bones/57/rotation = Quaternion(-0.021216499, 0.0020466144, -0.20735179, 0.97803426)
+bones/57/scale = Vector3(1.0000004, 1.0000002, 1)
+bones/58/name = "CC_Base_L_Mid3"
+bones/58/parent = 57
+bones/58/rest = Transform3D(0.9996382, 0.026646052, 0.003542674, -0.026853342, 0.9958417, 0.087051235, -0.0012083704, -0.0871149, 0.99619746, 6.943105e-06, 0.29358053, -7.4622153e-07)
+bones/58/enabled = true
+bones/58/position = Vector3(5.4931634e-06, 0.2935797, -5.7220456e-07)
+bones/58/rotation = Quaternion(0.0008041943, 9.7266515e-05, -0.0006370309, 0.99999946)
+bones/58/scale = Vector3(0.99999994, 1.0000001, 1.0000001)
+bones/59/name = "CC_Base_L_Index1"
+bones/59/parent = 55
+bones/59/rest = Transform3D(0.95977193, 0.2807698, 0.002358775, -0.27114257, 0.9289793, -0.25194946, -0.07293107, 0.24117453, 0.9677372, -0.0029193058, 0.9847453, 0.44734305)
+bones/59/enabled = true
+bones/59/position = Vector3(-0.002920532, 0.9847451, 0.44734302)
+bones/59/rotation = Quaternion(0.076730676, 0.02033552, -0.18158723, 0.9801658)
+bones/59/scale = Vector3(0.9999999, 0.9999999, 0.99999994)
+bones/60/name = "CC_Base_L_Index2"
+bones/60/parent = 59
+bones/60/rest = Transform3D(0.9901027, 0.14011458, -0.008064156, -0.1403415, 0.98794925, -0.06527496, -0.0011789966, 0.065760635, 0.99783486, 7.673294e-06, 0.4876309, -8.758274e-07)
+bones/60/enabled = true
+bones/60/position = Vector3(6.7138667e-06, 0.48763087, -7.629394e-07)
+bones/60/rotation = Quaternion(-0.032600634, -0.0016478209, -0.30457747, 0.951928)
+bones/60/scale = Vector3(1.0000001, 0.9999999, 1)
+bones/61/name = "CC_Base_L_Index3"
+bones/61/parent = 60
+bones/61/rest = Transform3D(0.99936765, 0.035544682, -0.0010679362, -0.03550197, 0.99899226, 0.027468933, 0.0020432342, -0.027413653, 0.9996221, 1.8015969e-06, 0.2787707, 2.6254077e-07)
+bones/61/enabled = true
+bones/61/position = Vector3(6.1035155e-07, 0.27877012, 3.0517577e-07)
+bones/61/rotation = Quaternion(0.0011073351, -3.0941334e-05, -0.0015365806, 0.9999982)
+bones/61/scale = Vector3(1.0000002, 1.0000002, 1)
+bones/62/name = "CC_Base_L_Ring1"
+bones/62/parent = 55
+bones/62/rest = Transform3D(0.9558613, 0.29381344, 0.0015965619, -0.2837332, 0.9244512, -0.2547251, -0.076317646, 0.24302892, 0.96701175, 1.3206471e-06, 1.117844, 2.079453e-07)
+bones/62/enabled = true
+bones/62/position = Vector3(0, 1.1178439, 1.9073485e-07)
+bones/62/rotation = Quaternion(0.070729844, 0.025542814, -0.2861701, 0.9552233)
+bones/62/scale = Vector3(0.9999999, 0.99999976, 0.9999998)
+bones/63/name = "CC_Base_L_Ring2"
+bones/63/parent = 62
+bones/63/rest = Transform3D(0.9873599, 0.15836214, 0.006494331, -0.15849291, 0.98673874, 0.035026405, -0.0008613517, -0.035612967, 0.9993654, 6.6131233e-06, 0.48710358, -2.0501014e-07)
+bones/63/enabled = true
+bones/63/position = Vector3(5.4931634e-06, 0.48710322, -2.2888182e-07)
+bones/63/rotation = Quaternion(-0.015501797, 0.0018294537, -0.15024279, 0.98852587)
+bones/63/scale = Vector3(0.99999994, 1, 1)
+bones/64/name = "CC_Base_L_Ring3"
+bones/64/parent = 63
+bones/64/rest = Transform3D(0.99971014, 0.024040388, 0.0011687863, -0.024048569, 0.99968207, 0.0075810826, -0.0009861623, -0.007606994, 0.99997056, 5.700894e-06, 0.23791713, -1.8951505e-07)
+bones/64/enabled = true
+bones/64/position = Vector3(4.8828124e-06, 0.23791686, -2.2888182e-07)
+bones/64/rotation = Quaternion(0.0014985685, -0.00017786212, -0.0028125138, 0.99999493)
+bones/64/scale = Vector3(0.99999976, 1, 0.99999994)
+bones/65/name = "CC_Base_L_Pinky1"
+bones/65/parent = 55
+bones/65/rest = Transform3D(0.94916487, 0.31469953, 0.0070913113, -0.30397534, 0.92220557, -0.2390303, -0.0817624, 0.22472362, 0.97098583, -0.0029199147, 1.1537213, -0.18087314)
+bones/65/enabled = true
+bones/65/position = Vector3(-0.0029211424, 1.153721, -0.18087313)
+bones/65/rotation = Quaternion(0.017726328, 0.05009703, -0.3928416, 0.9180695)
+bones/65/scale = Vector3(1.0000001, 0.9999999, 0.9999998)
+bones/66/name = "CC_Base_L_Pinky2"
+bones/66/parent = 65
+bones/66/rest = Transform3D(0.98600817, 0.16642042, -0.009600922, -0.1666548, 0.9828242, -0.07926562, -0.0037553958, 0.079756565, 0.9968075, 9.168336e-06, 0.4342311, -3.2783063e-07)
+bones/66/enabled = true
+bones/66/position = Vector3(7.934569e-06, 0.43423027, -2.288818e-07)
+bones/66/rotation = Quaternion(0.016042057, 0.005120081, -0.1868858, 0.98223734)
+bones/66/scale = Vector3(1.0000001, 1.0000001, 1.0000001)
+bones/67/name = "CC_Base_L_Pinky3"
+bones/67/parent = 66
+bones/67/rest = Transform3D(0.9996967, 0.024605906, -0.0008898692, -0.024581121, 0.9994668, 0.021487165, 0.001418106, -0.02145878, 0.99976856, 4.0735827e-06, 0.2227225, 9.077677e-08)
+bones/67/enabled = true
+bones/67/position = Vector3(3.051758e-06, 0.22272187, 1.5258792e-07)
+bones/67/rotation = Quaternion(0.0018778859, 0.000119079545, -0.026909687, 0.9996361)
+bones/67/scale = Vector3(1, 1, 1)
+bones/68/name = "CC_Base_L_Thumb1"
+bones/68/parent = 55
+bones/68/rest = Transform3D(0.9913144, 0.11429473, -0.06505737, -0.11248624, 0.4805877, -0.86970204, -0.06813664, 0.8694663, 0.48927003, 0.023611378, 0.34539062, 0.40837392)
+bones/68/enabled = true
+bones/68/position = Vector3(0.023609921, 0.3453903, 0.40837395)
+bones/68/rotation = Quaternion(0.24761377, -0.01846992, -0.1517631, 0.95672065)
+bones/68/scale = Vector3(1.0000001, 0.99999994, 0.99999976)
+bones/69/name = "CC_Base_L_Thumb2"
+bones/69/parent = 68
+bones/69/rest = Transform3D(0.9849749, 0.1715415, -0.019939722, -0.15772848, 0.9406072, 0.30063236, 0.07032634, -0.29297027, 0.9535318, 8.16622e-06, 0.29299405, -1.1157655e-06)
+bones/69/enabled = true
+bones/69/position = Vector3(6.7138667e-06, 0.29299375, -6.1035155e-07)
+bones/69/rotation = Quaternion(-0.14021668, 0.0027051547, -0.01707336, 0.98997)
+bones/69/scale = Vector3(1, 1, 1)
+bones/70/name = "CC_Base_L_Thumb3"
+bones/70/parent = 69
+bones/70/rest = Transform3D(0.9947836, 0.10201053, -3.49246e-08, -0.10132828, 0.9881305, 0.11546084, 0.011778255, -0.11485854, 0.9933122, 4.396899e-06, 0.28971156, -5.776133e-07)
+bones/70/enabled = true
+bones/70/position = Vector3(3.0517576e-06, 0.28971097, -3.0517577e-07)
+bones/70/rotation = Quaternion(-0.012065981, 0.00097496796, 0.013225175, 0.99983937)
+bones/70/scale = Vector3(1.0000002, 1.0000001, 1.0000001)
+bones/71/name = "CC_Base_L_UpperarmTwist01"
+bones/71/parent = 50
+bones/71/rest = Transform3D(0.9995142, 1.1825064e-06, 0.03115862, -1.1268387e-06, 0.9999998, -1.8041463e-06, -0.031158619, 1.7681597e-06, 0.9995143, 4.5257775e-06, 2.2048544e-06, 3.1971663e-08)
+bones/71/enabled = true
+bones/71/position = Vector3(3.814697e-06, 1.8310545e-06, 3.8146972e-08)
+bones/71/rotation = Quaternion(8.072074e-07, -0.00019113443, -5.1094963e-07, 1)
+bones/71/scale = Vector3(0.99999994, 0.99999994, 1)
+bones/72/name = "CC_Base_L_UpperarmTwist02"
+bones/72/parent = 71
+bones/72/rest = Transform3D(0.99951476, -1.9224178e-06, -0.03115573, 2.0213567e-06, 1.0000002, 3.1441339e-06, 0.031155737, -3.205585e-06, 0.9995145, -3.208493e-06, 1.3648173, -1.0028162e-05)
+bones/72/enabled = true
+bones/72/position = Vector3(-3.662109e-06, 1.3648171, -1.0070799e-05)
+bones/72/rotation = Quaternion(-1.7029726e-06, 0.0001926329, 1.0087954e-06, 1)
+bones/72/scale = Vector3(1.0000002, 1.0000001, 1.0000001)
+bones/73/name = "CC_Base_R_Clavicle"
+bones/73/parent = 35
+bones/73/rest = Transform3D(-0.22694147, -0.96352905, 0.14180706, 0.95166373, -0.25033697, -0.17795388, 0.20696333, 0.09456754, 0.97376746, -0.5354768, 2.4168272, -0.1370424)
+bones/73/enabled = true
+bones/73/position = Vector3(-0.53547686, 2.4168282, -0.1370422)
+bones/73/rotation = Quaternion(0.1458267, -0.015468051, 0.7206653, 0.67759645)
+bones/73/scale = Vector3(0.9999999, 0.9999999, 0.99999994)
+bones/74/name = "CC_Base_R_Upperarm"
+bones/74/parent = 73
+bones/74/rest = Transform3D(0.9009482, -0.4338867, 0.005904643, 0.4338975, 0.9009622, -0.0006230221, -0.0050495383, 0.0031233202, 0.99998236, -2.5255693e-05, 1.7761867, 3.1186315e-05)
+bones/74/enabled = true
+bones/74/position = Vector3(-2.3841856e-05, 1.7761865, 3.124237e-05)
+bones/74/rotation = Quaternion(0.13222256, -0.10751946, 0.5540972, 0.81482095)
+bones/74/scale = Vector3(1, 1, 0.99999994)
+bones/75/name = "CC_Base_R_UpperarmTwist01"
+bones/75/parent = 74
+bones/75/rest = Transform3D(0.9995674, -1.0731234e-08, -0.029409956, -1.8187535e-08, 0.99999994, -9.830311e-07, 0.029409956, 9.831407e-07, 0.9995674, -9.995966e-06, 3.1609313e-06, 1.13832186e-07)
+bones/75/enabled = true
+bones/75/position = Vector3(-8.850099e-06, 2.4414067e-06, 1.5258792e-07)
+bones/75/rotation = Quaternion(4.002417e-07, 0.00021348242, 8.683383e-08, 1)
+bones/75/scale = Vector3(0.9999999, 0.99999994, 0.99999994)
+bones/76/name = "CC_Base_R_UpperarmTwist02"
+bones/76/parent = 75
+bones/76/rest = Transform3D(0.99956733, 1.40814e-06, 0.029414468, -1.4929524e-06, 1, 2.8613974e-06, -0.029414468, -2.9040737e-06, 0.99956733, -2.629109e-06, 1.4008358, -3.2715961e-06)
+bones/76/enabled = true
+bones/76/position = Vector3(-9.155275e-07, 1.4008352, -3.3187869e-06)
+bones/76/rotation = Quaternion(-1.4123575e-06, -0.00021121558, -7.4053895e-07, 1)
+bones/76/scale = Vector3(0.9999999, 1, 1)
+bones/77/name = "CC_Base_R_Forearm"
+bones/77/parent = 74
+bones/77/rest = Transform3D(0.9906935, 0.122830786, -0.058640014, -0.13033241, 0.9802781, -0.14855273, 0.03923668, 0.15481295, 0.98716414, 1.5397802e-05, 2.8016865, -1.2247708e-05)
+bones/77/enabled = true
+bones/77/position = Vector3(1.7089846e-05, 2.8016858, -1.2207032e-05)
+bones/77/rotation = Quaternion(0.23366867, -0.02403396, -0.016519064, 0.9718788)
+bones/77/scale = Vector3(0.9999998, 0.99999976, 0.99999976)
+bones/78/name = "CC_Base_R_ForearmTwist01"
+bones/78/parent = 77
+bones/78/rest = Transform3D(0.99975973, -9.108841e-07, 0.021917492, 8.8892875e-07, 1.0000002, 1.0114609e-06, -0.021917485, -9.917349e-07, 0.99976003, -2.016607e-06, -1.0092854e-06, -5.8692425e-08)
+bones/78/enabled = true
+bones/78/position = Vector3(-3.0517583e-07, -1.525879e-06, 0)
+bones/78/rotation = Quaternion(-3.7380335e-07, -0.0047380957, 3.2189422e-07, 0.99998885)
+bones/78/scale = Vector3(0.9999997, 0.9999999, 1)
+bones/79/name = "CC_Base_R_ForearmTwist02"
+bones/79/parent = 78
+bones/79/rest = Transform3D(0.99999, -4.481917e-06, 0.0044094506, 4.441082e-06, 0.99999976, 9.270423e-06, -0.00440945, -9.250751e-06, 0.99999005, 8.8084935e-06, 1.2441947, 1.8946772e-05)
+bones/79/enabled = true
+bones/79/position = Vector3(1.0375976e-05, 1.2441943, 1.9073485e-05)
+bones/79/rotation = Quaternion(-4.6737077e-06, 0.008661585, 2.2659274e-06, 0.99996257)
+bones/79/scale = Vector3(0.9999994, 0.99999964, 0.99999976)
+bones/80/name = "CC_Base_R_ElbowShareBone"
+bones/80/parent = 77
+bones/80/rest = Transform3D(0.9872506, -0.14493094, 0.065812424, 0.13191442, 0.9763543, 0.17126411, -0.08907767, -0.16039899, 0.98302484, -2.016607e-06, -1.0092854e-06, -5.8692425e-08)
+bones/80/enabled = true
+bones/80/position = Vector3(-3.0517583e-07, -1.525879e-06, 0)
+bones/80/rotation = Quaternion(-0.038126573, 0.010538668, 0.031917777, 0.99870753)
+bones/80/scale = Vector3(0.99999976, 0.99999994, 1)
+bones/81/name = "CC_Base_R_Hand"
+bones/81/parent = 77
+bones/81/rest = Transform3D(0.9916294, -0.12820973, 0.015277028, 0.12001974, 0.95891494, 0.25705612, -0.047606442, -0.2530709, 0.966276, 1.1499573e-05, 2.4883885, 3.137225e-05)
+bones/81/enabled = true
+bones/81/position = Vector3(1.4038087e-05, 2.488388, 3.1433112e-05)
+bones/81/rotation = Quaternion(-0.21135917, 0.063522086, 0.021691073, 0.97510093)
+bones/81/scale = Vector3(0.9999998, 0.99999994, 1)
+bones/82/name = "CC_Base_R_Mid1"
+bones/82/parent = 81
+bones/82/rest = Transform3D(0.9617279, -0.2739874, -0.0032525505, 0.26476353, 0.93227726, -0.2464946, 0.0705687, 0.2361996, 0.96913856, 0.0014135647, 1.0859685, 0.186155)
+bones/82/enabled = true
+bones/82/position = Vector3(0.0014154051, 1.0859679, 0.18615496)
+bones/82/rotation = Quaternion(0.020625029, -0.029845914, 0.17498876, 0.9839018)
+bones/82/scale = Vector3(1, 0.9999999, 0.9999999)
+bones/83/name = "CC_Base_R_Mid2"
+bones/83/parent = 82
+bones/83/rest = Transform3D(0.9892114, -0.1463455, -0.006585584, 0.14648327, 0.9886753, 0.03260907, 0.0017388139, -0.03322194, 0.9994465, -7.4967843e-06, 0.4809155, -1.3864186e-06)
+bones/83/enabled = true
+bones/83/position = Vector3(-6.7138676e-06, 0.4809153, -1.2207033e-06)
+bones/83/rotation = Quaternion(-0.026277663, -0.0020242522, 0.2522795, 0.9672955)
+bones/83/scale = Vector3(0.9999998, 0.9999997, 1)
+bones/84/name = "CC_Base_R_Mid3"
+bones/84/parent = 83
+bones/84/rest = Transform3D(0.9996386, -0.02664592, -0.0035427723, 0.026853222, 0.9958419, 0.08705143, 0.0012084761, -0.087115124, 0.99619734, -3.4290617e-06, 0.29357836, -4.711383e-08)
+bones/84/enabled = true
+bones/84/position = Vector3(-2.4414062e-06, 0.29357818, -3.8146972e-08)
+bones/84/rotation = Quaternion(0.0008033426, -9.729463e-05, 0.00064106076, 0.99999946)
+bones/84/scale = Vector3(0.9999997, 0.99999976, 0.9999999)
+bones/85/name = "CC_Base_R_Ring1"
+bones/85/parent = 81
+bones/85/rest = Transform3D(0.9597524, -0.28084427, -0.0015260688, 0.27137452, 0.9287623, -0.2525004, 0.07233067, 0.24192372, 0.9675955, -4.7914864e-06, 1.1374884, -2.2657606e-07)
+bones/85/enabled = true
+bones/85/position = Vector3(-3.3569333e-06, 1.1374878, -2.2888182e-07)
+bones/85/rotation = Quaternion(0.038230706, -0.0320466, 0.25222307, 0.9663824)
+bones/85/scale = Vector3(1, 0.9999998, 0.99999994)
+bones/86/name = "CC_Base_R_Ring2"
+bones/86/parent = 85
+bones/86/rest = Transform3D(0.98735946, -0.15836214, -0.0064941193, 0.15849288, 0.98673856, 0.03502631, 0.0008611565, -0.035612836, 0.99936527, -4.7883213e-06, 0.48710307, -4.5869606e-07)
+bones/86/enabled = true
+bones/86/position = Vector3(-3.051758e-06, 0.48710212, -3.0517583e-07)
+bones/86/rotation = Quaternion(-0.020054229, -0.0018160592, 0.19107577, 0.9813687)
+bones/86/scale = Vector3(0.9999997, 0.99999976, 1)
+bones/87/name = "CC_Base_R_Ring3"
+bones/87/parent = 86
+bones/87/rest = Transform3D(0.9997103, -0.024040444, -0.0011688119, 0.024048628, 0.99968207, 0.0075812587, 0.0009861834, -0.00760717, 0.9999707, -6.265207e-06, 0.23791808, -8.7696293e-07)
+bones/87/enabled = true
+bones/87/position = Vector3(-4.8828124e-06, 0.23791716, -8.3923334e-07)
+bones/87/rotation = Quaternion(0.0014672981, 0.00017747849, 0.0027874117, 0.9999951)
+bones/87/scale = Vector3(0.9999997, 0.9999998, 1.0000001)
+bones/88/name = "CC_Base_R_Thumb1"
+bones/88/parent = 81
+bones/88/rest = Transform3D(0.99293405, -0.10494242, 0.0554008, 0.09966059, 0.48400256, -0.8693729, 0.06441998, 0.8687511, 0.4910412, -0.032274585, 0.3663359, 0.41023034)
+bones/88/enabled = true
+bones/88/position = Vector3(-0.032273863, 0.36633602, 0.41023028)
+bones/88/rotation = Quaternion(0.13036071, -0.12663561, 0.17302157, 0.96800476)
+bones/88/scale = Vector3(0.9999999, 0.99999994, 0.99999994)
+bones/89/name = "CC_Base_R_Thumb2"
+bones/89/parent = 88
+bones/89/rest = Transform3D(0.9849752, -0.17154157, 0.019939523, 0.15772861, 0.94060725, 0.30063254, -0.07032625, -0.29297057, 0.95353156, -6.262304e-06, 0.29299602, -1.8635282e-06)
+bones/89/enabled = true
+bones/89/position = Vector3(-4.2724614e-06, 0.29299563, -1.2207033e-06)
+bones/89/rotation = Quaternion(-0.0091689555, -0.019625682, 0.023717951, 0.99948406)
+bones/89/scale = Vector3(1.0000001, 1, 0.9999999)
+bones/90/name = "CC_Base_R_Thumb3"
+bones/90/parent = 89
+bones/90/rest = Transform3D(0.9947829, -0.10201039, -1.5832482e-08, 0.10132813, 0.98813003, 0.115460925, -0.011778197, -0.1148586, 0.9933119, -3.8863022e-06, 0.28970796, -7.619791e-07)
+bones/90/enabled = true
+bones/90/position = Vector3(-3.051758e-06, 0.289708, -9.155275e-07)
+bones/90/rotation = Quaternion(-0.012068064, -0.00097474793, -0.013228877, 0.9998393)
+bones/90/scale = Vector3(0.99999976, 0.9999999, 0.9999997)
+bones/91/name = "CC_Base_R_Index1"
+bones/91/parent = 81
+bones/91/rest = Transform3D(0.96348614, -0.26774922, -0.0022494309, 0.25872627, 0.9331153, -0.24971333, 0.06895953, 0.24001336, 0.9683172, 0.0027473534, 1.0053747, 0.44763497)
+bones/91/enabled = true
+bones/91/position = Vector3(0.002748718, 1.0053741, 0.447635)
+bones/91/rotation = Quaternion(0.040267657, -0.018129444, 0.09489025, 0.99450773)
+bones/91/scale = Vector3(1, 0.99999994, 1)
+bones/92/name = "CC_Base_R_Index2"
+bones/92/parent = 91
+bones/92/rest = Transform3D(0.9901023, -0.14011437, 0.008064073, 0.14034127, 0.987949, -0.06527478, 0.0011790406, 0.06576043, 0.99783474, -3.815682e-06, 0.48763356, -6.49206e-08)
+bones/92/enabled = true
+bones/92/position = Vector3(-2.4414062e-06, 0.48763272, 1.5258789e-07)
+bones/92/rotation = Quaternion(-0.03593213, 0.0016330937, 0.33012003, 0.94325346)
+bones/92/scale = Vector3(0.9999998, 0.9999998, 1)
+bones/93/name = "CC_Base_R_Index3"
+bones/93/parent = 92
+bones/93/rest = Transform3D(0.9993674, -0.035544675, 0.0010680165, 0.03550196, 0.99899197, 0.027468888, -0.0020433129, -0.027413601, 0.9996219, -3.148408e-06, 0.27877092, -1.3676857e-06)
+bones/93/enabled = true
+bones/93/position = Vector3(-2.4414067e-06, 0.2787708, -1.3732912e-06)
+bones/93/rotation = Quaternion(0.001107742, 3.1289605e-05, 0.0015478411, 0.9999982)
+bones/93/scale = Vector3(0.99999976, 0.9999997, 0.99999976)
+bones/94/name = "CC_Base_R_Pinky1"
+bones/94/parent = 81
+bones/94/rest = Transform3D(0.95334005, -0.30182195, -0.00680102, 0.29171455, 0.9267489, -0.23672602, 0.077751935, 0.22369646, 0.9715526, 0.0027480074, 1.1729188, -0.1809648)
+bones/94/enabled = true
+bones/94/position = Vector3(0.0027493283, 1.172918, -0.1809648)
+bones/94/rotation = Quaternion(0.014093815, -0.04587246, 0.32002592, 0.94619274)
+bones/94/scale = Vector3(0.99999976, 0.99999976, 0.99999994)
+bones/95/name = "CC_Base_R_Pinky2"
+bones/95/parent = 94
+bones/95/rest = Transform3D(0.9860082, -0.16642052, 0.00960105, 0.16665496, 0.982824, -0.07926583, 0.0037553192, 0.07975681, 0.9968073, -4.5783418e-06, 0.43423125, 2.8175114e-07)
+bones/95/enabled = true
+bones/95/position = Vector3(-3.66211e-06, 0.43423098, 3.0517583e-07)
+bones/95/rotation = Quaternion(-0.015706077, 0.0014561699, 0.15021741, 0.98852724)
+bones/95/scale = Vector3(1, 0.99999994, 1)
+bones/96/name = "CC_Base_R_Pinky3"
+bones/96/parent = 95
+bones/96/rest = Transform3D(0.9996968, -0.0246059, 0.000889796, 0.02458111, 0.999467, 0.02148753, -0.0014180416, -0.021459147, 0.9997687, -5.382096e-06, 0.22272603, 2.6757795e-07)
+bones/96/enabled = true
+bones/96/position = Vector3(-4.2724614e-06, 0.22272554, 2.2888187e-07)
+bones/96/rotation = Quaternion(0.0018745913, -0.00011970202, 0.026924875, 0.99963576)
+bones/96/scale = Vector3(0.99999994, 0.99999994, 0.9999999)
+bones/97/name = "CC_Base_R_RibsTwist"
+bones/97/parent = 35
+bones/97/rest = Transform3D(-1.0000001, 1.3088113e-05, -1.34142565e-05, -1.5650427e-05, -0.18940735, 0.98189855, 1.0310441e-05, 0.98189855, 0.18940735, -1.0519844, 0.71019906, 0.9492666)
+bones/97/enabled = true
+bones/97/position = Vector3(-1.0519847, 0.7102007, 0.949267)
+bones/97/rotation = Quaternion(-9.637256e-07, 0.63662887, 0.7711703, -9.391946e-06)
+bones/97/scale = Vector3(0.9999999, 0.9999999, 0.99999994)
+bones/98/name = "CC_Base_R_Breast"
+bones/98/parent = 97
+bones/98/rest = Transform3D(0.9999999, 4.4840206e-07, 2.27738e-13, -4.484021e-07, 0.9999998, 1.1843934e-09, -2.272069e-13, -1.1843933e-09, 0.9999999, 1.740574e-06, 0.22101457, 2.8185027e-06)
+bones/98/enabled = true
+bones/98/position = Vector3(1.831055e-06, 0.22101472, 4.229546e-06)
+bones/98/rotation = Quaternion(0, 0, -2.2420087e-07, 1)
+bones/98/scale = Vector3(0.99999976, 0.99999976, 0.9999999)
+bones/99/name = "CC_Base_L_RibsTwist"
+bones/99/parent = 35
+bones/99/rest = Transform3D(-0.99999994, 9.419135e-06, 1.5441616e-05, 1.3378048e-05, -0.18940742, 0.98189837, 1.2173395e-05, 0.9818983, 0.1894075, 1.0528822, 0.7094787, 0.9496857)
+bones/99/enabled = true
+bones/99/position = Vector3(1.0528822, 0.70947975, 0.94968605)
+bones/99/rotation = Quaternion(8.932494e-06, 0.6366288, 0.7711704, 1.2594107e-06)
+bones/99/scale = Vector3(0.9999999, 0.99999976, 0.9999998)
+bones/100/name = "CC_Base_L_Breast"
+bones/100/parent = 99
+bones/100/rest = Transform3D(1.0000001, -1.5331559e-13, -1.3013423e-14, 1.5331557e-13, 1.0000002, -8.6231084e-09, 1.30134246e-14, 8.623109e-09, 1.0000001, 2.0740915e-06, 0.22101377, -1.9898096e-06)
+bones/100/enabled = true
+bones/100/position = Vector3(1.9836425e-06, 0.22101384, -1.5401839e-06)
+bones/100/rotation = Quaternion(0, 0, 0, 1)
+bones/100/scale = Vector3(0.99999994, 1, 1)
+
+[node name="HipAttachment" type="BoneAttachment3D" parent="Cowboy/Skeleton3D" unique_id=1459876281]
+transform = Transform3D(-0.9584025, -0.1628097, -0.23442991, 0.12835333, -0.97946286, 0.1554916, -0.25493094, 0.11893366, 0.95961684, -1.0876783, 9.855899, -0.37210375)
+bone_name = "CC_Base_R_Thigh"
+bone_idx = 18
+
+[node name="RevolverAttachment" type="Node3D" parent="Cowboy/Skeleton3D/HipAttachment" unique_id=222006555]
+transform = Transform3D(1, -2.619345e-09, -4.6566112e-10, 2.619345e-09, 1, -5.9604588e-08, 4.656613e-10, 5.9604588e-08, 1, 1.056401, 0.055683136, 0.010443807)
+
+[node name="HipRevolverSlot" type="Node3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment" unique_id=1999982428]
+transform = Transform3D(5.5879354e-09, 4.4703484e-08, 0.99999994, 1, -2.2351742e-08, 1.8626451e-09, 2.9802322e-08, 1, -2.9802322e-08, 0.13151622, -0.06135559, -0.7950567)
+
+[node name="Revolver" type="Node3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot" unique_id=155055279]
+transform = Transform3D(4.499998, 0, 0, 0, 4.4999976, 0, 0, 0, 4.5000005, 0, 0, 0)
+
+[node name="CPBody" type="MeshInstance3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" unique_id=198398284]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.03335255, 0.24392138, -5.6711317e-05)
+mesh = SubResource("ArrayMesh_e2v8n")
+
+[node name="CPBullet" type="MeshInstance3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" unique_id=754633240]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.1526438, 0.1788167, -0.012862786)
+visible = false
+mesh = SubResource("ArrayMesh_is5sc")
+
+[node name="CPCyilnder" type="MeshInstance3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" unique_id=214568843]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.0292247, 0.27179137, -7.4239e-05)
+visible = false
+mesh = SubResource("ArrayMesh_lb8o0")
+
+[node name="CPCyilnderFull" type="MeshInstance3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" unique_id=994849500]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, 0.0292247, 0.27179137, 0.0058232993)
+mesh = SubResource("ArrayMesh_1r3sl")
+
+[node name="CPTrigger&Hammer" type="MeshInstance3D" parent="Cowboy/Skeleton3D/HipAttachment/RevolverAttachment/HipRevolverSlot/Revolver" unique_id=1810446938]
+transform = Transform3D(100, 0, 0, 0, 100, -1.6292068e-05, 0, 1.6292068e-05, 100, -0.060325574, 0.26498386, -1.6104908e-05)
+mesh = SubResource("ArrayMesh_tek0n")
+
+[node name="CowboySkin1" parent="Cowboy/Skeleton3D" unique_id=596466757 instance=ExtResource("5_ywk15")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cowboy" unique_id=1288807835]
+libraries/NPC = ExtResource("6_ws7s4")
+autoplay = &"NPC/npc_idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1070771241]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2009701688]
+modulate = Color(0.99607843, 0.78039217, 0, 1)
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 27.0
+offset_bottom = 116.0
+grow_horizontal = 2
+texture = ExtResource("7_cn2sd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=236737519]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_right = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1102275708]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1724422223]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=981295366]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1460971029]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Made by Dempsey Newton"
+
+[node name="TransitionControl" parent="CanvasLayer" unique_id=839243473 instance=ExtResource("9_ws7s4")]
+unique_name_in_owner = true
+
+[node name="Desert_cactus_01" parent="." unique_id=1618583455 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9, 0, -27)
+
+[node name="Desert_cactus_04" parent="." unique_id=1317754763 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.35355338, 0, 0.35355338, 0, 0.5, 0, -0.35355338, 0, 0.35355338, 3.9471302, 0, -2.3945198)
+
+[node name="Desert_cactus_02" parent="." unique_id=1658146852 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.4330127, 0, -0.25, 0, 0.5, 0, 0.25, 0, 0.4330127, 9, 0, -27)
+
+[node name="Desert_cactus_03" parent="." unique_id=1993270539 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.4330127, 0, -0.25, 0, 0.5, 0, 0.25, 0, 0.4330127, -19, 0, -15)
+
+[node name="Opuntia_cactus" parent="." unique_id=2096277808 instance=ExtResource("9_ywk15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
+
+[node name="Opuntia_cactus2" parent="." unique_id=735370098 instance=ExtResource("9_ywk15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)

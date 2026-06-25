@@ -77,6 +77,10 @@ hurtbox = NodePath("../Hurtbox")
 hit_stream_player = NodePath("../HitStreamPlayer")
 death_stream_player = NodePath("../DeathStreamPlayer")
 
+[node name="NPCOutOfBoundsManager" type="Node" parent="." unique_id=2003947015 node_paths=PackedStringArray("health")]
+script = ExtResource("19_hdlv3")
+health = NodePath("../Health")
+
 [node name="StateMachine" type="Node" parent="." unique_id=737629658 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_yupgv")
 initial_state = NodePath("RandomState")
@@ -191,6 +195,3 @@ stream = SubResource("AudioStreamRandomizer_el2sn")
 volume_db = -2.0
 max_polyphony = 3
 bus = &"sfx"
-
-[node name="NPCOutOfBoundsManager" type="Node" parent="." unique_id=2003947015]
-script = ExtResource("19_hdlv3")

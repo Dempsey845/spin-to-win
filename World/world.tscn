@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c2hhfxes7eoa7" path="res://Player/player.tscn" id="1_62w18"]
 [ext_resource type="Script" uid="uid://c3a2n0x7rjmc3" path="res://World/game_manager.gd" id="1_xw5lg"]
 [ext_resource type="Script" uid="uid://7xd074afdo24" path="res://World/wave_system.gd" id="2_0lysu"]
+[ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="3_oeat8"]
 [ext_resource type="PackedScene" uid="uid://bl13udvw3pki0" path="res://Testing/test_target_block.tscn" id="4_3f78f"]
 [ext_resource type="Texture2D" uid="uid://cprpip51pwdpt" path="res://Assets/WesternDesertPack/Surface materials/Sand2.png" id="6_kcyjf"]
 [ext_resource type="PackedScene" uid="uid://dx6eqvuprnkvh" path="res://Assets/WesternBuildings/HouseTwo/Simple_house2.fbx" id="6_yf0ba"]
@@ -119,7 +120,6 @@ name = "Sand"
 albedo_texture = ExtResource("19_xw5lg")
 normal_texture = SubResource("ImageTexture_26uyv")
 uv_scale = 0.5
-detiling_shift = 0.25
 
 [sub_resource type="Image" id="Image_oeat8"]
 data = {
@@ -195,6 +195,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "00:00"
 horizontal_alignment = 1
+
+[node name="TransitionControl" parent="WaveSystem/CanvasLayer" unique_id=839243473 instance=ExtResource("3_oeat8")]
 
 [node name="EnemySpawnPoints" type="Node3D" parent="." unique_id=1018224253]
 
@@ -383,6 +385,3 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=421862176 instance=ExtResource("1_62w18")]
-
-[node name="Marker3D" type="Marker3D" parent="." unique_id=38565286]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.7)
