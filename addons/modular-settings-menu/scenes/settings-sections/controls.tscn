@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dfswr81erouhj"]
+
+[ext_resource type="Script" uid="uid://bqt46t8i083bb" path="res://addons/modular-settings-menu/scripts/settings_section.gd" id="1_vmore"]
+[ext_resource type="PackedScene" uid="uid://cy8n6yalxprb7" path="res://addons/modular-settings-menu/scenes/settings-elements/controls-elements/sensitivity.tscn" id="2_qcqml"]
+[ext_resource type="PackedScene" uid="uid://c2tgt7fu0n5wp" path="res://addons/modular-settings-menu/scenes/settings-elements/controls-elements/invert_y.tscn" id="3_8np8q"]
+[ext_resource type="PackedScene" uid="uid://i0w5gftb0j16" path="res://addons/modular-settings-menu/scenes/settings-elements/controls-elements/input_settings.tscn" id="4_bejag"]
+[ext_resource type="Script" uid="uid://dsr28fkrhpwr5" path="res://Component/button_component.gd" id="5_8r7ud"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0spm"]
+
+[node name="Controls" type="TabBar" unique_id=1104189117]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_e0spm")
+script = ExtResource("1_vmore")
+IDENTIFIER = "Controls"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1046425487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=58529824]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer" unique_id=55977576]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ElementList" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer" unique_id=15152661]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="MouseSettings" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList" unique_id=1844660283]
+layout_mode = 2
+
+[node name="SubSectionName" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/MouseSettings" unique_id=540165815]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mouse Settings"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/MouseSettings" unique_id=664213457]
+layout_mode = 2
+
+[node name="SubSectionElements" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/MouseSettings" unique_id=1132320002]
+layout_mode = 2
+
+[node name="Sensitivity" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/MouseSettings/SubSectionElements" unique_id=779970862 instance=ExtResource("2_qcqml")]
+layout_mode = 2
+
+[node name="InvertY" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/MouseSettings/SubSectionElements" unique_id=1353091737 instance=ExtResource("3_8np8q")]
+layout_mode = 2
+
+[node name="KeyboardSettings" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList" unique_id=349456975]
+layout_mode = 2
+
+[node name="SubSectionName" type="Label" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/KeyboardSettings" unique_id=1277960157]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Keyboard Settings"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/KeyboardSettings" unique_id=1809116315]
+layout_mode = 2
+
+[node name="SubSectionElements" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/KeyboardSettings" unique_id=1493658263]
+layout_mode = 2
+
+[node name="InputSettings" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/KeyboardSettings/SubSectionElements" unique_id=1350732237 instance=ExtResource("4_bejag")]
+layout_mode = 2
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/KeyboardSettings/SubSectionElements/InputSettings" unique_id=878562408]
+script = ExtResource("5_8r7ud")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"

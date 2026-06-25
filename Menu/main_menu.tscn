@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/RouletteTimeLogo.png" id="7_cn2sd"]
 [ext_resource type="PackedScene" uid="uid://b4mn0v13tt48t" path="res://Assets/WesternDesertPack/Cacti/Desert_cactus_01/Desert_cactus_01.fbx" id="8_218iu"]
 [ext_resource type="Script" uid="uid://dsr28fkrhpwr5" path="res://Component/button_component.gd" id="8_ws7s4"]
+[ext_resource type="PackedScene" uid="uid://k0nd1h60i1jw" path="res://Menu/settings.tscn" id="9_fduiw"]
 [ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="9_ws7s4"]
 [ext_resource type="PackedScene" uid="uid://bk688mltbgm2q" path="res://Assets/WesternDesertPack/Cacti/Opuntia_cactus/Opuntia_cactus.fbx" id="9_ywk15"]
 
@@ -1434,6 +1435,10 @@ offset_top = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Made by Dempsey Newton"
+
+[node name="Settings" parent="CanvasLayer" unique_id=1719048645 instance=ExtResource("9_fduiw")]
+unique_name_in_owner = true
+visible = false
 
 [node name="TransitionControl" parent="CanvasLayer" unique_id=839243473 instance=ExtResource("9_ws7s4")]
 unique_name_in_owner = true

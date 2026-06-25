@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://k0nd1h60i1jw"]
+
+[ext_resource type="Script" uid="uid://d00v6x2t8geht" path="res://addons/modular-settings-menu/scripts/settings_menu.gd" id="1_iesh6"]
+[ext_resource type="PackedScene" uid="uid://buqq0kms2dbb4" path="res://addons/modular-settings-menu/scenes/settings-sections/graphics.tscn" id="2_bcfwt"]
+[ext_resource type="PackedScene" uid="uid://y5oxvao3aqtb" path="res://addons/modular-settings-menu/scenes/settings-sections/audio.tscn" id="4_0sgdx"]
+[ext_resource type="PackedScene" uid="uid://dvkksl3mrnoto" path="res://addons/modular-settings-menu/scenes/settings-elements/discard_changes_popup.tscn" id="5_5vcno"]
+[ext_resource type="Script" uid="uid://dsr28fkrhpwr5" path="res://Component/button_component.gd" id="5_bcfwt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcfwt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.20871013, 0.20871016, 0.20871013, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwbsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntlmy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qp71p"]
+
+[node name="Settings" type="Control" unique_id=1719048645 node_paths=PackedStringArray("MenuPanelRef")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_iesh6")
+MenuPanelRef = NodePath("SettingsPanel")
+
+[node name="SettingsPanel" type="VBoxContainer" parent="." unique_id=1155213657]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -205.0
+offset_right = 257.18518
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsTabs" type="TabContainer" parent="SettingsPanel" unique_id=145995683]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_bcfwt")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_kwbsm")
+current_tab = 0
+
+[node name="Graphics" parent="SettingsPanel/SettingsTabs" unique_id=553463844 instance=ExtResource("2_bcfwt")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="SettingsPanel/SettingsTabs/Graphics" unique_id=735530071]
+script = ExtResource("5_bcfwt")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
+[node name="Audio" parent="SettingsPanel/SettingsTabs" unique_id=1771135078 instance=ExtResource("4_0sgdx")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="SettingsPanel/SettingsTabs/Audio" unique_id=298820908]
+script = ExtResource("5_bcfwt")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPanel" unique_id=103608082]
+layout_mode = 2
+
+[node name="ApplyButton" type="Button" parent="SettingsPanel/HBoxContainer" unique_id=1397436017]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ntlmy")
+disabled = true
+text = "Apply"
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="SettingsPanel/HBoxContainer/ApplyButton" unique_id=1283508794]
+script = ExtResource("5_bcfwt")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
+[node name="BackButton" type="Button" parent="SettingsPanel/HBoxContainer" unique_id=848831245]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qp71p")
+text = "Back"
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="SettingsPanel/HBoxContainer/BackButton" unique_id=1901695608]
+script = ExtResource("5_bcfwt")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
+[node name="ElementPanels" type="Control" parent="." unique_id=1293008019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DiscardChangesPopup" parent="." unique_id=387177983 instance=ExtResource("5_5vcno")]
+visible = false
+layout_mode = 1
+
+[connection signal="visibility_changed" from="." to="." method="on_visibility_changed"]
+[connection signal="pressed" from="SettingsPanel/HBoxContainer/ApplyButton" to="." method="on_apply_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/HBoxContainer/BackButton" to="." method="on_back_button_pressed"]

@@ -2,11 +2,18 @@ class_name ButtonComponent
 extends AudioStreamPlayer
 
 func _ready() -> void:
-    stream = load("uid://cahmjkit8pq5d")
+	bus = "SFX"
 
-    var button: Button = get_parent()
+	stream = load("uid://cahmjkit8pq5d")
 
-    button.pressed.connect(_on_button_pressed)
+	await get_tree().process_frame
+
+	var button = get_parent()
+
+	if button is Button:
+		button.connect("pressed", _on_button_pressed)
+	elif button is SettingsSection:
+		button.connect("tab_button_pressed", _on_button_pressed)
 
 func _on_button_pressed():
-    play()
+	play()

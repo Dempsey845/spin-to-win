@@ -38,11 +38,13 @@
 [ext_resource type="AudioStream" uid="uid://dbxlo0n3mqwp4" path="res://Assets/Audio/SoundEffects/Shoot/shot_1.wav" id="30_jp1hh"]
 [ext_resource type="AudioStream" uid="uid://di7jsukjngyix" path="res://Assets/Audio/SoundEffects/Shoot/shot_2.wav" id="31_qs4pp"]
 [ext_resource type="AudioStream" uid="uid://cjpkv4p4bui83" path="res://Assets/Audio/SoundEffects/Shoot/shot_3.wav" id="32_iyprq"]
+[ext_resource type="Script" uid="uid://b0ujqfsrhbqny" path="res://Player/player_settings_manager.gd" id="32_uvbbp"]
 [ext_resource type="AudioStream" uid="uid://dp3336qduhi8y" path="res://Assets/Audio/SoundEffects/Shoot/shot_4.wav" id="33_f4lon"]
 [ext_resource type="AudioStream" uid="uid://cpposwltcjtkn" path="res://Assets/Audio/SoundEffects/Shoot/shot_5.wav" id="34_8ynux"]
 [ext_resource type="AudioStream" uid="uid://ea1o6toijwkv" path="res://Assets/Audio/SoundEffects/Shoot/shot_6.wav" id="35_d30e8"]
 [ext_resource type="AudioStream" uid="uid://l5h8u7q81a4k" path="res://Assets/Audio/SoundEffects/jump.wav" id="36_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://bk1monfqpujmy" path="res://Assets/Audio/SoundEffects/Shoot/shot_7.wav" id="36_6pogt"]
+[ext_resource type="PackedScene" uid="uid://k0nd1h60i1jw" path="res://Menu/settings.tscn" id="39_c4i3b"]
 [ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="41_1kmt7"]
 [ext_resource type="AudioStream" uid="uid://brv2fl2nnmcnp" path="res://Assets/Audio/SoundEffects/Step/step1.wav" id="42_1l10g"]
 [ext_resource type="Script" uid="uid://dq6g4cpncbmlg" path="res://Player/main_camera.gd" id="42_6eb1q"]
@@ -8525,12 +8527,10 @@ big_flash = NodePath("../../Head/FirePoint/BigFlash")
 stream = SubResource("AudioStreamRandomizer_d30e8")
 volume_db = -2.0
 max_polyphony = 3
-bus = &"sfx"
 
 [node name="ThrowStreamPlayer" type="AudioStreamPlayer" parent="PlayerArmStateMachine/GunState" unique_id=1363340596]
 stream = SubResource("AudioStreamRandomizer_wvbyc")
 volume_db = -5.0
-bus = &"sfx"
 
 [node name="PunchState" type="Node" parent="PlayerArmStateMachine" unique_id=59366212 node_paths=PackedStringArray("animation_manager", "gun_state", "revolver_manager")]
 script = ExtResource("6_p5o4e")
@@ -8545,11 +8545,9 @@ one_shot = true
 stream = SubResource("AudioStreamRandomizer_ie76m")
 volume_db = -2.0
 max_polyphony = 5
-bus = &"sfx"
 
 [node name="PickupStreamPlayer" type="AudioStreamPlayer" parent="PlayerArmStateMachine/PunchState" unique_id=947602556]
 stream = SubResource("AudioStreamRandomizer_1kmt7")
-bus = &"sfx"
 
 [node name="InspectState" type="Node" parent="PlayerArmStateMachine" unique_id=697157133]
 script = ExtResource("5_apopc")
@@ -8594,7 +8592,7 @@ ammo_label = NodePath("../CanvasLayer/AmmoLabel")
 
 [node name="Health" type="Node" parent="." unique_id=1782994041]
 script = ExtResource("9_dkpta")
-max_health = 1
+max_health = 1000
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="PlayerWaveManager" type="Node" parent="." unique_id=1303166373 node_paths=PackedStringArray("canvas_layer", "revolver_manager", "main_camera", "ammo", "health", "projectile_type_manager", "upgrade_manager")]
@@ -8619,17 +8617,20 @@ punch_state = NodePath("../PlayerArmStateMachine/PunchState")
 script = ExtResource("16_qemgg")
 camera_pivots = [NodePath("../SubViewportContainer/SubViewport/Pivot"), NodePath("../Head/Pivot")]
 
+[node name="PlayerSettingsManager" type="Node" parent="." unique_id=329675682 node_paths=PackedStringArray("settings")]
+process_mode = 1
+script = ExtResource("32_uvbbp")
+settings = NodePath("../CanvasLayer/Settings")
+
 [node name="StepStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=471547458]
 stream = SubResource("AudioStreamRandomizer_gvnt1")
 volume_db = -20.0
 max_polyphony = 3
-bus = &"sfx"
 
 [node name="JumpStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=19278529]
 stream = SubResource("AudioStreamRandomizer_c4i3b")
 volume_db = -5.0
 max_polyphony = 3
-bus = &"sfx"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737990560]
 
@@ -8739,6 +8740,9 @@ text = "Pickup a revolver to begin the next round!"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Status" unique_id=4693164]
 root_node = NodePath("../RevolverStatus")
 libraries/ = SubResource("AnimationLibrary_8mwp6")
+
+[node name="Settings" parent="CanvasLayer" unique_id=1719048645 instance=ExtResource("39_c4i3b")]
+visible = false
 
 [node name="HitVignette" type="ColorRect" parent="CanvasLayer" unique_id=225078875 node_paths=PackedStringArray("health")]
 material = SubResource("ShaderMaterial_efx54")

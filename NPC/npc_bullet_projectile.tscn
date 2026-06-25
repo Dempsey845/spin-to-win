@@ -46,7 +46,7 @@ radius = 0.10939807
 
 [node name="BulletProjectile" type="Area3D" unique_id=82245577]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 6
 monitorable = false
 script = ExtResource("1_kqwkn")
 projectile_speed = 30.0

@@ -19,8 +19,8 @@ var gravity: float = 9.8
 @export var bob_frequency := 5.0
 @export var bob_amplitude := 0.02
 
-@export var sway_amount := 0.01
-@export var sway_speed := 8.0
+@export var sway_amount := 0.0001
+@export var sway_speed := 7.0
 
 var bob_time := 0.0
 
@@ -53,10 +53,14 @@ func _unhandled_input(event):
 			deg_to_rad(89)
 		)
 
-		sway_target = event.relative
+		sway_target = event.relative / get_process_delta_time()
 
 	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 
 func _process(delta: float) -> void:
 	_update_weapon_sway(delta)
@@ -81,14 +85,16 @@ func _update_weapon_sway(delta):
 		0
 	)
 
+	var t = 1.0 - exp(-sway_speed * delta)
+
 	arms.rotation = arms.rotation.lerp(
 		arms_start_rot + target_rot,
-		delta * sway_speed
+		t
 	)
 
 	sway_target = sway_target.lerp(
 		Vector2.ZERO,
-		delta * sway_speed
+		t
 	)
 
 func _update_headbob(delta):
@@ -111,14 +117,16 @@ func _update_headbob(delta):
 			0
 		)
 	else:
+		var t = 1.0 - exp(-10.0 * delta)
+
 		camera.position = camera.position.lerp(
 			camera_start_pos,
-			delta * 10.0
+			t
 		)
 
 		arms.position = arms.position.lerp(
 			arms_start_pos,
-			delta * 10.0
+			t
 		)
 
 		bob_time = 0.0
