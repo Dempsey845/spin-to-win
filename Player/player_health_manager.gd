@@ -14,6 +14,7 @@ func _ready() -> void:
 	health.damage_taken.connect(_on_health_damage_taken)
 	health.health_changed.connect(_on_health_changed)
 	health.max_health_changed.connect(_on_max_health_changed)
+	_on_max_health_changed(health.max_health)
 	health.death.connect(_on_health_death)
 
 func _on_health_damage_taken(_damage_amount: int):

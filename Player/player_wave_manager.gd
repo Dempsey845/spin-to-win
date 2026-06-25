@@ -24,14 +24,16 @@ func _on_wave_started():
 		revolver_manager.revolver_picked_up.disconnect(_on_revolver_picked_up)
 
 func _on_wave_ended():
+	await get_tree().create_timer(2.0).timeout
+	health.current_heatlh = health.max_health
+
 	if revolver_manager.has_revolver:
 		start_roulette()
 		return
 
 	if !revolver_manager.revolver_picked_up.is_connected(_on_revolver_picked_up):
 		revolver_manager.revolver_picked_up.connect(_on_revolver_picked_up)
-
-	health.current_heatlh = health.max_health
+	
 
 func _on_revolver_picked_up():
 	start_roulette()

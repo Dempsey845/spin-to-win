@@ -8,9 +8,6 @@ extends SliderElement
 func _apply_settings() -> void:
 	# Get the index of the audio bus
 	var busIndex: int = AudioServer.get_bus_index(AUDIO_BUS)
-	print(busIndex)
 	
 	# Set the volume of the audio bus
-	print(currentValue)
 	AudioServer.set_bus_volume_db(busIndex, linear_to_db(currentValue))
-	print("Audio bus volume set")

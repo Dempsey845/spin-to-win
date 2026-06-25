@@ -50,7 +50,6 @@ func get_settings() -> void:
 	# If no save file exists saves the default values retrieved from the section's elements
 	if SettingsDataManager.noSaveFile or SettingsDataManager.invalidSaveFile:
 		SettingsDataManager.call_deferred("save_data")
-		print("No settings ")
 	
 	# Clear the changed elements array
 	changedElements_.clear()
@@ -69,7 +68,6 @@ func settings_changed(elementId: String) -> void:
 
 ## Called to check for changes between the cache and the settings data.
 func check_for_changes(elementId: String) -> bool:
-	print("Checking for changes")
 	var cacheValue = settingsCache_[elementId]
 	var savedValue = SettingsDataManager.settingsData_[IDENTIFIER][elementId]
 	# Check if there are differences between the cache and the settings data
