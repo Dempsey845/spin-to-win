@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://mcmnrwo4ha5f" path="res://NPC/Cowboy/Characters/Skins/cowboy_skin_1.tscn" id="5_ywk15"]
 [ext_resource type="Texture2D" uid="uid://cmn7wpqyajnvo" path="res://Assets/UI/RouletteTimeLogo.png" id="7_cn2sd"]
 [ext_resource type="PackedScene" uid="uid://b4mn0v13tt48t" path="res://Assets/WesternDesertPack/Cacti/Desert_cactus_01/Desert_cactus_01.fbx" id="8_218iu"]
+[ext_resource type="Script" uid="uid://dsr28fkrhpwr5" path="res://Component/button_component.gd" id="8_ws7s4"]
 [ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="9_ws7s4"]
 [ext_resource type="PackedScene" uid="uid://bk688mltbgm2q" path="res://Assets/WesternDesertPack/Cacti/Opuntia_cactus/Opuntia_cactus.fbx" id="9_ywk15"]
 
@@ -1402,15 +1403,27 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="CanvasLayer/VBoxContainer/PlayButton" unique_id=2022636609]
+script = ExtResource("8_ws7s4")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
 [node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1724422223]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
 
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="CanvasLayer/VBoxContainer/SettingsButton" unique_id=1905100124]
+script = ExtResource("8_ws7s4")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
+
 [node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=981295366]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="ButtonComponent" type="AudioStreamPlayer" parent="CanvasLayer/VBoxContainer/QuitButton" unique_id=64989399]
+script = ExtResource("8_ws7s4")
+metadata/_custom_type_script = "uid://dsr28fkrhpwr5"
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1460971029]
 anchors_preset = 12
