@@ -1,0 +1,40 @@
+[gd_resource type="Terrain3DAssets" format=3 uid="uid://c65fxp4igfwdn"]
+
+[ext_resource type="Texture2D" uid="uid://burod6f42xc3o" path="res://Assets/WesternDesertPack/Surface materials/Sand.png" id="1_a6dsp"]
+[ext_resource type="Texture2D" uid="uid://cy10sll2vp3r0" path="res://World/sand_2_normal.tres" id="2_wkc6m"]
+[ext_resource type="Texture2D" uid="uid://cprpip51pwdpt" path="res://Assets/WesternDesertPack/Surface materials/Sand2.png" id="3_ckfng"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqu5g"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_o6lw0"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_dqu5g")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_dqu5g"]
+name = "Sand"
+albedo_texture = ExtResource("1_a6dsp")
+normal_texture = ExtResource("2_wkc6m")
+uv_scale = 0.5
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_26uyv"]
+name = "Sand2"
+id = 1
+albedo_texture = ExtResource("3_ckfng")
+normal_texture = ExtResource("2_wkc6m")
+uv_scale = 0.5
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_o6lw0")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_dqu5g"), SubResource("Terrain3DTextureAsset_26uyv")])

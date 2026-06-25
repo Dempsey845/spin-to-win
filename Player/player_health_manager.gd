@@ -3,6 +3,9 @@ extends Node
 @export var health_bar: ProgressBar
 @export var delayed_health_bar: ProgressBar
 
+@export var state_machine: StateMachine
+@export var death_state: State
+
 @onready var health: Health = $"../Health"
 
 var delayed_tween: Tween
@@ -11,6 +14,7 @@ func _ready() -> void:
 	health.damage_taken.connect(_on_health_damage_taken)
 	health.health_changed.connect(_on_health_changed)
 	health.max_health_changed.connect(_on_max_health_changed)
+	health.death.connect(_on_health_death)
 
 func _on_health_damage_taken(_damage_amount: int):
 	pass
@@ -38,3 +42,6 @@ func _on_health_changed(new_health: int, _change_amount: int):
 func _on_max_health_changed(new_max_health: int):
 	health_bar.max_value = new_max_health
 	delayed_health_bar.max_value = new_max_health
+
+func _on_health_death():
+	state_machine.change_state(death_state)
