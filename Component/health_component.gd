@@ -36,4 +36,6 @@ func take_damage(damage_amount: int):
 
 func heal(heal_amount: int):
 	current_heatlh += heal_amount
+	if current_heatlh > max_health:
+		current_heatlh = max_health
 	healed.emit(heal_amount)

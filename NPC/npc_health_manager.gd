@@ -10,6 +10,8 @@ extends Node
 @onready var state_machine: StateMachine = $'../StateMachine'
 @onready var health: Health = $'../Health'
 
+var health_pickup_scene: PackedScene = preload("uid://cdfhgmxuixvo3")
+
 var dead: bool
 
 func _ready() -> void:
@@ -19,6 +21,12 @@ func _ready() -> void:
 func _on_death():
 	if dead:
 		return
+
+	if randi_range(0, 3) == 3:
+		var health_pickup: Node3D = health_pickup_scene.instantiate()
+		get_tree().current_scene.add_child(health_pickup)
+		health_pickup.global_position = get_parent().global_position
+
 	hurtbox.set_deferred("monitorable", false)
 	state_machine.change_state(death_state)
 	humanoid.play_death_animation()

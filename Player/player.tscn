@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://bj5pxnyymrdni" path="res://Assets/Audio/SoundEffects/pickup.mp3" id="20_6eb1q"]
 [ext_resource type="Script" uid="uid://bo7tdvf14i3tv" path="res://Player/hit_vignette.gd" id="20_efx54"]
 [ext_resource type="Script" uid="uid://c7q7vi8xmi6fj" path="res://Player/States/death_state.gd" id="22_gvnt1"]
+[ext_resource type="AudioStream" uid="uid://cb80exe73ki7o" path="res://Assets/Audio/SoundEffects/heal.mp3" id="26_7v2uk"]
 [ext_resource type="PackedScene" uid="uid://cu2ipnvx6wrv2" path="res://Assets/BinbunVFX/muzzle_flash/effects/muzzle_flash/muzzle_flash_02.tscn" id="26_8viyr"]
 [ext_resource type="PackedScene" uid="uid://bd8noouuq2lnm" path="res://Assets/BinbunVFX/muzzle_flash/effects/big_flash/big_flash_02.tscn" id="27_sm0op"]
 [ext_resource type="AudioStream" uid="uid://dbxlo0n3mqwp4" path="res://Assets/Audio/SoundEffects/Shoot/shot_1.wav" id="30_jp1hh"]
@@ -8581,6 +8582,11 @@ delayed_health_bar = NodePath("../CanvasLayer/HealthBar/DelayedHealthBar")
 state_machine = NodePath("../PlayerArmStateMachine")
 death_state = NodePath("../PlayerArmStateMachine/DeathState")
 
+[node name="HealPlayer" type="AudioStreamPlayer" parent="PlayerHealthManager" unique_id=1597052559]
+stream = ExtResource("26_7v2uk")
+max_polyphony = 3
+bus = &"SFX"
+
 [node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369 node_paths=PackedStringArray("colt_python", "ammo")]
 script = ExtResource("11_o28un")
 colt_python = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
@@ -9135,7 +9141,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
+transform = Transform3D(-0.7744524, 0.29767203, 0.5582251, 0.5616681, 0.7295801, 0.3901816, -0.2911238, 0.61571395, -0.732218, -0.50031304, -0.103824675, 0.8954878)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -9160,7 +9166,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
+transform = Transform3D(-0.7744542, -0.2976663, -0.558225, -0.5616631, 0.72958255, 0.3901835, 0.2911268, 0.6157139, -0.73221666, 0.5003167, -0.10382295, 0.8954878)
 bone_name = "Hand.L"
 bone_idx = 3
 

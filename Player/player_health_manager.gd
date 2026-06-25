@@ -7,6 +7,7 @@ extends Node
 @export var death_state: State
 
 @onready var health: Health = $"../Health"
+@onready var heal_player: AudioStreamPlayer = $HealPlayer
 
 var delayed_tween: Tween
 
@@ -16,6 +17,9 @@ func _ready() -> void:
 	health.max_health_changed.connect(_on_max_health_changed)
 	_on_max_health_changed(health.max_health)
 	health.death.connect(_on_health_death)
+	health.healed.connect(func(_heal_amount: int):
+		heal_player.play()
+	)
 
 func _on_health_damage_taken(_damage_amount: int):
 	pass
