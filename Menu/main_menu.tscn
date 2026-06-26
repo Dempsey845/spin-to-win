@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://burod6f42xc3o" path="res://Assets/WesternDesertPack/Surface materials/Sand.png" id="1_rw3mj"]
 [ext_resource type="Script" uid="uid://u5ov53uf23l8" path="res://Menu/main_menu.gd" id="1_ywk15"]
 [ext_resource type="Texture2D" uid="uid://btttrh8dr6gl3" path="res://Assets/RevolverPack/Colt Python/Textures/ColtPython.Png" id="2_cn2sd"]
+[ext_resource type="Environment" uid="uid://dsx8vlqire2bw" path="res://World/Environments/Desktop.tres" id="2_o4wy8"]
 [ext_resource type="Texture2D" uid="uid://bo1r2l086d274" path="res://Assets/RevolverPack/Colt Python/Textures/revolverAmmo.jpg" id="3_vv7ca"]
 [ext_resource type="Texture2D" uid="uid://dkpw1g4cf1dq7" path="res://Assets/RevolverPack/Colt Python/Textures/cylinderRefV2.jpg" id="4_218iu"]
 [ext_resource type="PackedScene" uid="uid://mcmnrwo4ha5f" path="res://NPC/Cowboy/Characters/Skins/cowboy_skin_1.tscn" id="5_ywk15"]
@@ -13,28 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="9_ws7s4"]
 [ext_resource type="PackedScene" uid="uid://bk688mltbgm2q" path="res://Assets/WesternDesertPack/Cacti/Opuntia_cactus/Opuntia_cactus.fbx" id="9_ywk15"]
 [ext_resource type="PackedScene" uid="uid://cjdoqr87o6wft" path="res://Assets/BeerSnacks/Glass_Beer/64px/Glass_Beer_1.fbx" id="13_o4wy8"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fduiw"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_62w18"]
-sky_material = SubResource("ProceduralSkyMaterial_fduiw")
-
-[sub_resource type="Environment" id="Environment_cgse8"]
-background_mode = 2
-sky = SubResource("Sky_62w18")
-tonemap_mode = 3
-tonemap_exposure = 0.8
-ssao_enabled = true
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0.99999934, 0.99900025, 0.8521768, 1)
-adjustment_enabled = true
-adjustment_brightness = 1.01
-adjustment_contrast = 1.04
-adjustment_saturation = 1.57
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqyvv"]
 albedo_texture = ExtResource("1_rw3mj")
@@ -618,7 +597,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=403903429]
-environment = SubResource("Environment_cgse8")
+environment = ExtResource("2_o4wy8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1359507711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46)
