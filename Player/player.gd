@@ -16,8 +16,8 @@ var gravity: float = 9.8
 @onready var jump_stream_player: AudioStreamPlayer = $JumpStreamPlayer
 
 # Camera sway/bob
-@export var bob_frequency: float = 5.0
-@export var bob_amplitude: float = 0.02
+@export var bob_frequency: float = 2.5
+@export var bob_amplitude: float = 0.012
 
 @export var sway_amount: float = 0.00005
 @export var sway_speed: float = 7.0

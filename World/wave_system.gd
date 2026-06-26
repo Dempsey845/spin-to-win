@@ -99,5 +99,5 @@ func is_wave_active() -> bool:
 	return started
 
 func get_wave_scaled_value(min_value: float, max_value: float) -> float:
-	var progress = 1.0 - exp(-current_wave / 15.0)
+	var progress = 1.0 - exp(-current_wave / 40.0)
 	return lerp(min_value, max_value, progress)
