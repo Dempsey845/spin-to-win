@@ -266,6 +266,7 @@ shader_parameter/blood_color = Color(0.5, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4i3b"]
 resource_name = "Arms"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("43_gvnt1")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gwnis"]
@@ -455,6 +456,7 @@ blend_shape_mode = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy2ax"]
 resource_name = "Arms"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("45_1kmt7")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_od3ui"]
@@ -8633,13 +8635,14 @@ health = NodePath("../Health")
 projectile_type_manager = NodePath("../PlayerProjectileTypeManager")
 upgrade_manager = NodePath("../PlayerUpgradeManager")
 
-[node name="PlayerUpgradeManager" type="Node" parent="." unique_id=620614383 node_paths=PackedStringArray("wave_manager", "ammo", "gun_state", "hand_hitbox_manager", "punch_state")]
+[node name="PlayerUpgradeManager" type="Node" parent="." unique_id=620614383 node_paths=PackedStringArray("wave_manager", "ammo", "gun_state", "hand_hitbox_manager", "punch_state", "health")]
 script = ExtResource("15_8mwp6")
 wave_manager = NodePath("../PlayerWaveManager")
 ammo = NodePath("../PlayerAmmo")
 gun_state = NodePath("../PlayerArmStateMachine/GunState")
 hand_hitbox_manager = NodePath("../PlayerHandHitboxManager")
 punch_state = NodePath("../PlayerArmStateMachine/PunchState")
+health = NodePath("../Health")
 
 [node name="CameraShake" type="Node" parent="." unique_id=1822507941 node_paths=PackedStringArray("camera_pivots")]
 script = ExtResource("16_qemgg")

@@ -6,7 +6,8 @@ enum UpgradeType
     FastDraw,
     Grit,
     DeepPockets,
-    Haymaker
+    Haymaker,
+    HeavyHitter
 }
 
 @onready var title_label: Label = %TitleLabel
@@ -21,25 +22,26 @@ static var upgrade_type_details = {
         "title": "Fast Draw",
         "desc": "Increase your firerate by a whopping 10%",
         "expression": "Yippee!",
-        "increase": 10
     },
     UpgradeType.Grit: {
         "title": "Grit",
         "desc": "Toughen up and gain 10% more health",
         "expression": "Yee-Haw!",
-        "increase": 10
     },
     UpgradeType.DeepPockets: {
         "title": "Deep Pockets",
         "desc": "Carry more ammo into the fight",
         "expression": "Yahoo!",
-        "increase": 1
     },
     UpgradeType.Haymaker: {
         "title": "Haymaker",
         "desc": "Throw punches 10% faster then before",
         "expression": "All hat and all cattle?",
-        "increase": 10
+    },
+    UpgradeType.HeavyHitter: {
+        "title": "Heavy Hitter",
+        "desc": "Increase your damage by a hefty 20%",
+        "expression": "That'll leave a mark!",
     }
 }
 

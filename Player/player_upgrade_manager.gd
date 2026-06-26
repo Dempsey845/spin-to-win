@@ -6,6 +6,7 @@ extends Node
 @export var gun_state: PlayerGunState
 @export var hand_hitbox_manager: PlayerHandHitboxManager
 @export var punch_state: PlayerPunchState
+@export var health: Health
 
 var damage: int = 1
 
@@ -16,8 +17,10 @@ func claim_upgrade(upgrade_type: UpgradeOption.UpgradeType):
 		UpgradeOption.UpgradeType.FastDraw:
 			gun_state.upgrade_fire_rate()
 		UpgradeOption.UpgradeType.Grit:
-			damage += 1
-			gun_state.damage = damage
-			hand_hitbox_manager.damage = damage
+			health.max_health += max(1, roundi(health.max_health * 0.10))
 		UpgradeOption.UpgradeType.Haymaker:
 			punch_state.upgrade_punch_rate()
+		UpgradeOption.UpgradeType.HeavyHitter:
+			damage += max(1, roundi(damage * 0.20))
+			gun_state.damage = damage
+			hand_hitbox_manager.damage = damage
