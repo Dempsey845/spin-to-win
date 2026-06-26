@@ -3,7 +3,7 @@ extends Control
 
 signal type_chosen(type: ProjectileTypeManager.ProjectileType)
 
-const UPGRADE_FREQUENCY: int = 1
+const UPGRADE_FREQUENCY: int = 3
 
 @export var main_camera: Camera3D
 

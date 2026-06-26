@@ -46,6 +46,9 @@ func exit():
 	humanoid.shoot_animation_complete.disconnect(_on_shoot_animation_complete)
 
 func shoot():
+	if target_manager.target:
+		var look_at_point: Vector3 = target_manager.target.global_position + (Vector3.UP * 1.5)
+		humanoid.fire_point.look_at(look_at_point)
 	npc.move = false
 	playing_shoot_animation = true
 	humanoid.play_one_shot("Shoot")

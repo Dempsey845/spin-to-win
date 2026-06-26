@@ -12,6 +12,7 @@ signal punch_animation_complete
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var skeleton_3d: Skeleton3D = $Skeleton3D
+@onready var fire_point: Marker3D = $FirePoint
 
 var upper_body_state_machine: AnimationNodeStateMachinePlayback
 var playing_upper_body_animation: bool
