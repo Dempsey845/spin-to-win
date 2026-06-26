@@ -8622,7 +8622,7 @@ ammo_label = NodePath("../CanvasLayer/AmmoLabel")
 
 [node name="Health" type="Node" parent="." unique_id=1782994041]
 script = ExtResource("9_dkpta")
-max_health = 10
+max_health = 4
 metadata/_custom_type_script = "uid://2t1c0fhtlkie"
 
 [node name="PlayerWaveManager" type="Node" parent="." unique_id=1303166373 node_paths=PackedStringArray("canvas_layer", "revolver_manager", "main_camera", "ammo", "health", "projectile_type_manager", "upgrade_manager")]
@@ -8705,7 +8705,7 @@ offset_top = -35.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
-text = "6/6"
+text = "18/18"
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1248570490]

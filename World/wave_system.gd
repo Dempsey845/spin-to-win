@@ -86,10 +86,10 @@ func start_next_wave():
 	wave_time = get_wave_scaled_value(min_wave_duration, max_wave_duration)
 	enemies_spawned = 0
 
-	spawn_rate = get_wave_scaled_value(start_spawn_rate, end_spawn_rate, 20.0)
+	spawn_rate = get_wave_scaled_value(start_spawn_rate, end_spawn_rate, 10.0)
 	spawn_time = spawn_rate
 
-	total_enemies = min_total_enemies + current_wave * 3
+	total_enemies = min_total_enemies + current_wave * 4
 
 	started = true
 

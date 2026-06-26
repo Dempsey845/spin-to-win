@@ -28,6 +28,7 @@ SettingsDataManager="*uid://b5kjwylqql52k"
 
 window/size/viewport_width=768
 window/size/viewport_height=432
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]

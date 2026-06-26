@@ -16,6 +16,10 @@ func _ready() -> void:
 
 	transition_control.transition_complete.connect(_on_transition_complete)
 
+	quit_button.pressed.connect(func():
+		get_tree().quit()
+	)
+
 func _on_play_button_pressed():
 	transition_control.start_transition()
 

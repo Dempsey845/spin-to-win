@@ -50,6 +50,8 @@ stream_0/stream = ExtResource("17_vm4gj")
 collision_layer = 8
 collision_mask = 31
 script = ExtResource("1_r07n0")
+speed = 6.0
+acceleration = 12.0
 jump_velocity = 3.0
 target_manager = NodePath("TargetManager")
 
@@ -106,7 +108,7 @@ target_manager = NodePath("../../TargetManager")
 metadata/_custom_type_script = "uid://83lrm1ci7bgc"
 
 [node name="PunchCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1136881496]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [node name="HitCooldownTimer" type="Timer" parent="StateMachine/PunchState" unique_id=1503974262]
@@ -158,7 +160,6 @@ disabled = true
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=502581083]
 target_desired_distance = 2.0
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="ForwardRay" type="RayCast3D" parent="." unique_id=557207469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13970038, -0.096761346)

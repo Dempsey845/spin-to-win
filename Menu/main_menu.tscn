@@ -12,22 +12,29 @@
 [ext_resource type="PackedScene" uid="uid://k0nd1h60i1jw" path="res://Menu/settings.tscn" id="9_fduiw"]
 [ext_resource type="PackedScene" uid="uid://c5swfnmca5mrc" path="res://Menu/transition_control.tscn" id="9_ws7s4"]
 [ext_resource type="PackedScene" uid="uid://bk688mltbgm2q" path="res://Assets/WesternDesertPack/Cacti/Opuntia_cactus/Opuntia_cactus.fbx" id="9_ywk15"]
+[ext_resource type="PackedScene" uid="uid://cjdoqr87o6wft" path="res://Assets/BeerSnacks/Glass_Beer/64px/Glass_Beer_1.fbx" id="13_o4wy8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fduiw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_cgse8"]
+[sub_resource type="Sky" id="Sky_62w18"]
 sky_material = SubResource("ProceduralSkyMaterial_fduiw")
 
-[sub_resource type="Environment" id="Environment_o4wy8"]
+[sub_resource type="Environment" id="Environment_cgse8"]
 background_mode = 2
-sky = SubResource("Sky_cgse8")
-tonemap_mode = 2
+sky = SubResource("Sky_62w18")
+tonemap_mode = 3
+tonemap_exposure = 0.8
+ssao_enabled = true
 glow_enabled = true
-fog_light_color = Color(0.63541764, 0.5386532, 0.3055032, 1)
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(1, 0.93333334, 0.7411765, 1)
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.99999934, 0.99900025, 0.8521768, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.04
+adjustment_saturation = 1.57
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqyvv"]
 albedo_texture = ExtResource("1_rw3mj")
@@ -606,12 +613,12 @@ _data = {
 [node name="MainMenu" type="Node3D" unique_id=1367259964]
 script = ExtResource("1_ywk15")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1188827322]
-environment = SubResource("Environment_o4wy8")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1641698970]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=403903429]
+environment = SubResource("Environment_cgse8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1359507711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46)
@@ -619,7 +626,7 @@ material_override = SubResource("StandardMaterial3D_dqyvv")
 mesh = SubResource("PlaneMesh_m8x2t")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=758179803]
-transform = Transform3D(0.9999361, -0.004444678, 0.010396292, 0, 0.91949296, 0.39310646, -0.011306549, -0.39308137, 0.9194342, -0.011741202, 2.080061, 1.8636563)
+transform = Transform3D(0.9999361, -0.002562055, 0.011012444, 2.3283064e-10, 0.9739881, 0.22659917, -0.011306549, -0.22658469, 0.9739259, -0.010803462, 1.7235702, 1.9465889)
 
 [node name="Cowboy" type="Node3D" parent="." unique_id=1319687967]
 transform = Transform3D(0.07409218, 0, -0.06715913, 0, 0.1, 0, 0.06715913, 0, 0.07409218, 1.103433, 0, 0.39497113)
@@ -1378,7 +1385,6 @@ autoplay = &"Menu/menu_idle"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1070771241]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2009701688]
-modulate = Color(0.99607843, 0.78039217, 0, 1)
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 27.0
@@ -1447,10 +1453,16 @@ visible = false
 unique_name_in_owner = true
 
 [node name="Desert_cactus_01" parent="." unique_id=1618583455 instance=ExtResource("8_218iu")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9, 0, -27)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9, 0, -18)
+
+[node name="Desert_cactus_06" parent="." unique_id=1323822324 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -16.248428, 0, -22.244053)
 
 [node name="Desert_cactus_04" parent="." unique_id=1317754763 instance=ExtResource("8_218iu")]
 transform = Transform3D(0.35355338, 0, 0.35355338, 0, 0.5, 0, -0.35355338, 0, 0.35355338, 3.9471302, 0, -2.3945198)
+
+[node name="Desert_cactus_05" parent="." unique_id=26610028 instance=ExtResource("8_218iu")]
+transform = Transform3D(0.3204294, 0, -0.18499999, 0, 0.37, 0, 0.18499999, 0, 0.3204294, -1.2937242, 4.7683716e-07, 0.48403716)
 
 [node name="Desert_cactus_02" parent="." unique_id=1658146852 instance=ExtResource("8_218iu")]
 transform = Transform3D(0.4330127, 0, -0.25, 0, 0.5, 0, 0.25, 0, 0.4330127, 9, 0, -27)
@@ -1463,6 +1475,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
 [node name="Opuntia_cactus2" parent="." unique_id=735370098 instance=ExtResource("9_ywk15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+
+[node name="Glass_Beer_1" parent="." unique_id=617535180 instance=ExtResource("13_o4wy8")]
+transform = Transform3D(-0.007401184, 0.08993146, -0.04309937, 0.098911, 0.0011066966, -0.014676124, -0.0127214715, -0.043716226, -0.08903401, 0.6740285, 0.084378004, 0.04854376)
 
 [editable path="CanvasLayer/Settings"]
 [editable path="CanvasLayer/Settings/SettingsPanel/SettingsTabs/Graphics"]

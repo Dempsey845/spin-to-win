@@ -114,6 +114,8 @@ layout_mode = 2
 theme_override_constants/line_spacing = 0
 text = "WASD / ARROW KEYS - Movement
 
+Shift -Sprint
+
 SPACE - JUMP
 
 Left mouse click - Shoot / PUnch
@@ -263,7 +265,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SettingsPanel/SettingsTabs/Credits/MarginContainer/ScrollContainer/MarginContainer/ElementList/Credits/SubSectionElements" unique_id=538097734]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
-text = "Check out the itch page for the playlist, there are some of the assets used to help make the game.
+text = "Check out the itch page for the asset collection.
 
 BG MUSIC 1 by AtlasAudio from Pixabay
 BG MUSIC 2 by Levgen Poltavskyi from Pixabay

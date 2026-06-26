@@ -341,3 +341,8 @@ collision_mask = 11
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018530384, -0.005294442)
 shape = SubResource("SphereShape3D_mkr85")
 debug_color = Color(0.29935083, 0.608161, 0.46423525, 0.41960785)
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=238400050]
+wait_time = 30.0
+one_shot = true
+autostart = true

@@ -12,6 +12,7 @@ extends Node
 @onready var hit_player: AudioStreamPlayer = $HitPlayer
 
 var delayed_tween: Tween
+var dead: bool
 
 func _ready() -> void:
 	health.damage_taken.connect(_on_health_damage_taken)
@@ -24,6 +25,9 @@ func _ready() -> void:
 	)
 
 func _on_health_damage_taken(_damage_amount: int):
+	if dead:
+		return
+		
 	hit_player.play()
 
 
@@ -51,5 +55,10 @@ func _on_max_health_changed(new_max_health: int):
 	delayed_health_bar.max_value = new_max_health
 
 func _on_health_death():
+	if dead:
+		return
+	
+	dead = true
+
 	death_player.play()
 	state_machine.change_state(death_state)
