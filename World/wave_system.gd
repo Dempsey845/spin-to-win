@@ -86,10 +86,10 @@ func start_next_wave():
 	wave_time = get_wave_scaled_value(min_wave_duration, max_wave_duration)
 	enemies_spawned = 0
 
-	spawn_rate = get_wave_scaled_value(start_spawn_rate, end_spawn_rate)
+	spawn_rate = get_wave_scaled_value(start_spawn_rate, end_spawn_rate, 20.0)
 	spawn_time = spawn_rate
 
-	total_enemies = min_total_enemies + current_wave * 2
+	total_enemies = min_total_enemies + current_wave * 3
 
 	started = true
 
@@ -98,6 +98,6 @@ func start_next_wave():
 func is_wave_active() -> bool:
 	return started
 
-func get_wave_scaled_value(min_value: float, max_value: float) -> float:
-	var progress = 1.0 - exp(-current_wave / 40.0)
+func get_wave_scaled_value(min_value: float, max_value: float, progression: float = 40.0) -> float:
+	var progress = 1.0 - exp(-current_wave / progression)
 	return lerp(min_value, max_value, progress)
