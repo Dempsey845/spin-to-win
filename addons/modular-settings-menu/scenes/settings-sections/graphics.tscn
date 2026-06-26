@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8r63dmvd55c" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/resolution.tscn" id="2_5bpi0"]
 [ext_resource type="PackedScene" uid="uid://b3w7qpn4nhmu2" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/scaler.tscn" id="4_g2t2s"]
 [ext_resource type="PackedScene" uid="uid://dghfxwcbi5ig" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/max_fps.tscn" id="5_82fyi"]
+[ext_resource type="PackedScene" uid="uid://bgcd62v53l716" path="res://Menu/view_distance.tscn" id="5_mo0ev"]
 [ext_resource type="PackedScene" uid="uid://idtbqnsqlvb6" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/vsync.tscn" id="6_2rh1a"]
 [ext_resource type="PackedScene" uid="uid://csg6c3uuct1ls" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/anti_aliasing.tscn" id="7_r8hxv"]
 [ext_resource type="PackedScene" uid="uid://3ckate3v614f" path="res://addons/modular-settings-menu/scenes/settings-elements/graphics-elements/depth_of_field.tscn" id="8_28f8l"]
@@ -80,6 +81,9 @@ layout_mode = 2
 DEFAULT_VALUE = "768x432"
 
 [node name="MaxFPS" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/BasicSettings/SubSectionElements" unique_id=1070020629 instance=ExtResource("5_82fyi")]
+layout_mode = 2
+
+[node name="ViewDistance" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList/BasicSettings/SubSectionElements" unique_id=1530706463 instance=ExtResource("5_mo0ev")]
 layout_mode = 2
 
 [node name="AdvancedSettings" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/ElementList" unique_id=1719505316]

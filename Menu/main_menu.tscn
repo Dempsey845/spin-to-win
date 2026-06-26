@@ -1440,6 +1440,9 @@ text = "Made by Dempsey Newton"
 unique_name_in_owner = true
 visible = false
 
+[node name="ViewDistance" parent="CanvasLayer/Settings/SettingsPanel/SettingsTabs/Graphics/MarginContainer/ScrollContainer/MarginContainer/ElementList/BasicSettings/SubSectionElements" parent_id_path=PackedInt32Array(1719048645, 553463844, 659031353) index="3" unique_id=1530706463]
+visible = false
+
 [node name="TransitionControl" parent="CanvasLayer" unique_id=839243473 instance=ExtResource("9_ws7s4")]
 unique_name_in_owner = true
 
@@ -1460,3 +1463,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
 [node name="Opuntia_cactus2" parent="." unique_id=735370098 instance=ExtResource("9_ywk15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+
+[editable path="CanvasLayer/Settings"]
+[editable path="CanvasLayer/Settings/SettingsPanel/SettingsTabs/Graphics"]
