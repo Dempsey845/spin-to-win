@@ -5,12 +5,16 @@ extends State
 @export var transition_control: Transition
 
 func enter():
+    if transition_control.transition_complete.is_connected(_on_transition_complete):
+        return
+
+    transition_control.transition_complete.connect(_on_transition_complete)
+
     arms_animation_tree.set("parameters/DeathOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
     player_animation_player.play("death")
 
-    await get_tree().create_timer(1.5).timeout
-
-    transition_control.transition_complete.connect(_on_transition_complete)
+    await get_tree().create_timer(2.5).timeout
+    
     transition_control.start_transition()
 
 func _on_transition_complete():

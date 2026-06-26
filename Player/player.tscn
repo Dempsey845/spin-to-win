@@ -35,7 +35,11 @@
 [ext_resource type="Script" uid="uid://c7q7vi8xmi6fj" path="res://Player/States/death_state.gd" id="22_gvnt1"]
 [ext_resource type="AudioStream" uid="uid://cb80exe73ki7o" path="res://Assets/Audio/SoundEffects/heal.mp3" id="26_7v2uk"]
 [ext_resource type="PackedScene" uid="uid://cu2ipnvx6wrv2" path="res://Assets/BinbunVFX/muzzle_flash/effects/muzzle_flash/muzzle_flash_02.tscn" id="26_8viyr"]
+[ext_resource type="AudioStream" uid="uid://nmv6ea0yug3u" path="res://Assets/Audio/SoundEffects/player-death.wav" id="27_m6nl3"]
+[ext_resource type="AudioStream" uid="uid://btb5xeoo10s7p" path="res://Assets/Audio/SoundEffects/PlayerHit/PHit1.wav" id="27_ntwt4"]
 [ext_resource type="PackedScene" uid="uid://bd8noouuq2lnm" path="res://Assets/BinbunVFX/muzzle_flash/effects/big_flash/big_flash_02.tscn" id="27_sm0op"]
+[ext_resource type="AudioStream" uid="uid://bmbwv8xg772ir" path="res://Assets/Audio/SoundEffects/PlayerHit/PHit2.wav" id="28_kdg72"]
+[ext_resource type="AudioStream" uid="uid://kvxopy2jn3vp" path="res://Assets/Audio/SoundEffects/PlayerHit/PHit3.wav" id="29_qpoj2"]
 [ext_resource type="AudioStream" uid="uid://dbxlo0n3mqwp4" path="res://Assets/Audio/SoundEffects/Shoot/shot_1.wav" id="30_jp1hh"]
 [ext_resource type="AudioStream" uid="uid://di7jsukjngyix" path="res://Assets/Audio/SoundEffects/Shoot/shot_2.wav" id="31_qs4pp"]
 [ext_resource type="AudioStream" uid="uid://cjpkv4p4bui83" path="res://Assets/Audio/SoundEffects/Shoot/shot_3.wav" id="32_iyprq"]
@@ -89,6 +93,14 @@ random_pitch = 1.122462
 random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("20_6eb1q")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3e3ym"]
+random_pitch = 1.122462
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("27_ntwt4")
+stream_1/stream = ExtResource("28_kdg72")
+stream_2/stream = ExtResource("29_qpoj2")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvnt1"]
 random_pitch = 1.0717734
@@ -8587,6 +8599,16 @@ stream = ExtResource("26_7v2uk")
 max_polyphony = 3
 bus = &"SFX"
 
+[node name="HitPlayer" type="AudioStreamPlayer" parent="PlayerHealthManager" unique_id=1083660759]
+stream = SubResource("AudioStreamRandomizer_3e3ym")
+volume_db = 5.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="PlayerHealthManager" unique_id=171568988]
+stream = ExtResource("27_m6nl3")
+bus = &"SFX"
+
 [node name="PlayerProjectileTypeManager" type="Node" parent="." unique_id=467853369 node_paths=PackedStringArray("colt_python", "ammo")]
 script = ExtResource("11_o28un")
 colt_python = NodePath("../Head/Arms_001/Skeleton3D/RightHandBoneAttachment/ColtPython")
@@ -9141,7 +9163,7 @@ skin = SubResource("Skin_k53q1")
 skeleton = NodePath("..")
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=564649303]
-transform = Transform3D(-0.7790905, 0.28504202, 0.55836326, 0.5137095, 0.80077696, 0.30799067, -0.35933414, 0.5267889, -0.77030677, -0.47788426, -0.0106289685, 0.90274405)
+transform = Transform3D(-0.9901478, -0.014494803, 0.13927682, 0.008191549, -0.9989203, -0.0457239, 0.13978924, -0.04413265, 0.9891976, -0.4894414, -1.3923869, 0.035742737)
 bone_name = "Hand.R"
 bone_idx = 21
 
@@ -9166,7 +9188,7 @@ metadata/_custom_type_script = "uid://ch0uxpg21e6gx"
 shape = SubResource("SphereShape3D_5htga")
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="Head/Arms_001/Skeleton3D" unique_id=1259024858]
-transform = Transform3D(-0.7790841, -0.28505918, -0.5583626, -0.5137239, 0.80077004, 0.30798453, 0.3593265, 0.52679026, -0.770309, 0.47787288, -0.010634333, 0.9027447)
+transform = Transform3D(-0.9796273, 0.20050985, -0.011210669, -0.20075206, -0.97626996, 0.08121183, 0.0053391475, 0.081807956, 0.9966337, 0.4917531, -1.2746997, -0.35037997)
 bone_name = "Hand.L"
 bone_idx = 3
 

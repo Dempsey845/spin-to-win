@@ -8,6 +8,8 @@ extends Node
 
 @onready var health: Health = $"../Health"
 @onready var heal_player: AudioStreamPlayer = $HealPlayer
+@onready var death_player: AudioStreamPlayer = $DeathPlayer
+@onready var hit_player: AudioStreamPlayer = $HitPlayer
 
 var delayed_tween: Tween
 
@@ -22,7 +24,7 @@ func _ready() -> void:
 	)
 
 func _on_health_damage_taken(_damage_amount: int):
-	pass
+	hit_player.play()
 
 
 func _on_health_changed(new_health: int, _change_amount: int):
@@ -49,4 +51,5 @@ func _on_max_health_changed(new_max_health: int):
 	delayed_health_bar.max_value = new_max_health
 
 func _on_health_death():
+	death_player.play()
 	state_machine.change_state(death_state)
